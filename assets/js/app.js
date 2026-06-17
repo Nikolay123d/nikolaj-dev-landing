@@ -16,6 +16,25 @@ const modalActions = document.querySelector("#modalActions");
 const recipientEmail = "urciknikolaj642@gmail.com";
 let ctaClosed = false;
 
+if ("scrollRestoration" in history) {
+  history.scrollRestoration = "manual";
+}
+
+function resetInitialScroll() {
+  const forcedContactHash = location.hash === "#contact" || location.hash === "#requestForm";
+
+  if (forcedContactHash) {
+    history.replaceState(null, "", `${location.pathname}${location.search}`);
+  }
+
+  if (!location.hash || forcedContactHash) {
+    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+  }
+}
+
+resetInitialScroll();
+window.addEventListener("pageshow", resetInitialScroll);
+
 const projects = {
   pracehub: {
     title: "PráceHub.cz",

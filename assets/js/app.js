@@ -15,10 +15,17 @@ const modalActions = document.querySelector("#modalActions");
 
 const recipientEmail = "urciknikolaj642@gmail.com";
 let ctaClosed = false;
+let userStartedNavigation = false;
 
 if ("scrollRestoration" in history) {
   history.scrollRestoration = "manual";
 }
+
+["wheel", "touchmove", "keydown", "pointerdown"].forEach((eventName) => {
+  window.addEventListener(eventName, () => {
+    userStartedNavigation = true;
+  }, { passive: true, once: true });
+});
 
 function resetInitialScroll() {
   const forcedContactHash = location.hash === "#contact" || location.hash === "#requestForm";
@@ -27,13 +34,32 @@ function resetInitialScroll() {
     history.replaceState(null, "", `${location.pathname}${location.search}`);
   }
 
-  if (!location.hash || forcedContactHash) {
+  if (!userStartedNavigation && (!location.hash || forcedContactHash)) {
     window.scrollTo({ top: 0, left: 0, behavior: "auto" });
   }
 }
 
-resetInitialScroll();
-window.addEventListener("pageshow", resetInitialScroll);
+window.addEventListener("load", () => {
+  window.requestAnimationFrame(resetInitialScroll);
+}, { once: true });
+
+document.querySelectorAll('a[href^="#"]').forEach((link) => {
+  link.addEventListener("click", (event) => {
+    const hash = link.getAttribute("href");
+    if (!hash || hash === "#") return;
+
+    const target = document.querySelector(hash);
+    if (!target) return;
+
+    event.preventDefault();
+    userStartedNavigation = true;
+
+    const headerOffset = document.querySelector(".site-header")?.offsetHeight || 0;
+    const targetTop = target.getBoundingClientRect().top + window.scrollY - headerOffset - 14;
+    window.scrollTo({ top: Math.max(0, targetTop), behavior: "smooth" });
+    history.pushState(null, "", hash);
+  });
+});
 
 const projects = {
   pracehub: {

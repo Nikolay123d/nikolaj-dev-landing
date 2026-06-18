@@ -1,5 +1,3 @@
-const recipientEmail = "urciknikolaj642@gmail.com";
-
 const services = [
   {
     id: "start-landing",
@@ -373,16 +371,19 @@ function buildLeadModal(projectOrPlan = "") {
     <div class="modal-header">
       <p class="eyebrow">Заявка</p>
       <h2 id="modalTitle">Опишите задачу</h2>
-      <p>Форма откроет готовое письмо на email. Поля не очищаются, чтобы заявка не потерялась.</p>
+      <p>Заявка отправится через защищённую форму Forminit на email Николая.</p>
     </div>
-    <form class="lead-form" id="leadForm">
+    <form class="lead-form" id="leadForm" action="https://forminit.com/f/kshbr37bfe4" method="POST">
+      <input type="hidden" name="selected_template" value="${selected}">
       <div class="field-row">
         <label>Имя<input name="name" autocomplete="name" required></label>
-        <label>Телефон / WhatsApp / Telegram<input name="messenger" autocomplete="off" required></label>
+        <label>Телефон<input name="phone" autocomplete="tel" required></label>
       </div>
-      <label>Email<input name="email" autocomplete="email"></label>
+      <label>Email<input name="email" type="email" autocomplete="email" required></label>
+      <label>Telegram / WhatsApp<input name="telegram_whatsapp" autocomplete="off" required></label>
       <div class="field-row">
-        <label>Тип проекта<select name="type" required>
+        <label>Тип бизнеса / проекта<input name="business_type" autocomplete="organization" placeholder="Например: ремонт, кафе, туры, сервис" required></label>
+        <label>Тип задачи<select name="project_type" required>
           <option value="">Выберите</option>
           <option ${selected.includes("Landing") || selected.includes("RemPro") ? "selected" : ""}>Landing page</option>
           <option ${selected.includes("Business") ? "selected" : ""}>Business website</option>
@@ -391,6 +392,8 @@ function buildLeadModal(projectOrPlan = "") {
           <option>Bug fixing</option>
           <option>AI-assisted workflow</option>
         </select></label>
+      </div>
+      <div class="field-row">
         <label>Бюджет<select name="budget">
           <option>Нужно обсудить</option>
           <option>до 200 €</option>
@@ -398,11 +401,17 @@ function buildLeadModal(projectOrPlan = "") {
           <option>400-750 €</option>
           <option>600+ €</option>
         </select></label>
+        <label>Срок<select name="timeline">
+          <option>Нужно обсудить</option>
+          <option>Срочно</option>
+          <option>1-2 недели</option>
+          <option>2-4 недели</option>
+          <option>Гибко</option>
+        </select></label>
       </div>
-      <label>Есть ли пример сайта?<input name="example" placeholder="Ссылка или название шаблона" value="${selected}"></label>
+      <label>Выбранный шаблон<input name="selected_template_visible" placeholder="Ссылка или название шаблона" value="${selected}"></label>
       <label>Что нужно сделать?<textarea name="message" rows="5" required placeholder="Опишите услугу, сроки, материалы, что уже есть"></textarea></label>
-      <label class="checkbox-line"><input type="checkbox" name="urgent" value="Да"> Нужен срочный запуск</label>
-      <button class="btn dark full" type="submit">Отправить заявку через email</button>
+      <button class="btn dark full" type="submit">Отправить заявку</button>
       <div class="messenger-row">
         <a href="FACEBOOK_URL_HERE" target="_blank" rel="noopener">Facebook</a>
         <span>Telegram placeholder</span>
@@ -448,30 +457,12 @@ function bindModalActions() {
     button.addEventListener("click", () => openModal("lead"));
   });
   const leadForm = modalContent.querySelector("#leadForm");
-  if (leadForm) leadForm.addEventListener("submit", handleLeadSubmit);
-}
-
-function handleLeadSubmit(event) {
-  event.preventDefault();
-  if (!event.currentTarget.reportValidity()) return;
-  const data = new FormData(event.currentTarget);
-  const body = [
-    "Новая заявка с Nikolaj Dev Landing",
-    "",
-    `Имя: ${data.get("name")}`,
-    `Телефон / WhatsApp / Telegram: ${data.get("messenger")}`,
-    `Email: ${data.get("email") || "не указан"}`,
-    `Тип проекта: ${data.get("type")}`,
-    `Бюджет: ${data.get("budget")}`,
-    `Пример сайта: ${data.get("example") || "не указан"}`,
-    `Срочно: ${data.get("urgent") || "нет"}`,
-    "",
-    "Описание:",
-    data.get("message")
-  ].join("\n");
-  const subject = `Заявка с сайта: ${data.get("type")}`;
-  showToast("Открываю email-клиент с готовой заявкой.");
-  window.location.href = `mailto:${recipientEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  if (leadForm) leadForm.addEventListener("submit", () => {
+    const visibleTemplate = leadForm.querySelector("[name='selected_template_visible']");
+    const hiddenTemplate = leadForm.querySelector("[name='selected_template']");
+    if (visibleTemplate && hiddenTemplate) hiddenTemplate.value = visibleTemplate.value;
+    showToast("Отправляю заявку через Forminit.");
+  });
 }
 
 function renderServices() {

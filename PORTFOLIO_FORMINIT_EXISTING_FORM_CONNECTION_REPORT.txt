@@ -1,0 +1,67 @@
+PORTFOLIO FORMINIT EXISTING FORM CONNECTION REPORT
+
+Folder:
+C:\Users\User\mylanding
+
+Endpoint used:
+https://forminit.com/f/kshbr37bfe4
+
+Existing Forminit data:
+- Form ID: kshbr37bfe4
+- Endpoint path: /f/kshbr37bfe4
+
+Files changed:
+- assets/js/app.js
+- index.html
+- thank-you.html
+- PORTFOLIO_FORMINIT_EXISTING_FORM_CONNECTION_REPORT.txt
+
+What changed:
+- Lead modal form now uses:
+  <form action="https://forminit.com/f/kshbr37bfe4" method="POST">
+- Removed the old mailto submit behavior from the modal form.
+- Submit now performs a normal HTML POST to Forminit.
+- Added thank-you.html for Forminit redirect.
+- Updated contact copy so it no longer says the form opens an email draft.
+
+Required Forminit fields included:
+- name
+- phone
+- email
+- telegram_whatsapp
+- business_type
+- selected_template
+- message
+
+Additional useful fields included:
+- project_type
+- budget
+- timeline
+- selected_template_visible
+
+Selected template behavior:
+- When "Заказать похожий" is clicked from a project card or project modal, the lead modal receives the project object.
+- selected_template is prefilled from the project title.
+- A visible "Выбранный шаблон" input is also shown.
+- Before submit, JS syncs selected_template_visible into hidden selected_template so edited values are included.
+
+Redirect URL for Forminit dashboard:
+https://nikolay123d.github.io/nikolaj-dev-landing/thank-you.html
+
+Tests performed locally before deploy:
+- node --check assets\js\app.js: passed.
+- Verified endpoint string exists in assets/js/app.js.
+- Verified selected_template hidden field and sync logic exist.
+- Verified phone, telegram_whatsapp and business_type fields exist.
+- Verified thank-you.html exists and uses project CSS.
+
+Deployment status:
+- Pending at report creation time.
+
+Forminit dashboard / email status:
+- Redirect URL still needs to be set in Forminit dashboard after deployment.
+- Email arrival cannot be confirmed from Codex; Nikolaj must confirm in his inbox/Forminit dashboard.
+
+Next required manual step:
+Set Forminit Redirect URL to:
+https://nikolay123d.github.io/nikolaj-dev-landing/thank-you.html

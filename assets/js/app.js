@@ -508,7 +508,9 @@ function renderProjects(filter = "all") {
         </div>
         <ul>${featureList(project.features.slice(0, 3))}</ul>
         <div class="project-actions">
-          <button type="button" data-preview="${project.id}">${project.group === "template" ? "Посмотреть шаблон" : "Посмотреть проект"}</button>
+          ${project.group === "template" && project.demoUrl
+            ? `<a href="${project.demoUrl}" data-demo-link="${project.id}">Посмотреть шаблон</a>`
+            : `<button type="button" data-preview="${project.id}">Посмотреть проект</button>`}
           <button type="button" data-details="${project.id}">Подробнее</button>
           <button type="button" data-order="${project.id}">Заказать похожий</button>
         </div>
@@ -528,7 +530,12 @@ function renderProjects(filter = "all") {
   projectGrid.querySelectorAll("[data-card]").forEach((card) => {
     card.addEventListener("click", (event) => {
       if (event.target.closest("button,a")) return;
-      openModal("preview", projects.find((item) => item.id === card.dataset.card));
+      const project = projects.find((item) => item.id === card.dataset.card);
+      if (project.group === "template" && project.demoUrl) {
+        window.location.href = project.demoUrl;
+      } else {
+        openModal("preview", project);
+      }
     });
   });
 }
@@ -569,6 +576,22 @@ document.addEventListener("keydown", (event) => {
     closeMenu();
     closeModal();
   }
+});
+
+document.querySelectorAll("video[data-video-src]").forEach((video) => {
+  const src = video.dataset.videoSrc;
+  if (!src) return;
+  fetch(src, { method: "HEAD" })
+    .then((response) => {
+      if (!response.ok) return;
+      const source = document.createElement("source");
+      source.src = src;
+      source.type = src.endsWith(".webm") ? "video/webm" : "video/mp4";
+      video.appendChild(source);
+      video.load();
+      video.play().catch(() => {});
+    })
+    .catch(() => {});
 });
 
 window.addEventListener("scroll", () => {

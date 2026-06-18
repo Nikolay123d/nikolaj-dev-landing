@@ -384,9 +384,19 @@ footer li a:hover{color:var(--gold)}
 
 /* DEMO TAG */
 .demo-tag{display:inline-block;background:rgba(201,168,76,.08);border:1px solid var(--goldBorder);color:rgba(201,168,76,.6);font-size:.62rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:.28rem .75rem}
+.nd-demo-bar{position:fixed;left:50%;top:84px;z-index:950;transform:translateX(-50%);display:flex;align-items:center;gap:.55rem;width:min(720px,calc(100% - 24px));padding:.55rem;background:rgba(10,10,10,.78);border:1px solid var(--border2);backdrop-filter:blur(18px);box-shadow:0 18px 50px rgba(0,0,0,.28)}
+.nd-demo-bar a,.nd-demo-bar span{display:inline-flex;align-items:center;justify-content:center;min-height:34px;border-radius:999px;padding:.48rem .82rem;font-family:'Montserrat',sans-serif;font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;white-space:nowrap}
+.nd-demo-bar a{color:var(--t1);border:1px solid var(--border2);background:rgba(255,255,255,.05);transition:background .2s,border-color .2s}.nd-demo-bar a:hover{background:rgba(255,255,255,.1);border-color:var(--goldBorder)}
+.nd-demo-bar .order{background:var(--gold);border-color:var(--gold);color:#000}.nd-demo-bar .order:hover{background:var(--gold2);color:#000}.nd-demo-bar span{margin-left:auto;color:var(--gold);border:1px solid var(--goldBorder);background:rgba(201,168,76,.1)}
+@media(max-width:720px){.nd-demo-bar{top:72px;align-items:stretch;display:grid;grid-template-columns:1fr 1fr}.nd-demo-bar span{grid-column:1/-1;margin-left:0}.nd-demo-bar a,.nd-demo-bar span{width:100%;white-space:normal;text-align:center}}
 </style>
 </head>
 <body>
+<div class="nd-demo-bar" aria-label="Demo controls">
+  <a href="../../index.html#work">← Назад к портфолио</a>
+  <a class="order" href="../../index.html#contacts">Заказать похожий</a>
+  <span>Demo-шаблон</span>
+</div>
 
 <!-- ══ HEADER ══ -->
 <header id="hdr" class="top">
@@ -436,9 +446,7 @@ footer li a:hover{color:var(--gold)}
 <!-- ══ HERO ══ -->
 <section id="hero">
   <div class="hero-scene">
-    <video class="hero-video-bg" autoplay muted loop playsinline preload="metadata" poster="https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Prague_07-2016_view_from_Lesser_Town_Tower_of_Charles_Bridge_img3.jpg/1280px-Prague_07-2016_view_from_Lesser_Town_Tower_of_Charles_Bridge_img3.jpg">
-      <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4">
-    </video>
+    <video class="hero-video-bg" autoplay muted loop playsinline preload="metadata" poster="../../assets/img/czechtrip/preview.svg" data-video-src="../../assets/videos/czechtrip-hero.mp4"></video>
     <div class="hero-photo-grid" aria-hidden="true">
       <div class="hero-photo big" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Lednice_%28Eisgrub%29_-_z%C3%A1mek.JPG/960px-Lednice_%28Eisgrub%29_-_z%C3%A1mek.JPG')"></div>
       <div class="hero-photo" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Propast_Macocha_02.jpg/640px-Propast_Macocha_02.jpg')"></div>
@@ -1122,6 +1130,21 @@ function submitForm(p){
 // SCROLL FADE IN
 const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis');});},{threshold:.12});
 document.querySelectorAll('.fade-in').forEach(el=>observer.observe(el));
+
+// OPTIONAL LOCAL HERO BACKGROUND VIDEO
+const heroBgVideo=document.querySelector('.hero-video-bg[data-video-src]');
+if(heroBgVideo){
+  const src=heroBgVideo.dataset.videoSrc;
+  fetch(src,{method:'HEAD'}).then(r=>{
+    if(!r.ok)return;
+    const source=document.createElement('source');
+    source.src=src;
+    source.type=src.endsWith('.webm')?'video/webm':'video/mp4';
+    heroBgVideo.appendChild(source);
+    heroBgVideo.load();
+    heroBgVideo.play().catch(()=>{});
+  }).catch(()=>{});
+}
 
 // INIT
 renderTours('all');

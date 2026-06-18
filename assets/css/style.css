@@ -83,8 +83,10 @@ img{max-width:100%;display:block}
 .mobile-menu a,.mobile-menu button{border:0;border-bottom:1px solid var(--line);background:transparent;text-align:left;text-decoration:none;padding:14px 6px;font-weight:850;color:var(--ink)}
 .mobile-cta{margin-top:12px;text-align:center!important;border-bottom:0!important}
 
-.hero{padding:132px 0 76px}
-.hero-grid{display:grid;grid-template-columns:minmax(0,1.05fr) 410px;gap:44px;align-items:center}
+.hero{position:relative;overflow:hidden;padding:132px 0 76px}
+.hero::before{content:"";position:absolute;inset:0;z-index:-2;background:url("../img/hero-tech-motion.svg") center/cover no-repeat;opacity:.92}
+.hero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(249,251,255,.97) 0%,rgba(249,251,255,.88) 44%,rgba(249,251,255,.62) 100%)}
+.hero-grid{position:relative;display:grid;grid-template-columns:minmax(0,1.05fr) 410px;gap:44px;align-items:center}
 .hero h1{font-family:"Space Grotesk",Manrope,sans-serif;font-size:clamp(43px,7vw,78px);line-height:.97;margin:0 0 22px;letter-spacing:0}
 .hero-sub{font-size:clamp(18px,2.2vw,22px);max-width:740px;color:var(--muted);margin:0 0 28px}
 .hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:22px}

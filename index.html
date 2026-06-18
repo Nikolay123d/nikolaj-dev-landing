@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css?v=template-demo-fullpage-1">
+  <link rel="stylesheet" href="assets/css/style.css?v=hero-video-stability-1">
 </head>
 <body>
   <header class="site-header" id="top">
@@ -44,7 +44,11 @@
 
   <main>
     <section class="hero" id="home">
-      <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="assets/img/hero-tech-motion.svg" aria-hidden="true" data-video-src="assets/videos/landing-hero-tech.webm"></video>
+      <img class="hero-poster" src="assets/img/portfolio-hero-poster.jpg" alt="" aria-hidden="true" loading="eager" decoding="sync">
+      <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="assets/img/portfolio-hero-poster.jpg" aria-hidden="true">
+        <source src="assets/videos/portfolio-hero-tech.mp4" type="video/mp4">
+      </video>
+      <div class="hero-overlay" aria-hidden="true"></div>
       <div class="page-shell hero-grid">
         <div class="hero-copy">
           <p class="eyebrow">Websites / Landing pages / MVP / Audit</p>
@@ -229,6 +233,6 @@
     </div>
   </footer>
 
-  <script src="assets/js/app.js?v=template-demo-fullpage-1"></script>
+  <script src="assets/js/app.js?v=hero-video-stability-1"></script>
 </body>
 </html>

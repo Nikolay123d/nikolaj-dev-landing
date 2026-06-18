@@ -578,25 +578,41 @@ document.addEventListener("keydown", (event) => {
   }
 });
 
-document.querySelectorAll("video[data-video-src]").forEach((video) => {
-  const src = video.dataset.videoSrc;
-  if (!src) return;
-  fetch(src, { method: "HEAD" })
-    .then((response) => {
-      if (!response.ok) return;
-      const source = document.createElement("source");
-      source.src = src;
-      source.type = src.endsWith(".webm") ? "video/webm" : "video/mp4";
-      video.appendChild(source);
-      video.load();
-      video.play().catch(() => {});
-    })
-    .catch(() => {});
+document.querySelectorAll(".hero-video").forEach((video) => {
+  const userAgent = navigator.userAgent || "";
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const inAppBrowser = /FBAN|FBAV|FB_IAB|Instagram|Messenger/i.test(userAgent);
+  if (reducedMotion || inAppBrowser) {
+    video.classList.add("is-disabled");
+    video.pause();
+    return;
+  }
+
+  const startVideo = () => {
+    if (video.readyState >= 3) {
+      video.classList.add("is-ready");
+    } else {
+      video.addEventListener("canplay", () => {
+        video.classList.add("is-ready");
+      }, { once: true });
+    }
+    video.play().catch(() => {
+      video.classList.remove("is-ready");
+    });
+  };
+
+  if ("requestIdleCallback" in window) {
+    window.requestIdleCallback(startVideo, { timeout: 1800 });
+  } else {
+    window.setTimeout(startVideo, 900);
+  }
 });
 
 window.addEventListener("scroll", () => {
   if (ctaClosed) return;
-  const shouldShow = window.scrollY > window.innerHeight * 0.8;
+  const hero = document.querySelector(".hero");
+  const heroHeight = hero ? hero.offsetHeight : window.innerHeight;
+  const shouldShow = window.scrollY > Math.max(heroHeight + 80, 1400);
   floatingCta.classList.toggle("visible", shouldShow);
 }, { passive: true });
 

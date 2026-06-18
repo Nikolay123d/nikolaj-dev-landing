@@ -1,0 +1,80 @@
+PORTFOLIO HERO VIDEO PERFORMANCE PATCH REPORT
+
+Folder:
+C:\Users\User\mylanding
+
+Problem investigated:
+- Main hero video was visible immediately before it was ready.
+- Hero media used negative z-index layers together with pseudo-elements, which can cause mobile/webview compositing artifacts.
+- The first video was too bright and looked almost static under the light overlay.
+- Floating CTA could appear while the user was still close to the hero on mobile.
+
+Files changed:
+- index.html
+- assets/css/style.css
+- assets/js/app.js
+- assets/img/portfolio-hero-poster.jpg
+- assets/videos/portfolio-hero-tech.mp4
+- Removed from current working version: assets/videos/landing-hero-tech.webm
+
+New video:
+- Local file: assets/videos/portfolio-hero-tech.mp4
+- Source: Mixkit, "Animation of futuristic devices"
+- Source page: https://mixkit.co/free-stock-video/animation-of-futuristic-devices-99786/
+- Direct source used: https://assets.mixkit.co/videos/99786/99786-720.mp4
+- License noted on source page: Mixkit Stock Video Free License, commercial or personal use.
+- Size: 1,450,522 bytes
+- Duration from source page: 5 seconds
+- FPS from source page: 24 fps
+- Resolution from source page: 1080x720
+
+Poster:
+- Local file: assets/img/portfolio-hero-poster.jpg
+- Source: https://assets.mixkit.co/videos/99786/99786-thumb-720-3.jpg
+- Size: 88,621 bytes
+
+Implementation:
+- Hero now uses poster-first structure:
+  - static poster is visible immediately;
+  - video uses a direct local <source> in HTML for reliable playback;
+  - video uses preload="metadata";
+  - video fades in only after canplay;
+  - if video fails, poster remains.
+- Hero now has stable min-height before media loads.
+- Removed negative z-index hero media layering.
+- Added normal z-index stack:
+  - poster: 0;
+  - video: 1;
+  - overlay: 2;
+  - content: 3.
+- Overlay made less white on the right side and video opacity increased so the new tech motion is clearly visible while text remains readable.
+- Floating CTA now appears only after the hero is passed, not during first screen.
+
+Mobile / Facebook behavior:
+- If userAgent includes FBAN, FBAV, FB_IAB, Instagram or Messenger, video is disabled and poster remains.
+- If prefers-reduced-motion is enabled, video is disabled and poster remains.
+- This prioritizes smooth loading over forcing autoplay in unstable in-app browsers.
+
+Checks performed:
+- node --check assets\js\app.js: passed.
+- Checked current hero paths and old video path with rg.
+- Checked local media sizes.
+- Opened local index.html in Chrome.
+- Confirmed recent demo flow code remains:
+  - "Посмотреть шаблон" still uses direct demoUrl links.
+  - Details/order modal logic remains separate.
+
+Not performed:
+- No commit.
+- No push.
+- No deploy.
+- No physical Facebook/Messenger in-app browser test from phone.
+
+Risks / notes:
+- The selected video is 720p and lightweight; this is intentional for mobile performance.
+- In Facebook/Messenger browser users will see the poster only, not video, to avoid the glitch Nikolaj observed.
+- If Nikolaj wants even more visible motion on normal mobile browsers, increase .hero-video.is-ready opacity slightly, but avoid making the text unreadable.
+
+Next recommended step:
+- Review locally on desktop and phone.
+- If approved, commit and push to GitHub Pages.

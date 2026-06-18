@@ -256,6 +256,8 @@ function openModal(type, payload) {
     argus: buildArgusModal
   };
   modalContent.innerHTML = builders[type](payload);
+  const isDemoPreview = type === "preview" && payload?.demoUrl && !payload.demoUrl.startsWith("http");
+  appModal.classList.toggle("demo-open", Boolean(isDemoPreview));
   appModal.classList.add("open");
   appModal.setAttribute("aria-hidden", "false");
   document.body.style.overflow = "hidden";
@@ -264,6 +266,7 @@ function openModal(type, payload) {
 
 function closeModal() {
   appModal.classList.remove("open");
+  appModal.classList.remove("demo-open");
   appModal.setAttribute("aria-hidden", "true");
   document.body.style.overflow = "";
   modalContent.innerHTML = "";
@@ -274,6 +277,30 @@ function featureList(items) {
 }
 
 function buildPreviewModal(project) {
+  const isLocalDemo = project.demoUrl && !project.demoUrl.startsWith("http");
+  if (isLocalDemo) {
+    return `
+      <div class="demo-modal">
+        <div class="demo-toolbar">
+          <div>
+            <p class="eyebrow">${project.label}</p>
+            <h2 id="modalTitle">${project.title}</h2>
+            <div class="demo-toolbar-meta">
+              <span>${project.price}</span>
+              <span>${project.timeline}</span>
+              <span>${project.category}</span>
+            </div>
+          </div>
+          <div class="demo-toolbar-actions">
+            <a class="btn ghost" href="${project.demoUrl}" target="_blank" rel="noopener">Открыть в новой вкладке</a>
+            <button class="btn primary" type="button" data-lead-project="${project.id}">Заказать похожий</button>
+            <button class="btn dark" type="button" data-details-project="${project.id}">Подробнее</button>
+          </div>
+        </div>
+        <iframe class="demo-frame fullscreen" src="${project.demoUrl}" title="${project.title} demo"></iframe>
+      </div>`;
+  }
+
   const preview = project.demoUrl && !project.demoUrl.startsWith("http")
     ? `<iframe class="demo-frame" src="${project.demoUrl}" title="${project.title} demo"></iframe>`
     : `<img class="modal-hero-image" src="${project.image}" alt="${project.title} preview">`;

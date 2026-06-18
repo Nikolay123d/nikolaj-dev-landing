@@ -3,337 +3,231 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Nikolaj builds websites, landing pages, MVPs, bug fixes and AI-assisted workflows with ARGUS-style control, reports and approvals.">
-  <title>Nikolaj Dev - сайты, MVP и AI-assisted разработка</title>
+  <meta name="description" content="Nikolaj Dev builds landing pages, websites, MVPs, project audits and AI-assisted workflows with clear human control.">
+  <title>Nikolaj Dev - сайты, лендинги, MVP и аудит проектов</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css?v=scroll-fix-3">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css?v=light-tech-v1">
 </head>
 <body>
-  <a class="skip-link" href="#contact">Перейти к заявке</a>
-
   <header class="site-header" id="top">
-    <a class="brand" href="#hero" aria-label="Nikolaj Dev">
+    <a class="brand" href="#home" aria-label="Nikolaj Dev home">
       <span class="brand-mark">N/</span>
-      <span class="brand-text">Nikolaj Dev</span>
+      <span>Nikolaj Dev</span>
     </a>
     <nav class="desktop-nav" aria-label="Основная навигация">
+      <a href="#home">Главная</a>
       <a href="#services">Услуги</a>
-      <a href="#portfolio">Портфолио</a>
-      <a href="#argus">ARGUS</a>
-      <a href="#process">Процесс</a>
-      <a href="#pricing">Цены</a>
-      <a href="#contact">Контакты</a>
+      <a href="#work">Работы</a>
+      <button type="button" data-open-pricing>Цены</button>
+      <a href="#process">Как работаю</a>
+      <button type="button" data-open-argus>ARGUS</button>
+      <a href="#contacts">Контакты</a>
     </nav>
-    <a class="header-cta" href="#contact">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16v12H4z"/><path d="m4 7 8 6 8-6"/></svg>
-      Заявка
-    </a>
+    <button class="header-cta" type="button" data-open-lead>Оставить заявку</button>
     <button class="menu-toggle" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="mobileMenu">
       <span></span><span></span><span></span>
     </button>
   </header>
 
   <nav class="mobile-menu" id="mobileMenu" aria-label="Мобильная навигация">
+    <a href="#home">Главная</a>
     <a href="#services">Услуги</a>
-    <a href="#portfolio">Портфолио</a>
-    <a href="#argus">ARGUS</a>
-    <a href="#process">Процесс</a>
-    <a href="#pricing">Цены</a>
-    <a href="#contact">Контакты</a>
-    <a class="mobile-cta" href="#contact">Оставить заявку</a>
+    <a href="#work">Работы</a>
+    <button type="button" data-open-pricing>Цены</button>
+    <a href="#process">Как работаю</a>
+    <button type="button" data-open-argus>ARGUS</button>
+    <a href="#contacts">Контакты</a>
+    <button class="mobile-cta" type="button" data-open-lead>Оставить заявку</button>
   </nav>
 
   <main>
-    <section class="hero" id="hero">
-      <div class="hero-bg" aria-hidden="true"></div>
-      <div class="section-inner hero-inner">
+    <section class="hero" id="home">
+      <div class="page-shell hero-grid">
         <div class="hero-copy">
-          <p class="eyebrow">Websites / MVP / ARGUS workflow</p>
-          <h1>Сайты, MVP и безопасная AI-assisted разработка</h1>
-          <p class="hero-sub">Помогаю малому бизнесу и проектам запускать сайты, лендинги, MVP, чинить баги и разбирать хаос через понятные протоколы, отчёты и ARGUS-контроль.</p>
+          <p class="eyebrow">Websites / Landing pages / MVP / Audit</p>
+          <h1>Сайты, лендинги, MVP и доработка проектов</h1>
+          <p class="hero-sub">Помогаю малому бизнесу и проектам запускать понятные сайты, показывать услуги, собирать заявки и превращать идеи в работающие продукты.</p>
           <div class="hero-actions">
-            <a class="btn btn-primary" href="#contact">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
-              Оставить заявку
-            </a>
-            <a class="btn btn-secondary" href="#portfolio">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16v13H4z"/><path d="M9 7V4h6v3"/></svg>
-              Смотреть работы
-            </a>
+            <a class="btn primary" href="#work">Посмотреть работы</a>
+            <button class="btn dark" type="button" data-open-lead>Оставить заявку</button>
+            <button class="btn ghost" type="button" data-open-pricing>Цены</button>
           </div>
-          <div class="trust-strip" aria-label="Ключевые преимущества">
-            <span>Живой продукт PráceHub</span>
-            <span>ARGUS-процесс</span>
-            <span>Человек утверждает важные действия</span>
+          <div class="trust-row" aria-label="Преимущества">
+            <span>Живые шаблоны</span>
+            <span>Адаптив под телефон</span>
+            <span>Форма заявок</span>
+            <span>AI ускоряет, человек контролирует</span>
           </div>
         </div>
-        <aside class="hero-panel" aria-label="Что получает клиент">
-          <div class="panel-orbit"></div>
-          <h2>Что продаю</h2>
+        <aside class="hero-showcase" aria-label="Быстрый обзор">
+          <div class="showcase-top">
+            <span>Коммерческий каркас</span>
+            <strong>от 200 €</strong>
+          </div>
+          <div class="mini-browser">
+            <div></div><div></div><div></div>
+            <section>
+              <span></span>
+              <strong></strong>
+              <p></p>
+              <p></p>
+            </section>
+          </div>
           <ul>
-            <li><strong>Лендинги</strong><span>с фокусом на заявки</span></li>
-            <li><strong>Бизнес-сайты</strong><span>структура, доверие, контакты</span></li>
-            <li><strong>MVP</strong><span>авторизация, роли, чат, Firebase</span></li>
-            <li><strong>Rescue / bug fixing</strong><span>аудит, scope, исправления</span></li>
+            <li>сайт можно собрать с нуля или на основе шаблона;</li>
+            <li>клиент сразу видит пример, цену и срок;</li>
+            <li>заявка открывается в отдельном окне.</li>
           </ul>
         </aside>
       </div>
     </section>
 
-    <section class="services section-band" id="services">
-      <div class="section-inner">
-        <p class="eyebrow">Услуги</p>
+    <section class="section" id="services">
+      <div class="page-shell">
         <div class="section-head">
-          <h2>Не просто красивая страница - сайт, который собирает заявки</h2>
-          <p>Сначала аудит и scope, потом работа без хаоса. AI ускоряет процесс, но решения остаются за человеком.</p>
+          <p class="eyebrow">Услуги</p>
+          <h2>Выберите формат работы</h2>
+          <p>Можно начать с готового шаблона, собрать индивидуальный сайт или разобрать уже существующий проект.</p>
         </div>
-        <div class="service-grid">
-          <article class="service-card">
-            <span class="icon-shell"><svg viewBox="0 0 24 24"><path d="M12 3 5 11h5l-1 10 10-12h-6z"/></svg></span>
-            <h3>Start Landing</h3>
-            <p>Лендинг для услуги, мастера, локального бизнеса или проверки идеи. Упор на первый экран, доверие и заявку.</p>
-            <strong>от 200-350 €</strong>
-            <a href="#contact">Заказать</a>
-          </article>
-          <article class="service-card">
-            <span class="icon-shell"><svg viewBox="0 0 24 24"><path d="M4 20V6l8-3 8 3v14"/><path d="M9 20v-7h6v7"/><path d="M8 8h.01M12 8h.01M16 8h.01"/></svg></span>
-            <h3>Business Website</h3>
-            <p>Многостраничный сайт с услугами, портфолио, контактами, понятной структурой и подготовкой к публикации.</p>
-            <strong>от 400-750 €</strong>
-            <a href="#contact">Обсудить</a>
-          </article>
-          <article class="service-card">
-            <span class="icon-shell orange"><svg viewBox="0 0 24 24"><path d="M10 18a8 8 0 1 1 5.7-2.4L21 21"/><path d="M7 10h6M7 13h4"/></svg></span>
-            <h3>Project Rescue / Audit</h3>
-            <p>Если проект кажется готовым на 60%, я проверю, что реально готово, где риски и что делать дальше.</p>
-            <strong>от 100-400 €</strong>
-            <a href="#contact">Начать аудит</a>
-          </article>
-          <article class="service-card">
-            <span class="icon-shell"><svg viewBox="0 0 24 24"><path d="M4 7h16v10H4z"/><path d="M8 21h8M12 17v4"/><path d="M8 11h3M13 11h3"/></svg></span>
-            <h3>MVP / Mini Platform</h3>
-            <p>Мини-платформа с ролями, авторизацией, базой данных, чатом, загрузками или админ-логикой.</p>
-            <strong>от 600 €</strong>
-            <a href="#contact">Спланировать</a>
-          </article>
-          <article class="service-card">
-            <span class="icon-shell orange"><svg viewBox="0 0 24 24"><path d="M8 8h8v10a4 4 0 0 1-8 0z"/><path d="M9 4h6M12 4v4M4 13h4M16 13h4M6 21l3-3M18 21l-3-3"/></svg></span>
-            <h3>Исправление багов</h3>
-            <p>Разбор ошибок, сломанных экранов, проблем формы, мобильной верстки, Firebase, деплоя или логики.</p>
-            <strong>от 50 €</strong>
-            <a href="#contact">Починить</a>
-          </article>
-          <article class="service-card accent-card">
-            <span class="icon-shell"><svg viewBox="0 0 24 24"><path d="M12 3 20 7v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/><path d="M9 12l2 2 4-5"/></svg></span>
-            <h3>AI-assisted Workflow</h3>
-            <p>Работаю через этапы, отчёты и понятные решения. ARGUS-подход помогает ускорять разработку без потери контроля.</p>
-            <strong>индивидуально</strong>
-            <a href="#argus">Как работает ARGUS</a>
-          </article>
-        </div>
+        <div class="service-grid" id="servicesGrid"></div>
       </div>
     </section>
 
-    <section class="portfolio" id="portfolio">
-      <div class="section-inner">
-        <p class="eyebrow">Портфолио</p>
-        <div class="section-head">
-          <h2>Что доказывает опыт</h2>
-          <p>Здесь честно разделены реальные проекты и demo concepts. Карточки кликабельны: откроется ссылка или подробности.</p>
-        </div>
-        <div class="portfolio-grid">
-          <article class="project-card featured" tabindex="0" data-project="pracehub">
-            <img src="assets/img/pracehub-mobile-home.png" alt="PráceHub mobile home screen preview">
-            <div class="project-body">
-              <span class="tag live">Live product</span>
-              <h3>PráceHub.cz</h3>
-              <p>Живая платформа с ролями, чатом, Firebase, PWA, Storage, Functions, пользователями и реальными уроками по UX, безопасности и стоимости.</p>
-              <span class="project-action">Открыть детали</span>
-            </div>
-          </article>
-          <article class="project-card featured" tabindex="0" data-project="argus">
-            <img src="assets/img/argus-control-mobile.png" alt="ARGUS Control Room mobile preview">
-            <div class="project-body">
-              <span class="tag internal">Internal system</span>
-              <h3>ARGUS Control Room</h3>
-              <p>Внутренний локальный контур для контроля AI-агентов, отчётов, одобрений, протоколов и чувствительных действий.</p>
-              <span class="project-action">Открыть детали</span>
-            </div>
-          </article>
-          <article class="project-card" tabindex="0" data-project="cafe">
-            <img src="assets/img/demo-cafe.svg" alt="Cafe landing demo preview">
-            <div class="project-body">
-              <span class="tag demo">Demo concept</span>
-              <h3>Cafe / Restaurant Landing</h3>
-              <p>Концепт лендинга для бронирования, меню, доверия и быстрых заявок.</p>
-              <span class="project-action">Смотреть концепт</span>
-            </div>
-          </article>
-          <article class="project-card" tabindex="0" data-project="construction">
-            <img src="assets/img/construction-landing-dark.png" alt="Construction landing demo preview">
-            <div class="project-body">
-              <span class="tag demo">Demo concept</span>
-              <h3>Construction / Renovation Landing</h3>
-              <p>Концепт сайта для строительной компании: услуги, заявки, работы, доверие и контакты.</p>
-              <span class="project-action">Смотреть концепт</span>
-            </div>
-          </article>
-          <article class="project-card" tabindex="0" data-project="delivery">
-            <img src="assets/img/demo-delivery.svg" alt="Delivery demo preview">
-            <div class="project-body">
-              <span class="tag demo">Demo concept</span>
-              <h3>Delivery / Local Service</h3>
-              <p>Концепт для локальной доставки или выездного сервиса с понятной воронкой.</p>
-              <span class="project-action">Смотреть концепт</span>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="argus-section" id="argus">
-      <div class="argus-bg" aria-hidden="true"></div>
-      <div class="section-inner argus-inner">
-        <div>
-          <p class="eyebrow">ARGUS approach</p>
-          <h2>AI помогает, но человек утверждает важные действия</h2>
-          <p>ARGUS - мой внутренний рабочий контур в активной доработке. Он не является публичным продуктом и не продаётся как готовая enterprise-система. Я использую этот подход в процессе разработки: отчёты, протоколы, контроль файлов, одобрения и осторожность с чувствительными действиями.</p>
-          <div class="argus-points">
-            <span>Local-first</span>
-            <span>No Firebase для ARGUS Control Room</span>
-            <span>No cloud by default</span>
-            <span>Reports / approvals / protocols</span>
+    <section class="section work-section" id="work">
+      <div class="page-shell">
+        <div class="section-head split">
+          <div>
+            <p class="eyebrow">Работы и шаблоны</p>
+            <h2>Примеры, которые можно открыть и посмотреть</h2>
           </div>
-          <a class="btn btn-primary" href="#contact">Обсудить такой процесс</a>
+          <p>Каждая карточка ведёт в отдельное окно: можно посмотреть шаблон, открыть демо, увидеть цену и сразу заказать похожий сайт.</p>
         </div>
-        <div class="argus-card">
-          <img src="assets/img/argus-control-mobile.png" alt="ARGUS Control Room interface preview">
-          <ul>
-            <li>Внутренний рабочий контур</li>
-            <li>Активно дорабатывается</li>
-            <li>Используется в моём процессе разработки</li>
-            <li>Важные действия проходят через человека</li>
-          </ul>
+        <div class="work-toolbar" aria-label="Фильтры работ">
+          <button class="active" type="button" data-filter="all">Все</button>
+          <button type="button" data-filter="template">Шаблоны</button>
+          <button type="button" data-filter="real">Реальные проекты</button>
+          <button type="button" data-filter="workflow">Workflow</button>
         </div>
+        <div class="project-grid" id="projectGrid"></div>
       </div>
     </section>
 
-    <section class="process section-band" id="process">
-      <div class="section-inner">
-        <p class="eyebrow">Процесс</p>
+    <section class="section process-section" id="process">
+      <div class="page-shell">
         <div class="section-head">
-          <h2>Работа через этапы, а не хаос</h2>
-          <p>Понятный путь от задачи до результата: сначала правда о состоянии проекта, потом план, реализация и проверка.</p>
+          <p class="eyebrow">Как проходит работа</p>
+          <h2>Понятный процесс без хаоса</h2>
         </div>
         <div class="process-grid">
-          <article><span>01</span><h3>Короткий бриф</h3><p>Вы описываете цель, аудиторию, сроки и ограничения.</p></article>
-          <article><span>02</span><h3>Audit / scope</h3><p>Фиксируем, что нужно сделать, где риски и какой объём реален.</p></article>
-          <article><span>03</span><h3>Дизайн и сборка</h3><p>Строю интерфейс, тексты, структуру, логику и адаптив.</p></article>
-          <article><span>04</span><h3>Отчёт и проверка</h3><p>Показываю изменения, проверяю кнопки, форму, мобильную версию и готовность к публикации.</p></article>
+          <article><span>01</span><h3>Вы отправляете задачу</h3><p>Коротко описываете услугу, цель сайта, сроки и бюджет.</p></article>
+          <article><span>02</span><h3>Я изучаю запрос</h3><p>Смотрю, что уже есть, какие материалы нужны и какой путь быстрее.</p></article>
+          <article><span>03</span><h3>Согласуем структуру</h3><p>Фиксируем секции, объём, цену, сроки и приоритеты.</p></article>
+          <article><span>04</span><h3>Собираю первый вариант</h3><p>Делаю прототип или рабочий сайт, показываю результат.</p></article>
+          <article><span>05</span><h3>Правки и проверка</h3><p>Проверяем мобильную версию, кнопки, форму и тексты.</p></article>
+          <article><span>06</span><h3>Публикация</h3><p>Готовлю сайт к GitHub Pages или Firebase Hosting, если это нужно.</p></article>
         </div>
       </div>
     </section>
 
-    <section class="pricing" id="pricing">
-      <div class="section-inner">
-        <p class="eyebrow">Цены</p>
+    <section class="section pricing-strip" id="pricing">
+      <div class="page-shell pricing-card">
+        <div>
+          <p class="eyebrow">Цены</p>
+          <h2>Цена зависит от задачи, но вилка понятна заранее</h2>
+          <p>Нажмите “Смотреть цены”, чтобы открыть подробное окно с тарифами, сроками и тем, что входит.</p>
+        </div>
+        <button class="btn dark" type="button" data-open-pricing>Смотреть цены</button>
+      </div>
+    </section>
+
+    <section class="section why-section">
+      <div class="page-shell">
         <div class="section-head">
-          <h2>Оценка от задачи, не обещание вслепую</h2>
-          <p>Точная цена после короткого аудита и понимания задачи.</p>
+          <p class="eyebrow">Почему удобно</p>
+          <h2>Не просто красивая картинка, а рабочий путь к заявке</h2>
         </div>
-        <div class="pricing-grid">
-          <article class="price-card"><h3>Start Landing</h3><strong>от 200-350 €</strong><p>Один продающий экранный путь, форма заявки, адаптив, подготовка к публикации.</p><a href="#contact">Оставить заявку</a></article>
-          <article class="price-card highlighted"><h3>Business Website</h3><strong>от 400-750 €</strong><p>Несколько секций или страниц, коммерческая структура, портфолио, контакты, SEO-база.</p><a href="#contact">Обсудить сайт</a></article>
-          <article class="price-card"><h3>Project Rescue / Audit</h3><strong>от 100-400 €</strong><p>Разбор состояния, список проблем, план исправлений, приоритеты и риски.</p><a href="#contact">Заказать аудит</a></article>
-          <article class="price-card"><h3>MVP / Mini Platform</h3><strong>от 600 €</strong><p>Индивидуальная оценка: роли, база данных, чат, админка, интеграции.</p><a href="#contact">Спланировать MVP</a></article>
+        <div class="why-grid">
+          <article><h3>Можно стартовать с шаблона</h3><p>Это быстрее, дешевле и понятнее, чем каждый раз начинать с пустого листа.</p></article>
+          <article><h3>Сайт под телефон</h3><p>Карточки, формы, кнопки и модальные окна проектируются mobile-first.</p></article>
+          <article><h3>Понятные этапы</h3><p>Сначала структура и scope, потом работа, проверка и отчёт.</p></article>
+          <article><h3>AI-assisted без хаоса</h3><p>AI помогает быстрее готовить варианты, но важные решения остаются за человеком.</p></article>
         </div>
       </div>
     </section>
 
-    <section class="contact section-band" id="contact">
-      <div class="section-inner contact-inner">
-        <div class="contact-copy">
+    <section class="section argus-lite" id="argus">
+      <div class="page-shell argus-grid">
+        <div>
+          <p class="eyebrow">ARGUS approach</p>
+          <h2>Контролируемый AI-assisted workflow</h2>
+          <p>ARGUS - мой внутренний рабочий контур организации разработки. Он помогает держать задачи, файлы, отчёты и важные решения под контролем. Это не публичный продукт и не “магия AI”, а аккуратный процесс работы.</p>
+          <button class="btn primary" type="button" data-open-argus>Как это работает</button>
+        </div>
+        <img src="assets/img/argus-control-mobile.png" alt="ARGUS Control Room preview">
+      </div>
+    </section>
+
+    <section class="section faq-section">
+      <div class="page-shell">
+        <div class="section-head">
+          <p class="eyebrow">FAQ</p>
+          <h2>Частые вопросы</h2>
+        </div>
+        <div class="faq-list" id="faqList"></div>
+      </div>
+    </section>
+
+    <section class="section contact-section" id="contacts">
+      <div class="page-shell contact-grid">
+        <div>
           <p class="eyebrow">Контакты</p>
           <h2>Опишите задачу - отвечу быстро</h2>
-          <p>Можно написать коротко: что нужно, какие сроки, какой бюджет и есть ли уже сайт или код. Заявка откроется через email-клиент с готовым текстом письма.</p>
-          <div class="contact-list">
+          <p>Можно написать коротко: что нужно сделать, есть ли пример сайта, какие сроки и какой бюджет. Форма безопасно открывает письмо на email.</p>
+          <div class="contact-links">
             <a href="mailto:urciknikolaj642@gmail.com">urciknikolaj642@gmail.com</a>
-            <a href="FACEBOOK_URL_HERE" target="_blank" rel="noopener">Facebook</a>
+            <a href="FACEBOOK_URL_HERE" target="_blank" rel="noopener">Facebook / Messenger</a>
             <span>Telegram / WhatsApp: placeholder</span>
             <span>Prague, Czechia / remote</span>
-            <span>Русский / English / Čeština</span>
           </div>
         </div>
-        <form class="contact-form" id="requestForm">
-          <div class="field-row">
-            <label>Имя<input name="name" autocomplete="name" required></label>
-            <label>Телефон / Email<input name="contact" autocomplete="email" required></label>
-          </div>
-          <label>Telegram / WhatsApp<input name="messenger" autocomplete="off" placeholder="@username или номер"></label>
-          <div class="field-row">
-            <label>Тип задачи<select name="task" required>
-              <option value="">Выберите</option>
-              <option>Start Landing</option>
-              <option>Business Website</option>
-              <option>Project Rescue / Audit</option>
-              <option>MVP / Mini Platform</option>
-              <option>Исправление багов</option>
-              <option>AI-assisted Workflow / ARGUS approach</option>
-            </select></label>
-            <label>Бюджет<select name="budget" required>
-              <option value="">Выберите</option>
-              <option>до 200 €</option>
-              <option>200-350 €</option>
-              <option>400-750 €</option>
-              <option>600+ €</option>
-              <option>Нужно обсудить</option>
-            </select></label>
-          </div>
-          <label>Срок<input name="deadline" placeholder="Например: 1-2 недели"></label>
-          <label>Описание задачи<textarea name="message" rows="6" required placeholder="Что нужно сделать, ссылка на текущий сайт/проект, что болит сейчас"></textarea></label>
-          <button class="btn btn-primary submit-btn" type="submit">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m4 12 16-8-5 16-3-6z"/><path d="m12 14 8-10"/></svg>
-            Отправить через email
-          </button>
-          <p class="form-note" id="formStatus">Форма не отправляет данные на сервер и не хранит их. Откроется mailto-письмо на email Николая.</p>
-        </form>
+        <div class="contact-panel">
+          <strong>Быстрая заявка</strong>
+          <p>Откройте форму в отдельном окне, выберите тип проекта и отправьте готовое письмо.</p>
+          <button class="btn dark" type="button" data-open-lead>Оставить заявку</button>
+        </div>
       </div>
     </section>
   </main>
 
   <aside class="floating-cta" id="floatingCta" aria-live="polite">
-    <button type="button" aria-label="Закрыть заявку" id="closeFloatingCta">×</button>
+    <button type="button" id="closeFloatingCta" aria-label="Закрыть">×</button>
     <div>
       <strong>Готовы обсудить проект?</strong>
-      <span>Опишите задачу - отвечу быстро</span>
+      <span>Откройте короткую заявку или посмотрите цены.</span>
     </div>
-    <a href="#contact">Оставить заявку</a>
+    <button type="button" data-open-lead>Заявка</button>
+    <button type="button" data-open-pricing>Цены</button>
   </aside>
 
-  <div class="modal" id="projectModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal" id="appModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
     <div class="modal-backdrop" data-close-modal></div>
-    <article class="modal-panel">
+    <article class="modal-panel" id="modalPanel">
       <button class="modal-close" type="button" data-close-modal aria-label="Закрыть">×</button>
-      <img id="modalImage" alt="">
-      <div class="modal-gallery" id="modalGallery" aria-label="Галерея проекта"></div>
-      <span class="tag" id="modalTag"></span>
-      <h2 id="modalTitle"></h2>
-      <p id="modalText"></p>
-      <div class="modal-actions" id="modalActions"></div>
+      <div id="modalContent"></div>
     </article>
   </div>
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
   <footer class="site-footer">
-    <div class="section-inner">
+    <div class="page-shell">
       <span>Nikolaj Dev</span>
       <a href="#top">Наверх</a>
     </div>
   </footer>
 
-  <script src="assets/js/app.js?v=scroll-fix-3"></script>
+  <script src="assets/js/app.js?v=light-tech-v1"></script>
 </body>
 </html>

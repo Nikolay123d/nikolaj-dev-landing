@@ -1,148 +1,548 @@
+const recipientEmail = "urciknikolaj642@gmail.com";
+
+const services = [
+  {
+    id: "start-landing",
+    title: "Start Landing",
+    text: "Одностраничный продающий сайт для услуги, мастера, локального бизнеса или проверки идеи.",
+    price: "от 200-350 €",
+    timeline: "2-5 дней",
+    cta: "Заказать лендинг"
+  },
+  {
+    id: "business-site",
+    title: "Business Website",
+    text: "Сайт с услугами, работами, контактами, формой заявки и понятной структурой доверия.",
+    price: "от 400-750 €",
+    timeline: "5-10 дней",
+    cta: "Обсудить сайт"
+  },
+  {
+    id: "mvp",
+    title: "MVP / Mini Platform",
+    text: "Мини-платформа с ролями, формами, базой данных, чатом, админкой или интеграциями.",
+    price: "от 600 €",
+    timeline: "индивидуально",
+    cta: "Спланировать MVP"
+  },
+  {
+    id: "audit",
+    title: "Project Rescue / Audit",
+    text: "Аудит, исправление багов, наведение порядка и честный список того, что реально готово.",
+    price: "от 100-400 €",
+    timeline: "1-4 дня",
+    cta: "Заказать аудит"
+  },
+  {
+    id: "bugs",
+    title: "Bug fixing",
+    text: "Исправление сломанных экранов, форм, адаптива, логики, деплоя или Firebase-проблем.",
+    price: "от 50 €",
+    timeline: "по задаче",
+    cta: "Починить проблему"
+  },
+  {
+    id: "argus-workflow",
+    title: "AI-assisted Workflow",
+    text: "Работа через этапы, отчёты и контроль. AI ускоряет подготовку, человек утверждает решения.",
+    price: "индивидуально",
+    timeline: "по задаче",
+    cta: "Как это работает",
+    action: "argus"
+  }
+];
+
+const projects = [
+  {
+    id: "rempro",
+    group: "template",
+    title: "RemPro Renovation Landing",
+    label: "Готовый demo",
+    category: "Construction / renovation",
+    image: "assets/img/rempro/desktop-home.png",
+    gallery: ["assets/img/rempro/desktop-home.png", "assets/img/rempro/mobile-hero.png", "assets/img/rempro/mobile-full.png"],
+    demoUrl: "demos/rempro/index.html",
+    price: "от 350 €",
+    timeline: "4-7 дней",
+    short: "Лендинг строительной/ремонтной фирмы: услуги, смета, этапы, портфолио и заявка.",
+    forWhom: "Для строительной бригады, ремонта квартир, отделки, реконструкции, ванной под ключ или локальной ремонтной компании.",
+    features: ["Премиальный первый экран", "Услуги и этапы работ", "Портфолио объектов", "Форма заявки на смету", "Мобильная версия"],
+    includes: ["Адаптация под бренд", "Замена фото и текстов", "Форма заявки через email", "Подготовка к публикации", "Базовая SEO-структура"]
+  },
+  {
+    id: "czechtrip",
+    group: "template",
+    title: "CzechTrip Tours Landing",
+    label: "Готовый demo",
+    category: "Travel / tours",
+    image: "assets/img/czechtrip/preview.svg",
+    gallery: ["assets/img/czechtrip/preview.svg"],
+    demoUrl: "demos/czechtrip/index.html",
+    price: "от 320 €",
+    timeline: "4-6 дней",
+    short: "Лендинг для туров и поездок из Праги: маршруты, программа, доверие и заявка в мессенджер.",
+    forWhom: "Для организатора туров, гида, travel-агентства, экскурсионного проекта или локальных поездок выходного дня.",
+    features: ["Премиальный travel-стиль", "Карточки маршрутов", "Программа поездки", "Заявка в мессенджер", "Мобильная версия"],
+    includes: ["Адаптация под бренд", "Замена маршрутов и текстов", "Форма заявки через email", "Подготовка к публикации", "Базовая SEO-структура"]
+  },
+  {
+    id: "construction",
+    group: "template",
+    title: "Construction / Renovation Concept",
+    label: "Demo concept",
+    category: "Construction",
+    image: "assets/img/construction-landing-dark.png",
+    gallery: ["assets/img/construction-landing-dark.png", "assets/img/construction-landing-light.png"],
+    demoUrl: "",
+    price: "от 300 €",
+    timeline: "3-6 дней",
+    short: "Концепт сайта для строительной компании: услуги, доверие, работы и контакт.",
+    forWhom: "Для локальных строительных услуг, ремонта, фасадов, кровли или комплексных работ.",
+    features: ["Каталог услуг", "Блок доверия", "Заявка", "Портфолио работ"],
+    includes: ["Коммерческая структура", "Адаптив", "Базовая форма", "Подготовка к GitHub Pages"]
+  },
+  {
+    id: "cafe",
+    group: "template",
+    title: "Cafe / Restaurant Landing",
+    label: "Demo concept",
+    category: "Restaurant",
+    image: "assets/img/demo-cafe.svg",
+    demoUrl: "",
+    price: "от 250 €",
+    timeline: "3-5 дней",
+    short: "Лендинг для кафе или ресторана: меню, бронирование, атмосфера и быстрый контакт.",
+    forWhom: "Для кафе, маленького ресторана, кофейни, бара или доставки еды.",
+    features: ["Меню", "Бронирование", "Отзывы", "Контакты"],
+    includes: ["Первый экран", "Меню/услуги", "Форма заявки", "Мобильная версия"]
+  },
+  {
+    id: "delivery",
+    group: "template",
+    title: "Delivery / Local Service",
+    label: "Demo concept",
+    category: "Local service",
+    image: "assets/img/demo-delivery.svg",
+    demoUrl: "",
+    price: "от 220 €",
+    timeline: "2-5 дней",
+    short: "Простой сайт для локальной доставки или выездной услуги с понятной воронкой.",
+    forWhom: "Для курьерских услуг, локального сервиса, мастера на выезд или маленькой службы доставки.",
+    features: ["Короткий оффер", "Зоны работы", "Тарифы", "Быстрый контакт"],
+    includes: ["Адаптив", "CTA", "Контакты", "Базовая SEO-разметка"]
+  },
+  {
+    id: "pracehub",
+    group: "real",
+    title: "PráceHub.cz",
+    label: "Live product",
+    category: "Mini platform",
+    image: "assets/img/pracehub-mobile-home.png",
+    gallery: ["assets/img/pracehub-mobile-home.png", "assets/img/pracehub-login.png", "assets/img/pracehub-prague-brand.png"],
+    demoUrl: "https://pracehub.cz",
+    price: "MVP от 600 €",
+    timeline: "индивидуально",
+    short: "Живой продукт: роли, чат, Firebase, PWA, Storage, Functions, пользователи и реальные UX-уроки.",
+    forWhom: "Для проектов, где нужен не просто лендинг, а продуктовая логика: роли, пользователи, заявки, чат или кабинет.",
+    features: ["Роли", "Чат", "Firebase", "PWA", "Storage / Functions"],
+    includes: ["Scope", "Архитектура", "MVP-логика", "Проверка рисков", "План развития"]
+  },
+  {
+    id: "argus",
+    group: "workflow",
+    title: "ARGUS Control Room",
+    label: "Internal workflow",
+    category: "AI-assisted workflow",
+    image: "assets/img/argus-control-mobile.png",
+    demoUrl: "",
+    price: "индивидуально",
+    timeline: "по процессу",
+    short: "Внутренний локальный контур для контроля AI-assisted разработки, отчётов, файлов и решений.",
+    forWhom: "Для объяснения, как я организую работу: AI помогает, но важные действия проходят через человеческое решение.",
+    features: ["Отчёты", "Протоколы", "Контроль файлов", "Ручные approvals"],
+    includes: ["Понятный workflow", "Этапность", "Отчётность", "Осторожность с чувствительными действиями"]
+  }
+];
+
+const pricingPlans = [
+  {
+    title: "Start Landing",
+    price: "от 200-350 €",
+    timeline: "2-5 дней",
+    goodFor: "услуга, мастер, локальный бизнес, быстрый запуск",
+    includes: ["1 продающий путь", "до 6 секций", "форма заявки", "мобильная версия", "подготовка к публикации"]
+  },
+  {
+    title: "Business Website",
+    price: "от 400-750 €",
+    timeline: "5-10 дней",
+    goodFor: "компания, услуги, портфолио, доверие",
+    includes: ["расширенная структура", "услуги/работы/контакты", "SEO-база", "формы", "публикация по согласованию"]
+  },
+  {
+    title: "MVP / Mini Platform",
+    price: "от 600 €",
+    timeline: "индивидуально",
+    goodFor: "проект с логикой, ролями, данными или кабинетами",
+    includes: ["scope", "прототип", "роли/формы/данные", "интеграции по задаче", "план развития"]
+  },
+  {
+    title: "Audit / Rescue",
+    price: "от 100-400 €",
+    timeline: "1-4 дня",
+    goodFor: "проект завис, сломан или непонятно что готово",
+    includes: ["аудит состояния", "список проблем", "приоритеты", "план исправлений", "оценка рисков"]
+  }
+];
+
+const faqItems = [
+  ["Сколько стоит сайт?", "Простой landing обычно начинается от 200-350 €. Точная цена зависит от структуры, материалов, количества секций и логики."],
+  ["Сколько времени занимает?", "Быстрый landing можно собрать за 2-5 дней. Бизнес-сайт обычно 5-10 дней. MVP оценивается отдельно."],
+  ["Можно использовать шаблон как основу?", "Да. Это хороший способ быстрее стартовать, сразу увидеть стиль и снизить неопределённость."],
+  ["Что нужно от клиента?", "Описание услуги, контакты, примеры сайтов, фото/логотип если есть, желаемые сроки и примерный бюджет."],
+  ["Можно доработать потом?", "Да. Можно сначала запустить базовую версию, потом добавлять секции, формы, аналитику или интеграции."],
+  ["Вы помогаете с публикацией?", "Да, сайт можно подготовить для GitHub Pages или Firebase Hosting. Деплой делается только после отдельного подтверждения."]
+];
+
 const menuToggle = document.querySelector(".menu-toggle");
 const mobileMenu = document.querySelector("#mobileMenu");
+const servicesGrid = document.querySelector("#servicesGrid");
+const projectGrid = document.querySelector("#projectGrid");
+const faqList = document.querySelector("#faqList");
+const appModal = document.querySelector("#appModal");
+const modalContent = document.querySelector("#modalContent");
 const floatingCta = document.querySelector("#floatingCta");
 const closeFloatingCta = document.querySelector("#closeFloatingCta");
-const form = document.querySelector("#requestForm");
-const formStatus = document.querySelector("#formStatus");
 const toast = document.querySelector("#toast");
-const modal = document.querySelector("#projectModal");
-const modalImage = document.querySelector("#modalImage");
-const modalGallery = document.querySelector("#modalGallery");
-const modalTag = document.querySelector("#modalTag");
-const modalTitle = document.querySelector("#modalTitle");
-const modalText = document.querySelector("#modalText");
-const modalActions = document.querySelector("#modalActions");
-
-const recipientEmail = "urciknikolaj642@gmail.com";
 let ctaClosed = false;
-let userStartedNavigation = false;
 
 if ("scrollRestoration" in history) {
   history.scrollRestoration = "manual";
 }
 
-["wheel", "touchmove", "keydown", "pointerdown"].forEach((eventName) => {
-  window.addEventListener(eventName, () => {
-    userStartedNavigation = true;
-  }, { passive: true, once: true });
-});
-
-function resetInitialScroll() {
-  const forcedContactHash = location.hash === "#contact" || location.hash === "#requestForm";
-
-  if (forcedContactHash) {
-    history.replaceState(null, "", `${location.pathname}${location.search}`);
-  }
-
-  if (!userStartedNavigation && (!location.hash || forcedContactHash)) {
-    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
-  }
-}
-
 window.addEventListener("load", () => {
-  window.requestAnimationFrame(resetInitialScroll);
-}, { once: true });
-
-document.querySelectorAll('a[href^="#"]').forEach((link) => {
-  link.addEventListener("click", (event) => {
-    const hash = link.getAttribute("href");
-    if (!hash || hash === "#") return;
-
-    const target = document.querySelector(hash);
-    if (!target) return;
-
-    event.preventDefault();
-    userStartedNavigation = true;
-
-    const headerOffset = document.querySelector(".site-header")?.offsetHeight || 0;
-    const targetTop = target.getBoundingClientRect().top + window.scrollY - headerOffset - 14;
-    window.scrollTo({ top: Math.max(0, targetTop), behavior: "smooth" });
-    history.pushState(null, "", hash);
-  });
-});
-
-const projects = {
-  pracehub: {
-    title: "PráceHub.cz",
-    tag: "Live product",
-    tagClass: "live",
-    image: "assets/img/pracehub-mobile-home.png",
-    images: [
-      "assets/img/pracehub-mobile-home.png",
-      "assets/img/pracehub-login.png",
-      "assets/img/pracehub-prague-brand.png"
-    ],
-    text: "Реальный живой проект: платформа с ролями, чатом, Firebase, PWA, Storage, Functions, пользователями, UX-решениями, безопасностью и уроками по стоимости инфраструктуры. Это главный proof, что я работаю не только с лендингами, но и с продуктовой логикой.",
-    actions: [
-      { label: "Открыть PráceHub.cz", href: "https://pracehub.cz", primary: true },
-      { label: "Оставить заявку", href: "#contact" }
-    ]
-  },
-  argus: {
-    title: "ARGUS Control Room",
-    tag: "Internal system",
-    tagClass: "internal",
-    image: "assets/img/argus-control-mobile.png",
-    images: [
-      "assets/img/argus-control-mobile.png"
-    ],
-    text: "Внутренний локальный рабочий контур Николая для AI-assisted разработки: отчёты, протоколы, контроль файлов, ручные одобрения и осторожная работа с чувствительными действиями. ARGUS активно дорабатывается и не является публичным скачиваемым продуктом.",
-    actions: [
-      { label: "Перейти к ARGUS", href: "#argus", primary: true },
-      { label: "Обсудить процесс", href: "#contact" }
-    ]
-  },
-  cafe: {
-    title: "Cafe / Restaurant Landing",
-    tag: "Demo concept",
-    tagClass: "demo",
-    image: "assets/img/demo-cafe.svg",
-    text: "Демонстрационный концепт для кафе или ресторана: первый экран, меню, доверие, бронирование и быстрый путь к заявке. Не реальный клиентский проект.",
-    actions: [{ label: "Заказать похожий", href: "#contact", primary: true }]
-  },
-  construction: {
-    title: "Construction / Renovation Landing",
-    tag: "Demo concept",
-    tagClass: "demo",
-    image: "assets/img/construction-landing-dark.png",
-    images: [
-      "assets/img/construction-landing-dark.png",
-      "assets/img/construction-landing-light.png"
-    ],
-    text: "Демонстрационный концепт для строительной или ремонтной компании: услуги, заявки, портфолио работ, доверие, контакты и понятный путь к запросу. Не реальный клиентский проект.",
-    actions: [{ label: "Заказать похожий", href: "#contact", primary: true }]
-  },
-  delivery: {
-    title: "Delivery / Local Service",
-    tag: "Demo concept",
-    tagClass: "demo",
-    image: "assets/img/demo-delivery.svg",
-    text: "Демонстрационный концепт для локальной доставки или выездной услуги: понятная воронка, быстрый контакт, акцент на скорость и доверие. Не реальный клиентский проект.",
-    actions: [{ label: "Заказать похожий", href: "#contact", primary: true }]
+  if (window.location.hash) {
+    history.replaceState(null, "", window.location.pathname + window.location.search);
   }
-};
+  window.scrollTo(0, 0);
+});
 
 function showToast(message) {
   toast.textContent = message;
   toast.classList.add("show");
-  window.setTimeout(() => toast.classList.remove("show"), 3600);
+  window.setTimeout(() => toast.classList.remove("show"), 3200);
 }
 
 function closeMenu() {
   mobileMenu.classList.remove("open");
   menuToggle.setAttribute("aria-expanded", "false");
-  menuToggle.setAttribute("aria-label", "Открыть меню");
 }
 
 menuToggle.addEventListener("click", () => {
   const isOpen = mobileMenu.classList.toggle("open");
   menuToggle.setAttribute("aria-expanded", String(isOpen));
-  menuToggle.setAttribute("aria-label", isOpen ? "Закрыть меню" : "Открыть меню");
 });
 
-mobileMenu.querySelectorAll("a").forEach((link) => {
-  link.addEventListener("click", closeMenu);
+mobileMenu.addEventListener("click", (event) => {
+  if (event.target.closest("a,button")) closeMenu();
 });
+
+function openModal(type, payload) {
+  const builders = {
+    preview: buildPreviewModal,
+    details: buildDetailsModal,
+    pricing: buildPricingModal,
+    lead: buildLeadModal,
+    argus: buildArgusModal
+  };
+  modalContent.innerHTML = builders[type](payload);
+  appModal.classList.add("open");
+  appModal.setAttribute("aria-hidden", "false");
+  document.body.style.overflow = "hidden";
+  bindModalActions();
+}
+
+function closeModal() {
+  appModal.classList.remove("open");
+  appModal.setAttribute("aria-hidden", "true");
+  document.body.style.overflow = "";
+  modalContent.innerHTML = "";
+}
+
+function featureList(items) {
+  return items.map((item) => `<li>${item}</li>`).join("");
+}
+
+function buildPreviewModal(project) {
+  const preview = project.demoUrl && !project.demoUrl.startsWith("http")
+    ? `<iframe class="demo-frame" src="${project.demoUrl}" title="${project.title} demo"></iframe>`
+    : `<img class="modal-hero-image" src="${project.image}" alt="${project.title} preview">`;
+  const openDemo = project.demoUrl
+    ? `<a class="btn dark" href="${project.demoUrl}" target="_blank" rel="noopener">Открыть демо</a>`
+    : "";
+
+  return `
+    <div class="modal-header">
+      <p class="eyebrow">${project.label}</p>
+      <h2 id="modalTitle">${project.title}</h2>
+      <p>${project.short}</p>
+    </div>
+    ${preview}
+    <div class="modal-meta">
+      <span>${project.price}</span>
+      <span>${project.timeline}</span>
+      <span>${project.category}</span>
+    </div>
+    <div class="modal-actions-row">
+      ${openDemo}
+      <button class="btn primary" type="button" data-lead-project="${project.id}">Заказать похожий</button>
+      <button class="btn ghost" type="button" data-details-project="${project.id}">Подробнее</button>
+    </div>`;
+}
+
+function buildDetailsModal(project) {
+  const gallery = (project.gallery || [project.image])
+    .map((src) => `<img src="${src}" alt="${project.title} screenshot">`)
+    .join("");
+
+  return `
+    <div class="modal-header">
+      <p class="eyebrow">${project.category}</p>
+      <h2 id="modalTitle">${project.title}</h2>
+      <p>${project.forWhom}</p>
+    </div>
+    <div class="detail-layout">
+      <div class="detail-gallery">${gallery}</div>
+      <div class="detail-copy">
+        <h3>Что входит</h3>
+        <ul>${featureList(project.includes)}</ul>
+        <h3>Ключевые фишки</h3>
+        <ul>${featureList(project.features)}</ul>
+        <div class="modal-meta stacked">
+          <span>${project.price}</span>
+          <span>${project.timeline}</span>
+        </div>
+        <button class="btn primary" type="button" data-lead-project="${project.id}">Хочу такой сайт</button>
+      </div>
+    </div>`;
+}
+
+function buildPricingModal() {
+  return `
+    <div class="modal-header">
+      <p class="eyebrow">Цены</p>
+      <h2 id="modalTitle">Тарифы и ориентиры</h2>
+      <p>Точная цена фиксируется после короткого аудита задачи, но клиент сразу видит вилку.</p>
+    </div>
+    <div class="pricing-modal-grid">
+      ${pricingPlans.map((plan) => `
+        <article>
+          <h3>${plan.title}</h3>
+          <strong>${plan.price}</strong>
+          <p>${plan.goodFor}</p>
+          <span>${plan.timeline}</span>
+          <ul>${featureList(plan.includes)}</ul>
+          <button class="btn primary" type="button" data-lead-plan="${plan.title}">Заказать</button>
+        </article>`).join("")}
+    </div>`;
+}
+
+function buildLeadModal(projectOrPlan = "") {
+  const selected = typeof projectOrPlan === "string" ? projectOrPlan : projectOrPlan?.title || "";
+  return `
+    <div class="modal-header">
+      <p class="eyebrow">Заявка</p>
+      <h2 id="modalTitle">Опишите задачу</h2>
+      <p>Форма откроет готовое письмо на email. Поля не очищаются, чтобы заявка не потерялась.</p>
+    </div>
+    <form class="lead-form" id="leadForm">
+      <div class="field-row">
+        <label>Имя<input name="name" autocomplete="name" required></label>
+        <label>Телефон / WhatsApp / Telegram<input name="messenger" autocomplete="off" required></label>
+      </div>
+      <label>Email<input name="email" autocomplete="email"></label>
+      <div class="field-row">
+        <label>Тип проекта<select name="type" required>
+          <option value="">Выберите</option>
+          <option ${selected.includes("Landing") || selected.includes("RemPro") ? "selected" : ""}>Landing page</option>
+          <option ${selected.includes("Business") ? "selected" : ""}>Business website</option>
+          <option ${selected.includes("MVP") ? "selected" : ""}>MVP / Mini Platform</option>
+          <option ${selected.includes("Audit") ? "selected" : ""}>Audit / Rescue</option>
+          <option>Bug fixing</option>
+          <option>AI-assisted workflow</option>
+        </select></label>
+        <label>Бюджет<select name="budget">
+          <option>Нужно обсудить</option>
+          <option>до 200 €</option>
+          <option>200-350 €</option>
+          <option>400-750 €</option>
+          <option>600+ €</option>
+        </select></label>
+      </div>
+      <label>Есть ли пример сайта?<input name="example" placeholder="Ссылка или название шаблона" value="${selected}"></label>
+      <label>Что нужно сделать?<textarea name="message" rows="5" required placeholder="Опишите услугу, сроки, материалы, что уже есть"></textarea></label>
+      <label class="checkbox-line"><input type="checkbox" name="urgent" value="Да"> Нужен срочный запуск</label>
+      <button class="btn dark full" type="submit">Отправить заявку через email</button>
+      <div class="messenger-row">
+        <a href="FACEBOOK_URL_HERE" target="_blank" rel="noopener">Facebook</a>
+        <span>Telegram placeholder</span>
+        <span>WhatsApp placeholder</span>
+      </div>
+    </form>`;
+}
+
+function buildArgusModal() {
+  return `
+    <div class="modal-header">
+      <p class="eyebrow">ARGUS approach</p>
+      <h2 id="modalTitle">AI помогает, но решения остаются под контролем</h2>
+      <p>ARGUS - мой внутренний рабочий процесс, который помогает не терять структуру при AI-assisted разработке.</p>
+    </div>
+    <div class="argus-modal">
+      <img src="assets/img/argus-control-mobile.png" alt="ARGUS Control Room preview">
+      <div>
+        <h3>Что это даёт клиенту</h3>
+        <ul>
+          <li>задачи и решения фиксируются понятнее;</li>
+          <li>важные действия не делаются хаотично;</li>
+          <li>AI ускоряет черновики, анализ и варианты;</li>
+          <li>человек утверждает важные шаги;</li>
+          <li>ARGUS не является публичным скачиваемым продуктом.</li>
+        </ul>
+        <button class="btn primary" type="button" data-open-lead>Обсудить проект</button>
+      </div>
+    </div>`;
+}
+
+function bindModalActions() {
+  modalContent.querySelectorAll("[data-lead-project]").forEach((button) => {
+    button.addEventListener("click", () => openModal("lead", projects.find((item) => item.id === button.dataset.leadProject)));
+  });
+  modalContent.querySelectorAll("[data-lead-plan]").forEach((button) => {
+    button.addEventListener("click", () => openModal("lead", button.dataset.leadPlan));
+  });
+  modalContent.querySelectorAll("[data-details-project]").forEach((button) => {
+    button.addEventListener("click", () => openModal("details", projects.find((item) => item.id === button.dataset.detailsProject)));
+  });
+  modalContent.querySelectorAll("[data-open-lead]").forEach((button) => {
+    button.addEventListener("click", () => openModal("lead"));
+  });
+  const leadForm = modalContent.querySelector("#leadForm");
+  if (leadForm) leadForm.addEventListener("submit", handleLeadSubmit);
+}
+
+function handleLeadSubmit(event) {
+  event.preventDefault();
+  if (!event.currentTarget.reportValidity()) return;
+  const data = new FormData(event.currentTarget);
+  const body = [
+    "Новая заявка с Nikolaj Dev Landing",
+    "",
+    `Имя: ${data.get("name")}`,
+    `Телефон / WhatsApp / Telegram: ${data.get("messenger")}`,
+    `Email: ${data.get("email") || "не указан"}`,
+    `Тип проекта: ${data.get("type")}`,
+    `Бюджет: ${data.get("budget")}`,
+    `Пример сайта: ${data.get("example") || "не указан"}`,
+    `Срочно: ${data.get("urgent") || "нет"}`,
+    "",
+    "Описание:",
+    data.get("message")
+  ].join("\n");
+  const subject = `Заявка с сайта: ${data.get("type")}`;
+  showToast("Открываю email-клиент с готовой заявкой.");
+  window.location.href = `mailto:${recipientEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+}
+
+function renderServices() {
+  servicesGrid.innerHTML = services.map((service) => `
+    <article class="service-card">
+      <span>${service.timeline}</span>
+      <h3>${service.title}</h3>
+      <p>${service.text}</p>
+      <strong>${service.price}</strong>
+      <button type="button" data-service="${service.id}">${service.cta}</button>
+    </article>
+  `).join("");
+  servicesGrid.querySelectorAll("[data-service]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const service = services.find((item) => item.id === button.dataset.service);
+      if (service.action === "argus") openModal("argus");
+      else openModal("lead", service.title);
+    });
+  });
+}
+
+function renderProjects(filter = "all") {
+  const list = filter === "all" ? projects : projects.filter((project) => project.group === filter);
+  projectGrid.innerHTML = list.map((project) => `
+    <article class="project-card" data-card="${project.id}">
+      <img src="${project.image}" alt="${project.title} preview">
+      <div class="project-body">
+        <span class="project-label">${project.label}</span>
+        <h3>${project.title}</h3>
+        <p>${project.short}</p>
+        <div class="project-meta">
+          <span>${project.price}</span>
+          <span>${project.timeline}</span>
+        </div>
+        <ul>${featureList(project.features.slice(0, 3))}</ul>
+        <div class="project-actions">
+          <button type="button" data-preview="${project.id}">${project.group === "template" ? "Посмотреть шаблон" : "Посмотреть проект"}</button>
+          <button type="button" data-details="${project.id}">Подробнее</button>
+          <button type="button" data-order="${project.id}">Заказать похожий</button>
+        </div>
+      </div>
+    </article>
+  `).join("");
+
+  projectGrid.querySelectorAll("[data-preview]").forEach((button) => {
+    button.addEventListener("click", () => openModal("preview", projects.find((item) => item.id === button.dataset.preview)));
+  });
+  projectGrid.querySelectorAll("[data-details]").forEach((button) => {
+    button.addEventListener("click", () => openModal("details", projects.find((item) => item.id === button.dataset.details)));
+  });
+  projectGrid.querySelectorAll("[data-order]").forEach((button) => {
+    button.addEventListener("click", () => openModal("lead", projects.find((item) => item.id === button.dataset.order)));
+  });
+  projectGrid.querySelectorAll("[data-card]").forEach((card) => {
+    card.addEventListener("click", (event) => {
+      if (event.target.closest("button,a")) return;
+      openModal("preview", projects.find((item) => item.id === card.dataset.card));
+    });
+  });
+}
+
+function renderFaq() {
+  faqList.innerHTML = faqItems.map(([question, answer]) => `
+    <details>
+      <summary>${question}</summary>
+      <p>${answer}</p>
+    </details>
+  `).join("");
+}
+
+document.querySelectorAll("[data-filter]").forEach((button) => {
+  button.addEventListener("click", () => {
+    document.querySelectorAll("[data-filter]").forEach((item) => item.classList.remove("active"));
+    button.classList.add("active");
+    renderProjects(button.dataset.filter);
+  });
+});
+
+document.querySelectorAll("[data-open-pricing]").forEach((button) => {
+  button.addEventListener("click", () => openModal("pricing"));
+});
+
+document.querySelectorAll("[data-open-lead]").forEach((button) => {
+  button.addEventListener("click", () => openModal("lead"));
+});
+
+document.querySelectorAll("[data-open-argus]").forEach((button) => {
+  button.addEventListener("click", () => openModal("argus"));
+});
+
+document.querySelectorAll("[data-close-modal]").forEach((item) => item.addEventListener("click", closeModal));
 
 document.addEventListener("keydown", (event) => {
   if (event.key === "Escape") {
@@ -152,11 +552,9 @@ document.addEventListener("keydown", (event) => {
 });
 
 window.addEventListener("scroll", () => {
-  if (ctaClosed || !floatingCta) return;
-  const services = document.querySelector("#services");
-  const revealPoint = services ? services.offsetTop + services.offsetHeight * 0.55 : window.innerHeight * 0.8;
-  const progressed = window.scrollY > revealPoint || window.scrollY > window.innerHeight * 0.42;
-  floatingCta.classList.toggle("visible", progressed);
+  if (ctaClosed) return;
+  const shouldShow = window.scrollY > window.innerHeight * 0.8;
+  floatingCta.classList.toggle("visible", shouldShow);
 }, { passive: true });
 
 closeFloatingCta.addEventListener("click", () => {
@@ -164,99 +562,6 @@ closeFloatingCta.addEventListener("click", () => {
   floatingCta.classList.remove("visible");
 });
 
-floatingCta.querySelector("a").addEventListener("click", () => {
-  floatingCta.classList.remove("visible");
-});
-
-function openModal(projectKey) {
-  const project = projects[projectKey];
-  if (!project) return;
-  modalImage.src = project.image;
-  modalImage.alt = `${project.title} preview`;
-  modalGallery.innerHTML = "";
-  const galleryImages = project.images && project.images.length ? project.images : [project.image];
-  modalGallery.hidden = galleryImages.length <= 1;
-  galleryImages.forEach((imageSrc, index) => {
-    const button = document.createElement("button");
-    button.type = "button";
-    button.className = index === 0 ? "active" : "";
-    button.setAttribute("aria-label", `Показать изображение ${index + 1}`);
-    const thumb = document.createElement("img");
-    thumb.src = imageSrc;
-    thumb.alt = "";
-    button.appendChild(thumb);
-    button.addEventListener("click", () => {
-      modalImage.src = imageSrc;
-      modalGallery.querySelectorAll("button").forEach((item) => item.classList.remove("active"));
-      button.classList.add("active");
-    });
-    modalGallery.appendChild(button);
-  });
-  modalTag.textContent = project.tag;
-  modalTag.className = `tag ${project.tagClass}`;
-  modalTitle.textContent = project.title;
-  modalText.textContent = project.text;
-  modalActions.innerHTML = "";
-  project.actions.forEach((action) => {
-    const link = document.createElement("a");
-    link.href = action.href;
-    link.textContent = action.label;
-    if (action.primary) link.classList.add("primary");
-    if (action.href.startsWith("http")) {
-      link.target = "_blank";
-      link.rel = "noopener";
-    } else {
-      link.addEventListener("click", closeModal);
-    }
-    modalActions.appendChild(link);
-  });
-  modal.classList.add("open");
-  modal.setAttribute("aria-hidden", "false");
-  document.body.style.overflow = "hidden";
-}
-
-function closeModal() {
-  modal.classList.remove("open");
-  modal.setAttribute("aria-hidden", "true");
-  document.body.style.overflow = "";
-}
-
-document.querySelectorAll("[data-project]").forEach((card) => {
-  card.addEventListener("click", () => openModal(card.dataset.project));
-  card.addEventListener("keydown", (event) => {
-    if (event.key === "Enter" || event.key === " ") {
-      event.preventDefault();
-      openModal(card.dataset.project);
-    }
-  });
-});
-
-modal.querySelectorAll("[data-close-modal]").forEach((el) => {
-  el.addEventListener("click", closeModal);
-});
-
-form.addEventListener("submit", (event) => {
-  event.preventDefault();
-  if (!form.reportValidity()) return;
-
-  const data = new FormData(form);
-  const subject = `Заявка с сайта: ${data.get("task") || "Новая задача"}`;
-  const body = [
-    "Новая заявка с landing Nikolaj Dev",
-    "",
-    `Имя: ${data.get("name")}`,
-    `Телефон / Email: ${data.get("contact")}`,
-    `Telegram / WhatsApp: ${data.get("messenger") || "не указано"}`,
-    `Тип задачи: ${data.get("task")}`,
-    `Бюджет: ${data.get("budget")}`,
-    `Срок: ${data.get("deadline") || "не указан"}`,
-    "",
-    "Описание задачи:",
-    data.get("message")
-  ].join("\n");
-
-  const mailto = `mailto:${recipientEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-  formStatus.textContent = "Открываю email-клиент. Поля не очищены, чтобы заявка не потерялась.";
-  showToast("Email-клиент должен открыться с готовым письмом.");
-  window.location.href = mailto;
-});
+renderServices();
+renderProjects();
+renderFaq();

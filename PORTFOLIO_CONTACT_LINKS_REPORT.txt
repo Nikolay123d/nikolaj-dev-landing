@@ -1,0 +1,38 @@
+PORTFOLIO CONTACT LINKS REPORT
+
+Folder:
+C:\Users\User\mylanding
+
+Contacts added:
+- Telegram: https://t.me/pracehub
+- Facebook: https://www.facebook.com/share/18hdnUyhLG/
+
+Files changed:
+- index.html
+- assets/js/app.js
+- assets/css/style.css
+- thank-you.html
+- PORTFOLIO_CONTACT_LINKS_REPORT.txt
+
+Where links were added:
+- Hero CTA row: Telegram button.
+- Contact section: Telegram and Facebook links.
+- Contact CTA panel: "Написать в Telegram" and "Facebook" buttons.
+- Lead form helper text: direct Telegram/Facebook contact mentioned.
+- Lead form messenger row: Telegram, Facebook, Email.
+- thank-you.html: "Написать в Telegram" and "Facebook" buttons.
+
+Placeholders replaced:
+- FACEBOOK_URL_HERE replaced with the real Facebook URL.
+- Telegram placeholder replaced with https://t.me/pracehub.
+- WhatsApp placeholder removed from the lead form messenger row because no real WhatsApp link was provided.
+
+Tests performed locally:
+- Searched for FACEBOOK_URL_HERE and placeholder text in index.html, thank-you.html, assets/js/app.js.
+- Verified both real links are present in the target files.
+- node --check assets\js\app.js passed after form/contact changes.
+
+Deployment status:
+- Not committed.
+- Not pushed.
+- Waiting for Nikolaj approval because the task says do not commit/deploy unless approved.

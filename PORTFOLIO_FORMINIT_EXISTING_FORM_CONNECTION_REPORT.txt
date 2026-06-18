@@ -21,6 +21,8 @@ What changed:
   <form action="https://forminit.com/f/kshbr37bfe4" method="POST">
 - Removed the old mailto submit behavior from the modal form.
 - Submit now performs a normal HTML POST to Forminit.
+- Added Forminit block-key fields (fi-sender-fullName, fi-sender-email, fi-text-*) because Forminit rejects plain non-prefixed field names.
+- Kept the required plain field names in the POST payload as requested.
 - Added thank-you.html for Forminit redirect.
 - Updated contact copy so it no longer says the form opens an email draft.
 
@@ -54,9 +56,14 @@ Tests performed locally before deploy:
 - Verified selected_template hidden field and sync logic exist.
 - Verified phone, telegram_whatsapp and business_type fields exist.
 - Verified thank-you.html exists and uses project CSS.
+- Initial curl POST using only plain names returned 400 with Forminit message requiring fi-* block keys.
+- Second curl POST with plain names plus fi-* block keys reached Forminit thank-you with submission_id=bMRe4RovTZWiUxDU.
+- The final Forminit-hosted thank-you response returned 500 until dashboard redirect is configured; this is why the project thank-you redirect must be set in Forminit.
 
 Deployment status:
-- Pending at report creation time.
+- First deployment published commit 0267cba.
+- Follow-up local fix adds Forminit fi-* block keys.
+- Follow-up local fix is not committed/pushed yet because Nikolaj's later contact task says not to commit/deploy unless approved.
 
 Forminit dashboard / email status:
 - Redirect URL still needs to be set in Forminit dashboard after deployment.

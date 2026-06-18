@@ -163,7 +163,7 @@ img{max-width:100%;display:block}
 .faq-list summary{cursor:pointer;font-weight:900}.faq-list p{color:var(--muted);margin:12px 0 0}
 .contact-grid{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:28px;align-items:start}
 .contact-links{display:grid;gap:10px;margin-top:22px}.contact-links a,.contact-links span{background:#fff;border:1px solid var(--line);border-radius:14px;padding:13px;text-decoration:none;color:var(--muted);font-weight:800}
-.contact-panel{background:var(--dark);color:#fff;border-radius:var(--radius2);padding:26px;box-shadow:var(--shadow2)}.contact-panel p{color:#cbd5e1}
+.contact-panel{background:var(--dark);color:#fff;border-radius:var(--radius2);padding:26px;box-shadow:var(--shadow2)}.contact-panel p{color:#cbd5e1}.contact-panel .btn{width:100%;margin-top:10px}
 
 .floating-cta{position:fixed;right:18px;bottom:18px;z-index:160;display:grid;grid-template-columns:auto minmax(0,1fr) auto auto;gap:10px;align-items:center;max-width:min(620px,calc(100vw - 28px));background:#fff;border:1px solid var(--line);border-radius:18px;padding:12px;box-shadow:var(--shadow2);transform:translateY(150%);opacity:0;pointer-events:none;transition:.3s}
 .floating-cta.visible{transform:translateY(0);opacity:1;pointer-events:auto}.floating-cta>button:first-child{width:31px;height:31px;border:1px solid var(--line);border-radius:10px;background:#f8fafc}.floating-cta strong,.floating-cta span{display:block}.floating-cta span{color:var(--muted);font-size:13px}.floating-cta button:not(:first-child){border:0;border-radius:12px;background:var(--dark);color:#fff;padding:10px 12px;font-weight:900}.floating-cta button:last-child{background:#eef5ff;color:var(--blue)}

@@ -371,10 +371,20 @@ function buildLeadModal(projectOrPlan = "") {
     <div class="modal-header">
       <p class="eyebrow">Заявка</p>
       <h2 id="modalTitle">Опишите задачу</h2>
-      <p>Заявка отправится через защищённую форму Forminit на email Николая.</p>
+      <p>Заявка отправится через Forminit на email Николая. Можно также написать напрямую в Telegram @pracehub или Facebook.</p>
     </div>
     <form class="lead-form" id="leadForm" action="https://forminit.com/f/kshbr37bfe4" method="POST">
       <input type="hidden" name="selected_template" value="${selected}">
+      <input type="hidden" name="fi-sender-fullName" value="">
+      <input type="hidden" name="fi-sender-email" value="">
+      <input type="hidden" name="fi-text-phone" value="">
+      <input type="hidden" name="fi-text-telegram_whatsapp" value="">
+      <input type="hidden" name="fi-text-business_type" value="">
+      <input type="hidden" name="fi-text-selected_template" value="${selected}">
+      <input type="hidden" name="fi-text-message" value="">
+      <input type="hidden" name="fi-select-project_type" value="">
+      <input type="hidden" name="fi-select-budget" value="">
+      <input type="hidden" name="fi-select-timeline" value="">
       <div class="field-row">
         <label>Имя<input name="name" autocomplete="name" required></label>
         <label>Телефон<input name="phone" autocomplete="tel" required></label>
@@ -413,9 +423,9 @@ function buildLeadModal(projectOrPlan = "") {
       <label>Что нужно сделать?<textarea name="message" rows="5" required placeholder="Опишите услугу, сроки, материалы, что уже есть"></textarea></label>
       <button class="btn dark full" type="submit">Отправить заявку</button>
       <div class="messenger-row">
-        <a href="FACEBOOK_URL_HERE" target="_blank" rel="noopener">Facebook</a>
-        <span>Telegram placeholder</span>
-        <span>WhatsApp placeholder</span>
+        <a href="https://t.me/pracehub" target="_blank" rel="noopener">Telegram @pracehub</a>
+        <a href="https://www.facebook.com/share/18hdnUyhLG/" target="_blank" rel="noopener">Facebook</a>
+        <a href="mailto:urciknikolaj642@gmail.com">Email</a>
       </div>
     </form>`;
 }
@@ -461,6 +471,23 @@ function bindModalActions() {
     const visibleTemplate = leadForm.querySelector("[name='selected_template_visible']");
     const hiddenTemplate = leadForm.querySelector("[name='selected_template']");
     if (visibleTemplate && hiddenTemplate) hiddenTemplate.value = visibleTemplate.value;
+    const syncPairs = [
+      ["name", "fi-sender-fullName"],
+      ["email", "fi-sender-email"],
+      ["phone", "fi-text-phone"],
+      ["telegram_whatsapp", "fi-text-telegram_whatsapp"],
+      ["business_type", "fi-text-business_type"],
+      ["selected_template", "fi-text-selected_template"],
+      ["message", "fi-text-message"],
+      ["project_type", "fi-select-project_type"],
+      ["budget", "fi-select-budget"],
+      ["timeline", "fi-select-timeline"]
+    ];
+    syncPairs.forEach(([fromName, toName]) => {
+      const from = leadForm.querySelector(`[name='${fromName}']`);
+      const to = leadForm.querySelector(`[name='${toName}']`);
+      if (from && to) to.value = from.value;
+    });
     showToast("Отправляю заявку через Forminit.");
   });
 }

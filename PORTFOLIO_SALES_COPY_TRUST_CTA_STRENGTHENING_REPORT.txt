@@ -1,0 +1,69 @@
+PORTFOLIO SALES COPY TRUST CTA STRENGTHENING REPORT
+
+Folder:
+C:\Users\User\mylanding
+
+Sections added / changed:
+- Hero copy strengthened:
+  "Сайты и лендинги, которые можно быстро запустить под ваш бизнес"
+- Hero CTA buttons changed to:
+  Посмотреть шаблоны, Оставить заявку, Написать в Telegram.
+- Hero badges updated:
+  Живые demo-шаблоны, Адаптация под телефон, Форма заявки на почту, Помощь с публикацией, Прага / удалённо.
+- Added section:
+  "Не просто красивую страницу, а рабочую витрину для заявок"
+- Updated process section to 5 clear steps.
+- Added honest accessible-price block:
+  portfolio stage / first real cases / доступная цена сейчас.
+- Added working principles section:
+  demo before work, price scope, stages, form connection, no fake sales promises, AI with human control.
+- Added section:
+  "Не знаете, какой сайт нужен?"
+
+CTAs added:
+- Оставить заявку
+- Написать в Telegram
+- Смотреть шаблоны
+- Смотреть цены
+- Подобрать формат сайта
+- Facebook / Messenger
+
+Buttons tested by code inspection:
+- Form buttons still use data-open-lead.
+- Telegram links point to https://t.me/pracehub.
+- Facebook links point to https://www.facebook.com/share/18hdnUyhLG/.
+- Pricing buttons still open pricing modal.
+- Catalog links scroll to #catalog.
+
+Form behavior:
+- Forminit endpoint unchanged:
+  https://forminit.com/f/kshbr37bfe4
+- selected_template prefill remains for projects/categories/plans.
+- fi-* Forminit block-key sync remains.
+
+Contact changes:
+- Public contact email changed to:
+  nikyrchenko71@gmail.com
+- README and thank-you.html updated to match.
+
+Mobile / performance notes:
+- New sections use existing responsive grids.
+- No heavy video was added to new sections.
+- Category images are local and lazy-loaded by the existing card renderer.
+- Hero video behavior was not changed in this phase.
+
+Tests performed:
+- node --check assets\js\site-categories.js: passed.
+- node --check assets\js\app.js: passed.
+- rg check confirmed old FACEBOOK_URL_HERE placeholder is absent.
+- rg check confirmed old urciknikolaj642 email is absent from checked public files.
+
+Remaining suggestions:
+- Nikolaj should visually approve category photos.
+- Forminit dashboard should be checked for notification email and redirect URL.
+- Commit/push only after explicit approval.
+
+Deployment status:
+- Not committed.
+- Not pushed.
+- Waiting for Nikolaj approval.

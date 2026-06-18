@@ -50,6 +50,8 @@ const services = [
   }
 ];
 
+const siteCategories = window.siteCategories || [];
+
 const projects = [
   {
     id: "rempro",
@@ -105,7 +107,7 @@ const projects = [
     title: "Cafe / Restaurant Landing",
     label: "Demo concept",
     category: "Restaurant",
-    image: "assets/img/demo-cafe.svg",
+    image: "assets/images/categories/restaurant-cafe.jpg",
     demoUrl: "",
     price: "от 250 €",
     timeline: "3-5 дней",
@@ -120,7 +122,7 @@ const projects = [
     title: "Delivery / Local Service",
     label: "Demo concept",
     category: "Local service",
-    image: "assets/img/demo-delivery.svg",
+    image: "assets/images/categories/delivery-fleet.jpg",
     demoUrl: "",
     price: "от 220 €",
     timeline: "2-5 дней",
@@ -205,6 +207,7 @@ const faqItems = [
 const menuToggle = document.querySelector(".menu-toggle");
 const mobileMenu = document.querySelector("#mobileMenu");
 const servicesGrid = document.querySelector("#servicesGrid");
+const categoryGrid = document.querySelector("#categoryGrid");
 const projectGrid = document.querySelector("#projectGrid");
 const faqList = document.querySelector("#faqList");
 const appModal = document.querySelector("#appModal");
@@ -244,7 +247,8 @@ function openModal(type, payload) {
     details: buildDetailsModal,
     pricing: buildPricingModal,
     lead: buildLeadModal,
-    argus: buildArgusModal
+    argus: buildArgusModal,
+    category: buildCategoryModal
   };
   modalContent.innerHTML = builders[type](payload);
   const isDemoPreview = type === "preview" && payload?.demoUrl && !payload.demoUrl.startsWith("http");
@@ -425,7 +429,7 @@ function buildLeadModal(projectOrPlan = "") {
       <div class="messenger-row">
         <a href="https://t.me/pracehub" target="_blank" rel="noopener">Telegram @pracehub</a>
         <a href="https://www.facebook.com/share/18hdnUyhLG/" target="_blank" rel="noopener">Facebook</a>
-        <a href="mailto:urciknikolaj642@gmail.com">Email</a>
+        <a href="mailto:nikyrchenko71@gmail.com">Email</a>
       </div>
     </form>`;
 }
@@ -453,6 +457,31 @@ function buildArgusModal() {
     </div>`;
 }
 
+function buildCategoryModal(category) {
+  return `
+    <div class="modal-header">
+      <p class="eyebrow">${category.status}</p>
+      <h2 id="modalTitle">${category.title}</h2>
+      <p>${category.description}</p>
+    </div>
+    <div class="category-detail">
+      ${renderCategoryVisual(category, false)}
+      <div>
+        <div class="modal-meta stacked">
+          <span>${category.price}</span>
+          <span>${category.timeline}</span>
+          <span>${category.badge}</span>
+        </div>
+        <h3>Что можно включить</h3>
+        <ul>${featureList(category.features)}</ul>
+        <div class="modal-actions-row">
+          ${category.demoUrl ? `<a class="btn dark" href="${category.demoUrl}">Посмотреть шаблон</a>` : ""}
+          <button class="btn primary" type="button" data-lead-category="${category.id}">Заказать похожий</button>
+        </div>
+      </div>
+    </div>`;
+}
+
 function bindModalActions() {
   modalContent.querySelectorAll("[data-lead-project]").forEach((button) => {
     button.addEventListener("click", () => openModal("lead", projects.find((item) => item.id === button.dataset.leadProject)));
@@ -462,6 +491,9 @@ function bindModalActions() {
   });
   modalContent.querySelectorAll("[data-details-project]").forEach((button) => {
     button.addEventListener("click", () => openModal("details", projects.find((item) => item.id === button.dataset.detailsProject)));
+  });
+  modalContent.querySelectorAll("[data-lead-category]").forEach((button) => {
+    button.addEventListener("click", () => openModal("lead", siteCategories.find((item) => item.id === button.dataset.leadCategory)));
   });
   modalContent.querySelectorAll("[data-open-lead]").forEach((button) => {
     button.addEventListener("click", () => openModal("lead"));
@@ -489,6 +521,51 @@ function bindModalActions() {
       if (from && to) to.value = from.value;
     });
     showToast("Отправляю заявку через Forminit.");
+  });
+}
+
+function renderCategoryVisual(category, lazy = true) {
+  if (category.image) {
+    return `<img class="category-image" src="${category.image}" alt="${category.title}" ${lazy ? "loading=\"lazy\"" : ""}>`;
+  }
+  return `
+    <div class="category-visual tone-${category.imageTone || "default"}" aria-hidden="true">
+      <span>${category.visual || "Site"}</span>
+      <i></i><i></i><i></i>
+    </div>`;
+}
+
+function renderCategories(filter = "all") {
+  if (!categoryGrid) return;
+  const list = filter === "all" ? siteCategories : siteCategories.filter((category) => category.filter === filter);
+  categoryGrid.innerHTML = list.map((category) => `
+    <article class="category-card">
+      ${renderCategoryVisual(category)}
+      <div class="category-body">
+        <div class="category-labels">
+          <span>${category.badge}</span>
+          <span>${category.status}</span>
+        </div>
+        <h3>${category.title}</h3>
+        <p>${category.description}</p>
+        <div class="project-meta">
+          <span>${category.price}</span>
+          <span>${category.timeline}</span>
+        </div>
+        <ul>${featureList(category.features.slice(0, 4))}</ul>
+        <div class="category-actions">
+          ${category.demoUrl ? `<a class="btn dark" href="${category.demoUrl}">Посмотреть шаблон</a>` : ""}
+          <button class="btn primary" type="button" data-order-category="${category.id}">Заказать похожий</button>
+          <button class="btn secondary" type="button" data-category-details="${category.id}">Подробнее</button>
+        </div>
+      </div>
+    </article>
+  `).join("");
+  categoryGrid.querySelectorAll("[data-order-category]").forEach((button) => {
+    button.addEventListener("click", () => openModal("lead", siteCategories.find((item) => item.id === button.dataset.orderCategory)));
+  });
+  categoryGrid.querySelectorAll("[data-category-details]").forEach((button) => {
+    button.addEventListener("click", () => openModal("category", siteCategories.find((item) => item.id === button.dataset.categoryDetails)));
   });
 }
 
@@ -575,6 +652,14 @@ document.querySelectorAll("[data-filter]").forEach((button) => {
   });
 });
 
+document.querySelectorAll("[data-category-filter]").forEach((button) => {
+  button.addEventListener("click", () => {
+    document.querySelectorAll("[data-category-filter]").forEach((item) => item.classList.remove("active"));
+    button.classList.add("active");
+    renderCategories(button.dataset.categoryFilter);
+  });
+});
+
 document.querySelectorAll("[data-open-pricing]").forEach((button) => {
   button.addEventListener("click", () => openModal("pricing"));
 });
@@ -626,6 +711,45 @@ document.querySelectorAll(".hero-video").forEach((video) => {
   }
 });
 
+document.querySelectorAll(".ambient-video").forEach((video) => {
+  const src = video.dataset.src;
+  const userAgent = navigator.userAgent || "";
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const inAppBrowser = /FBAN|FBAV|FB_IAB|Instagram|Messenger/i.test(userAgent);
+  if (!src || reducedMotion || inAppBrowser || !("IntersectionObserver" in window)) {
+    video.classList.add("is-disabled");
+    return;
+  }
+
+  let loaded = false;
+  const loadVideo = () => {
+    if (loaded) return;
+    loaded = true;
+    const source = document.createElement("source");
+    source.src = src;
+    source.type = "video/mp4";
+    video.appendChild(source);
+    video.addEventListener("canplay", () => {
+      video.classList.add("is-ready");
+      video.play().catch(() => {});
+    }, { once: true });
+    video.load();
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        loadVideo();
+        video.play().catch(() => {});
+      } else {
+        video.pause();
+      }
+    });
+  }, { rootMargin: "420px 0px", threshold: 0.08 });
+
+  observer.observe(video);
+});
+
 window.addEventListener("scroll", () => {
   if (ctaClosed) return;
   const hero = document.querySelector(".hero");
@@ -640,5 +764,6 @@ closeFloatingCta.addEventListener("click", () => {
 });
 
 renderServices();
+renderCategories();
 renderProjects();
 renderFaq();

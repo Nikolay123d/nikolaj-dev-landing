@@ -4,7 +4,7 @@ Personal commercial landing page for Nikolaj Dev — websites, MVP, audits, bug 
 
 ## About
 
-This repository contains a static personal landing page for Nikolaj's commercial web development services. The site uses a light-tech commercial layout with services, template cards, modal previews, pricing windows and a lead form through a safe email fallback.
+This repository contains a static personal landing page for Nikolaj's commercial web development services. The site uses a light-tech commercial layout with a website assortment catalog, services, template cards, pricing windows and a lead form connected through Forminit.
 
 ## What The Site Sells
 
@@ -30,6 +30,7 @@ This repository contains a static personal landing page for Nikolaj's commercial
 - **PráceHub.cz** — main live product / portfolio case. It demonstrates real platform work with roles, chat, Firebase, PWA, Storage, Functions, users, UX, security and cost lessons.
 - **ARGUS Control Room** — Nikolaj's internal local AI-assisted workflow/control system.
 - **Cafe / Restaurant Landing**, **Construction / Renovation Concept**, **Delivery / Local Service** — demo concepts, not real client projects.
+- **Website type catalog** — category cards for restaurants, renovation, tours, delivery, beauty, clinic, consulting, auto service, cleaning, real estate, education, MVP, audit and bug fixing.
 
 ## ARGUS Approach
 
@@ -43,10 +44,10 @@ The core idea: AI can accelerate analysis and implementation, but important acti
 - CSS
 - JavaScript
 - Responsive design
-- Local SVG assets
-- Local PNG portfolio screenshots/previews
+- Local image assets and portfolio screenshots/previews
 - Modal windows for project previews, details, pricing, lead form and ARGUS explanation
-- Local demo preview through iframe for RemPro
+- Full-page local demo templates for RemPro and CzechTrip
+- Forminit lead form endpoint
 - Optional later publishing through GitHub Pages or Firebase Hosting
 
 ## Local Run Instructions
@@ -63,21 +64,22 @@ Note: `demos/rempro/index.html` is a large standalone demo file because it conta
 
 ## Contact
 
-Email: [urciknikolaj642@gmail.com](mailto:urciknikolaj642@gmail.com)
+Email: [nikyrchenko71@gmail.com](mailto:nikyrchenko71@gmail.com)
 
-Facebook: `FACEBOOK_URL_HERE`
+Telegram: [@pracehub](https://t.me/pracehub)
 
-The contact form uses a safe `mailto:` fallback. It does not store data and does not send anything to a server.
+Facebook: [Facebook / Messenger](https://www.facebook.com/share/18hdnUyhLG/)
+
+The contact form submits to Forminit endpoint `https://forminit.com/f/kshbr37bfe4`. Forminit dashboard redirect should point to the published `thank-you.html` URL.
 
 ## Status
 
-Light-tech redesign V1 is ready for Nikolaj review. No commit, push or deploy is required for local review.
+Light-tech sales catalog version is ready for Nikolaj review. Commit, push or deploy should be done only after explicit approval.
 
 Before publishing publicly:
-- replace `FACEBOOK_URL_HERE`;
-- confirm Telegram / WhatsApp placeholders;
+- confirm Forminit notification email and redirect URL;
 - confirm price ranges and public wording;
-- optionally replace remaining SVG demo previews with real screenshots;
+- optionally add more real demo templates for catalog categories;
 - optimize the large RemPro demo HTML if repository size becomes important;
 - verify no private information is present;
 - choose GitHub Pages or a dedicated Firebase Hosting project.

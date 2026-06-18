@@ -1,0 +1,106 @@
+PORTFOLIO ASSORTMENT CATALOG CATEGORIES REPORT
+
+Folder:
+C:\Users\User\mylanding
+
+Files changed:
+- index.html
+- assets/js/app.js
+- assets/js/site-categories.js
+- assets/css/style.css
+- assets/images/categories/*.jpg
+- assets/images/CREDITS.md
+- README.md
+- thank-you.html
+- PORTFOLIO_ASSORTMENT_CATALOG_CATEGORIES_REPORT.txt
+
+What was added:
+- High-visibility catalog section:
+  "Какие сайты можно заказать"
+- Data-driven category system in assets/js/site-categories.js.
+- Category filters:
+  Все, Рестораны, Услуги, Туризм, Доставка, Медицина, B2B, MVP, Аудит.
+- Category cards with real local images, badge, status, title, description, price, timeline, feature bullets and CTAs.
+- Category details modal.
+- Category "Заказать похожий" opens the existing Forminit lead flow and preselects the category title.
+
+Categories added:
+1. Сайт для ресторана / кафе
+2. Сайт для ремонта / стройки
+3. Сайт для туров / гида / поездок
+4. Сайт для доставки / флотилии
+5. Сайт для салона / мастера
+6. Сайт для врача / клиники
+7. Сайт для юриста / бухгалтера
+8. Сайт для автосервиса / детейлинга
+9. Сайт для клининга / бытовых услуг
+10. Сайт для недвижимости / аренды
+11. Сайт-каталог товаров
+12. Сайт для курсов / школы
+13. Сайт-портфолио / личный бренд
+14. Сайт для события / фотографа
+15. Сайт для тренера / фитнеса
+16. Сайт для отеля / апартаментов
+17. Лендинг для набора сотрудников
+18. Start Landing
+19. Business Website
+20. MVP / Mini Platform
+21. Project Rescue / Audit
+22. Bug fixing
+
+Real demo links connected:
+- Сайт для ремонта / стройки -> demos/rempro/index.html
+- Сайт для туров / гида / поездок -> demos/czechtrip/index.html
+
+Demo concepts / future demo support:
+- Categories without demoUrl do not show broken demo links.
+- They show "Заказать похожий" and "Подробнее".
+- Later a real demo can be enabled by adding demoUrl to the category object.
+
+Images / visuals:
+- Added local category images under assets/images/categories/.
+- Added attribution/source file: assets/images/CREDITS.md.
+- Images were selected from Openverse/Wikimedia Commons results with open/public licenses where available.
+- Problematic auto-picked images with visible delivery brand/watermarks/irrelevant scenes were replaced manually.
+- RemPro and CzechTrip keep real demo preview images because those categories already have demos.
+- Cafe and Delivery project cards now use local real category images instead of old SVG placeholders.
+- No remote hotlinked images are used by the catalog.
+
+Forminit behavior:
+- Existing endpoint remains: https://forminit.com/f/kshbr37bfe4
+- Category CTAs open the existing lead form.
+- selected_template is prefilled with the category title.
+- Existing fi-* Forminit block-key sync remains intact.
+
+Button / CTA changes:
+- Stronger branded Telegram/Facebook button styles remain.
+- Category actions:
+  "Посмотреть шаблон" appears only when demoUrl exists.
+  "Заказать похожий" opens lead form.
+  "Подробнее" opens category modal.
+
+Performance:
+- Category images are local JPG files, mostly below 150 KB.
+- Cards use stable aspect-ratio.
+- No card videos were added.
+- Existing hero video remains poster-first.
+- Existing accent videos are lazy-loaded and pause out of view.
+
+Tests performed locally:
+- node --check assets\js\site-categories.js: passed.
+- node --check assets\js\app.js: passed.
+- Verified category count: 22.
+- Verified local category image files exist.
+- Verified real demo URLs for RemPro and CzechTrip remain.
+- Verified category CTA preselect path uses data-order-category and existing selected_template / fi-text-selected_template sync.
+- Verified old FACEBOOK_URL_HERE and old urciknikolaj642 email are absent from checked files.
+
+Remaining work:
+- Visually review all category photos in browser and replace any that Nikolaj dislikes.
+- Add more real demo pages and add their demoUrl values to assets/js/site-categories.js.
+- Confirm Forminit dashboard redirect and notification email.
+
+Deployment status:
+- Not committed.
+- Not pushed.
+- Waiting for Nikolaj approval after final local review.

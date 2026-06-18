@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css?v=forminit-existing-form-1">
+  <link rel="stylesheet" href="assets/css/style.css?v=sales-catalog-2">
 </head>
 <body>
   <header class="site-header" id="top">
@@ -18,6 +18,7 @@
     </a>
     <nav class="desktop-nav" aria-label="Основная навигация">
       <a href="#home">Главная</a>
+      <a href="#catalog">Каталог</a>
       <a href="#services">Услуги</a>
       <a href="#work">Работы</a>
       <button type="button" data-open-pricing>Цены</button>
@@ -33,6 +34,7 @@
 
   <nav class="mobile-menu" id="mobileMenu" aria-label="Мобильная навигация">
     <a href="#home">Главная</a>
+    <a href="#catalog">Каталог</a>
     <a href="#services">Услуги</a>
     <a href="#work">Работы</a>
     <button type="button" data-open-pricing>Цены</button>
@@ -52,19 +54,19 @@
       <div class="page-shell hero-grid">
         <div class="hero-copy">
           <p class="eyebrow">Websites / Landing pages / MVP / Audit</p>
-          <h1>Сайты, лендинги, MVP и доработка проектов</h1>
-          <p class="hero-sub">Помогаю малому бизнесу и проектам запускать понятные сайты, показывать услуги, собирать заявки и превращать идеи в работающие продукты.</p>
+          <h1>Сайты и лендинги, которые можно быстро запустить под ваш бизнес</h1>
+          <p class="hero-sub">Делаю современные сайты для услуг, локального бизнеса, туров, доставки, ремонта, салонов и личного бренда. Можно начать с готового demo-шаблона, адаптировать его под ваш бизнес и получить страницу, которая принимает заявки.</p>
           <div class="hero-actions">
-            <a class="btn primary" href="#work">Посмотреть работы</a>
+            <a class="btn primary" href="#catalog">Посмотреть шаблоны</a>
             <button class="btn dark" type="button" data-open-lead>Оставить заявку</button>
-            <button class="btn ghost" type="button" data-open-pricing>Цены</button>
-            <a class="btn ghost" href="https://t.me/pracehub" target="_blank" rel="noopener">Telegram</a>
+            <a class="btn telegram" href="https://t.me/pracehub" target="_blank" rel="noopener">Написать в Telegram</a>
           </div>
           <div class="trust-row" aria-label="Преимущества">
-            <span>Живые шаблоны</span>
-            <span>Адаптив под телефон</span>
-            <span>Форма заявок</span>
-            <span>AI ускоряет, человек контролирует</span>
+            <span>Живые demo-шаблоны</span>
+            <span>Адаптация под телефон</span>
+            <span>Форма заявки на почту</span>
+            <span>Помощь с публикацией</span>
+            <span>Прага / удалённо</span>
           </div>
         </div>
         <aside class="hero-showcase" aria-label="Быстрый обзор">
@@ -90,6 +92,57 @@
       </div>
     </section>
 
+    <section class="section catalog-section" id="catalog">
+      <div class="page-shell">
+        <div class="section-head split">
+          <div>
+            <p class="eyebrow">Каталог сайтов</p>
+            <h2>Какие сайты можно заказать</h2>
+          </div>
+          <p>Выберите направление: можно начать с готового шаблона, заказать похожий сайт или постепенно собрать индивидуальный проект под ваш бизнес.</p>
+        </div>
+        <div class="catalog-toolbar" aria-label="Фильтры типов сайтов">
+          <button class="active" type="button" data-category-filter="all">Все</button>
+          <button type="button" data-category-filter="restaurants">Рестораны</button>
+          <button type="button" data-category-filter="services">Услуги</button>
+          <button type="button" data-category-filter="tourism">Туризм</button>
+          <button type="button" data-category-filter="delivery">Доставка</button>
+          <button type="button" data-category-filter="medical">Медицина</button>
+          <button type="button" data-category-filter="b2b">B2B</button>
+          <button type="button" data-category-filter="mvp">MVP</button>
+          <button type="button" data-category-filter="audit">Аудит</button>
+        </div>
+        <div class="category-grid" id="categoryGrid"></div>
+      </div>
+    </section>
+
+    <section class="section value-section">
+      <div class="page-shell">
+        <div class="section-head split">
+          <div>
+            <p class="eyebrow">Что вы получаете</p>
+            <h2>Не просто красивую страницу, а рабочую витрину для заявок</h2>
+          </div>
+          <p>Сайт должен быстро объяснять предложение, показывать доверие и вести человека к понятному действию: заявке, звонку или сообщению.</p>
+        </div>
+        <div class="value-grid">
+          <article><span>01</span><h3>Понятный первый экран</h3><p>Оффер, кнопки, короткая польза и направление для клиента без лишнего текста.</p></article>
+          <article><span>02</span><h3>Услуги и цены</h3><p>Структура, где видно, что можно заказать, сколько примерно стоит и какой срок.</p></article>
+          <article><span>03</span><h3>Фото, галерея, портфолио</h3><p>Визуальные блоки под ваш бизнес: работы, примеры, объекты, маршруты или товары.</p></article>
+          <article><span>04</span><h3>Кнопки связи</h3><p>Telegram, Facebook, WhatsApp или email рядом с важными CTA, чтобы не терять заявки.</p></article>
+          <article><span>05</span><h3>Forminit-заявка</h3><p>Форма отправляет данные на почту, сохраняет выбранный шаблон и ведёт на thank-you страницу.</p></article>
+          <article><span>06</span><h3>Мобильная версия</h3><p>Карточки, кнопки, форма и demo-просмотр проверяются под телефон.</p></article>
+          <article><span>07</span><h3>FAQ и доверие</h3><p>Ответы на вопросы, процесс работы, честные ограничения и понятные ожидания.</p></article>
+          <article><span>08</span><h3>Помощь с публикацией</h3><p>Подготовка к GitHub Pages или другому хостингу после отдельного подтверждения.</p></article>
+        </div>
+        <div class="section-cta-row">
+          <button class="btn primary" type="button" data-open-lead>Оставить заявку</button>
+          <a class="btn telegram" href="https://t.me/pracehub" target="_blank" rel="noopener">Написать в Telegram</a>
+          <a class="btn ghost" href="#catalog">Смотреть шаблоны</a>
+        </div>
+      </div>
+    </section>
+
     <section class="section" id="services">
       <div class="page-shell">
         <div class="section-head">
@@ -108,7 +161,7 @@
             <p class="eyebrow">Работы и шаблоны</p>
             <h2>Примеры, которые можно открыть и посмотреть</h2>
           </div>
-          <p>Шаблоны открываются как полноценные demo-страницы, а подробности, цены и заявка доступны без поиска по длинной ленте.</p>
+          <p>Самые важные демо уже есть в каталоге выше. Здесь собраны готовые примеры, live-проект и workflow-кейсы.</p>
         </div>
         <div class="work-toolbar" aria-label="Фильтры работ">
           <button class="active" type="button" data-filter="all">Все</button>
@@ -127,12 +180,16 @@
           <h2>Понятный процесс без хаоса</h2>
         </div>
         <div class="process-grid">
-          <article><span>01</span><h3>Вы отправляете задачу</h3><p>Коротко описываете услугу, цель сайта, сроки и бюджет.</p></article>
-          <article><span>02</span><h3>Я изучаю запрос</h3><p>Смотрю, что уже есть, какие материалы нужны и какой путь быстрее.</p></article>
-          <article><span>03</span><h3>Согласуем структуру</h3><p>Фиксируем секции, объём, цену, сроки и приоритеты.</p></article>
-          <article><span>04</span><h3>Собираю первый вариант</h3><p>Делаю прототип или рабочий сайт, показываю результат.</p></article>
-          <article><span>05</span><h3>Правки и проверка</h3><p>Проверяем мобильную версию, кнопки, форму и тексты.</p></article>
-          <article><span>06</span><h3>Публикация</h3><p>Готовлю сайт к GitHub Pages или Firebase Hosting, если это нужно.</p></article>
+          <article><span>01</span><h3>Вы выбираете шаблон или описываете задачу</h3><p>Можно показать пример, выбрать категорию из каталога или просто коротко описать бизнес.</p></article>
+          <article><span>02</span><h3>Я уточняю детали</h3><p>Смотрю цель сайта, материалы, сроки, бюджет и что нужно собрать в первую очередь.</p></article>
+          <article><span>03</span><h3>Готовлю структуру и адаптирую сайт</h3><p>Переношу смысл под ваш бизнес: оффер, услуги, блоки доверия, формы и CTA.</p></article>
+          <article><span>04</span><h3>Вы проверяете и даёте правки</h3><p>Показываю рабочий вариант, исправляю тексты, визуал, кнопки и мобильные моменты.</p></article>
+          <article><span>05</span><h3>Публикуем сайт</h3><p>После подтверждения готовлю публикацию и проверяю, что форма и ссылки работают.</p></article>
+        </div>
+        <div class="section-cta-row">
+          <button class="btn primary" type="button" data-open-lead>Оставить заявку</button>
+          <a class="btn telegram" href="https://t.me/pracehub" target="_blank" rel="noopener">Написать в Telegram</a>
+          <a class="btn ghost" href="#catalog">Смотреть шаблоны</a>
         </div>
       </div>
     </section>
@@ -144,21 +201,44 @@
           <h2>Цена зависит от задачи, но вилка понятна заранее</h2>
           <p>Нажмите “Смотреть цены”, чтобы открыть подробное окно с тарифами, сроками и тем, что входит.</p>
         </div>
-        <button class="btn dark" type="button" data-open-pricing>Смотреть цены</button>
+        <div class="pricing-actions">
+          <button class="btn dark" type="button" data-open-pricing>Смотреть цены</button>
+          <div class="ambient-video-card compact" aria-hidden="true">
+            <img src="assets/img/portfolio-hero-poster.jpg" alt="" loading="lazy">
+            <video class="ambient-video" muted loop playsinline preload="none" poster="assets/img/portfolio-hero-poster.jpg" data-src="assets/videos/portfolio-hero-tech.mp4"></video>
+          </div>
+        </div>
       </div>
     </section>
 
     <section class="section why-section">
       <div class="page-shell">
         <div class="section-head">
-          <p class="eyebrow">Почему удобно</p>
-          <h2>Не просто красивая картинка, а рабочий путь к заявке</h2>
+          <p class="eyebrow">Доступная цена сейчас</p>
+          <h2>Портфолио растёт, поэтому первые проекты можно сделать выгоднее</h2>
+          <p>Сейчас я развиваю портфолио, поэтому первые проекты беру по более доступной цене. Для вас это возможность получить нормальный рабочий сайт дешевле, чем такая работа будет стоить позже. Для меня — добавить ещё один реальный кейс и отзыв в портфолио.</p>
+        </div>
+        <div class="price-trust-card">
+          <strong>Это не “дёшево любой ценой”</strong>
+          <p>Цена остаётся честной: сначала коротко разбираем задачу, фиксируем объём, затем делаем сайт по этапам. Если задача требует больше логики, интеграций или материалов, это обсуждается заранее.</p>
+          <button class="btn dark" type="button" data-open-pricing>Смотреть цены</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section principles-section">
+      <div class="page-shell">
+        <div class="section-head">
+          <p class="eyebrow">Принципы</p>
+          <h2>Работаю по понятной схеме</h2>
         </div>
         <div class="why-grid">
-          <article><h3>Можно стартовать с шаблона</h3><p>Это быстрее, дешевле и понятнее, чем каждый раз начинать с пустого листа.</p></article>
-          <article><h3>Сайт под телефон</h3><p>Карточки, формы, кнопки и модальные окна проектируются mobile-first.</p></article>
-          <article><h3>Понятные этапы</h3><p>Сначала структура и scope, потом работа, проверка и отчёт.</p></article>
-          <article><h3>AI-assisted без хаоса</h3><p>AI помогает быстрее готовить варианты, но важные решения остаются за человеком.</p></article>
+          <article><h3>Показываю demo до начала</h3><p>Вы видите направление и можете заказать похожий сайт без угадывания стиля.</p></article>
+          <article><h3>Заранее объясняю объём</h3><p>Что входит в цену, что считается отдельной задачей и где могут появиться риски.</p></article>
+          <article><h3>Работаю по этапам</h3><p>Сначала структура, потом визуал, затем форма, мобильная проверка и публикация.</p></article>
+          <article><h3>Подключаю заявку</h3><p>Форма, Telegram, Facebook и email ведут к понятному контакту, а не к пустой кнопке.</p></article>
+          <article><h3>Не обещаю магические продажи</h3><p>Сайт помогает принимать заявки, но рекламу, оффер и рынок нужно оценивать честно.</p></article>
+          <article><h3>AI ускоряет, человек проверяет</h3><p>AI помогает быстрее готовить варианты, но финальная структура и проверка остаются под человеческим контролем.</p></article>
         </div>
       </div>
     </section>
@@ -185,6 +265,21 @@
       </div>
     </section>
 
+    <section class="section format-help-section">
+      <div class="page-shell format-help-card">
+        <div>
+          <p class="eyebrow">Не уверены с форматом?</p>
+          <h2>Не знаете, какой сайт нужен?</h2>
+          <p>Оставьте короткую заявку. Я посмотрю вашу ситуацию и предложу подходящий вариант: простой лендинг, сайт услуг, каталог, страница для заявок, сайт для рекламы или более сложный MVP.</p>
+        </div>
+        <div class="format-help-actions">
+          <button class="btn primary" type="button" data-open-lead>Подобрать формат сайта</button>
+          <a class="btn telegram" href="https://t.me/pracehub" target="_blank" rel="noopener">Написать в Telegram</a>
+          <a class="btn facebook" href="https://www.facebook.com/share/18hdnUyhLG/" target="_blank" rel="noopener">Facebook / Messenger</a>
+        </div>
+      </div>
+    </section>
+
     <section class="section contact-section" id="contacts">
       <div class="page-shell contact-grid">
         <div>
@@ -192,18 +287,22 @@
           <h2>Опишите задачу - отвечу быстро</h2>
           <p>Можно написать коротко: что нужно сделать, есть ли пример сайта, какие сроки и какой бюджет. Заявка отправляется через Forminit.</p>
           <div class="contact-links">
-            <a href="mailto:urciknikolaj642@gmail.com">urciknikolaj642@gmail.com</a>
+            <a href="mailto:nikyrchenko71@gmail.com">nikyrchenko71@gmail.com</a>
             <a href="https://t.me/pracehub" target="_blank" rel="noopener">Telegram: @pracehub</a>
             <a href="https://www.facebook.com/share/18hdnUyhLG/" target="_blank" rel="noopener">Facebook / Messenger</a>
             <span>Prague, Czechia / remote</span>
           </div>
         </div>
         <div class="contact-panel">
+          <div class="ambient-video-card contact-video" aria-hidden="true">
+            <img src="assets/img/portfolio-hero-poster.jpg" alt="" loading="lazy">
+            <video class="ambient-video" muted loop playsinline preload="none" poster="assets/img/portfolio-hero-poster.jpg" data-src="assets/videos/portfolio-hero-tech.mp4"></video>
+          </div>
           <strong>Быстрая заявка</strong>
           <p>Откройте форму в отдельном окне, выберите тип проекта и отправьте заявку.</p>
           <button class="btn dark" type="button" data-open-lead>Оставить заявку</button>
-          <a class="btn primary" href="https://t.me/pracehub" target="_blank" rel="noopener">Написать в Telegram</a>
-          <a class="btn ghost" href="https://www.facebook.com/share/18hdnUyhLG/" target="_blank" rel="noopener">Facebook</a>
+          <a class="btn telegram" href="https://t.me/pracehub" target="_blank" rel="noopener">Написать в Telegram</a>
+          <a class="btn facebook" href="https://www.facebook.com/share/18hdnUyhLG/" target="_blank" rel="noopener">Facebook</a>
         </div>
       </div>
     </section>
@@ -236,6 +335,7 @@
     </div>
   </footer>
 
-  <script src="assets/js/app.js?v=forminit-existing-form-1"></script>
+  <script src="assets/js/site-categories.js?v=sales-catalog-2"></script>
+  <script src="assets/js/app.js?v=sales-catalog-2"></script>
 </body>
 </html>

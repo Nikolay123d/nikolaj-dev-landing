@@ -118,21 +118,6 @@ const projects = [
     includes: ["Коммерческая структура", "Адаптив", "Базовая форма", "Подготовка к GitHub Pages"]
   },
   {
-    id: "cafe",
-    group: "template",
-    title: "Cafe / Restaurant Landing",
-    label: "Demo concept",
-    category: "Restaurant",
-    image: "assets/images/categories/restaurant-cafe.jpg",
-    demoUrl: "",
-    price: "от 250 €",
-    timeline: "3-5 дней",
-    short: "Лендинг для кафе или ресторана: меню, бронирование, атмосфера и быстрый контакт.",
-    forWhom: "Для кафе, маленького ресторана, кофейни, бара или доставки еды.",
-    features: ["Меню", "Бронирование", "Отзывы", "Контакты"],
-    includes: ["Первый экран", "Меню/услуги", "Форма заявки", "Мобильная версия"]
-  },
-  {
     id: "delivery",
     group: "template",
     title: "Delivery / Local Service",

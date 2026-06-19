@@ -8,7 +8,7 @@ window.siteCategories = [
     description: "Меню, фото блюд, бронирование, адрес, кнопки Telegram / Facebook / WhatsApp.",
     price: "от 250-500 €",
     timeline: "3-7 дней",
-    image: "assets/images/categories/restaurant-cafe.jpg",
+    image: "assets/images/restaurant-cafe/hero-food.jpg",
     features: ["Меню", "Бронирование", "Галерея", "Карта"],
     demoUrl: "demos/restaurant-cafe/index.html"
   },

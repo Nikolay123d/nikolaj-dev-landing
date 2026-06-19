@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css?v=bakery-demo-3">
+  <link rel="stylesheet" href="assets/css/style.css?v=pricing-kc-1">
 </head>
 <body>
   <header class="site-header" id="top">
@@ -72,7 +72,7 @@
         <aside class="hero-showcase" aria-label="Быстрый обзор">
           <div class="showcase-top">
             <span>Готовые demo-шаблоны</span>
-            <strong>от 250 €</strong>
+            <strong>от 10 000 Kč</strong>
           </div>
           <div class="hero-demo-stack">
             <a class="hero-demo-card is-featured" href="demos/bakery-cafe/index.html">
@@ -113,7 +113,7 @@
           <h2 id="featuredBakeryTitle">Bakery / Cafe Website Demo</h2>
           <p>Сайт для пекарни, кафе или кофейни: видео на первом экране, меню, фото продукции, кофе, карта, контакты и заявки. Теперь этот demo можно открыть сразу, без поиска по всему каталогу.</p>
           <div class="project-meta">
-            <span>от 250-500 €</span>
+            <span>от 10 000 Kč</span>
             <span>3-7 дней</span>
             <span>Готовый demo</span>
           </div>
@@ -229,14 +229,53 @@
     </section>
 
     <section class="section pricing-strip" id="pricing">
-      <div class="page-shell pricing-card">
-        <div>
+      <div class="page-shell pricing-card pricing-card-full">
+        <div class="pricing-intro">
           <p class="eyebrow">Цены</p>
-          <h2>Цена зависит от задачи, но вилка понятна заранее</h2>
-          <p>Нажмите “Смотреть цены”, чтобы открыть подробное окно с тарифами, сроками и тем, что входит.</p>
+          <h2>Простые пакеты для сайта без скрытого хостинга</h2>
+          <p>Сначала выбираем уровень запуска. Домен и платные сервисы считаются отдельно, а обычный лендинг можно держать на бесплатном хостинге.</p>
         </div>
-        <div class="pricing-actions">
-          <button class="btn dark" type="button" data-open-pricing>Смотреть цены</button>
+        <div class="simple-pricing-grid" aria-label="Пакеты сайта">
+          <article class="simple-price-card">
+            <span class="plan-kicker">START</span>
+            <strong>10 000 Kč</strong>
+            <h3>Быстрый запуск</h3>
+            <p>Сайт по готовому demo-шаблону: фото, тексты, контакты, форма заявки и мобильная версия.</p>
+            <small>+ домен ~150-300 Kč / год</small>
+            <small>+ хостинг 0 Kč для обычного лендинга</small>
+            <button class="btn primary" type="button" data-open-lead data-package="Start" data-package-price="10 000 Kč">Выбрать Start</button>
+          </article>
+          <article class="simple-price-card recommended">
+            <span class="plan-badge">Популярно / оптимально</span>
+            <span class="plan-kicker">PLUS</span>
+            <strong>15 000 Kč</strong>
+            <h3>Оптимальный вариант</h3>
+            <p>Больше блоков, фото, второй язык, thank-you страница и базовая аналитика.</p>
+            <small>+ домен ~150-300 Kč / год</small>
+            <small>+ хостинг 0 Kč для обычного лендинга</small>
+            <button class="btn primary" type="button" data-open-lead data-package="Plus" data-package-price="15 000 Kč">Выбрать Plus</button>
+          </article>
+          <article class="simple-price-card premium">
+            <span class="plan-kicker">PRO</span>
+            <strong>от 20 000 Kč</strong>
+            <h3>Под рекламу и рост</h3>
+            <p>Аналитика кликов, UTM, SEO-основа, дополнительные секции и подготовка к продвижению.</p>
+            <small>+ домен ~150-300 Kč / год</small>
+            <small>+ платные сервисы по задаче</small>
+            <button class="btn primary" type="button" data-open-lead data-package="Pro" data-package-price="от 20 000 Kč">Обсудить Pro</button>
+          </article>
+        </div>
+        <div class="hosting-note">
+          <p>Для обычного сайта-витрины или лендинга хостинг можно сделать бесплатно. Обычно клиент оплачивает только домен примерно 150-300 Kč в год. Если позже нужны база данных, платежи, личный кабинет, CRM, сложные формы или платные сервисы — это обсуждается отдельно.</p>
+          <div>
+            <strong>Минимальный запуск</strong>
+            <span>START 10 000 Kč + домен примерно 150-300 Kč / год + бесплатный хостинг.</span>
+            <span>То есть для простого сайта-витрины ежемесячный хостинг может быть 0 Kč.</span>
+          </div>
+          <small>Не входит в цену: домен, платные формы, платный хостинг, рекламный бюджет, логотип, профессиональные фото, переводы и сложные функции оплачиваются отдельно.</small>
+        </div>
+        <div class="pricing-actions pricing-actions-inline">
+          <button class="btn dark" type="button" data-open-pricing>Смотреть подробнее</button>
           <div class="ambient-video-card compact" aria-hidden="true">
             <img src="assets/img/portfolio-hero-poster.jpg" alt="" loading="lazy">
             <video class="ambient-video" muted loop playsinline preload="none" poster="assets/img/portfolio-hero-poster.jpg" data-src="assets/videos/portfolio-hero-tech.mp4"></video>
@@ -369,7 +408,7 @@
     </div>
   </footer>
 
-  <script src="assets/js/site-categories.js?v=bakery-demo-3"></script>
-  <script src="assets/js/app.js?v=bakery-demo-3"></script>
+  <script src="assets/js/site-categories.js?v=pricing-kc-1"></script>
+  <script src="assets/js/app.js?v=pricing-kc-1"></script>
 </body>
 </html>

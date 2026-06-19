@@ -3,7 +3,7 @@ const services = [
     id: "start-landing",
     title: "Start Landing",
     text: "Одностраничный продающий сайт для услуги, мастера, локального бизнеса или проверки идеи.",
-    price: "от 200-350 €",
+    price: "START 10 000 Kč",
     timeline: "2-5 дней",
     cta: "Заказать лендинг"
   },
@@ -11,7 +11,7 @@ const services = [
     id: "business-site",
     title: "Business Website",
     text: "Сайт с услугами, работами, контактами, формой заявки и понятной структурой доверия.",
-    price: "от 400-750 €",
+    price: "PLUS 15 000 Kč",
     timeline: "5-10 дней",
     cta: "Обсудить сайт"
   },
@@ -19,7 +19,7 @@ const services = [
     id: "mvp",
     title: "MVP / Mini Platform",
     text: "Мини-платформа с ролями, формами, базой данных, чатом, админкой или интеграциями.",
-    price: "от 600 €",
+    price: "PRO от 20 000 Kč",
     timeline: "индивидуально",
     cta: "Спланировать MVP"
   },
@@ -62,7 +62,7 @@ const projects = [
     image: "assets/images/bakery-cafe/hero-bakery.jpg",
     gallery: ["assets/images/bakery-cafe/hero-bakery.jpg", "assets/images/bakery-cafe/bakery-counter.jpg", "assets/images/bakery-cafe/interior.jpg"],
     demoUrl: "demos/bakery-cafe/index.html",
-    price: "от 250 €",
+    price: "Start 10 000 Kč",
     timeline: "3-7 дней",
     short: "Сайт для пекарни, кафе или кофейни: видео на первом экране, меню, фото продукции, кофе, карта, контакты и заявки.",
     forWhom: "Для пекарни, кофейни, кондитерской, brunch-place или маленького кафе, где важно показать продукцию, часы работы, карту и быстрый контакт.",
@@ -78,7 +78,7 @@ const projects = [
     image: "assets/images/restaurant-cafe/hero-food.jpg",
     gallery: ["assets/images/restaurant-cafe/hero-food.jpg", "assets/images/restaurant-cafe/interior.jpg", "assets/images/restaurant-cafe/dish-pasta.jpg"],
     demoUrl: "demos/restaurant-cafe/index.html",
-    price: "от 250 €",
+    price: "Start 10 000 Kč",
     timeline: "3-7 дней",
     short: "Премиальный demo-сайт ресторана: меню, бронь, фото блюд, контакты, карта и мобильные CTA.",
     forWhom: "Для кафе, ресторана, бистро, винного бара, brunch-place или доставки еды, где важно быстро показать меню, атмосферу и принять заявку.",
@@ -94,7 +94,7 @@ const projects = [
     image: "assets/img/rempro/desktop-home.png",
     gallery: ["assets/img/rempro/desktop-home.png", "assets/img/rempro/mobile-hero.png", "assets/img/rempro/mobile-full.png"],
     demoUrl: "demos/rempro/index.html",
-    price: "от 350 €",
+    price: "Start 10 000 Kč",
     timeline: "4-7 дней",
     short: "Лендинг строительной/ремонтной фирмы: услуги, смета, этапы, портфолио и заявка.",
     forWhom: "Для строительной бригады, ремонта квартир, отделки, реконструкции, ванной под ключ или локальной ремонтной компании.",
@@ -110,7 +110,7 @@ const projects = [
     image: "assets/img/czechtrip/preview.svg",
     gallery: ["assets/img/czechtrip/preview.svg"],
     demoUrl: "demos/czechtrip/index.html",
-    price: "от 320 €",
+    price: "Start 10 000 Kč",
     timeline: "4-6 дней",
     short: "Лендинг для туров и поездок из Праги: маршруты, программа, доверие и заявка в мессенджер.",
     forWhom: "Для организатора туров, гида, travel-агентства, экскурсионного проекта или локальных поездок выходного дня.",
@@ -157,7 +157,7 @@ const projects = [
     image: "assets/img/pracehub-mobile-home.png",
     gallery: ["assets/img/pracehub-mobile-home.png", "assets/img/pracehub-login.png", "assets/img/pracehub-prague-brand.png"],
     demoUrl: "https://pracehub.cz",
-    price: "MVP от 600 €",
+    price: "MVP / PRO от 20 000 Kč",
     timeline: "индивидуально",
     short: "Живой продукт: роли, чат, Firebase, PWA, Storage, Functions, пользователи и реальные UX-уроки.",
     forWhom: "Для проектов, где нужен не просто лендинг, а продуктовая логика: роли, пользователи, заявки, чат или кабинет.",
@@ -183,37 +183,44 @@ const projects = [
 
 const pricingPlans = [
   {
-    title: "Start Landing",
-    price: "от 200-350 €",
+    key: "Start",
+    title: "START",
+    subtitle: "Быстрый запуск",
+    price: "10 000 Kč",
     timeline: "2-5 дней",
-    goodFor: "услуга, мастер, локальный бизнес, быстрый запуск",
-    includes: ["1 продающий путь", "до 6 секций", "форма заявки", "мобильная версия", "подготовка к публикации"]
+    goodFor: "Сайт по готовому demo-шаблону: фото, тексты, контакты, форма заявки и мобильная версия.",
+    extras: ["+ домен ~150-300 Kč / год", "+ хостинг 0 Kč для обычного лендинга"],
+    includes: ["адаптация demo-шаблона", "контакты и кнопки связи", "форма заявки", "мобильная версия", "подготовка к публикации"],
+    cta: "Выбрать Start"
   },
   {
-    title: "Business Website",
-    price: "от 400-750 €",
-    timeline: "5-10 дней",
-    goodFor: "компания, услуги, портфолио, доверие",
-    includes: ["расширенная структура", "услуги/работы/контакты", "SEO-база", "формы", "публикация по согласованию"]
+    key: "Plus",
+    title: "PLUS",
+    subtitle: "Оптимальный вариант",
+    price: "15 000 Kč",
+    timeline: "4-8 дней",
+    goodFor: "Больше блоков, фото, второй язык, thank-you страница и базовая аналитика.",
+    extras: ["+ домен ~150-300 Kč / год", "+ хостинг 0 Kč для обычного лендинга"],
+    includes: ["расширенная структура", "больше секций", "второй язык по задаче", "thank-you page", "базовая аналитика"],
+    cta: "Выбрать Plus",
+    recommended: true
   },
   {
-    title: "MVP / Mini Platform",
-    price: "от 600 €",
+    key: "Pro",
+    title: "PRO",
+    subtitle: "Под рекламу и рост",
+    price: "от 20 000 Kč",
     timeline: "индивидуально",
-    goodFor: "проект с логикой, ролями, данными или кабинетами",
-    includes: ["scope", "прототип", "роли/формы/данные", "интеграции по задаче", "план развития"]
-  },
-  {
-    title: "Audit / Rescue",
-    price: "от 100-400 €",
-    timeline: "1-4 дня",
-    goodFor: "проект завис, сломан или непонятно что готово",
-    includes: ["аудит состояния", "список проблем", "приоритеты", "план исправлений", "оценка рисков"]
+    goodFor: "Аналитика кликов, UTM, SEO-основа, дополнительные секции и подготовка к продвижению.",
+    extras: ["+ домен ~150-300 Kč / год", "+ платные сервисы по задаче"],
+    includes: ["расширенная структура", "UTM/аналитика кликов", "SEO-основа", "дополнительные секции", "подготовка к рекламе"],
+    cta: "Обсудить Pro",
+    premium: true
   }
 ];
 
 const faqItems = [
-  ["Сколько стоит сайт?", "Простой landing обычно начинается от 200-350 €. Точная цена зависит от структуры, материалов, количества секций и логики."],
+  ["Сколько стоит сайт?", "Простой сайт по demo-шаблону начинается с пакета START 10 000 Kč. PLUS стоит 15 000 Kč, PRO начинается от 20 000 Kč."],
   ["Сколько времени занимает?", "Быстрый landing можно собрать за 2-5 дней. Бизнес-сайт обычно 5-10 дней. MVP оценивается отдельно."],
   ["Можно использовать шаблон как основу?", "Да. Это хороший способ быстрее стартовать, сразу увидеть стиль и снизить неопределённость."],
   ["Что нужно от клиента?", "Описание услуги, контакты, примеры сайтов, фото/логотип если есть, желаемые сроки и примерный бюджет."],
@@ -274,6 +281,32 @@ function openModal(type, payload) {
   appModal.setAttribute("aria-hidden", "false");
   document.body.style.overflow = "hidden";
   bindModalActions();
+}
+
+function normalizeLeadPayload(payload) {
+  if (!payload) return { selected: "", selectedPackage: "", packagePrice: "" };
+  if (typeof payload === "string") return { selected: payload, selectedPackage: "", packagePrice: "" };
+  if (payload.kind === "package") {
+    return {
+      selected: payload.template || "",
+      selectedPackage: payload.package || "",
+      packagePrice: payload.price || ""
+    };
+  }
+  return {
+    selected: payload.title || "",
+    selectedPackage: payload.selectedPackage || "",
+    packagePrice: payload.packagePrice || ""
+  };
+}
+
+function leadPackagePayload(plan, template = "") {
+  return {
+    kind: "package",
+    template,
+    package: plan.key,
+    price: plan.price
+  };
 }
 
 function closeModal() {
@@ -370,24 +403,36 @@ function buildPricingModal() {
   return `
     <div class="modal-header">
       <p class="eyebrow">Цены</p>
-      <h2 id="modalTitle">Тарифы и ориентиры</h2>
-      <p>Точная цена фиксируется после короткого аудита задачи, но клиент сразу видит вилку.</p>
+      <h2 id="modalTitle">Простые пакеты для запуска сайта</h2>
+      <p>Для обычного сайта-витрины или лендинга хостинг можно сделать бесплатно. Обычно клиент оплачивает только домен примерно 150-300 Kč в год.</p>
     </div>
     <div class="pricing-modal-grid">
       ${pricingPlans.map((plan) => `
-        <article>
+        <article class="${plan.recommended ? "is-recommended" : ""} ${plan.premium ? "is-premium" : ""}">
+          ${plan.recommended ? "<span class=\"plan-badge\">Популярно / оптимально</span>" : ""}
           <h3>${plan.title}</h3>
+          <p class="plan-subtitle">${plan.subtitle}</p>
           <strong>${plan.price}</strong>
           <p>${plan.goodFor}</p>
           <span>${plan.timeline}</span>
+          <div class="plan-extras">${plan.extras.map((line) => `<small>${line}</small>`).join("")}</div>
           <ul>${featureList(plan.includes)}</ul>
-          <button class="btn primary" type="button" data-lead-plan="${plan.title}">Заказать</button>
+          <button class="btn primary" type="button" data-lead-package="${plan.key}">${plan.cta}</button>
         </article>`).join("")}
+    </div>
+    <div class="pricing-note">
+      <h3>Минимальный запуск</h3>
+      <p>START 10 000 Kč + домен примерно 150-300 Kč / год + бесплатный хостинг.</p>
+      <p>То есть для простого сайта-витрины ежемесячный хостинг может быть 0 Kč.</p>
+      <small>Не входит в цену: домен, платные формы, платный хостинг, рекламный бюджет, логотип, профессиональные фото, переводы и сложные функции оплачиваются отдельно.</small>
     </div>`;
 }
 
 function buildLeadModal(projectOrPlan = "") {
-  const selected = typeof projectOrPlan === "string" ? projectOrPlan : projectOrPlan?.title || "";
+  const leadData = normalizeLeadPayload(projectOrPlan);
+  const selected = leadData.selected;
+  const selectedPackage = leadData.selectedPackage;
+  const packagePrice = leadData.packagePrice;
   return `
     <div class="modal-header">
       <p class="eyebrow">Заявка</p>
@@ -396,12 +441,16 @@ function buildLeadModal(projectOrPlan = "") {
     </div>
     <form class="lead-form" id="leadForm" action="https://forminit.com/f/kshbr37bfe4" method="POST">
       <input type="hidden" name="selected_template" value="${selected}">
+      <input type="hidden" name="selected_package" value="${selectedPackage}">
+      <input type="hidden" name="package_price" value="${packagePrice}">
       <input type="hidden" name="fi-sender-fullName" value="">
       <input type="hidden" name="fi-sender-email" value="">
       <input type="hidden" name="fi-text-phone" value="">
       <input type="hidden" name="fi-text-telegram_whatsapp" value="">
       <input type="hidden" name="fi-text-business_type" value="">
       <input type="hidden" name="fi-text-selected_template" value="${selected}">
+      <input type="hidden" name="fi-text-selected_package" value="${selectedPackage}">
+      <input type="hidden" name="fi-text-package_price" value="${packagePrice}">
       <input type="hidden" name="fi-text-message" value="">
       <input type="hidden" name="fi-select-project_type" value="">
       <input type="hidden" name="fi-select-budget" value="">
@@ -427,10 +476,10 @@ function buildLeadModal(projectOrPlan = "") {
       <div class="field-row">
         <label>Бюджет<select name="budget">
           <option>Нужно обсудить</option>
-          <option>до 200 €</option>
-          <option>200-350 €</option>
-          <option>400-750 €</option>
-          <option>600+ €</option>
+          <option>до 10 000 Kč</option>
+          <option>START 10 000 Kč</option>
+          <option>PLUS 15 000 Kč</option>
+          <option>PRO от 20 000 Kč</option>
         </select></label>
         <label>Срок<select name="timeline">
           <option>Нужно обсудить</option>
@@ -441,6 +490,13 @@ function buildLeadModal(projectOrPlan = "") {
         </select></label>
       </div>
       <label>Выбранный шаблон<input name="selected_template_visible" placeholder="Ссылка или название шаблона" value="${selected}"></label>
+      <div class="field-row">
+        <label>Пакет<select name="selected_package_visible">
+          <option value="">Нужно обсудить</option>
+          ${pricingPlans.map((plan) => `<option value="${plan.key}" ${selectedPackage === plan.key ? "selected" : ""}>${plan.title} - ${plan.price}</option>`).join("")}
+        </select></label>
+        <label>Цена пакета<input name="package_price_visible" value="${packagePrice}" placeholder="Автоматически или обсудим"></label>
+      </div>
       <label>Что нужно сделать?<textarea name="message" rows="5" required placeholder="Опишите услугу, сроки, материалы, что уже есть"></textarea></label>
       <button class="btn dark full" type="submit">Отправить заявку</button>
       <div class="messenger-row">
@@ -506,6 +562,10 @@ function bindModalActions() {
   modalContent.querySelectorAll("[data-lead-plan]").forEach((button) => {
     button.addEventListener("click", () => openModal("lead", button.dataset.leadPlan));
   });
+  modalContent.querySelectorAll("[data-lead-package]").forEach((button) => {
+    const plan = pricingPlans.find((item) => item.key === button.dataset.leadPackage);
+    button.addEventListener("click", () => openModal("lead", leadPackagePayload(plan)));
+  });
   modalContent.querySelectorAll("[data-details-project]").forEach((button) => {
     button.addEventListener("click", () => openModal("details", projects.find((item) => item.id === button.dataset.detailsProject)));
   });
@@ -513,13 +573,29 @@ function bindModalActions() {
     button.addEventListener("click", () => openModal("lead", siteCategories.find((item) => item.id === button.dataset.leadCategory)));
   });
   modalContent.querySelectorAll("[data-open-lead]").forEach((button) => {
-    button.addEventListener("click", () => openModal("lead"));
+    button.addEventListener("click", () => openModal("lead", packagePayloadFromButton(button)));
   });
   const leadForm = modalContent.querySelector("#leadForm");
+  const packageSelect = modalContent.querySelector("[name='selected_package_visible']");
+  const packagePriceInput = modalContent.querySelector("[name='package_price_visible']");
+  if (packageSelect && packagePriceInput) {
+    packageSelect.addEventListener("change", () => {
+      const plan = pricingPlans.find((item) => item.key === packageSelect.value);
+      packagePriceInput.value = plan ? plan.price : "";
+    });
+  }
   if (leadForm) leadForm.addEventListener("submit", () => {
     const visibleTemplate = leadForm.querySelector("[name='selected_template_visible']");
     const hiddenTemplate = leadForm.querySelector("[name='selected_template']");
     if (visibleTemplate && hiddenTemplate) hiddenTemplate.value = visibleTemplate.value;
+    const visiblePackage = leadForm.querySelector("[name='selected_package_visible']");
+    const hiddenPackage = leadForm.querySelector("[name='selected_package']");
+    const visiblePackagePrice = leadForm.querySelector("[name='package_price_visible']");
+    const hiddenPackagePrice = leadForm.querySelector("[name='package_price']");
+    if (visiblePackage && hiddenPackage) hiddenPackage.value = visiblePackage.value;
+    const selectedPlan = pricingPlans.find((plan) => plan.key === visiblePackage?.value);
+    if (visiblePackagePrice && selectedPlan && !visiblePackagePrice.value) visiblePackagePrice.value = selectedPlan.price;
+    if (visiblePackagePrice && hiddenPackagePrice) hiddenPackagePrice.value = visiblePackagePrice.value;
     const syncPairs = [
       ["name", "fi-sender-fullName"],
       ["email", "fi-sender-email"],
@@ -527,6 +603,8 @@ function bindModalActions() {
       ["telegram_whatsapp", "fi-text-telegram_whatsapp"],
       ["business_type", "fi-text-business_type"],
       ["selected_template", "fi-text-selected_template"],
+      ["selected_package", "fi-text-selected_package"],
+      ["package_price", "fi-text-package_price"],
       ["message", "fi-text-message"],
       ["project_type", "fi-select-project_type"],
       ["budget", "fi-select-budget"],
@@ -539,6 +617,16 @@ function bindModalActions() {
     });
     showToast("Отправляю заявку через Forminit.");
   });
+}
+
+function packagePayloadFromButton(button) {
+  if (!button?.dataset?.package) return "";
+  return {
+    kind: "package",
+    template: button.dataset.template || "",
+    package: button.dataset.package,
+    price: button.dataset.packagePrice || ""
+  };
 }
 
 function renderCategoryVisual(category, lazy = true) {
@@ -682,7 +770,7 @@ document.querySelectorAll("[data-open-pricing]").forEach((button) => {
 });
 
 document.querySelectorAll("[data-open-lead]").forEach((button) => {
-  button.addEventListener("click", () => openModal("lead"));
+  button.addEventListener("click", () => openModal("lead", packagePayloadFromButton(button)));
 });
 
 document.querySelectorAll("[data-open-argus]").forEach((button) => {

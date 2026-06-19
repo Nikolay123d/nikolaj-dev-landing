@@ -1,0 +1,74 @@
+NIKOLAJ_DEV_PRICING_DOMAIN_HOSTING_EXPLANATION_REPORT
+
+Folder worked in:
+C:\Users\User\mylanding
+
+Files changed:
+- index.html
+- assets/css/style.css
+- assets/js/app.js
+- assets/js/site-categories.js
+- demos/bakery-cafe/index.html
+- demos/restaurant-cafe/index.html
+- demos/rempro/index.html
+- demos/czechtrip/index.html
+- NIKOLAJ_DEV_PRICING_DOMAIN_HOSTING_EXPLANATION_REPORT.txt
+
+Pricing blocks added / updated:
+- Main Nikolaj Dev pricing section now shows 3 simple packages:
+  - START: 10 000 Kč
+  - PLUS: 15 000 Kč, marked as popular / optimal
+  - PRO: from 20 000 Kč
+- Main pricing modal now uses the same 3-package model.
+- Bakery / Cafe demo now has a dedicated pricing section:
+  Start Bakery Site / Bakery Plus / Bakery Pro.
+- Restaurant demo now has a dedicated pricing section:
+  Start Restaurant Site / Restaurant Plus / Restaurant Pro.
+- RemPro demo now has a dedicated pricing section:
+  Start Renovation Landing / Renovation Plus / Renovation Pro.
+- CzechTrip demo now has a dedicated pricing section:
+  Start Tours Landing / Tours Plus / Tours Pro.
+- Main visible template/category prices for active demos were adjusted toward the new Kč package model.
+
+Domain / hosting explanation:
+- Pricing cards show domain cost as approximately 150-300 Kč per year.
+- Start and Plus show that hosting can be 0 Kč for a normal landing page.
+- Pro shows that paid services are discussed per task.
+- Main page includes a short explanation that simple site hosting can be free and that domain is usually the only yearly base cost.
+- Main page includes a "Minimum launch" block:
+  START 10 000 Kč + domain around 150-300 Kč / year + free hosting.
+- Main page and demos include a compact "not included" note:
+  domain, paid forms, paid hosting, ad budget, logo, professional photos, translations and complex functions are separate.
+
+Form prefill behavior:
+- Main lead modal now supports:
+  - selected_package
+  - package_price
+  - fi-text-selected_package
+  - fi-text-package_price
+- Main pricing buttons pass selected package and package price into the Forminit form.
+- Lead form includes visible package and package price fields so the client can see/change the selected package before submitting.
+- Bakery demo pricing buttons set hidden fields:
+  - selected_package
+  - package_price
+- Restaurant demo pricing buttons set hidden fields:
+  - selected_package
+  - package_price
+- Forminit endpoint remains unchanged:
+  https://forminit.com/f/kshbr37bfe4
+
+Tests performed:
+- node --check assets/js/app.js: passed.
+- node --check assets/js/site-categories.js: passed.
+- git diff --check: passed, only Windows CRLF warnings.
+- Search confirmed new pricing, domain/hosting explanation and selected_package/package_price fields are present in main page and relevant demos.
+
+Deploy status:
+- Not deployed in this step.
+- No commit or push was performed for this pricing change yet.
+
+Remaining suggestions:
+- After visual review, commit and push this pricing update to GitHub Pages.
+- Later, add the same package selector to future delivery/fleet demos when that demo exists.
+
+NIKOLAJ_DEV_PRICING_DOMAIN_HOSTING_READY_FOR_REVIEW

@@ -319,6 +319,29 @@
 
     .order { background: linear-gradient(180deg, #fff, #f4e8c8); }
     .order-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 28px; align-items: start; }
+    .template-pricing { background: #fff; }
+    .template-pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .template-price-card {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      padding: 20px;
+      border-radius: 22px;
+      border: 1px solid var(--line);
+      background: #fff8ee;
+      box-shadow: 0 14px 38px rgba(31, 52, 120, .08);
+    }
+    .template-price-card.recommended { border-color: rgba(46, 79, 163, .36); background: linear-gradient(180deg, #fff, #eef3ff); }
+    .template-price-card.premium { background: linear-gradient(145deg, #1f3478, #172653); color: #fff; border-color: rgba(255,255,255,.18); }
+    .template-price-card.premium p, .template-price-card.premium small { color: rgba(255,255,255,.78); }
+    .template-price-card .badge { align-self: flex-start; padding: 5px 9px; border-radius: 999px; background: linear-gradient(135deg, #f2ba55, #c8882a); color: #24160b; font-size: 12px; font-weight: 900; }
+    .template-price-card strong { font-size: 32px; line-height: 1; color: var(--blue-dark); }
+    .template-price-card.premium strong { color: #fff; }
+    .template-price-card h3 { font-size: 22px; color: inherit; }
+    .template-price-card p, .template-price-card small { margin: 0; color: var(--muted); font-weight: 750; }
+    .template-price-card .btn { margin-top: auto; width: 100%; }
+    .template-cost-note { margin-top: 16px; padding: 18px; border-radius: 18px; border: 1px solid var(--line); background: #fff; color: var(--muted); font-weight: 750; }
+    .template-cost-note strong { color: var(--blue-dark); }
     .form {
       display: grid;
       gap: 12px;
@@ -385,7 +408,7 @@
       .nav { border-radius: 26px; align-items: flex-start; }
       .nav-links { display: none; }
       .hero-content { padding-top: 150px; padding-bottom: 58px; }
-      .info-grid, .product-grid, .promise-grid, .craft-grid, .coffee-grid, .order-grid { grid-template-columns: 1fr; }
+      .info-grid, .product-grid, .promise-grid, .craft-grid, .coffee-grid, .order-grid, .template-pricing-grid { grid-template-columns: 1fr; }
       .product-grid { gap: 14px; }
       .product img { height: 220px; }
       .section-head { display: grid; align-items: start; }
@@ -601,6 +624,48 @@
       </div>
     </section>
 
+    <section class="template-pricing" id="pricing">
+      <div class="shell">
+        <div class="section-head">
+          <h2>Сколько стоит такой сайт для пекарни</h2>
+          <p>Можно начать с готового demo-шаблона и постепенно расширять сайт под реальные фото, меню и рекламу.</p>
+        </div>
+        <div class="template-pricing-grid">
+          <article class="template-price-card">
+            <span class="badge">START</span>
+            <strong>10 000 Kč</strong>
+            <h3>Start Bakery Site</h3>
+            <p>Фото, тексты, контакты, меню, форма заявки и мобильная версия.</p>
+            <small>+ домен ~150-300 Kč / год</small>
+            <small>+ хостинг 0 Kč для обычного лендинга</small>
+            <a class="btn primary" href="#order" data-package="Start" data-package-price="10 000 Kč">Выбрать Start</a>
+          </article>
+          <article class="template-price-card recommended">
+            <span class="badge">Популярно</span>
+            <strong>15 000 Kč</strong>
+            <h3>Bakery Plus</h3>
+            <p>Больше блоков, второй язык, thank-you page и базовая аналитика.</p>
+            <small>+ домен ~150-300 Kč / год</small>
+            <small>+ хостинг 0 Kč для обычного лендинга</small>
+            <a class="btn primary" href="#order" data-package="Plus" data-package-price="15 000 Kč">Выбрать Plus</a>
+          </article>
+          <article class="template-price-card premium">
+            <span class="badge">PRO</span>
+            <strong>от 20 000 Kč</strong>
+            <h3>Bakery Pro</h3>
+            <p>UTM, SEO-основа, дополнительные секции и подготовка к рекламе.</p>
+            <small>+ домен ~150-300 Kč / год</small>
+            <small>+ платные сервисы по задаче</small>
+            <a class="btn primary" href="#order" data-package="Pro" data-package-price="от 20 000 Kč">Обсудить Pro</a>
+          </article>
+        </div>
+        <div class="template-cost-note">
+          <strong>Минимальный запуск:</strong> START 10 000 Kč + домен примерно 150-300 Kč / год + бесплатный хостинг.
+          Для простого сайта-витрины ежемесячный хостинг может быть 0 Kč. Домен, платные формы, платный хостинг, рекламный бюджет, логотип, профессиональные фото, переводы и сложные функции оплачиваются отдельно.
+        </div>
+      </div>
+    </section>
+
     <section class="order" id="order">
       <div class="shell order-grid">
         <div class="text-panel">
@@ -615,6 +680,8 @@
         </div>
         <form class="form" action="https://forminit.com/f/kshbr37bfe4" method="POST">
           <input type="hidden" name="selected_template" value="Bakery / Cafe Website Demo">
+          <input type="hidden" name="selected_package" value="">
+          <input type="hidden" name="package_price" value="">
           <input type="hidden" name="source" value="bakery-demo">
           <input type="hidden" name="business_type" value="Bakery / Cafe">
           <label>Имя<input name="name" autocomplete="name" required></label>
@@ -711,6 +778,14 @@
         });
       }, { rootMargin: "260px 0px" });
       observer.observe(video);
+    });
+
+    document.querySelectorAll("[data-package]").forEach((link) => {
+      link.addEventListener("click", () => {
+        const form = document.querySelector("#order form");
+        form.querySelector("[name='selected_package']").value = link.dataset.package || "";
+        form.querySelector("[name='package_price']").value = link.dataset.packagePrice || "";
+      });
     });
   </script>
 </body>

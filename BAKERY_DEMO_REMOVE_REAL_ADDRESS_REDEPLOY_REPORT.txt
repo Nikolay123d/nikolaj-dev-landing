@@ -1,0 +1,48 @@
+BAKERY_DEMO_REMOVE_REAL_ADDRESS_REDEPLOY_REPORT
+
+Folder worked in:
+C:\Users\User\mylanding
+
+Scope:
+Bakery / Cafe demo and directly related local documentation only.
+
+What was found:
+- Old fictional bakery brand references in the demo header, footer and previous local report.
+- Old two-letter logo initials in the demo header.
+- A specific city-center location label in the quick info strip.
+- A specific street-address line in the demo map/contact card.
+- A direct third-party map query for that address.
+- A phone action that looked like a callable placeholder.
+
+Replacements used:
+- Visible brand: Zlatá Pec.
+- Brand descriptor: Pekárna & káva.
+- Logo initials: ZP.
+- Hero/demo label: DEMO-ŠABLONA PRO PEKÁRNU / KAVÁRNU.
+- Address placeholder: Adresa vaší pekárny.
+- Map card text: Здесь будет адрес вашей пекарни.
+- Map CTA: Подключить карту под мой адрес.
+- Phone CTA now opens the order/request section instead of calling a fake number.
+
+Files changed:
+- demos/bakery-cafe/index.html
+- assets/images/CREDITS.md
+- BAKERY_CAFE_PREMIUM_VIDEO_MEDIA_UPGRADE_REPORT.txt
+- BAKERY_DEMO_REMOVE_REAL_ADDRESS_REDEPLOY_REPORT.txt
+
+Checks performed before commit:
+- Bakery demo scoped search for old brand, old logo initials, reference bakery strings, real street labels and direct map query: clean.
+- JavaScript syntax check for assets/js/app.js: passed.
+- JavaScript syntax check for assets/js/site-categories.js: passed.
+- Git diff/status reviewed before commit.
+
+Deploy / publish result:
+- Prepared for GitHub Pages redeploy by commit and push to origin/main.
+- Production URL to verify after GitHub Pages refresh:
+  https://nikolay123d.github.io/nikolaj-dev-landing/demos/bakery-cafe/
+
+Notes:
+- Existing Prague/travel references in other demos and portfolio contact copy were not changed because this urgent fix targeted the Bakery / Cafe demo safety issue.
+- The bakery demo no longer contains the removed real/reference bakery address or direct real-address map link.
+
+NIKOLAJ_BAKERY_DEMO_ADDRESS_FIX_READY_FOR_REVIEW

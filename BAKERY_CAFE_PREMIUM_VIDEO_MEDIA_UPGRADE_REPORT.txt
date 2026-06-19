@@ -24,7 +24,7 @@ Files changed:
 
 What was built:
 - New full-page Bakery / Cafe Website Demo under demos/bakery-cafe/index.html.
-- Fictional original brand: Blue Oven Bakery.
+- Fictional original brand: Zlatá Pec.
 - Compact demo bar: "DEMO-шаблон пекарни · ← Назад · Заказать похожий".
 - Full-screen poster-first hero video section.
 - Quick info strip with hours, location, phone and map.
@@ -77,7 +77,7 @@ Media used and sizes:
 
 Credits / legal notes:
 - assets/images/CREDITS.md was updated with all bakery image/video sources, authors and licenses.
-- No 55 Bakery logo/name/photos/videos/text were copied.
+- No copied reference bakery logo/name/photos/videos/text were copied.
 - The downloaded Opera file was used only as context/reference for the desired bakery structure.
 - The new demo uses fictional branding and local open-license media.
 

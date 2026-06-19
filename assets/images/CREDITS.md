@@ -200,7 +200,7 @@ Videos below are stored in `assets/videos/restaurant-cafe/` and used as local ba
 
 # Bakery / Cafe Demo Image Credits
 
-Images below are stored in `assets/images/bakery-cafe/` and used for the fictional Blue Oven Bakery demo template. They are local template visuals, not proof of a real Blue Oven Bakery client.
+Images below are stored in `assets/images/bakery-cafe/` and used for the fictional Zlatá Pec demo template. They are local template visuals, not proof of a real Zlatá Pec client.
 
 ## bakery-cafe/hero-bakery.jpg
 - Source: https://commons.wikimedia.org/wiki/File:13-08-31-Kochtreffen-Wien-RalfR-N3S_7849-024.jpg
@@ -246,7 +246,7 @@ Images below are stored in `assets/images/bakery-cafe/` and used for the fiction
 
 # Bakery / Cafe Demo Video Credits
 
-Videos below are stored in `assets/videos/bakery-cafe/` and used as local background media. They are muted, poster-first, and not used as proof of a real Blue Oven Bakery client.
+Videos below are stored in `assets/videos/bakery-cafe/` and used as local background media. They are muted, poster-first, and not used as proof of a real Zlatá Pec client.
 
 ## bakery-cafe/hero-pastry.webm
 - Source: https://commons.wikimedia.org/wiki/File:Vegan_Pastry_-_Voted_Best_Croissant_in_Miami.webm

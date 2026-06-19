@@ -3,7 +3,7 @@ const services = [
     id: "start-landing",
     title: "Start Landing",
     text: "Одностраничный продающий сайт для услуги, мастера, локального бизнеса или проверки идеи.",
-    price: "START 10 000 Kč",
+    price: "START 10 000 Kč / ≈400 €",
     timeline: "2-5 дней",
     cta: "Заказать лендинг"
   },
@@ -11,7 +11,7 @@ const services = [
     id: "business-site",
     title: "Business Website",
     text: "Сайт с услугами, работами, контактами, формой заявки и понятной структурой доверия.",
-    price: "PLUS 15 000 Kč",
+    price: "PLUS 15 000 Kč / ≈600 €",
     timeline: "5-10 дней",
     cta: "Обсудить сайт"
   },
@@ -19,7 +19,7 @@ const services = [
     id: "mvp",
     title: "MVP / Mini Platform",
     text: "Мини-платформа с ролями, формами, базой данных, чатом, админкой или интеграциями.",
-    price: "PRO от 20 000 Kč",
+    price: "PRO от 20 000 Kč / от ≈800 €",
     timeline: "индивидуально",
     cta: "Спланировать MVP"
   },
@@ -27,7 +27,7 @@ const services = [
     id: "audit",
     title: "Project Rescue / Audit",
     text: "Аудит, исправление багов, наведение порядка и честный список того, что реально готово.",
-    price: "от 100-400 €",
+    price: "аудит от 2 500 Kč",
     timeline: "1-4 дня",
     cta: "Заказать аудит"
   },
@@ -35,7 +35,7 @@ const services = [
     id: "bugs",
     title: "Bug fixing",
     text: "Исправление сломанных экранов, форм, адаптива, логики, деплоя или Firebase-проблем.",
-    price: "от 50 €",
+    price: "точечно от 1 250 Kč",
     timeline: "по задаче",
     cta: "Починить проблему"
   },
@@ -62,7 +62,7 @@ const projects = [
     image: "assets/images/bakery-cafe/hero-bakery.jpg",
     gallery: ["assets/images/bakery-cafe/hero-bakery.jpg", "assets/images/bakery-cafe/bakery-counter.jpg", "assets/images/bakery-cafe/interior.jpg"],
     demoUrl: "demos/bakery-cafe/index.html",
-    price: "Start 10 000 Kč",
+    price: "START 10 000 Kč / ≈400 €",
     timeline: "3-7 дней",
     short: "Сайт для пекарни, кафе или кофейни: видео на первом экране, меню, фото продукции, кофе, карта, контакты и заявки.",
     forWhom: "Для пекарни, кофейни, кондитерской, brunch-place или маленького кафе, где важно показать продукцию, часы работы, карту и быстрый контакт.",
@@ -78,7 +78,7 @@ const projects = [
     image: "assets/images/restaurant-cafe/hero-food.jpg",
     gallery: ["assets/images/restaurant-cafe/hero-food.jpg", "assets/images/restaurant-cafe/interior.jpg", "assets/images/restaurant-cafe/dish-pasta.jpg"],
     demoUrl: "demos/restaurant-cafe/index.html",
-    price: "Start 10 000 Kč",
+    price: "START 10 000 Kč / ≈400 €",
     timeline: "3-7 дней",
     short: "Премиальный demo-сайт ресторана: меню, бронь, фото блюд, контакты, карта и мобильные CTA.",
     forWhom: "Для кафе, ресторана, бистро, винного бара, brunch-place или доставки еды, где важно быстро показать меню, атмосферу и принять заявку.",
@@ -94,7 +94,7 @@ const projects = [
     image: "assets/img/rempro/desktop-home.png",
     gallery: ["assets/img/rempro/desktop-home.png", "assets/img/rempro/mobile-hero.png", "assets/img/rempro/mobile-full.png"],
     demoUrl: "demos/rempro/index.html",
-    price: "Start 10 000 Kč",
+    price: "START 10 000 Kč / ≈400 €",
     timeline: "4-7 дней",
     short: "Лендинг строительной/ремонтной фирмы: услуги, смета, этапы, портфолио и заявка.",
     forWhom: "Для строительной бригады, ремонта квартир, отделки, реконструкции, ванной под ключ или локальной ремонтной компании.",
@@ -110,7 +110,7 @@ const projects = [
     image: "assets/img/czechtrip/preview.svg",
     gallery: ["assets/img/czechtrip/preview.svg"],
     demoUrl: "demos/czechtrip/index.html",
-    price: "Start 10 000 Kč",
+    price: "START 10 000 Kč / ≈400 €",
     timeline: "4-6 дней",
     short: "Лендинг для туров и поездок из Праги: маршруты, программа, доверие и заявка в мессенджер.",
     forWhom: "Для организатора туров, гида, travel-агентства, экскурсионного проекта или локальных поездок выходного дня.",
@@ -126,7 +126,7 @@ const projects = [
     image: "assets/img/construction-landing-dark.png",
     gallery: ["assets/img/construction-landing-dark.png", "assets/img/construction-landing-light.png"],
     demoUrl: "",
-    price: "от 300 €",
+    price: "START 10 000 Kč / ≈400 €",
     timeline: "3-6 дней",
     short: "Концепт сайта для строительной компании: услуги, доверие, работы и контакт.",
     forWhom: "Для локальных строительных услуг, ремонта, фасадов, кровли или комплексных работ.",
@@ -141,7 +141,7 @@ const projects = [
     category: "Local service",
     image: "assets/images/categories/delivery-fleet.jpg",
     demoUrl: "",
-    price: "от 220 €",
+    price: "START 10 000 Kč / ≈400 €",
     timeline: "2-5 дней",
     short: "Простой сайт для локальной доставки или выездной услуги с понятной воронкой.",
     forWhom: "Для курьерских услуг, локального сервиса, мастера на выезд или маленькой службы доставки.",
@@ -157,7 +157,7 @@ const projects = [
     image: "assets/img/pracehub-mobile-home.png",
     gallery: ["assets/img/pracehub-mobile-home.png", "assets/img/pracehub-login.png", "assets/img/pracehub-prague-brand.png"],
     demoUrl: "https://pracehub.cz",
-    price: "MVP / PRO от 20 000 Kč",
+    price: "MVP / PRO от 20 000 Kč / от ≈800 €",
     timeline: "индивидуально",
     short: "Живой продукт: роли, чат, Firebase, PWA, Storage, Functions, пользователи и реальные UX-уроки.",
     forWhom: "Для проектов, где нужен не просто лендинг, а продуктовая логика: роли, пользователи, заявки, чат или кабинет.",
@@ -186,22 +186,22 @@ const pricingPlans = [
     key: "Start",
     title: "START",
     subtitle: "Быстрый запуск",
-    price: "10 000 Kč",
+    price: "10 000 Kč / ≈400 €",
     timeline: "2-5 дней",
-    goodFor: "Сайт по готовому demo-шаблону: фото, тексты, контакты, форма заявки и мобильная версия.",
+    goodFor: "Готовый demo-шаблон: меняем тексты, фото, контакты, форму заявки и готовим быстрый запуск.",
     extras: ["+ домен ~150-300 Kč / год", "+ хостинг 0 Kč для обычного лендинга"],
-    includes: ["адаптация demo-шаблона", "контакты и кнопки связи", "форма заявки", "мобильная версия", "подготовка к публикации"],
+    includes: ["адаптация demo-шаблона", "замена текстов/фото/контактов", "форма заявки", "мобильная версия", "подготовка к публикации"],
     cta: "Выбрать Start"
   },
   {
     key: "Plus",
     title: "PLUS",
     subtitle: "Оптимальный вариант",
-    price: "15 000 Kč",
+    price: "15 000 Kč / ≈600 €",
     timeline: "4-8 дней",
-    goodFor: "Больше блоков, фото, второй язык, thank-you страница и базовая аналитика.",
+    goodFor: "Когда нужно больше доработки: дополнительные блоки, второй язык, thank-you страница и базовая аналитика.",
     extras: ["+ домен ~150-300 Kč / год", "+ хостинг 0 Kč для обычного лендинга"],
-    includes: ["расширенная структура", "больше секций", "второй язык по задаче", "thank-you page", "базовая аналитика"],
+    includes: ["расширенная структура", "дополнительные секции", "второй язык по задаче", "thank-you page", "базовая аналитика"],
     cta: "Выбрать Plus",
     recommended: true
   },
@@ -209,9 +209,9 @@ const pricingPlans = [
     key: "Pro",
     title: "PRO",
     subtitle: "Под рекламу и рост",
-    price: "от 20 000 Kč",
+    price: "от 20 000 Kč / от ≈800 €",
     timeline: "индивидуально",
-    goodFor: "Аналитика кликов, UTM, SEO-основа, дополнительные секции и подготовка к продвижению.",
+    goodFor: "Для сайта под рекламу и рост: аналитика кликов, UTM, SEO-основа, дополнительные секции и подготовка к продвижению.",
     extras: ["+ домен ~150-300 Kč / год", "+ платные сервисы по задаче"],
     includes: ["расширенная структура", "UTM/аналитика кликов", "SEO-основа", "дополнительные секции", "подготовка к рекламе"],
     cta: "Обсудить Pro",
@@ -220,7 +220,7 @@ const pricingPlans = [
 ];
 
 const faqItems = [
-  ["Сколько стоит сайт?", "Простой сайт по demo-шаблону начинается с пакета START 10 000 Kč. PLUS стоит 15 000 Kč, PRO начинается от 20 000 Kč."],
+  ["Сколько стоит сайт?", "Простой сайт по demo-шаблону начинается с пакета START 10 000 Kč / ≈400 €. PLUS стоит 15 000 Kč / ≈600 €, PRO начинается от 20 000 Kč / от ≈800 €."],
   ["Сколько времени занимает?", "Быстрый landing можно собрать за 2-5 дней. Бизнес-сайт обычно 5-10 дней. MVP оценивается отдельно."],
   ["Можно использовать шаблон как основу?", "Да. Это хороший способ быстрее стартовать, сразу увидеть стиль и снизить неопределённость."],
   ["Что нужно от клиента?", "Описание услуги, контакты, примеры сайтов, фото/логотип если есть, желаемые сроки и примерный бюджет."],
@@ -422,7 +422,7 @@ function buildPricingModal() {
     </div>
     <div class="pricing-note">
       <h3>Минимальный запуск</h3>
-      <p>START 10 000 Kč + домен примерно 150-300 Kč / год + бесплатный хостинг.</p>
+      <p>START 10 000 Kč / ≈400 € + домен примерно 150-300 Kč / год + бесплатный хостинг.</p>
       <p>То есть для простого сайта-витрины ежемесячный хостинг может быть 0 Kč.</p>
       <small>Не входит в цену: домен, платные формы, платный хостинг, рекламный бюджет, логотип, профессиональные фото, переводы и сложные функции оплачиваются отдельно.</small>
     </div>`;
@@ -477,9 +477,9 @@ function buildLeadModal(projectOrPlan = "") {
         <label>Бюджет<select name="budget">
           <option>Нужно обсудить</option>
           <option>до 10 000 Kč</option>
-          <option>START 10 000 Kč</option>
-          <option>PLUS 15 000 Kč</option>
-          <option>PRO от 20 000 Kč</option>
+          <option>START 10 000 Kč / ≈400 €</option>
+          <option>PLUS 15 000 Kč / ≈600 €</option>
+          <option>PRO от 20 000 Kč / от ≈800 €</option>
         </select></label>
         <label>Срок<select name="timeline">
           <option>Нужно обсудить</option>
@@ -491,11 +491,11 @@ function buildLeadModal(projectOrPlan = "") {
       </div>
       <label>Выбранный шаблон<input name="selected_template_visible" placeholder="Ссылка или название шаблона" value="${selected}"></label>
       <div class="field-row">
-        <label>Пакет<select name="selected_package_visible">
+        <label>Пакет / уровень запуска<select name="selected_package_visible" required>
           <option value="">Нужно обсудить</option>
-          ${pricingPlans.map((plan) => `<option value="${plan.key}" ${selectedPackage === plan.key ? "selected" : ""}>${plan.title} - ${plan.price}</option>`).join("")}
+          ${pricingPlans.map((plan) => `<option value="${plan.key}" ${selectedPackage === plan.key ? "selected" : ""}>${plan.title} - ${plan.price} — ${plan.subtitle}</option>`).join("")}
         </select></label>
-        <label>Цена пакета<input name="package_price_visible" value="${packagePrice}" placeholder="Автоматически или обсудим"></label>
+        <label>Цена пакета<input name="package_price_visible" value="${packagePrice}" placeholder="Автоматически после выбора" readonly></label>
       </div>
       <label>Что нужно сделать?<textarea name="message" rows="5" required placeholder="Опишите услугу, сроки, материалы, что уже есть"></textarea></label>
       <button class="btn dark full" type="submit">Отправить заявку</button>
@@ -627,6 +627,24 @@ function packagePayloadFromButton(button) {
     package: button.dataset.package,
     price: button.dataset.packagePrice || ""
   };
+}
+
+function openLeadFromUrl() {
+  const params = new URLSearchParams(window.location.search);
+  if (params.get("lead") !== "1") return;
+  const packageKey = params.get("package") || "";
+  const template = params.get("template") || "";
+  const plan = pricingPlans.find((item) => item.key.toLowerCase() === packageKey.toLowerCase());
+  window.setTimeout(() => {
+    openModal("lead", {
+      kind: "package",
+      template,
+      package: plan?.key || packageKey,
+      price: plan?.price || ""
+    });
+    const cleanUrl = `${window.location.pathname}${window.location.hash || ""}`;
+    window.history.replaceState(null, "", cleanUrl);
+  }, 120);
 }
 
 function renderCategoryVisual(category, lazy = true) {
@@ -872,3 +890,4 @@ renderServices();
 renderCategories();
 renderProjects();
 renderFaq();
+openLeadFromUrl();

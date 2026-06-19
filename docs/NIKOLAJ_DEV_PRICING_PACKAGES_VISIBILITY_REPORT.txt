@@ -1,0 +1,61 @@
+NIKOLAJ DEV PRICING PACKAGES VISIBILITY REPORT
+
+Folder:
+C:\Users\User\mylanding
+
+Task:
+Make the 3 website package prices visible and understandable across the portfolio and demo templates.
+
+Package logic added:
+- START: 10 000 Kč / approximately 400 EUR
+  Ready demo template: replace client text, photos, contacts, form, domain and prepare launch.
+- PLUS: 15 000 Kč / approximately 600 EUR
+  More blocks, more adaptation, optional second language, thank-you page and basic analytics.
+- PRO: from 20 000 Kč / from approximately 800 EUR
+  Larger structure for ads/growth: click analytics, UTM, SEO base, extra sections and promotion preparation.
+
+Files changed:
+- index.html
+- assets/css/style.css
+- assets/js/app.js
+- assets/js/site-categories.js
+- demos/bakery-cafe/index.html
+- demos/restaurant-cafe/index.html
+- demos/rempro/index.html
+- demos/czechtrip/index.html
+
+What changed:
+- Added an early visible "3 варианта запуска" pricing section on the main portfolio page, before the catalog.
+- Updated hero and featured Bakery preview pricing to show START 10 000 Kč / approximately 400 EUR.
+- Updated the existing pricing section to show Kč plus approximate EUR equivalents.
+- Replaced old vague EUR category ranges with package-based prices in the catalog.
+- Updated service/project cards and pricing modal data.
+- Made lead form package selection required on the main portfolio form.
+- Forminit submission now carries:
+  selected_package
+  package_price
+  selected_template
+- Bakery and Restaurant demo forms now show a visible required package selector and sync hidden Forminit fields.
+- RemPro and CzechTrip pricing CTA links now open the main lead form with selected template and package through URL parameters.
+
+Form behavior:
+- Clicking "Выбрать Start", "Выбрать Plus", or "Обсудить Pro" opens/prefills the lead form.
+- If the client opens the form without clicking a package CTA, they must choose the package manually.
+- Nikolaj should see selected_package and package_price in Forminit/email payload.
+
+Checks performed:
+- node --check assets\js\app.js: OK
+- node --check assets\js\site-categories.js: OK
+- git diff --check: OK, only Windows LF/CRLF warnings from Git.
+- Search for old simple EUR ranges in index/assets/js/demos: no old 220-500 / 250-600 EUR style ranges found.
+
+Deploy/commit status:
+- Not deployed in this patch.
+- Not pushed in this patch.
+- Repository was already ahead of origin by 1 commit before this patch.
+
+Important note:
+If the live GitHub Pages site still does not show these prices, the reason is that local changes/commits have not been pushed to GitHub Pages yet.
+
+Next recommended step:
+Review locally, then commit and push after Nikolaj approves publishing these changes.

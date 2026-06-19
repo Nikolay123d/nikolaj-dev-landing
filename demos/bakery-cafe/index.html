@@ -336,7 +336,9 @@
     .template-price-card.premium p, .template-price-card.premium small { color: rgba(255,255,255,.78); }
     .template-price-card .badge { align-self: flex-start; padding: 5px 9px; border-radius: 999px; background: linear-gradient(135deg, #f2ba55, #c8882a); color: #24160b; font-size: 12px; font-weight: 900; }
     .template-price-card strong { font-size: 32px; line-height: 1; color: var(--blue-dark); }
+    .template-price-card strong small { display: block; margin-top: 5px; font-size: 15px; color: var(--muted); }
     .template-price-card.premium strong { color: #fff; }
+    .template-price-card.premium strong small { color: rgba(255,255,255,.78); }
     .template-price-card h3 { font-size: 22px; color: inherit; }
     .template-price-card p, .template-price-card small { margin: 0; color: var(--muted); font-weight: 750; }
     .template-price-card .btn { margin-top: auto; width: 100%; }
@@ -633,34 +635,34 @@
         <div class="template-pricing-grid">
           <article class="template-price-card">
             <span class="badge">START</span>
-            <strong>10 000 Kč</strong>
+            <strong>10 000 Kč <small>≈400 €</small></strong>
             <h3>Start Bakery Site</h3>
             <p>Фото, тексты, контакты, меню, форма заявки и мобильная версия.</p>
             <small>+ домен ~150-300 Kč / год</small>
             <small>+ хостинг 0 Kč для обычного лендинга</small>
-            <a class="btn primary" href="#order" data-package="Start" data-package-price="10 000 Kč">Выбрать Start</a>
+            <a class="btn primary" href="#order" data-package="Start" data-package-price="10 000 Kč / ≈400 €">Выбрать Start</a>
           </article>
           <article class="template-price-card recommended">
             <span class="badge">Популярно</span>
-            <strong>15 000 Kč</strong>
+            <strong>15 000 Kč <small>≈600 €</small></strong>
             <h3>Bakery Plus</h3>
             <p>Больше блоков, второй язык, thank-you page и базовая аналитика.</p>
             <small>+ домен ~150-300 Kč / год</small>
             <small>+ хостинг 0 Kč для обычного лендинга</small>
-            <a class="btn primary" href="#order" data-package="Plus" data-package-price="15 000 Kč">Выбрать Plus</a>
+            <a class="btn primary" href="#order" data-package="Plus" data-package-price="15 000 Kč / ≈600 €">Выбрать Plus</a>
           </article>
           <article class="template-price-card premium">
             <span class="badge">PRO</span>
-            <strong>от 20 000 Kč</strong>
+            <strong>от 20 000 Kč <small>от ≈800 €</small></strong>
             <h3>Bakery Pro</h3>
             <p>UTM, SEO-основа, дополнительные секции и подготовка к рекламе.</p>
             <small>+ домен ~150-300 Kč / год</small>
             <small>+ платные сервисы по задаче</small>
-            <a class="btn primary" href="#order" data-package="Pro" data-package-price="от 20 000 Kč">Обсудить Pro</a>
+            <a class="btn primary" href="#order" data-package="Pro" data-package-price="от 20 000 Kč / от ≈800 €">Обсудить Pro</a>
           </article>
         </div>
         <div class="template-cost-note">
-          <strong>Минимальный запуск:</strong> START 10 000 Kč + домен примерно 150-300 Kč / год + бесплатный хостинг.
+          <strong>Минимальный запуск:</strong> START 10 000 Kč / ≈400 € + домен примерно 150-300 Kč / год + бесплатный хостинг.
           Для простого сайта-витрины ежемесячный хостинг может быть 0 Kč. Домен, платные формы, платный хостинг, рекламный бюджет, логотип, профессиональные фото, переводы и сложные функции оплачиваются отдельно.
         </div>
       </div>
@@ -684,6 +686,15 @@
           <input type="hidden" name="package_price" value="">
           <input type="hidden" name="source" value="bakery-demo">
           <input type="hidden" name="business_type" value="Bakery / Cafe">
+          <label>Пакет сайта
+            <select name="selected_package_visible" required>
+              <option value="">Выберите пакет</option>
+              <option value="Start" data-price="10 000 Kč / ≈400 €">START — 10 000 Kč / ≈400 € — готовый demo-шаблон</option>
+              <option value="Plus" data-price="15 000 Kč / ≈600 €">PLUS — 15 000 Kč / ≈600 € — больше блоков и доработка</option>
+              <option value="Pro" data-price="от 20 000 Kč / от ≈800 €">PRO — от 20 000 Kč / от ≈800 € — под рекламу и рост</option>
+            </select>
+          </label>
+          <label>Цена пакета<input name="package_price_visible" placeholder="Автоматически после выбора" readonly></label>
           <label>Имя<input name="name" autocomplete="name" required></label>
           <label>Телефон / WhatsApp / Telegram<input name="phone" autocomplete="tel" required></label>
           <label>Telegram / WhatsApp<input name="telegram_whatsapp" placeholder="@username или номер"></label>
@@ -780,11 +791,27 @@
       observer.observe(video);
     });
 
+    const orderForm = document.querySelector("#order form");
+    const packageSelect = orderForm?.querySelector("[name='selected_package_visible']");
+    const packagePriceVisible = orderForm?.querySelector("[name='package_price_visible']");
+    const syncPackage = (packageName, packagePrice) => {
+      if (!orderForm) return;
+      orderForm.querySelector("[name='selected_package']").value = packageName || "";
+      orderForm.querySelector("[name='package_price']").value = packagePrice || "";
+      if (packageSelect) packageSelect.value = packageName || "";
+      if (packagePriceVisible) packagePriceVisible.value = packagePrice || "";
+    };
+    packageSelect?.addEventListener("change", () => {
+      const option = packageSelect.selectedOptions[0];
+      syncPackage(packageSelect.value, option?.dataset.price || "");
+    });
+    orderForm?.addEventListener("submit", () => {
+      const option = packageSelect?.selectedOptions[0];
+      syncPackage(packageSelect?.value || "", option?.dataset.price || packagePriceVisible?.value || "");
+    });
     document.querySelectorAll("[data-package]").forEach((link) => {
       link.addEventListener("click", () => {
-        const form = document.querySelector("#order form");
-        form.querySelector("[name='selected_package']").value = link.dataset.package || "";
-        form.querySelector("[name='package_price']").value = link.dataset.packagePrice || "";
+        syncPackage(link.dataset.package || "", link.dataset.packagePrice || "");
       });
     });
   </script>

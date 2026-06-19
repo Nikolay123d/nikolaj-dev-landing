@@ -210,6 +210,35 @@ img{max-width:100%;display:block}
 .format-help-card p{color:var(--muted);font-size:17px;margin:0}
 .format-help-actions{display:grid;gap:10px}
 
+.quick-pricing-section{padding-top:52px;background:linear-gradient(180deg,#fff,#eef5ff)}
+.quick-price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.quick-price-grid article{
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  padding:24px;
+  border:1px solid var(--line);
+  border-radius:24px;
+  background:#fff;
+  box-shadow:0 18px 54px rgba(31,47,71,.1)
+}
+.quick-price-grid article.recommended{border-color:rgba(37,99,235,.44);background:linear-gradient(180deg,#fff,#eef5ff);box-shadow:0 28px 80px rgba(37,99,235,.17)}
+.quick-price-grid article.premium{background:linear-gradient(145deg,#111827,#1e2a44);color:#fff;border-color:rgba(125,211,252,.22)}
+.quick-price-grid article.premium p{color:#cbd5e1}
+.quick-price-grid span{color:var(--blue);font-size:12px;font-weight:950;letter-spacing:.14em;text-transform:uppercase}
+.quick-price-grid .premium span{color:#7dd3fc}
+.quick-price-grid strong{font-family:"Space Grotesk",Manrope,sans-serif;font-size:clamp(30px,4vw,42px);line-height:1;color:var(--dark)}
+.quick-price-grid .premium strong{color:#fff}
+.quick-price-grid strong small,.simple-price-card>strong small{display:block;margin-top:6px;color:var(--muted);font-family:Manrope,Arial,sans-serif;font-size:16px;line-height:1.25}
+.quick-price-grid .premium strong small,.simple-price-card.premium>strong small{color:#cbd5e1}
+.quick-price-grid h3{margin:0;font-size:22px}
+.quick-price-grid p{margin:0;color:var(--muted);font-weight:720}
+.quick-price-grid .btn{width:100%;margin-top:auto}
+.quick-price-grid em{align-self:flex-start;border-radius:999px;background:linear-gradient(135deg,var(--gold),#f7c766);color:#291a0b;padding:6px 10px;font-size:12px;font-style:normal;font-weight:950}
+.quick-price-note{margin-top:16px;padding:16px 18px;border:1px solid rgba(37,99,235,.16);border-radius:18px;background:#fff;color:var(--muted);font-weight:850;box-shadow:0 12px 34px rgba(31,47,71,.07)}
+.quick-price-note strong{color:var(--ink)}
+
 .work-section{background:linear-gradient(180deg,rgba(255,255,255,.45),rgba(238,243,251,.8))}
 .work-toolbar{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
 .work-toolbar button{border:1px solid var(--line);border-radius:999px;background:#fff;padding:10px 14px;font-weight:900;color:var(--muted)}
@@ -322,7 +351,7 @@ img{max-width:100%;display:block}
   .hero-grid,.section-head.split,.argus-grid,.contact-grid,.detail-layout,.argus-modal{grid-template-columns:1fr}
   .featured-demo-card{grid-template-columns:1fr}
   .featured-demo-copy{padding:0}
-  .service-grid,.category-grid,.project-grid,.why-grid,.value-grid,.process-grid,.pricing-modal-grid,.simple-pricing-grid{grid-template-columns:repeat(2,1fr)}
+  .service-grid,.category-grid,.project-grid,.why-grid,.value-grid,.process-grid,.pricing-modal-grid,.simple-pricing-grid,.quick-price-grid{grid-template-columns:repeat(2,1fr)}
   .format-help-card{grid-template-columns:1fr}
   .category-detail{grid-template-columns:1fr}
 }
@@ -336,7 +365,7 @@ img{max-width:100%;display:block}
   .featured-demo-actions{display:grid}
   .featured-demo-actions .btn{width:100%}
   .service-grid,.category-grid,.project-grid,.why-grid,.value-grid,.process-grid,.pricing-modal-grid,.field-row,.detail-gallery{grid-template-columns:1fr}
-  .section{padding:58px 0}.pricing-card{display:grid;padding:22px}.pricing-actions{width:100%}.pricing-actions-inline,.simple-pricing-grid{grid-template-columns:1fr}.simple-price-card{padding:18px}
+  .section{padding:58px 0}.pricing-card{display:grid;padding:22px}.pricing-actions{width:100%}.pricing-actions-inline,.simple-pricing-grid,.quick-price-grid{grid-template-columns:1fr}.simple-price-card,.quick-price-grid article{padding:18px}
   .floating-cta{left:14px;right:14px;bottom:14px;grid-template-columns:auto 1fr}.floating-cta button:not(:first-child){grid-column:1 / -1;width:100%}
   .modal-panel{padding:18px;margin:3vh auto;max-height:94vh}.demo-frame{height:72vh}
   .modal.demo-open .modal-panel{width:100vw;height:100dvh;margin:0;border-radius:0;padding:7px}

@@ -127,3 +127,73 @@ Images are stored locally for the Nikolaj Dev landing page. Sources were selecte
 - Title: Photo of an Apple MacBook Air with strong bokeh
 - Author: Free-Photos from Pixabay
 - License: CC0 1.0
+
+# Restaurant / Cafe Demo Image Credits
+
+Images below are stored in `assets/images/restaurant-cafe/` and used for the fictional Luma Bistro Prague demo template.
+
+## restaurant-cafe/hero-food.jpg
+- Source: https://commons.wikimedia.org/wiki/File:DZ6_2628_Cozy_candlelit_dinner_for_two_elegant_Thai_restaurant_setting_with_twinkling_lights_and_a_delicate_orchid_centerpiece.jpg
+- Title: Cozy candlelit dinner for two elegant Thai restaurant setting
+- Author: PattayaPatrol
+- License: CC BY-SA 4.0
+
+## restaurant-cafe/interior.jpg
+- Source: https://www.flickr.com/photos/139494081@N07/24053996373
+- Title: Riversdale Estate French Bistro interior
+- Author: RiversdaleEstateMedia, Tasmania
+- License: CC BY 2.0
+
+## restaurant-cafe/dish-pasta.jpg
+- Source: https://www.flickr.com/photos/28842017@N00/14796645785
+- Title: truffle pasta
+- Author: jaumescar
+- License: CC BY 2.0
+
+## restaurant-cafe/dish-seafood.jpg
+- Source: https://www.flickr.com/photos/92269745@N00/6635663625
+- Title: Maine Lobster
+- Author: ralph and jenny
+- License: CC BY 2.0
+
+## restaurant-cafe/dish-burrata.jpg
+- Source: https://www.flickr.com/photos/35034346243@N01/2648693308
+- Title: mozzarella burrata salad
+- Author: stu_spivack
+- License: CC BY-SA 2.0
+
+## restaurant-cafe/dish-dessert.jpg
+- Source: https://www.flickr.com/photos/10559879@N00/3748586275
+- Title: Chocolate flood - Soft centred Swiss chocolate pudding
+- Author: avlxyz
+- License: CC BY-SA 2.0
+
+## restaurant-cafe/gallery-table.jpg
+- Source: https://www.flickr.com/photos/71132408@N00/4428068581
+- Title: IMG_0202
+- Author: Neeta Lind
+- License: CC BY 2.0
+
+## restaurant-cafe/gallery-bar.jpg
+- Source: https://www.flickr.com/photos/11615637@N05/2506697732
+- Title: Charlie Palmer's Fin Fish
+- Author: ghahnroyal
+- License: CC BY 2.0
+
+# Restaurant / Cafe Demo Video Credits
+
+Videos below are stored in `assets/videos/restaurant-cafe/` and used as local background media for the fictional Luma Bistro Prague demo template. They are muted, poster-first, and not used as proof of a real Luma Bistro client.
+
+## restaurant-cafe/hero-charring.webm
+- Source: https://commons.wikimedia.org/wiki/File:2026-0116_Ogawa_charring.webm
+- Title: 2026-0116 Ogawa charring
+- Author: Bobak Ha'Eri
+- License: CC BY 3.0
+- Local role: top hero atmospheric food/preparation video
+
+## restaurant-cafe/atmosphere-kitchen.webm
+- Source: https://commons.wikimedia.org/wiki/File:2024-1219_Koya_king_crab_prep.webm
+- Title: 2024-1219 Koya king crab prep
+- Author: Bobak Ha'Eri
+- License: CC BY 3.0
+- Local role: lazy-loaded lower atmosphere/open-kitchen video

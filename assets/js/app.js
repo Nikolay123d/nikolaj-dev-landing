@@ -54,6 +54,22 @@ const siteCategories = window.siteCategories || [];
 
 const projects = [
   {
+    id: "restaurant-cafe",
+    group: "template",
+    title: "Restaurant / Cafe Website",
+    label: "New demo",
+    category: "Restaurant / cafe",
+    image: "assets/images/restaurant-cafe/hero-food.jpg",
+    gallery: ["assets/images/restaurant-cafe/hero-food.jpg", "assets/images/restaurant-cafe/interior.jpg", "assets/images/restaurant-cafe/dish-pasta.jpg"],
+    demoUrl: "demos/restaurant-cafe/index.html",
+    price: "от 250 €",
+    timeline: "3-7 дней",
+    short: "Премиальный demo-сайт ресторана: меню, бронь, фото блюд, контакты, карта и мобильные CTA.",
+    forWhom: "Для кафе, ресторана, бистро, винного бара, brunch-place или доставки еды, где важно быстро показать меню, атмосферу и принять заявку.",
+    features: ["Hero с атмосферой", "HTML-меню с ценами", "Форма брони", "Галерея", "Mobile bottom nav"],
+    includes: ["Адаптация под бренд", "Замена меню и фото", "Форма бронирования", "Кнопки Telegram/Facebook/звонок", "Подготовка к публикации"]
+  },
+  {
     id: "rempro",
     group: "template",
     title: "RemPro Renovation Landing",

@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Restaurant Website Demo | Nikolaj Dev</title>
+<meta name="description" content="Demo landing page for a restaurant or cafe: menu, reservation, gallery, opening hours, contact buttons and mobile-friendly design.">
+<meta property="og:title" content="Restaurant / Cafe Website Demo">
+<meta property="og:description" content="Menu, reservation, gallery, opening hours and contact buttons for a modern restaurant website.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="../../assets/images/restaurant-cafe/hero-food.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#fbf4e8;
+  --paper:#fffaf2;
+  --paper2:#f4ead9;
+  --espresso:#20130e;
+  --coffee:#382119;
+  --wine:#6c1f2f;
+  --caramel:#c48138;
+  --gold:#d8ad66;
+  --olive:#53633d;
+  --muted:#7d6d5c;
+  --line:rgba(56,33,25,.16);
+  --shadow:0 18px 60px rgba(32,19,14,.16);
+  --r:22px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{margin:0;background:var(--cream);color:var(--espresso);font-family:Manrope,Arial,sans-serif;line-height:1.58;overflow-x:hidden;padding-bottom:74px}
+img{display:block;max-width:100%}
+a{color:inherit}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+.wrap{width:min(1160px,calc(100% - 32px));margin:0 auto}
+.demo-bar{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:center;gap:10px;min-height:36px;padding:6px 12px;background:rgba(32,19,14,.92);color:#fff;border-bottom:1px solid rgba(216,173,102,.28);backdrop-filter:blur(12px);font-size:12px;font-weight:800}
+.demo-bar a{color:#ffe7be;text-decoration:none}.demo-bar .order{background:linear-gradient(135deg,var(--caramel),var(--wine));color:#fff;border:0;border-radius:999px;padding:6px 10px;text-decoration:none}
+.site-nav{position:sticky;top:36px;z-index:45;background:rgba(251,244,232,.9);border-bottom:1px solid var(--line);backdrop-filter:blur(18px)}
+.nav-inner{height:66px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{font-family:"Playfair Display",serif;font-size:27px;font-weight:800;text-decoration:none;color:var(--coffee)}.brand span{color:var(--caramel)}
+.nav-links{display:flex;align-items:center;gap:4px}.nav-links a{padding:9px 12px;border-radius:999px;text-decoration:none;color:var(--muted);font-size:14px;font-weight:800}.nav-links a:hover{background:#fff;color:var(--espresso)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;border-radius:999px;padding:12px 18px;border:1px solid transparent;text-decoration:none;font-weight:900}
+.btn.primary{background:linear-gradient(135deg,var(--caramel),var(--wine));color:#fff;box-shadow:0 16px 36px rgba(108,31,47,.26)}
+.btn.secondary{background:#fff6e8;color:var(--coffee);border-color:rgba(196,129,56,.32)}
+.btn.dark{background:var(--espresso);color:#fff}.btn.full{width:100%}
+.hero{position:relative;min-height:calc(100svh - 36px);display:grid;align-items:end;overflow:hidden;background:var(--espresso);isolation:isolate}
+.hero-media{position:absolute;inset:0;z-index:0;background:#20130e}
+.hero-media img,.hero-media video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(1.08) contrast(1.03)}
+.hero-media img{z-index:0}
+.hero-media img{animation:slowPan 18s ease-in-out infinite alternate}
+.hero-media video{z-index:1;opacity:0;transition:opacity .75s ease;will-change:opacity}
+.hero-media video.is-ready{opacity:1}
+.hero-media video.is-disabled{display:none}
+.hero-media::after{content:"";position:absolute;inset:0;z-index:2;background:linear-gradient(90deg,rgba(32,19,14,.86),rgba(32,19,14,.52) 48%,rgba(32,19,14,.18)),linear-gradient(0deg,rgba(32,19,14,.82),transparent 46%)}
+@keyframes slowPan{from{transform:scale(1.02)}to{transform:scale(1.1) translateX(-1.5%)}}
+.hero-content{position:relative;z-index:1;padding:116px 0 76px;color:#fff}
+.eyebrow{margin:0 0 12px;color:#ffdca8;text-transform:uppercase;letter-spacing:.14em;font-size:12px;font-weight:900}
+h1,h2,h3{font-family:"Playfair Display",serif;line-height:1.02;margin:0;color:inherit}
+h1{max-width:780px;font-size:clamp(42px,8vw,88px)}h2{font-size:clamp(32px,5vw,58px)}h3{font-size:25px}
+.hero p{max-width:680px;color:rgba(255,255,255,.84);font-size:clamp(17px,2vw,21px);margin:18px 0 26px}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px}.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}.chips span{border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.1);color:#fff;border-radius:999px;padding:8px 12px;font-size:13px;font-weight:800}
+.info-strip{position:relative;z-index:2;margin-top:-34px}.info-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;background:rgba(255,250,242,.94);border:1px solid var(--line);border-radius:24px;padding:12px;box-shadow:var(--shadow)}
+.info-grid article{padding:14px;border-radius:16px;background:#fff}.info-grid span{display:block;color:var(--muted);font-size:12px;font-weight:800}.info-grid strong{display:block;margin-top:4px}
+.section{padding:76px 0}.split{display:grid;grid-template-columns:1fr .92fr;gap:36px;align-items:center}.lead{color:var(--muted);font-size:18px}.kicker{color:var(--caramel);font-weight:900;text-transform:uppercase;letter-spacing:.12em;font-size:12px;margin-bottom:10px}
+.media-card{position:relative;overflow:hidden;border-radius:var(--r);box-shadow:var(--shadow);background:var(--coffee);min-height:360px}.media-card img,.media-card video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.media-card img{z-index:0}.media-card::after{content:"";position:absolute;inset:0;z-index:2;background:linear-gradient(0deg,rgba(32,19,14,.5),transparent)}
+.atmosphere-video{min-height:410px}.atmosphere-video img{animation:slowPan 22s ease-in-out infinite alternate}.atmosphere-video video{z-index:1;opacity:0;transition:opacity .75s ease;will-change:opacity}.atmosphere-video video.is-ready{opacity:1}.atmosphere-video video.is-disabled{display:none}
+@media(prefers-reduced-motion:reduce){.hero-media img,.atmosphere-video img{animation:none}.hero-media video,.atmosphere-video video{display:none}}
+.feature-grid,.dish-grid,.special-grid,.trust-grid,.faq-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.feature-grid article,.special-grid article,.trust-grid article,.faq-grid details{background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:20px;box-shadow:0 12px 36px rgba(32,19,14,.08)}
+.feature-grid{margin-top:22px}.feature-grid h3,.special-grid h3,.trust-grid h3{font-size:21px}.feature-grid p,.special-grid p,.trust-grid p,.faq-grid p{color:var(--muted);margin:8px 0 0}
+.section-head{display:flex;justify-content:space-between;gap:24px;align-items:end;margin-bottom:28px}.section-head p{max-width:520px;color:var(--muted)}
+.dish-card{overflow:hidden;border-radius:22px;background:var(--paper);border:1px solid var(--line);box-shadow:0 16px 44px rgba(32,19,14,.1)}.dish-card img{width:100%;aspect-ratio:4/3;object-fit:cover}.dish-body{padding:18px}.dish-body h3{font-size:22px}.dish-body p{color:var(--muted);min-height:50px}.dish-meta{display:flex;align-items:center;justify-content:space-between;gap:12px}.dish-meta span{background:#f1e2cc;color:var(--coffee);border-radius:999px;padding:6px 10px;font-size:12px;font-weight:900}.dish-meta strong{color:var(--wine)}
+.menu-board{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}.menu-col{background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:24px}.menu-item{display:grid;grid-template-columns:1fr auto;gap:16px;padding:14px 0;border-bottom:1px solid var(--line)}.menu-item:last-child{border-bottom:0}.menu-item p{margin:4px 0 0;color:var(--muted);font-size:14px}.menu-note{margin-top:16px;color:var(--muted);font-size:14px}
+.booking{background:linear-gradient(135deg,var(--espresso),#3b1d17);color:#fff}.booking h2{color:#fff}.booking p{color:rgba(255,255,255,.72)}.booking-card{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:24px;padding:24px}.booking form{display:grid;gap:12px}.field-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}input,select,textarea{width:100%;border:1px solid rgba(56,33,25,.16);border-radius:14px;background:#fffaf2;padding:13px;color:var(--espresso);outline:0}textarea{resize:vertical}.booking input,.booking select,.booking textarea{background:rgba(255,255,255,.95)}
+.gallery{display:grid;grid-template-columns:1.2fr .8fr .8fr;gap:14px}.gallery img{width:100%;height:260px;object-fit:cover;border-radius:20px;box-shadow:0 14px 38px rgba(32,19,14,.12)}.gallery img:first-child{height:534px;grid-row:span 2}
+.location-card{display:grid;grid-template-columns:1fr 1fr;gap:24px;background:var(--paper);border:1px solid var(--line);border-radius:26px;padding:24px;box-shadow:var(--shadow)}.map-box{min-height:300px;border-radius:20px;background:linear-gradient(135deg,#ead8bd,#c48138);display:grid;place-items:center;text-align:center;color:#fff;padding:24px}.contact-list{display:grid;gap:10px;margin-top:18px}.contact-list a,.contact-list span{padding:13px;border:1px solid var(--line);border-radius:14px;background:#fff;text-decoration:none;color:var(--coffee);font-weight:800}
+.final-cta{background:var(--coffee);color:#fff}.final-card{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center}.final-card p{color:rgba(255,255,255,.76);max-width:760px}.final-actions{display:grid;gap:10px;min-width:230px}
+.bottom-nav{position:fixed;left:10px;right:10px;bottom:10px;z-index:60;display:none;grid-template-columns:repeat(4,1fr);gap:6px;background:rgba(32,19,14,.92);border:1px solid rgba(216,173,102,.25);border-radius:18px;padding:7px;backdrop-filter:blur(14px)}.bottom-nav a{color:#fff;text-decoration:none;text-align:center;font-size:12px;font-weight:900;padding:8px 4px;border-radius:12px}.bottom-nav a:hover{background:rgba(255,255,255,.1)}
+footer{padding:34px 0;background:var(--espresso);color:rgba(255,255,255,.68)}footer .wrap{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}
+@media(max-width:900px){.nav-links{display:none}.split,.location-card,.final-card{grid-template-columns:1fr}.info-grid,.feature-grid,.dish-grid,.special-grid,.trust-grid,.faq-grid{grid-template-columns:repeat(2,1fr)}.gallery{grid-template-columns:1fr 1fr}.gallery img:first-child{grid-column:1/-1;height:340px}.menu-board{grid-template-columns:1fr}}
+@media(max-width:640px){body{padding-bottom:82px}.demo-bar{justify-content:flex-start;overflow-x:auto;white-space:nowrap;min-height:34px;font-size:11px}.demo-bar .hide-sm{display:none}.site-nav{top:34px}.nav-inner{height:58px}.brand{font-size:23px}.hero{min-height:calc(100svh - 34px)}.hero-content{padding:94px 0 92px}.hero p{font-size:16px}.hero-actions .btn{width:100%}.info-strip{margin-top:0}.info-grid,.feature-grid,.dish-grid,.special-grid,.trust-grid,.faq-grid,.field-row{grid-template-columns:1fr}.section{padding:58px 0}.section-head{display:block}.media-card{min-height:300px}.gallery{grid-template-columns:1fr}.gallery img,.gallery img:first-child{height:260px}.final-actions{min-width:0}.bottom-nav{display:grid}}
+</style>
+</head>
+<body>
+  <div class="demo-bar">
+    <span>DEMO-шаблон ресторана</span>
+    <span class="hide-sm">·</span>
+    <a href="../../index.html#catalog">← Назад</a>
+    <span>·</span>
+    <a class="order" href="#booking">Заказать похожий</a>
+  </div>
+
+  <nav class="site-nav" aria-label="Навигация Luma Bistro">
+    <div class="wrap nav-inner">
+      <a class="brand" href="#top">Luma <span>Bistro</span></a>
+      <div class="nav-links">
+        <a href="#menu">Меню</a>
+        <a href="#booking">Бронь</a>
+        <a href="#gallery">Галерея</a>
+        <a href="#contact">Контакты</a>
+      </div>
+      <a class="btn primary" href="#booking">Забронировать</a>
+    </div>
+  </nav>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-media" aria-hidden="true">
+        <img src="../../assets/images/restaurant-cafe/hero-food.jpg" alt="">
+        <video class="hero-video" muted loop playsinline preload="metadata" poster="../../assets/images/restaurant-cafe/hero-food.jpg">
+          <source src="../../assets/videos/restaurant-cafe/hero-charring.webm" type="video/webm">
+        </video>
+      </div>
+      <div class="wrap hero-content">
+        <p class="eyebrow">Luma Bistro Prague</p>
+        <h1>Тёплая кухня, сезонные блюда и уютные вечера в центре Праги</h1>
+        <p>Меню, бронирование, фото блюд, контакты и карта — всё, что нужно гостю, чтобы быстро выбрать ресторан и оставить заявку.</p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#booking">Забронировать стол</a>
+          <a class="btn secondary" href="#menu">Посмотреть меню</a>
+        </div>
+        <div class="chips">
+          <span>Прага 1</span><span>Бронирование онлайн</span><span>Меню с ценами</span><span>Мобильная версия</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="info-strip">
+      <div class="wrap info-grid">
+        <article><span>Часы</span><strong>Пн–Вс 10:00–22:00</strong></article>
+        <article><span>Локация</span><strong>Prague 1 / centrum</strong></article>
+        <article><span>Телефон</span><strong><a href="tel:+420777123456">+420 777 123 456</a></strong></article>
+        <article><span>Бронь</span><strong>Ответим в течение дня</strong></article>
+        <article><span>Кухня</span><strong>Seasonal / brunch</strong></article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap split">
+        <div>
+          <p class="kicker">Атмосфера</p>
+          <h2>Место, куда хочется вернуться</h2>
+          <p class="lead">Локальные ингредиенты, сезонные блюда, мягкий вечерний свет и понятная бронь. Такой сайт помогает гостю увидеть не только меню, но и настроение заведения.</p>
+          <div class="feature-grid">
+            <article><h3>Seasonal menu</h3><p>Блюда можно быстро менять под сезон, ланч или спецпредложение.</p></article>
+            <article><h3>Fresh ingredients</h3><p>Фотографии и короткие описания показывают качество без длинных текстов.</p></article>
+            <article><h3>Easy reservation</h3><p>Гость сразу видит кнопку брони, телефон и карту.</p></article>
+          </div>
+        </div>
+        <div class="media-card atmosphere-video">
+          <img src="../../assets/images/restaurant-cafe/interior.jpg" alt="Тёплый интерьер ресторана" loading="lazy">
+          <video class="lazy-video" muted loop playsinline preload="none" poster="../../assets/images/restaurant-cafe/interior.jpg" data-src="../../assets/videos/restaurant-cafe/atmosphere-kitchen.webm"></video>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="menu">
+      <div class="wrap">
+        <div class="section-head">
+          <div><p class="kicker">Меню</p><h2>Популярные блюда</h2></div>
+          <p>Demo menu — можно заменить реальными блюдами, ценами, фото и категориями ресторана.</p>
+        </div>
+        <div class="dish-grid">
+          <article class="dish-card"><img src="../../assets/images/restaurant-cafe/dish-burrata.jpg" alt="Burrata with tomatoes" loading="lazy"><div class="dish-body"><h3>Burrata with tomatoes</h3><p>Сливочная burrata, томаты, зелёное масло и хрустящий хлеб.</p><div class="dish-meta"><span>vegetarian</span><strong>245 Kč</strong></div></div></article>
+          <article class="dish-card"><img src="../../assets/images/restaurant-cafe/dish-pasta.jpg" alt="Truffle pasta" loading="lazy"><div class="dish-body"><h3>Truffle pasta</h3><p>Паста с трюфельным маслом, сыром и мягким сливочным соусом.</p><div class="dish-meta"><span>signature</span><strong>345 Kč</strong></div></div></article>
+          <article class="dish-card"><img src="../../assets/images/restaurant-cafe/dish-seafood.jpg" alt="Seafood dish" loading="lazy"><div class="dish-body"><h3>Salmon with herbs</h3><p>Рыба, травы, сезонные овощи и лёгкий соус.</p><div class="dish-meta"><span>gluten-free option</span><strong>385 Kč</strong></div></div></article>
+          <article class="dish-card"><img src="../../assets/images/restaurant-cafe/dish-dessert.jpg" alt="Chocolate fondant" loading="lazy"><div class="dish-body"><h3>Chocolate fondant</h3><p>Тёплый шоколадный десерт с мягкой серединой.</p><div class="dish-meta"><span>dessert</span><strong>185 Kč</strong></div></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="section-head">
+          <div><p class="kicker">Полное меню</p><h2>Меню без PDF-ловушки</h2></div>
+          <p>Гость может прочитать меню прямо на сайте: быстро, удобно, без скачивания файла.</p>
+        </div>
+        <div class="menu-board">
+          <div class="menu-col"><h3>Starters</h3><div class="menu-item"><div><strong>Beef tartare with toast</strong><p>Каперсы, горчица, свежий хлеб.</p></div><strong>295 Kč</strong></div><div class="menu-item"><div><strong>Seasonal soup</strong><p>Ежедневная крем-суп позиция.</p></div><strong>135 Kč</strong></div><div class="menu-item"><div><strong>Goat cheese salad</strong><p>Орехи, яблоко, мёд.</p></div><strong>225 Kč</strong></div></div>
+          <div class="menu-col"><h3>Main dishes</h3><div class="menu-item"><div><strong>Duck confit</strong><p>Картофель, соус demi-glace.</p></div><strong>395 Kč</strong></div><div class="menu-item"><div><strong>Truffle pasta</strong><p>Сливки, пармезан, зелень.</p></div><strong>345 Kč</strong></div><div class="menu-item"><div><strong>Vegetable risotto</strong><p>Сезонные овощи и сыр.</p></div><strong>285 Kč</strong></div></div>
+          <div class="menu-col"><h3>Desserts</h3><div class="menu-item"><div><strong>Chocolate fondant</strong><p>Мороженое и ягоды.</p></div><strong>185 Kč</strong></div><div class="menu-item"><div><strong>Lemon tart</strong><p>Крем, меренга, цедра.</p></div><strong>165 Kč</strong></div></div>
+          <div class="menu-col"><h3>Drinks</h3><div class="menu-item"><div><strong>Homemade lemonade</strong><p>Цитрус, мята, лёд.</p></div><strong>95 Kč</strong></div><div class="menu-item"><div><strong>Glass of house wine</strong><p>White / red / rose.</p></div><strong>125 Kč</strong></div></div>
+        </div>
+        <p class="menu-note">Demo content: позиции, цены и аллергены меняются под реальный ресторан.</p>
+      </div>
+    </section>
+
+    <section class="section booking" id="booking">
+      <div class="wrap split">
+        <div>
+          <p class="kicker">Бронь</p>
+          <h2>Забронировать стол</h2>
+          <p>Форма демонстрационная, но уже показывает, как можно принимать заявки от гостей: имя, контакт, дата, время и количество гостей.</p>
+          <div class="hero-actions">
+            <a class="btn secondary" href="tel:+420777123456">Позвонить</a>
+            <a class="btn secondary" href="https://t.me/pracehub" target="_blank" rel="noopener">Telegram</a>
+          </div>
+        </div>
+        <div class="booking-card">
+          <form action="https://forminit.com/f/kshbr37bfe4" method="POST">
+            <input type="hidden" name="selected_template" value="Restaurant / Cafe Website Demo">
+            <input type="hidden" name="source" value="restaurant-demo">
+            <div class="field-row"><input name="name" placeholder="Имя" required><input name="phone" placeholder="Телефон" required></div>
+            <input name="email" type="email" placeholder="Email">
+            <div class="field-row"><input name="date" type="date"><input name="time" type="time"></div>
+            <select name="guests"><option>2 гостя</option><option>3-4 гостя</option><option>5-8 гостей</option><option>Событие / большая компания</option></select>
+            <textarea name="message" rows="4" placeholder="Комментарий: повод, пожелания, аллергии"></textarea>
+            <button class="btn primary full" type="submit">Отправить заявку</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="section-head"><div><p class="kicker">Предложения</p><h2>Специальные форматы</h2></div><p>Сайт ресторана может продавать не только ужины, но и события, brunch, lunch menu и частные мероприятия.</p></div>
+        <div class="special-grid">
+          <article><h3>Business lunch</h3><p>Быстрое дневное меню для офисов рядом.</p><strong>от 185 Kč</strong></article>
+          <article><h3>Weekend brunch</h3><p>Отдельный блок под выходные, фото и бронирование.</p><strong>по меню</strong></article>
+          <article><h3>Private event</h3><p>Дни рождения, корпоративы, небольшие закрытые ужины.</p><strong>по запросу</strong></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="gallery">
+      <div class="wrap">
+        <div class="section-head"><div><p class="kicker">Галерея</p><h2>Еда, интерьер и настроение</h2></div><p>Для реального клиента сюда ставятся настоящие фото ресторана, блюд, команды и подачи.</p></div>
+        <div class="gallery">
+          <img src="../../assets/images/restaurant-cafe/gallery-table.jpg" alt="Сервировка стола" loading="lazy">
+          <img src="../../assets/images/restaurant-cafe/gallery-bar.jpg" alt="Бар и интерьер" loading="lazy">
+          <img src="../../assets/images/restaurant-cafe/dish-pasta.jpg" alt="Паста" loading="lazy">
+          <img src="../../assets/images/restaurant-cafe/dish-dessert.jpg" alt="Десерт" loading="lazy">
+          <img src="../../assets/images/restaurant-cafe/interior.jpg" alt="Интерьер" loading="lazy">
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="section-head"><div><p class="kicker">Доверие</p><h2>Что гости хотят быстро найти</h2></div><p>Вместо фейковых отзывов демо честно показывает блоки, которые помогают гостю принять решение.</p></div>
+        <div class="trust-grid">
+          <article><h3>Меню с ценами</h3><p>Без PDF как единственного способа посмотреть блюда.</p></article>
+          <article><h3>Фото блюд</h3><p>Гость видит кухню до звонка или брони.</p></article>
+          <article><h3>Адрес и часы</h3><p>Телефон, карта и часы на одной странице.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="wrap location-card">
+        <div>
+          <p class="kicker">Контакты</p>
+          <h2>Luma Bistro Prague</h2>
+          <p class="lead">Demo address: Prague 1, near the river. Для реального проекта сюда ставится точный адрес, телефон, соцсети и карта.</p>
+          <div class="contact-list">
+            <a href="tel:+420777123456">Позвонить: +420 777 123 456</a>
+            <a href="#booking">Забронировать стол</a>
+            <a href="https://t.me/pracehub" target="_blank" rel="noopener">Messenger / Telegram</a>
+            <span>Пн–Вс 10:00–22:00</span>
+          </div>
+        </div>
+        <div class="map-box">
+          <div><h3>Карта без тяжёлого iframe</h3><p>В реальном сайте кнопка откроет Google Maps.</p><a class="btn dark" href="https://maps.google.com/?q=Prague%201" target="_blank" rel="noopener">Открыть карту</a></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap faq-grid">
+        <details open><summary>Можно ли забронировать стол онлайн?</summary><p>Да, форма может отправлять заявку на email или в CRM.</p></details>
+        <details><summary>Есть ли бизнес-ланч?</summary><p>Можно добавить отдельный блок lunch menu и менять его без переделки сайта.</p></details>
+        <details><summary>Можно ли провести мероприятие?</summary><p>Да, сайт может собирать заявки на дни рождения, банкеты и корпоративы.</p></details>
+        <details><summary>Можно ли заказать сайт такого типа?</summary><p>Да. Этот demo-шаблон можно адаптировать под кафе, ресторан, бар или доставку еды.</p></details>
+      </div>
+    </section>
+
+    <section class="section final-cta">
+      <div class="wrap final-card">
+        <div>
+          <p class="kicker">Nikolaj Dev template</p>
+          <h2>Хотите такой сайт для своего ресторана?</h2>
+          <p>Этот demo-шаблон можно адаптировать под кафе, ресторан, бар или доставку еды: заменить меню, фото, контакты, стиль, подключить форму брони и опубликовать сайт.</p>
+        </div>
+        <div class="final-actions">
+          <a class="btn primary" href="#booking">Заказать похожий</a>
+          <a class="btn secondary" href="../../index.html#catalog">Вернуться к портфолио</a>
+          <a class="btn secondary" href="https://t.me/pracehub" target="_blank" rel="noopener">Написать в Telegram</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <nav class="bottom-nav" aria-label="Быстрые действия">
+    <a href="#menu">Меню</a>
+    <a href="#booking">Стол</a>
+    <a href="tel:+420777123456">Звонок</a>
+    <a href="#contact">Карта</a>
+  </nav>
+
+  <footer>
+    <div class="wrap">
+      <span>Luma Bistro Prague · Demo template</span>
+      <span>Menu · Reservation · Gallery · Contact</span>
+    </div>
+  </footer>
+  <script>
+    (() => {
+      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const ua = navigator.userAgent || "";
+      const inAppBrowser = /FBAN|FBAV|Instagram|Messenger/i.test(ua);
+
+      const startVideo = (video) => {
+        if (!video || reduceMotion) {
+          video?.classList.add("is-disabled");
+          return;
+        }
+
+        video.addEventListener("canplay", () => {
+          video.classList.add("is-ready");
+        }, { once: true });
+
+        const play = () => video.play().catch(() => {
+          video.classList.remove("is-ready");
+        });
+
+        if (window.requestIdleCallback && !inAppBrowser) {
+          window.requestIdleCallback(play, { timeout: 1200 });
+        } else {
+          window.setTimeout(play, inAppBrowser ? 1200 : 500);
+        }
+      };
+
+      startVideo(document.querySelector(".hero-video"));
+
+      document.querySelectorAll(".lazy-video").forEach((video) => {
+        const src = video.dataset.src;
+        if (!src || reduceMotion) {
+          video.classList.add("is-disabled");
+          return;
+        }
+
+        const load = () => {
+          if (video.dataset.loaded) return;
+          video.dataset.loaded = "true";
+          const source = document.createElement("source");
+          source.src = src;
+          source.type = "video/webm";
+          video.appendChild(source);
+          startVideo(video);
+          video.load();
+        };
+
+        if (!("IntersectionObserver" in window)) {
+          window.setTimeout(load, 1400);
+          return;
+        }
+
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              load();
+              observer.disconnect();
+            }
+          });
+        }, { rootMargin: "280px 0px" });
+
+        observer.observe(video);
+      });
+    })();
+  </script>
+</body>
+</html>

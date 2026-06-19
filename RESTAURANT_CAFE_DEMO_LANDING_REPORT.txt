@@ -1,0 +1,127 @@
+RESTAURANT CAFE DEMO LANDING REPORT
+
+Folder:
+C:\Users\User\mylanding
+
+Demo path:
+demos/restaurant-cafe/index.html
+
+Files created:
+- demos/restaurant-cafe/index.html
+- assets/videos/restaurant-cafe/hero-charring.webm
+- assets/videos/restaurant-cafe/atmosphere-kitchen.webm
+- assets/images/restaurant-cafe/hero-food.jpg
+- assets/images/restaurant-cafe/interior.jpg
+- assets/images/restaurant-cafe/dish-burrata.jpg
+- assets/images/restaurant-cafe/dish-pasta.jpg
+- assets/images/restaurant-cafe/dish-seafood.jpg
+- assets/images/restaurant-cafe/dish-dessert.jpg
+- assets/images/restaurant-cafe/gallery-table.jpg
+- assets/images/restaurant-cafe/gallery-bar.jpg
+- RESTAURANT_CAFE_DEMO_LANDING_REPORT.txt
+
+Files changed:
+- assets/js/site-categories.js
+- assets/js/app.js
+- assets/images/CREDITS.md
+
+What was built:
+- New full-page restaurant/cafe demo for fictional brand:
+  Luma Bistro Prague.
+- Premium warm restaurant style:
+  cream, espresso, burgundy, caramel/gold accents.
+- Compact sticky demo control bar:
+  "DEMO-шаблон ресторана · ← Назад · Заказать похожий"
+- Mobile bottom nav:
+  Меню / Стол / Звонок / Карта.
+- Hero with warm restaurant atmosphere, title, subtitle and two clear CTAs:
+  Забронировать стол
+  Посмотреть меню
+- Real local hero video added with poster-first fallback.
+- Quick info strip:
+  hours, location, phone, reservation, cuisine.
+- Atmosphere/about block with second lazy-loaded local open-kitchen video.
+- Popular dishes with realistic food photos.
+- HTML menu preview, not PDF-only.
+- Booking/reservation section with form.
+- Specials/events section.
+- Gallery.
+- Honest trust block without fake reviews.
+- Contact/location block with map placeholder instead of heavy map iframe.
+- FAQ.
+- Final Nikolaj sales CTA:
+  "Хотите такой сайт для своего ресторана?"
+
+Portfolio integration:
+- Restaurant / Cafe category now has demoUrl:
+  demos/restaurant-cafe/index.html
+- Restaurant category status changed to:
+  New demo / Готовый demo
+- Added portfolio project card:
+  Restaurant / Cafe Website
+- "Посмотреть шаблон" opens the full demo page.
+- "Заказать похожий" from main site still opens the existing Forminit lead flow with selected_template.
+
+Form / CTA behavior:
+- Demo booking form uses existing Forminit endpoint:
+  https://forminit.com/f/kshbr37bfe4
+- Hidden selected_template:
+  Restaurant / Cafe Website Demo
+- Hidden source:
+  restaurant-demo
+- Demo sales CTAs scroll to booking or return to portfolio.
+- Telegram link:
+  https://t.me/pracehub
+
+Images used and sources:
+- Full attribution added to:
+  assets/images/CREDITS.md
+- Sources include Openverse/Wikimedia/Flickr/Commons results with open/public licenses.
+- Images are stored locally.
+- No remote hotlinked images are used by the demo.
+
+Video note:
+- Added two real local WebM videos from Wikimedia Commons:
+  assets/videos/restaurant-cafe/hero-charring.webm
+  assets/videos/restaurant-cafe/atmosphere-kitchen.webm
+- Top hero behavior:
+  poster image appears first, video starts muted/loop/playsinline after first paint, then fades in after canplay.
+- Lower atmosphere behavior:
+  poster image appears first, video source is attached only near viewport through IntersectionObserver.
+- Browser safety:
+  videos are disabled for prefers-reduced-motion.
+  in-app browsers get delayed playback instead of immediate first-paint autoplay pressure.
+- No remote video URLs are used by the page.
+
+Performance notes:
+- Restaurant images are local and small:
+  most are under 50 KB, hero is about 269 KB.
+- Video file sizes:
+  hero-charring.webm: about 3.0 MB
+  atmosphere-kitchen.webm: about 5.45 MB
+- The second video is intentionally lazy-loaded, so it is not fetched on first screen load.
+- Below-hero images use loading="lazy".
+- No map iframe.
+- No heavy libraries.
+- No autoplay audio.
+
+Tests performed:
+- node --check assets\js\app.js: passed.
+- node --check assets\js\site-categories.js: passed.
+- Verified demo path references:
+  demos/restaurant-cafe/index.html
+- Verified local restaurant images exist.
+- Verified local restaurant video files exist.
+- Opened local demo page in browser.
+
+Remaining improvements:
+- Optional: replace the lower open-kitchen video with a true interior-only clip if Nikolaj later provides or approves a better small source.
+- Optional: compress videos further if ffmpeg becomes available/approved.
+- Visually review selected stock photos and replace any that do not match Nikolaj's preferred restaurant mood.
+- Optional: add structured Restaurant/LocalBusiness JSON-LD for real client projects.
+- Commit/push only after Nikolaj approval.
+
+Deployment status:
+- Not committed.
+- Not pushed.
+- Waiting for Nikolaj approval.

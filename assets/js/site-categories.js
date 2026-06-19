@@ -3,14 +3,14 @@ window.siteCategories = [
     id: "restaurant-cafe",
     filter: "restaurants",
     title: "Сайт для ресторана / кафе",
-    badge: "Популярно",
-    status: "Demo concept",
+    badge: "New demo",
+    status: "Готовый demo",
     description: "Меню, фото блюд, бронирование, адрес, кнопки Telegram / Facebook / WhatsApp.",
     price: "от 250-500 €",
     timeline: "3-7 дней",
     image: "assets/images/categories/restaurant-cafe.jpg",
     features: ["Меню", "Бронирование", "Галерея", "Карта"],
-    demoUrl: ""
+    demoUrl: "demos/restaurant-cafe/index.html"
   },
   {
     id: "renovation",

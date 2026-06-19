@@ -1,0 +1,111 @@
+BAKERY_CAFE_PREMIUM_VIDEO_MEDIA_UPGRADE_REPORT
+
+Folder worked in:
+C:\Users\User\mylanding
+
+Files created:
+- demos/bakery-cafe/index.html
+- assets/images/bakery-cafe/hero-bakery.jpg
+- assets/images/bakery-cafe/bakery-counter.jpg
+- assets/images/bakery-cafe/croissant.jpg
+- assets/images/bakery-cafe/focaccia.jpg
+- assets/images/bakery-cafe/cinnamon-roll.jpg
+- assets/images/bakery-cafe/flat-white.jpg
+- assets/images/bakery-cafe/interior.jpg
+- assets/videos/bakery-cafe/hero-pastry.webm
+- assets/videos/bakery-cafe/atmosphere-counter.webm
+- BAKERY_CAFE_PREMIUM_VIDEO_MEDIA_UPGRADE_REPORT.txt
+
+Files changed:
+- index.html
+- assets/js/site-categories.js
+- assets/js/app.js
+- assets/images/CREDITS.md
+
+What was built:
+- New full-page Bakery / Cafe Website Demo under demos/bakery-cafe/index.html.
+- Fictional original brand: Blue Oven Bakery.
+- Compact demo bar: "DEMO-шаблон пекарни · ← Назад · Заказать похожий".
+- Full-screen poster-first hero video section.
+- Quick info strip with hours, location, phone and map.
+- Menu section with product cards and real-looking bakery/coffee visuals.
+- Craft/about section with bakery sales copy.
+- Lazy-loaded second video atmosphere/process section.
+- Coffee section.
+- Gallery section.
+- Contact/map section without heavy embedded map iframe.
+- Final Nikolaj Dev sales CTA: order similar / return to portfolio / Telegram.
+- Mobile bottom nav: Меню / Заявка / Звонок / Карта.
+
+Portfolio integration:
+- Added category card:
+  - id: bakery-cafe
+  - title: Сайт для пекарни / кафе
+  - demoUrl: demos/bakery-cafe/index.html
+  - price: от 250-500 €
+  - timeline: 3-7 дней
+- Added portfolio project:
+  - title: Bakery / Cafe Website Demo
+  - demoUrl: demos/bakery-cafe/index.html
+  - selected_template target: Bakery / Cafe Website Demo
+- Updated asset cache versions in index.html to bakery-demo-1.
+
+Form / CTA behavior:
+- Demo order form uses the existing Forminit endpoint:
+  https://forminit.com/f/kshbr37bfe4
+- Included fields:
+  name, phone, email, telegram_whatsapp, business_type, selected_template, message
+- Hidden values:
+  selected_template = Bakery / Cafe Website Demo
+  business_type = Bakery / Cafe
+  source = bakery-demo
+- Telegram link:
+  https://t.me/pracehub
+- Facebook link:
+  https://www.facebook.com/share/18hdnUyhLG/
+
+Media used and sizes:
+- hero-pastry.webm: 6,472,717 bytes, local WebM, hero video, poster-first.
+- atmosphere-counter.webm: 3,456,357 bytes, local WebM, lazy-loaded lower video.
+- hero-bakery.jpg: 148,291 bytes.
+- bakery-counter.jpg: 357,713 bytes.
+- croissant.jpg: 880,458 bytes.
+- focaccia.jpg: 104,445 bytes.
+- cinnamon-roll.jpg: 2,973,011 bytes.
+- flat-white.jpg: 119,642 bytes.
+- interior.jpg: 251,491 bytes.
+
+Credits / legal notes:
+- assets/images/CREDITS.md was updated with all bakery image/video sources, authors and licenses.
+- No 55 Bakery logo/name/photos/videos/text were copied.
+- The downloaded Opera file was used only as context/reference for the desired bakery structure.
+- The new demo uses fictional branding and local open-license media.
+
+Performance behavior:
+- Hero video does not define layout height.
+- Hero poster appears immediately.
+- Hero video fades in only after canplay.
+- Reduced-motion users keep poster/static media.
+- Second video uses IntersectionObserver and preload="none"; it loads only near the viewport.
+- No heavy map iframe is embedded.
+- Removed an unused 9.5 MB coffee image downloaded during media selection.
+
+Checks performed:
+- node --check assets/js/app.js: passed.
+- node --check assets/js/site-categories.js: passed.
+- Confirmed no remaining references to coffee.jpg.
+- Confirmed old restaurant-demo-1 cache string was replaced.
+- Opened demos/bakery-cafe/index.html locally in browser.
+- git status reviewed; no commit/push/deploy performed.
+
+Remaining risks / suggested polish:
+- hero-pastry.webm is 6.47 MB, still under the requested 7 MB max but close. For production polish, ffmpeg compression to a shorter 5-8 second MP4/WebM loop would be better.
+- cinnamon-roll.jpg is 2.97 MB and lazy-loaded. It is acceptable for this phase, but should be compressed later if image tooling is available.
+- The lower video is more bakery/cafe process than pure interior. It is safe and local; a more premium interior-specific video can replace it later.
+- Live mobile/Facebook in-app browser testing was not performed in this turn.
+
+Next recommended step:
+- Review the local demo visually.
+- If approved, commit and push the bakery demo to GitHub Pages in a separate approved publish step.
+
+NIKOLAJ_BAKERY_CAFE_DEMO_READY_FOR_REVIEW

@@ -54,6 +54,22 @@ const siteCategories = window.siteCategories || [];
 
 const projects = [
   {
+    id: "bakery-cafe",
+    group: "template",
+    title: "Bakery / Cafe Website Demo",
+    label: "New demo",
+    category: "Bakery / cafe",
+    image: "assets/images/bakery-cafe/hero-bakery.jpg",
+    gallery: ["assets/images/bakery-cafe/hero-bakery.jpg", "assets/images/bakery-cafe/bakery-counter.jpg", "assets/images/bakery-cafe/interior.jpg"],
+    demoUrl: "demos/bakery-cafe/index.html",
+    price: "от 250 €",
+    timeline: "3-7 дней",
+    short: "Сайт для пекарни, кафе или кофейни: видео на первом экране, меню, фото продукции, кофе, карта, контакты и заявки.",
+    forWhom: "Для пекарни, кофейни, кондитерской, brunch-place или маленького кафе, где важно показать продукцию, часы работы, карту и быстрый контакт.",
+    features: ["Видео hero", "Меню с ценами", "Кофейный блок", "Галерея", "Mobile bottom nav"],
+    includes: ["Адаптация под бренд", "Замена меню и фото", "Форма заявки", "Кнопки Telegram/Facebook/звонок", "Подготовка к публикации"]
+  },
+  {
     id: "restaurant-cafe",
     group: "template",
     title: "Restaurant / Cafe Website",

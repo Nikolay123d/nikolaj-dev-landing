@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Demo website for a bakery or cafe: full-screen video, product menu, coffee section, gallery, contact, map and request form.">
+  <meta property="og:title" content="Bakery / Cafe Website Demo | Nikolaj Dev">
+  <meta property="og:description" content="Premium demo landing for a bakery, cafe or coffee shop with video hero, menu, gallery, map and lead form.">
+  <meta property="og:image" content="../../assets/images/bakery-cafe/hero-bakery.jpg">
+  <title>Bakery / Cafe Website Demo | Nikolaj Dev</title>
+  <style>
+    :root {
+      --blue: #2e4fa3;
+      --blue-dark: #1f3478;
+      --cream: #fff8ee;
+      --butter: #f4e8c8;
+      --gold: #c8882a;
+      --cocoa: #231a14;
+      --muted: #5a6480;
+      --white: #fff;
+      --line: rgba(35, 26, 20, .12);
+      --shadow: 0 24px 70px rgba(31, 52, 120, .16);
+      --radius: 22px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--cocoa);
+      background: var(--cream);
+      line-height: 1.55;
+      overflow-x: hidden;
+      padding-bottom: 78px;
+    }
+    a { color: inherit; text-decoration: none; }
+    img, video { display: block; max-width: 100%; }
+    button, input, textarea, select { font: inherit; }
+
+    .demo-bar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      align-items: center;
+      min-height: 38px;
+      padding: 7px 12px;
+      background: rgba(31, 52, 120, .96);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: .01em;
+      box-shadow: 0 10px 30px rgba(31, 52, 120, .22);
+    }
+    .demo-bar a {
+      padding: 5px 9px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, .13);
+      border: 1px solid rgba(255, 255, 255, .18);
+      white-space: nowrap;
+    }
+    .demo-bar .order-link {
+      background: linear-gradient(135deg, #f2ba55, #c8882a);
+      color: #21140c;
+      border: 0;
+    }
+
+    .nav {
+      position: absolute;
+      top: 38px;
+      left: 0;
+      right: 0;
+      z-index: 20;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: min(1120px, calc(100% - 32px));
+      margin: 18px auto 0;
+      padding: 14px 16px;
+      border: 1px solid rgba(255, 255, 255, .22);
+      border-radius: 999px;
+      background: rgba(255, 248, 238, .86);
+      backdrop-filter: blur(14px);
+      box-shadow: 0 16px 44px rgba(21, 18, 14, .16);
+    }
+    .brand { display: flex; align-items: center; gap: 10px; font-weight: 900; color: var(--blue-dark); }
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      color: #fff;
+      background: linear-gradient(135deg, var(--blue), var(--blue-dark));
+      box-shadow: 0 10px 22px rgba(31, 52, 120, .24);
+    }
+    .nav-links { display: flex; gap: 18px; align-items: center; color: #2d2a28; font-weight: 800; font-size: 14px; }
+    .nav-cta { padding: 10px 16px; border-radius: 999px; background: var(--blue); color: #fff; }
+
+    .hero {
+      min-height: 100svh;
+      position: relative;
+      overflow: hidden;
+      display: grid;
+      align-items: end;
+      background: #21140c;
+      isolation: isolate;
+    }
+    .hero-poster, .hero-video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .hero-poster { z-index: -3; filter: saturate(1.04) contrast(1.02); }
+    .hero-video {
+      z-index: -2;
+      opacity: 0;
+      transition: opacity .7s ease;
+      will-change: opacity;
+      filter: saturate(1.08) contrast(1.05);
+    }
+    .hero-video.is-ready { opacity: 1; }
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background:
+        linear-gradient(90deg, rgba(8, 12, 30, .78), rgba(31, 52, 120, .42) 45%, rgba(35, 26, 20, .38)),
+        linear-gradient(0deg, rgba(35, 26, 20, .76), rgba(35, 26, 20, .08) 42%);
+    }
+    .shell { width: min(1120px, calc(100% - 32px)); margin: 0 auto; }
+    .hero-content {
+      padding: 178px 0 72px;
+      color: #fff;
+      max-width: 780px;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin: 0 0 16px;
+      padding: 8px 12px;
+      border: 1px solid rgba(255, 255, 255, .24);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, .13);
+      font-weight: 900;
+      font-size: 13px;
+      text-transform: uppercase;
+    }
+    h1, h2, h3 { margin: 0; line-height: 1.05; }
+    h1 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(42px, 9vw, 92px);
+      letter-spacing: -.02em;
+      max-width: 900px;
+    }
+    .hero-sub { max-width: 650px; margin: 22px 0 0; color: rgba(255, 255, 255, .9); font-size: clamp(17px, 2.4vw, 22px); }
+    .hero-actions, .cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 26px; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 12px 18px;
+      border: 0;
+      border-radius: 999px;
+      font-weight: 900;
+      cursor: pointer;
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .btn.primary { background: linear-gradient(135deg, #f2ba55, var(--gold)); color: #24160b; box-shadow: 0 16px 34px rgba(200, 136, 42, .28); }
+    .btn.blue { background: linear-gradient(135deg, var(--blue), var(--blue-dark)); color: #fff; box-shadow: 0 16px 34px rgba(31, 52, 120, .25); }
+    .btn.light { background: #fff; color: var(--blue-dark); border: 1px solid rgba(255, 255, 255, .4); }
+    .btn.ghost { background: rgba(255, 255, 255, .12); color: #fff; border: 1px solid rgba(255, 255, 255, .25); }
+    .chips { display: flex; gap: 9px; flex-wrap: wrap; margin-top: 26px; }
+    .chips span { padding: 8px 11px; border-radius: 999px; background: rgba(255, 255, 255, .13); color: rgba(255, 255, 255, .88); font-size: 13px; font-weight: 800; }
+
+    section { padding: 86px 0; }
+    .section-head { display: flex; justify-content: space-between; gap: 20px; align-items: end; margin-bottom: 28px; }
+    .section-head h2 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(34px, 5vw, 58px);
+      color: var(--blue-dark);
+      max-width: 720px;
+    }
+    .section-head p { max-width: 520px; margin: 0; color: var(--muted); font-weight: 700; }
+
+    .info-strip {
+      margin-top: -34px;
+      position: relative;
+      z-index: 4;
+    }
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      padding: 14px;
+      border-radius: var(--radius);
+      background: #fff;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--line);
+    }
+    .info-card { padding: 16px; border-radius: 16px; background: #fff8ee; border: 1px solid rgba(200, 136, 42, .16); }
+    .info-card span { display: block; color: var(--muted); font-size: 12px; font-weight: 900; text-transform: uppercase; }
+    .info-card strong { display: block; margin-top: 4px; color: var(--blue-dark); }
+
+    .promise { background: linear-gradient(180deg, var(--cream), #fff); }
+    .promise-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: 30px; align-items: center; }
+    .media-card {
+      position: relative;
+      overflow: hidden;
+      min-height: 420px;
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+      background: var(--blue-dark);
+    }
+    .media-card img { width: 100%; height: 100%; min-height: 420px; object-fit: cover; }
+    .media-card .note {
+      position: absolute;
+      left: 18px;
+      right: 18px;
+      bottom: 18px;
+      padding: 14px 16px;
+      border-radius: 16px;
+      background: rgba(255, 248, 238, .9);
+      color: var(--blue-dark);
+      font-weight: 900;
+      box-shadow: 0 14px 28px rgba(35, 26, 20, .18);
+    }
+    .text-panel {
+      padding: 34px;
+      border-radius: 28px;
+      background: #fff;
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+    }
+    .text-panel h2 { font-family: Georgia, "Times New Roman", serif; font-size: clamp(32px, 4vw, 54px); color: var(--blue-dark); }
+    .text-panel p { color: var(--muted); font-size: 17px; font-weight: 650; }
+    .feature-list { display: grid; gap: 10px; margin-top: 22px; }
+    .feature-list span { padding: 12px 14px; border-radius: 14px; background: #f7f0df; color: var(--cocoa); font-weight: 850; }
+
+    .menu { background: #fff; }
+    .tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 22px; }
+    .tabs span { padding: 8px 12px; border-radius: 999px; background: var(--butter); color: var(--blue-dark); font-weight: 900; }
+    .product-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .product {
+      overflow: hidden;
+      border-radius: 22px;
+      background: #fff;
+      border: 1px solid var(--line);
+      box-shadow: 0 14px 38px rgba(31, 52, 120, .08);
+    }
+    .product img { width: 100%; height: 190px; object-fit: cover; }
+    .product-body { padding: 16px; }
+    .product h3 { font-size: 20px; color: var(--blue-dark); }
+    .product p { min-height: 52px; margin: 8px 0; color: var(--muted); font-size: 14px; font-weight: 650; }
+    .product-meta { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+    .product-meta strong { color: var(--cocoa); font-size: 18px; }
+    .product-meta span { padding: 5px 8px; border-radius: 999px; background: #f4e8c8; color: var(--blue-dark); font-size: 12px; font-weight: 900; }
+
+    .craft { background: linear-gradient(135deg, #1f3478, #2e4fa3); color: #fff; }
+    .craft-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 26px; align-items: center; }
+    .craft h2 { font-family: Georgia, "Times New Roman", serif; font-size: clamp(34px, 5vw, 58px); }
+    .craft p { color: rgba(255, 255, 255, .82); font-size: 18px; font-weight: 650; }
+    .craft-cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .craft-card { padding: 18px; border-radius: 18px; background: rgba(255, 255, 255, .12); border: 1px solid rgba(255, 255, 255, .18); }
+    .craft-card strong { display: block; margin-bottom: 6px; font-size: 18px; }
+
+    .video-band {
+      position: relative;
+      min-height: 520px;
+      overflow: hidden;
+      display: grid;
+      align-items: center;
+      color: #fff;
+      background: #1f3478;
+    }
+    .video-band img, .video-band video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .video-band img { z-index: 0; }
+    .lazy-video { z-index: 1; opacity: 0; transition: opacity .7s ease; }
+    .lazy-video.is-ready { opacity: 1; }
+    .video-band::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      background: linear-gradient(90deg, rgba(31, 52, 120, .82), rgba(31, 52, 120, .22), rgba(35, 26, 20, .62));
+    }
+    .video-copy { position: relative; z-index: 3; max-width: 620px; }
+    .video-copy h2 { font-family: Georgia, "Times New Roman", serif; font-size: clamp(34px, 6vw, 68px); }
+    .video-copy p { color: rgba(255, 255, 255, .86); font-size: 19px; font-weight: 650; }
+
+    .coffee { background: #fff8ee; }
+    .coffee-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 26px; align-items: center; }
+    .coffee-menu { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .coffee-item { padding: 15px; border-radius: 16px; background: #fff; border: 1px solid var(--line); display: flex; justify-content: space-between; font-weight: 900; }
+    .coffee-img { border-radius: 28px; overflow: hidden; box-shadow: var(--shadow); }
+    .coffee-img img { width: 100%; height: 430px; object-fit: cover; }
+
+    .gallery { background: #fff; }
+    .gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+    .gallery-grid img { width: 100%; height: 220px; object-fit: cover; border-radius: 18px; box-shadow: 0 12px 30px rgba(31, 52, 120, .08); }
+    .gallery-grid img:nth-child(1), .gallery-grid img:nth-child(6) { grid-column: span 2; }
+
+    .order { background: linear-gradient(180deg, #fff, #f4e8c8); }
+    .order-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 28px; align-items: start; }
+    .form {
+      display: grid;
+      gap: 12px;
+      padding: 22px;
+      border-radius: 26px;
+      background: #fff;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--line);
+    }
+    label { display: grid; gap: 6px; color: var(--blue-dark); font-weight: 900; }
+    input, textarea, select {
+      width: 100%;
+      border: 1px solid rgba(31, 52, 120, .18);
+      border-radius: 14px;
+      padding: 12px 13px;
+      background: #fffaf2;
+      color: var(--cocoa);
+      outline: 0;
+    }
+    textarea { min-height: 116px; resize: vertical; }
+    .contact-cards { display: grid; gap: 12px; margin-top: 22px; }
+    .contact-card { padding: 16px; border-radius: 16px; background: #fff; border: 1px solid var(--line); font-weight: 850; }
+    .map-card {
+      padding: 28px;
+      border-radius: 28px;
+      min-height: 280px;
+      color: #fff;
+      background:
+        linear-gradient(135deg, rgba(31, 52, 120, .92), rgba(46, 79, 163, .82)),
+        radial-gradient(circle at 25% 30%, rgba(244, 232, 200, .36), transparent 34%);
+      box-shadow: var(--shadow);
+    }
+
+    .final {
+      color: #fff;
+      background: linear-gradient(135deg, var(--blue-dark), #162558);
+      text-align: center;
+    }
+    .final h2 { font-family: Georgia, "Times New Roman", serif; font-size: clamp(34px, 6vw, 64px); }
+    .final p { max-width: 720px; margin: 16px auto 0; color: rgba(255, 255, 255, .84); font-size: 18px; font-weight: 650; }
+    .final .cta-row { justify-content: center; }
+    footer { padding: 30px 0; background: #11192f; color: rgba(255, 255, 255, .74); }
+    footer .shell { display: flex; justify-content: space-between; gap: 18px; flex-wrap: wrap; }
+
+    .bottom-nav {
+      position: fixed;
+      left: 12px;
+      right: 12px;
+      bottom: 12px;
+      z-index: 60;
+      display: none;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 7px;
+      padding: 8px;
+      border-radius: 22px;
+      background: rgba(255, 248, 238, .94);
+      box-shadow: 0 16px 48px rgba(31, 52, 120, .2);
+      border: 1px solid rgba(31, 52, 120, .12);
+      backdrop-filter: blur(14px);
+    }
+    .bottom-nav a { text-align: center; padding: 9px 6px; border-radius: 16px; background: #fff; color: var(--blue-dark); font-size: 12px; font-weight: 900; }
+
+    @media (max-width: 900px) {
+      .nav { border-radius: 26px; align-items: flex-start; }
+      .nav-links { display: none; }
+      .hero-content { padding-top: 150px; padding-bottom: 58px; }
+      .info-grid, .product-grid, .promise-grid, .craft-grid, .coffee-grid, .order-grid { grid-template-columns: 1fr; }
+      .product-grid { gap: 14px; }
+      .product img { height: 220px; }
+      .section-head { display: grid; align-items: start; }
+      .craft-cards, .coffee-menu { grid-template-columns: 1fr; }
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+      .gallery-grid img, .gallery-grid img:nth-child(1), .gallery-grid img:nth-child(6) { grid-column: span 1; height: 180px; }
+      .bottom-nav { display: grid; }
+    }
+    @media (max-width: 560px) {
+      .demo-bar { justify-content: flex-start; overflow-x: auto; min-height: 34px; font-size: 12px; padding: 6px 10px; }
+      .demo-bar span { white-space: nowrap; }
+      .nav { top: 34px; margin-top: 10px; width: calc(100% - 22px); padding: 10px 12px; }
+      .brand-mark { width: 34px; height: 34px; }
+      .nav-cta { padding: 9px 12px; font-size: 13px; }
+      .shell { width: min(100% - 24px, 1120px); }
+      h1 { font-size: 42px; }
+      .hero-sub { font-size: 16px; }
+      .btn { width: 100%; }
+      .hero-actions .btn.light, .hero-actions .btn.primary, .hero-actions .btn.ghost { width: 100%; }
+      section { padding: 62px 0; }
+      .info-strip { margin-top: -20px; }
+      .text-panel, .form { padding: 18px; border-radius: 22px; }
+      .media-card, .media-card img { min-height: 320px; }
+      .video-band { min-height: 430px; }
+      .coffee-img img { height: 320px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .hero-video, .lazy-video { display: none; }
+      .btn { transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="demo-bar">
+    <span>DEMO-шаблон пекарни</span>
+    <a href="../../index.html#catalog">← Назад</a>
+    <a class="order-link" href="#order">Заказать похожий</a>
+  </div>
+
+  <header class="nav" aria-label="Навигация демо-сайта">
+    <a class="brand" href="#top" aria-label="Blue Oven Bakery">
+      <span class="brand-mark">BO</span>
+      <span>Blue Oven Bakery</span>
+    </a>
+    <nav class="nav-links" aria-label="Разделы">
+      <a href="#menu">Меню</a>
+      <a href="#coffee">Кофе</a>
+      <a href="#atmosphere">Атмосфера</a>
+      <a href="#contact">Контакты</a>
+    </nav>
+    <a class="nav-cta" href="#order">Оставить заявку</a>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <img class="hero-poster" src="../../assets/images/bakery-cafe/hero-bakery.jpg" alt="" aria-hidden="true" loading="eager" decoding="async">
+      <video class="hero-video" muted loop playsinline preload="metadata" poster="../../assets/images/bakery-cafe/hero-bakery.jpg" aria-hidden="true">
+        <source src="../../assets/videos/bakery-cafe/hero-pastry.webm" type="video/webm">
+      </video>
+      <div class="shell hero-content">
+        <p class="eyebrow">Demo-шаблон для пекарни / кафе</p>
+        <h1>Свежий хлеб, кофе и выпечка каждое утро в Праге</h1>
+        <p class="hero-sub">Меню, часы работы, карта, звонок и заявки — всё, что нужно гостю, чтобы быстро найти пекарню и выбрать, что попробовать.</p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#menu">Посмотреть меню</a>
+          <a class="btn light" href="#order">Оставить заявку</a>
+          <a class="btn ghost" href="#contact">Открыть карту</a>
+        </div>
+        <div class="chips">
+          <span>Прага 1</span>
+          <span>Каждый день 7:00–19:00</span>
+          <span>Меню с ценами</span>
+          <span>Мобильная версия</span>
+        </div>
+      </div>
+    </section>
+
+    <div class="shell info-strip" aria-label="Быстрая информация">
+      <div class="info-grid">
+        <div class="info-card"><span>Hours</span><strong>Denně 7:00–19:00</strong></div>
+        <div class="info-card"><span>Location</span><strong>Praha 1 / centrum</strong></div>
+        <a class="info-card" href="tel:+420000000000"><span>Phone</span><strong>+420 XXX XXX XXX</strong></a>
+        <a class="info-card" href="#contact"><span>Map</span><strong>Open in Maps</strong></a>
+      </div>
+    </div>
+
+    <section class="promise">
+      <div class="shell promise-grid">
+        <div class="text-panel">
+          <h2>Свежий хлеб и выпечка — каждый день</h2>
+          <p>Этот demo-шаблон показывает, как может выглядеть современный сайт для пекарни, кафе или кофейни: видео на первом экране, меню с ценами, фото продукции, контакты, карта и форма заявки.</p>
+          <p>Гость не ищет информацию по соцсетям — он сразу видит меню, часы работы, карту и способ связаться.</p>
+          <div class="feature-list">
+            <span>Видео и фото сразу передают атмосферу</span>
+            <span>Меню можно менять под сезон, ланч или спецпредложение</span>
+            <span>Кнопки звонка, карты и заявки доступны с телефона</span>
+          </div>
+        </div>
+        <div class="media-card">
+          <img src="../../assets/images/bakery-cafe/bakery-counter.jpg" alt="Витрина с выпечкой" loading="lazy">
+          <div class="note">В реальном проекте сюда ставятся ваши фото продукции, команды и интерьера.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="menu" id="menu">
+      <div class="shell">
+        <div class="section-head">
+          <h2>Меню, которое удобно смотреть с телефона</h2>
+          <p>Хлеб, выпечка, кофе и завтраки — всё, что гость хочет увидеть перед визитом.</p>
+        </div>
+        <div class="tabs" aria-label="Категории меню">
+          <span>Хлеб</span><span>Выпечка</span><span>Сладкое</span><span>Солёное</span><span>Кофе</span><span>Завтраки</span>
+        </div>
+        <div class="product-grid">
+          <article class="product">
+            <img src="../../assets/images/bakery-cafe/hero-bakery.jpg" alt="Квасковый хлеб" loading="lazy">
+            <div class="product-body"><h3>Квасковый хлеб</h3><p>Плотная корка, мягкий мякиш, выпекаем утром.</p><div class="product-meta"><strong>95 Kč</strong><span>daily</span></div></div>
+          </article>
+          <article class="product">
+            <img src="../../assets/images/bakery-cafe/croissant.jpg" alt="Масляный круассан" loading="lazy">
+            <div class="product-body"><h3>Масляный круассан</h3><p>Слоёное тесто, масло, хрустящая корочка.</p><div class="product-meta"><strong>65 Kč</strong><span>bestseller</span></div></div>
+          </article>
+          <article class="product">
+            <img src="../../assets/images/bakery-cafe/focaccia.jpg" alt="Фокачча" loading="lazy">
+            <div class="product-body"><h3>Фокачча с томатами</h3><p>Оливковое масло, розмарин и сезонные овощи.</p><div class="product-meta"><strong>120 Kč</strong><span>vegetarian</span></div></div>
+          </article>
+          <article class="product">
+            <img src="../../assets/images/bakery-cafe/cinnamon-roll.jpg" alt="Cinnamon roll" loading="lazy">
+            <div class="product-body"><h3>Cinnamon roll</h3><p>Мягкая сладкая выпечка с корицей и глазурью.</p><div class="product-meta"><strong>75 Kč</strong><span>sweet</span></div></div>
+          </article>
+          <article class="product">
+            <img src="../../assets/images/bakery-cafe/flat-white.jpg" alt="Flat white" loading="lazy">
+            <div class="product-body"><h3>Flat white</h3><p>Кофе к свежей выпечке, можно take away.</p><div class="product-meta"><strong>85 Kč</strong><span>coffee</span></div></div>
+          </article>
+          <article class="product">
+            <img src="../../assets/images/bakery-cafe/bakery-counter.jpg" alt="Pistachio pastry" loading="lazy">
+            <div class="product-body"><h3>Pistachio pastry</h3><p>Сезонный десерт для витрины и предзаказа.</p><div class="product-meta"><strong>89 Kč</strong><span>popular</span></div></div>
+          </article>
+          <article class="product">
+            <img src="../../assets/images/bakery-cafe/flat-white.jpg" alt="Кофе и завтрак" loading="lazy">
+            <div class="product-body"><h3>Breakfast set</h3><p>Кофе, выпечка и небольшой завтрак утром.</p><div class="product-meta"><strong>185 Kč</strong><span>morning</span></div></div>
+          </article>
+          <article class="product">
+            <img src="../../assets/images/bakery-cafe/interior.jpg" alt="Столик в пекарне" loading="lazy">
+            <div class="product-body"><h3>Office box</h3><p>Набор выпечки для офиса или встречи.</p><div class="product-meta"><strong>от 490 Kč</strong><span>order</span></div></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="craft">
+      <div class="shell craft-grid">
+        <div>
+          <p class="eyebrow">Craft / local / fresh</p>
+          <h2>Тесту нужно время — и мы его даём</h2>
+          <p>Пекарням важно показать не только список продукции, но и процесс: как готовится хлеб, почему он свежий, кто за этим стоит и чем место отличается от обычной точки с выпечкой.</p>
+          <div class="cta-row"><a class="btn primary" href="#order">Построить такой сайт</a><a class="btn ghost" href="#gallery">Смотреть фото</a></div>
+        </div>
+        <div class="craft-cards">
+          <div class="craft-card"><strong>Fresh every morning</strong><span>Основной смысл бизнеса понятен сразу.</span></div>
+          <div class="craft-card"><strong>Handmade dough</strong><span>Процесс помогает строить доверие.</span></div>
+          <div class="craft-card"><strong>Coffee to go</strong><span>Гость видит, что можно быстро зайти утром.</span></div>
+          <div class="craft-card"><strong>Order for office</strong><span>Можно продавать предзаказы и наборы.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="video-band" id="atmosphere">
+      <img src="../../assets/images/bakery-cafe/interior.jpg" alt="" aria-hidden="true" loading="lazy">
+      <video class="lazy-video" muted loop playsinline preload="none" poster="../../assets/images/bakery-cafe/interior.jpg" aria-hidden="true" data-src="../../assets/videos/bakery-cafe/atmosphere-counter.webm"></video>
+      <div class="shell video-copy">
+        <h2>Место для завтрака, кофе и короткой паузы</h2>
+        <p>Фотографии и видео помогают гостю почувствовать атмосферу ещё до визита. Если видео не загрузится, секция остаётся красивой за счёт poster-фото.</p>
+        <div class="cta-row"><a class="btn primary" href="#contact">Найти на карте</a><a class="btn ghost" href="#order">Заказать похожий</a></div>
+      </div>
+    </section>
+
+    <section class="coffee" id="coffee">
+      <div class="shell coffee-grid">
+        <div class="coffee-img"><img src="../../assets/images/bakery-cafe/flat-white.jpg" alt="Кофе flat white" loading="lazy"></div>
+        <div class="text-panel">
+          <h2>Кофе к свежей выпечке</h2>
+          <p>На сайте можно показать не только хлеб и круассаны, но и напитки: espresso, cappuccino, filter, seasonal drinks. Это помогает гостю понять, что можно зайти не только за хлебом, но и на завтрак или кофе.</p>
+          <div class="coffee-menu">
+            <div class="coffee-item"><span>Espresso</span><strong>55 Kč</strong></div>
+            <div class="coffee-item"><span>Cappuccino</span><strong>75 Kč</strong></div>
+            <div class="coffee-item"><span>Flat white</span><strong>85 Kč</strong></div>
+            <div class="coffee-item"><span>Filter coffee</span><strong>75 Kč</strong></div>
+            <div class="coffee-item"><span>Iced latte</span><strong>89 Kč</strong></div>
+            <div class="coffee-item"><span>Seasonal drink</span><strong>95 Kč</strong></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="gallery" id="gallery">
+      <div class="shell">
+        <div class="section-head">
+          <h2>Фото продукции продают быстрее длинного текста</h2>
+          <p>Для реального клиента сюда ставятся настоящие фото хлеба, выпечки, кофе, витрины, упаковки, команды и интерьера.</p>
+        </div>
+        <div class="gallery-grid">
+          <img src="../../assets/images/bakery-cafe/bakery-counter.jpg" alt="Витрина с выпечкой" loading="lazy">
+          <img src="../../assets/images/bakery-cafe/croissant.jpg" alt="Круассан" loading="lazy">
+          <img src="../../assets/images/bakery-cafe/focaccia.jpg" alt="Фокачча" loading="lazy">
+          <img src="../../assets/images/bakery-cafe/cinnamon-roll.jpg" alt="Булочка с корицей" loading="lazy">
+          <img src="../../assets/images/bakery-cafe/flat-white.jpg" alt="Кофе" loading="lazy">
+          <img src="../../assets/images/bakery-cafe/interior.jpg" alt="Интерьер пекарни" loading="lazy">
+        </div>
+      </div>
+    </section>
+
+    <section class="order" id="order">
+      <div class="shell order-grid">
+        <div class="text-panel">
+          <h2>Хотите такой сайт для своей пекарни или кафе?</h2>
+          <p>Этот demo-шаблон можно адаптировать под пекарню, кофейню, кондитерскую или небольшое кафе: заменить фото, меню, контакты, стиль, подключить форму заявки и опубликовать сайт.</p>
+          <p><strong>Готовая структура уже есть — остаётся подставить ваш бизнес.</strong></p>
+          <div class="contact-cards">
+            <a class="contact-card" href="https://t.me/pracehub" target="_blank" rel="noopener">Telegram: @pracehub</a>
+            <a class="contact-card" href="https://www.facebook.com/share/18hdnUyhLG/" target="_blank" rel="noopener">Facebook / Messenger</a>
+            <a class="contact-card" href="mailto:nikyrchenko71@gmail.com">nikyrchenko71@gmail.com</a>
+          </div>
+        </div>
+        <form class="form" action="https://forminit.com/f/kshbr37bfe4" method="POST">
+          <input type="hidden" name="selected_template" value="Bakery / Cafe Website Demo">
+          <input type="hidden" name="source" value="bakery-demo">
+          <input type="hidden" name="business_type" value="Bakery / Cafe">
+          <label>Имя<input name="name" autocomplete="name" required></label>
+          <label>Телефон / WhatsApp / Telegram<input name="phone" autocomplete="tel" required></label>
+          <label>Telegram / WhatsApp<input name="telegram_whatsapp" placeholder="@username или номер"></label>
+          <label>Email<input name="email" type="email" autocomplete="email"></label>
+          <label>Что нужно сделать<textarea name="message" placeholder="Пекарня, кафе, кофейня, кондитерская... Что надо показать на сайте?" required></textarea></label>
+          <button class="btn blue" type="submit">Отправить заявку</button>
+          <small>Форма отправляется через Forminit. Можно также написать напрямую в Telegram или Facebook.</small>
+        </form>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="shell order-grid">
+        <div class="map-card">
+          <p class="eyebrow">Demo location</p>
+          <h2>Blue Oven Bakery Prague</h2>
+          <p>Praha 1, Štefánikova 9<br>Denně 7:00–19:00<br>+420 XXX XXX XXX</p>
+          <div class="cta-row"><a class="btn primary" href="https://maps.google.com/?q=Praha%201%20Stefanikova%209" target="_blank" rel="noopener">Открыть в Google Maps</a><a class="btn ghost" href="tel:+420000000000">Позвонить</a></div>
+        </div>
+        <div class="text-panel">
+          <h2>Карта, телефон и заявка — в один клик</h2>
+          <p>В реальном проекте адрес, часы, телефон, соцсети и карта заменяются на данные клиента. Тяжёлый map iframe не грузится автоматически, поэтому страница остаётся быстрой.</p>
+          <div class="feature-list">
+            <span>Открыть карту</span>
+            <span>Позвонить с телефона</span>
+            <span>Написать в мессенджер</span>
+            <span>Оставить заявку на сайт</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="final">
+      <div class="shell">
+        <h2>Такой сайт можно запустить быстро, а потом постепенно расширять</h2>
+        <p>Добавить больше категорий меню, сезонные предложения, отзывы, отдельные страницы, онлайн-заказ или интеграции можно позже. Первый шаг — понятная витрина, которая работает на телефоне.</p>
+        <div class="cta-row">
+          <a class="btn primary" href="#order">Заказать похожий</a>
+          <a class="btn light" href="../../index.html#catalog">Вернуться к портфолио</a>
+          <a class="btn ghost" href="https://t.me/pracehub" target="_blank" rel="noopener">Написать в Telegram</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="shell">
+      <span>Blue Oven Bakery — fictional demo template</span>
+      <span>Nikolaj Dev · Bakery / Cafe Website Demo</span>
+    </div>
+  </footer>
+
+  <nav class="bottom-nav" aria-label="Быстрые действия">
+    <a href="#menu">Меню</a>
+    <a href="#order">Заявка</a>
+    <a href="tel:+420000000000">Звонок</a>
+    <a href="#contact">Карта</a>
+  </nav>
+
+  <script>
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    document.querySelectorAll(".hero-video").forEach((video) => {
+      if (reducedMotion) return;
+      video.addEventListener("canplay", () => video.classList.add("is-ready"), { once: true });
+      const play = () => video.play().catch(() => {});
+      if ("requestIdleCallback" in window) requestIdleCallback(play, { timeout: 1400 });
+      else setTimeout(play, 700);
+    });
+
+    document.querySelectorAll(".lazy-video").forEach((video) => {
+      if (reducedMotion) return;
+      const loadVideo = () => {
+        if (video.dataset.loaded) return;
+        video.dataset.loaded = "true";
+        const source = document.createElement("source");
+        source.src = video.dataset.src;
+        source.type = "video/webm";
+        video.appendChild(source);
+        video.load();
+        video.addEventListener("canplay", () => {
+          video.classList.add("is-ready");
+          video.play().catch(() => {});
+        }, { once: true });
+      };
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            loadVideo();
+            observer.disconnect();
+          }
+        });
+      }, { rootMargin: "260px 0px" });
+      observer.observe(video);
+    });
+  </script>
+</body>
+</html>

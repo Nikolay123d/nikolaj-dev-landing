@@ -1,5 +1,18 @@
 window.siteCategories = [
   {
+    id: "bakery-cafe",
+    filter: "restaurants",
+    title: "Сайт для пекарни / кафе",
+    badge: "New demo",
+    status: "Готовый demo",
+    description: "Видео на первом экране, меню, фото выпечки, кофе, карта, контакты и заявки.",
+    price: "от 250-500 €",
+    timeline: "3-7 дней",
+    image: "assets/images/bakery-cafe/hero-bakery.jpg",
+    features: ["Видео hero", "Меню", "Кофе", "Карта"],
+    demoUrl: "demos/bakery-cafe/index.html"
+  },
+  {
     id: "restaurant-cafe",
     filter: "restaurants",
     title: "Сайт для ресторана / кафе",

@@ -197,3 +197,67 @@ Videos below are stored in `assets/videos/restaurant-cafe/` and used as local ba
 - Author: Bobak Ha'Eri
 - License: CC BY 3.0
 - Local role: lazy-loaded lower atmosphere/open-kitchen video
+
+# Bakery / Cafe Demo Image Credits
+
+Images below are stored in `assets/images/bakery-cafe/` and used for the fictional Blue Oven Bakery demo template. They are local template visuals, not proof of a real Blue Oven Bakery client.
+
+## bakery-cafe/hero-bakery.jpg
+- Source: https://commons.wikimedia.org/wiki/File:13-08-31-Kochtreffen-Wien-RalfR-N3S_7849-024.jpg
+- Title: Five different commercial buns from Vienna
+- Author: Ralf Roletschek
+- License: GFDL 1.2 / FAL (per Commons page)
+
+## bakery-cafe/bakery-counter.jpg
+- Source: https://commons.wikimedia.org/wiki/File:Bakery_food_display_area.jpg
+- Title: Bakery food display area
+- Author: Kurt Kaiser
+- License: CC0 1.0
+
+## bakery-cafe/croissant.jpg
+- Source: https://commons.wikimedia.org/wiki/File:Ham_and_cheese_croissant_-_San_Francisco.jpg
+- Title: Ham and cheese croissant - San Francisco
+- Author: Daderot
+- License: CC0 1.0
+
+## bakery-cafe/focaccia.jpg
+- Source: https://commons.wikimedia.org/wiki/File:Focaccia_Bread.jpg
+- Title: Focaccia Bread
+- Author: Kurtkaiser
+- License: CC0 1.0
+
+## bakery-cafe/cinnamon-roll.jpg
+- Source: https://commons.wikimedia.org/wiki/File:Cinnamon_bun_-_Black_Mocha_2024-01-08.jpg
+- Title: Cinnamon bun - Black Mocha
+- Author: Andy Li
+- License: CC0 1.0
+
+## bakery-cafe/flat-white.jpg
+- Source: https://commons.wikimedia.org/wiki/File:Flat_White_by_Nijat_Zayidov.jpg
+- Title: Flat White by Nijat Zayidov
+- Author: Tokimemooo
+- License: CC0 1.0
+
+## bakery-cafe/interior.jpg
+- Source: https://commons.wikimedia.org/wiki/File:Interior_of_bakery_in_Krak%C3%B3w,_2023.jpg
+- Title: Interior of bakery in Kraków, 2023
+- Author: Kgbo
+- License: CC BY-SA 4.0
+
+# Bakery / Cafe Demo Video Credits
+
+Videos below are stored in `assets/videos/bakery-cafe/` and used as local background media. They are muted, poster-first, and not used as proof of a real Blue Oven Bakery client.
+
+## bakery-cafe/hero-pastry.webm
+- Source: https://commons.wikimedia.org/wiki/File:Vegan_Pastry_-_Voted_Best_Croissant_in_Miami.webm
+- Title: Vegan Pastry - Voted Best Croissant in Miami
+- Author: Chef's Roll
+- License: CC BY 3.0
+- Local role: top hero bakery/pastry process video, downloaded as 240p VP9 transcode for performance
+
+## bakery-cafe/atmosphere-counter.webm
+- Source: https://commons.wikimedia.org/wiki/File:Cafe_du_Monde1.webm
+- Title: Cafe du Monde1
+- Author: Etan J. Tal
+- License: CC BY-SA 4.0
+- Local role: lazy-loaded lower bakery/cafe process video

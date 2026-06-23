@@ -19,6 +19,11 @@
         <p class="eyebrow">Заявка отправлена</p>
         <h1>Спасибо, я получил вашу заявку</h1>
         <p class="hero-sub">Я посмотрю задачу и отвечу на указанный контакт. Если вопрос срочный, можно дополнительно написать на email.</p>
+        <div class="sale-form-notice" id="saleThanks" hidden>
+          <strong>Заявка по акции 50% получена.</strong>
+          <span>Я посмотрю задачу и отвечу на указанный контакт.</span>
+          <span>Если проект подходит под готовый demo-шаблон, я постараюсь закрепить цену по скидке.</span>
+        </div>
         <div class="hero-actions">
           <a class="btn primary" href="index.html#work">Вернуться к работам</a>
           <a class="btn ghost" href="https://t.me/pracehub" target="_blank" rel="noopener">Написать в Telegram</a>
@@ -45,5 +50,31 @@
       </aside>
     </div>
   </main>
+  <script>
+    const rawSaleLead = sessionStorage.getItem("nikolaj_last_sale_lead");
+    const saleBox = document.querySelector("#saleThanks");
+    if (rawSaleLead && saleBox) {
+      try {
+        const lead = JSON.parse(rawSaleLead);
+        const isActiveSale = lead.promo_code === "SALE50_3H" && lead.promo_status !== "EXPIRED";
+        if (isActiveSale) {
+          const rows = [
+            lead.selected_package ? `Package: ${lead.selected_package}` : "",
+            lead.selected_template ? `Demo: ${lead.selected_template}` : "",
+            lead.promo_code ? `Promo: ${lead.promo_code}` : "",
+            lead.discount_price ? `Цена по акции: ${lead.discount_price}` : ""
+          ].filter(Boolean);
+          rows.forEach((text) => {
+            const item = document.createElement("span");
+            item.textContent = text;
+            saleBox.appendChild(item);
+          });
+          saleBox.hidden = false;
+        } else {
+          sessionStorage.removeItem("nikolaj_last_sale_lead");
+        }
+      } catch (error) {}
+    }
+  </script>
 </body>
 </html>

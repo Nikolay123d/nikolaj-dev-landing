@@ -273,19 +273,13 @@ nav a:hover{color:var(--white)}
 @media(max-width:760px){.gal-grid{grid-template-columns:repeat(2,1fr)}.gal-item:nth-child(1){min-height:280px}}
 @media(max-width:480px){.gal-grid{grid-template-columns:1fr}.gal-item:nth-child(1){min-height:220px}}
 
-/* ═══ REVIEWS ═══ */
-#reviews{background:var(--bg2)}
-.rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border)}
-.rev-card{background:var(--bg2);padding:2.5rem 2rem}
-.rev-stars{display:flex;gap:.25rem;margin-bottom:1.25rem}
-.rev-stars span{color:var(--gold);font-size:.9rem}
 .rev-txt{font-size:.84rem;color:var(--t2);font-style:italic;line-height:2;margin-bottom:1.5rem}
 .rev-auth{font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--t3)}
 .funnel-row{display:grid;grid-template-columns:auto 1fr;gap:2rem;align-items:center;margin-top:4rem;padding:2rem 2.5rem;border:1px solid var(--goldBorder);background:var(--goldDim)}
 .funnel-ico{font-size:2rem;flex-shrink:0}
 .funnel-row h3{font-family:'Montserrat',sans-serif;font-size:.82rem;font-weight:600;color:var(--gold2);margin-bottom:.5rem;letter-spacing:.04em}
 .funnel-row p{font-size:.78rem}
-@media(max-width:760px){.rev-grid{grid-template-columns:1fr}.funnel-row{grid-template-columns:1fr}}
+@media(max-width:760px){.funnel-row{grid-template-columns:1fr}}
 
 /* ═══ FAQ ═══ */
 #faq{background:var(--bg)}
@@ -421,7 +415,6 @@ footer li a:hover{color:var(--gold)}
         <a href="#feat">Программа</a>
         <a href="#gallery">Галерея</a>
         <a href="#flow">Бронирование</a>
-        <a href="#reviews">Отзывы</a>
         <a href="#contact">Контакты</a>
       </nav>
       <div class="hdr-r">
@@ -444,7 +437,6 @@ footer li a:hover{color:var(--gold)}
   <a href="#feat" onclick="closeMM()">Программа</a>
   <a href="#gallery" onclick="closeMM()">Галерея</a>
   <a href="#flow" onclick="closeMM()">Бронирование</a>
-  <a href="#reviews" onclick="closeMM()">Отзывы</a>
   <a href="#contact" onclick="closeMM()">Контакты</a>
   <div class="mm-sub">
     <a href="#" class="btn btn-gold btn-full" onclick="closeMM();openBook(null,event)">Забронировать место</a>
@@ -559,7 +551,7 @@ footer li a:hover{color:var(--gold)}
       <h2>Маршрут<br><em style="font-style:italic;color:var(--gold)">как готовый день</em></h2>
       <span class="gold-line"></span>
       <p>Демо-видео включено как рабочий фон, чтобы секция не была битой. Для финальной версии нужно поставить короткий ролик организатора из поездок по Чехии.</p>
-      <p style="margin-top:1rem">Пока это техническая video-заглушка: она autoplay, muted, loop и не ломает страницу на GitHub Pages.</p>
+      <p style="margin-top:1rem">Видео работает как лёгкий фон: autoplay, muted, loop и poster-фото остаётся fallback, если ролик не загрузится.</p>
       <div style="display:flex;gap:.75rem;flex-wrap:wrap;margin-top:2.5rem">
         <a href="#tours" class="btn btn-gold">Выбрать тур</a>
         <a href="#" class="btn btn-ghost" onclick="openBook(null,event)">Забронировать</a>
@@ -693,40 +685,6 @@ footer li a:hover{color:var(--gold)}
   </div>
 </section>
 
-<!-- ══ REVIEWS ══ -->
-<section id="reviews" class="sec">
-  <div class="cnt">
-    <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:4rem;flex-wrap:wrap;gap:2rem">
-      <div><span class="lbl">Отзывы</span><h2>Говорят участники</h2></div>
-      <p style="max-width:300px;font-size:.78rem">Реальные впечатления тех, кто уже ездил с нами.</p>
-    </div>
-    <div class="rev-grid">
-      <div class="rev-card">
-        <div class="rev-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-        <p class="rev-txt">"Всё было понятно и удобно. Место сбора прислали заранее, маршрут красивый. Леднице — это просто сказка, вернусь снова!"</p>
-        <div class="rev-auth">Мария К. &nbsp;·&nbsp; <span class="demo-tag" style="font-size:.58rem;padding:.2rem .5rem">демо</span></div>
-      </div>
-      <div class="rev-card">
-        <div class="rev-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-        <p class="rev-txt">"Написала в WhatsApp — быстро ответили. Поехали с подругой, провели день замечательно. Уже смотрю следующий тур!"</p>
-        <div class="rev-auth">Оксана Л. &nbsp;·&nbsp; <span class="demo-tag" style="font-size:.58rem;padding:.2rem .5rem">демо</span></div>
-      </div>
-      <div class="rev-card">
-        <div class="rev-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-        <p class="rev-txt">"Отличный формат для выходного дня. Не нужно планировать самому — просто приезжаешь и всё уже готово. Рекомендую."</p>
-        <div class="rev-auth">Игорь В. &nbsp;·&nbsp; <span class="demo-tag" style="font-size:.58rem;padding:.2rem .5rem">демо</span></div>
-      </div>
-    </div>
-    <div class="funnel-row">
-      <div class="funnel-ico">💡</div>
-      <div>
-        <h3>Хотите больше клиентов с этого сайта?</h3>
-        <p>Подключите форму с реальной отправкой заявок, настройте пиксель Meta и ремаркетинг на Facebook — поток участников вырастет в 2–3 раза без больших вложений. Это несложно сделать в следующей версии. <strong style="color:var(--gold2)">Спросите у Nikolaj Dev — он знает как.</strong></p>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- ══ FAQ ══ -->
 <section id="faq" class="sec" style="background:var(--bg2)">
   <div class="cnt-narrow">
@@ -756,7 +714,7 @@ footer li a:hover{color:var(--gold)}
       </article>
       <article class="template-price-card rec">
         <span class="badge">Популярно</span>
-        <strong>15 000 Kč <small>≈600 €</small></strong>
+        <strong>20 000 Kč <small>≈800 €</small></strong>
         <h3>Tours Plus</h3>
         <p>Больше маршрутов, фото, второй язык, thank-you страница и базовая аналитика.</p>
         <small>+ домен ~150-300 Kč / год</small>
@@ -765,7 +723,7 @@ footer li a:hover{color:var(--gold)}
       </article>
       <article class="template-price-card pro">
         <span class="badge">PRO</span>
-        <strong>от 20 000 Kč <small>от ≈800 €</small></strong>
+        <strong>от 30 000 Kč <small>от ≈1 200 €</small></strong>
         <h3>Tours Pro</h3>
         <p>UTM, SEO-основа, дополнительные секции и подготовка к рекламе.</p>
         <small>+ домен ~150-300 Kč / год</small>
@@ -978,7 +936,7 @@ const whyItems=[
   {n:'05',title:'Понятная программа',text:'На карточке видно формат, дату, цену, длительность и что оплачивается отдельно.'},
   {n:'06',title:'Удобно для выходного',text:'Утром выезд, вечером возвращение. Один свободный день превращается в поездку.'},
   {n:'07',title:'Быстрая заявка',text:'Вы оставляете контакты, организатор подтверждает наличие мест и отправляет детали.'},
-  {n:'08',title:'Demo без фейковых обещаний',text:'Отзывы, контакты и часть данных помечены как demo до получения материалов клиента.'},
+  {n:'08',title:'Demo без фейковых обещаний',text:'Контакты, расписание и часть данных помечены как demo до получения материалов клиента.'},
 ];
 
 const flowItems=[
@@ -1205,5 +1163,6 @@ renderFlow();
 renderFAQ();
 const bgv=document.getElementById('myVid'); if(bgv){bgv.muted=true; bgv.play().catch(()=>{});}
 </script>
+  <script src="../../assets/js/demo-sale.js"></script>
 </body>
 </html>

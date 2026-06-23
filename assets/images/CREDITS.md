@@ -2,6 +2,8 @@
 
 Images are stored locally for the Nikolaj Dev landing page. Sources were selected from Openverse and Wikimedia Commons results with open/public licenses where available. The local files are used only as category visuals, not as proof of real client work.
 
+Additional per-demo media for the 17 generated niche templates is stored in `assets/images/demo-media/`. Source, creator and license details for those files are recorded in `assets/images/demo-media/CREDITS.md` and `assets/images/demo-media/OPENVERSE_CREDITS.json`.
+
 ## restaurant-cafe.jpg
 - Source: https://www.flickr.com/photos/10559879@N00/4198678349
 - Title: Soda siphons - Capital Kitchen
@@ -20,11 +22,98 @@ Images are stored locally for the Nikolaj Dev landing page. Sources were selecte
 - Author: Meanwell Packaging
 - License: CC BY 2.0
 
+# Delivery / Fleet Demo Image Credits
+
+Images below are stored in `assets/images/delivery-fleet/` and used for the fictional SprintFleet delivery/fleet demo template. They are local template visuals, not proof of a real SprintFleet client.
+
+## delivery-fleet/courier-handoff.jpg
+- Source: copied from `assets/images/categories/delivery-fleet.jpg`
+- Original source: https://commons.wikimedia.org/wiki/File:Handing_a_package_over_for_delivery.jpg
+- Title: Handing a package over for delivery
+- Author: Meanwell Packaging
+- License: CC BY 2.0
+
+## delivery-fleet/parcel-boxes.jpg
+- Source: https://commons.wikimedia.org/wiki/File:Parcel_package_boxes_in_Ozolnieki.jpg
+- Title: Parcel package boxes in Ozolnieki
+- Author: Андрей Романенко
+- License: CC BY-SA 4.0
+
+## delivery-fleet/sorted-parcels.jpg
+- Source: https://commons.wikimedia.org/wiki/File:Parcel_package_boxes_in_Salacgr%C4%ABva.jpg
+- Title: Parcel package boxes in Salacgriva
+- Author: Андрей Романенко
+- License: CC BY-SA 4.0
+
+## delivery-fleet/locker-flow.jpg
+- Source: https://commons.wikimedia.org/wiki/File:Office_exchange_lockers.jpg
+- Title: Office exchange lockers
+- Author: Metra
+- License: CC BY-SA 4.0
+
+## delivery-fleet/parcel-drop.webp
+- Source: https://commons.wikimedia.org/wiki/File:Parcel_box_by_mailbox.webp
+- Title: Parcel box by mailbox
+- Author: Wikideas1
+- License: CC BY-SA 4.0
+
+# Delivery / Fleet Demo Video Credits
+
+Videos below are stored in `assets/videos/delivery-fleet/`. They reuse the existing optimized local `portfolio-hero-tech.mp4` motion asset as a lightweight dispatch/route-control background so this demo stays fast and stable on mobile.
+
+## delivery-fleet/dispatch-motion.mp4
+- Source: local optimized asset `assets/videos/portfolio-hero-tech.mp4`
+- Local role: hero dispatch / route motion background
+
+## delivery-fleet/route-motion.mp4
+- Source: local optimized asset `assets/videos/portfolio-hero-tech.mp4`
+- Local role: lazy-loaded route-control video band
+
 ## beauty-salon.jpg
 - Source: https://commons.wikimedia.org/wiki/File:Hair_Salon_Stations.jpg
 - Title: Hair Salon Stations
 - Author: The Beauty Blogger Queen / own work
 - License: CC BY-SA 4.0
+
+# Beauty / Salon Demo Image Credits
+
+Images below are stored in `assets/images/beauty-salon/` and used for the fictional Mira Beauty Studio demo template. They are local template visuals, not proof of a real Mira Beauty client.
+
+## beauty-salon/hero-salon.jpg
+- Source: https://commons.wikimedia.org/wiki/File:Hair_Salon_Stations.jpg
+- Title: Hair Salon Stations
+- Author: The Beauty Blogger Queen / own work
+- License: CC BY-SA 4.0
+
+## beauty-salon/interior.jpg
+- Source: https://commons.wikimedia.org/wiki/File:Salon_interior.jpg
+- Title: Salon interior
+- Author: Daquella Manera / transferred from English Wikipedia
+- License: CC BY 2.0
+
+## beauty-salon/hair-service.jpg
+- Source: https://commons.wikimedia.org/wiki/File:Haircut_or_hair_Salon_From_Iran-_Canon_Photography-_Mostafa_Meraji-_fashion_Photo_02.jpg
+- Title: Haircut or hair Salon From Iran - fashion Photo 02
+- Author: Mostafameraji
+- License: CC0 1.0
+
+## beauty-salon/nail-service.jpg
+- Source: https://commons.wikimedia.org/wiki/File:Lagoh_26.jpg
+- Title: Lagoh 26
+- Author: CarlosVdeHabsburgo
+- License: CC BY-SA 4.0
+
+# Beauty / Salon Demo Video Credits
+
+Videos below are stored in `assets/videos/beauty-salon/`. They reuse the existing optimized local `portfolio-hero-tech.mp4` motion asset as a lightweight booking/visual glow background so this demo stays fast and stable on mobile.
+
+## beauty-salon/hero-glow.mp4
+- Source: local optimized asset `assets/videos/portfolio-hero-tech.mp4`
+- Local role: hero motion layer over salon photo
+
+## beauty-salon/booking-glow.mp4
+- Source: local optimized asset `assets/videos/portfolio-hero-tech.mp4`
+- Local role: lazy-loaded booking/atmosphere motion layer
 
 ## clinic-doctor.jpg
 - Source: https://stocksnap.io/photo/doctor-patient-EDI8LWKSBB

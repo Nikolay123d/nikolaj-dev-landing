@@ -11,7 +11,7 @@ const services = [
     id: "business-site",
     title: "Business Website",
     text: "Сайт с услугами, работами, контактами, формой заявки и понятной структурой доверия.",
-    price: "PLUS 15 000 Kč / ≈600 €",
+    price: "PLUS 20 000 Kč / ≈800 €",
     timeline: "5-10 дней",
     cta: "Обсудить сайт"
   },
@@ -19,7 +19,7 @@ const services = [
     id: "mvp",
     title: "MVP / Mini Platform",
     text: "Мини-платформа с ролями, формами, базой данных, чатом, админкой или интеграциями.",
-    price: "PRO от 20 000 Kč / от ≈800 €",
+    price: "PRO от 30 000 Kč / от ≈1 200 €",
     timeline: "индивидуально",
     cta: "Спланировать MVP"
   },
@@ -34,19 +34,18 @@ const services = [
   {
     id: "bugs",
     title: "Bug fixing",
-    text: "Исправление сломанных экранов, форм, адаптива, логики, деплоя или Firebase-проблем.",
+    text: "Исправление сломанных экранов, форм, адаптива, логики, публикации или ошибок на сайте.",
     price: "точечно от 1 250 Kč",
     timeline: "по задаче",
     cta: "Починить проблему"
   },
   {
-    id: "argus-workflow",
-    title: "AI-assisted Workflow",
-    text: "Работа через этапы, отчёты и контроль. AI ускоряет подготовку, человек утверждает решения.",
-    price: "индивидуально",
+    id: "launch-support",
+    title: "Подготовка к запуску",
+    text: "Форма заявки, кнопки связи, домен, публикация и финальная проверка перед показом клиентам.",
+    price: "входит по пакету",
     timeline: "по задаче",
-    cta: "Как это работает",
-    action: "argus"
+    cta: "Обсудить запуск"
   }
 ];
 
@@ -113,7 +112,7 @@ const projects = [
     price: "START 10 000 Kč / ≈400 €",
     timeline: "4-6 дней",
     short: "Лендинг для туров и поездок из Праги: маршруты, программа, доверие и заявка в мессенджер.",
-    forWhom: "Для организатора туров, гида, travel-агентства, экскурсионного проекта или локальных поездок выходного дня.",
+    forWhom: "Для организатора туров, гида, туристической компании, экскурсионного проекта или локальных поездок выходного дня.",
     features: ["Премиальный travel-стиль", "Карточки маршрутов", "Программа поездки", "Заявка в мессенджер", "Мобильная версия"],
     includes: ["Адаптация под бренд", "Замена маршрутов и текстов", "Форма заявки через email", "Подготовка к публикации", "Базовая SEO-структура"]
   },
@@ -131,22 +130,39 @@ const projects = [
     short: "Концепт сайта для строительной компании: услуги, доверие, работы и контакт.",
     forWhom: "Для локальных строительных услуг, ремонта, фасадов, кровли или комплексных работ.",
     features: ["Каталог услуг", "Блок доверия", "Заявка", "Портфолио работ"],
-    includes: ["Коммерческая структура", "Адаптив", "Базовая форма", "Подготовка к GitHub Pages"]
+    includes: ["Коммерческая структура", "Адаптив", "Базовая форма", "Подготовка к публикации"]
   },
   {
     id: "delivery",
     group: "template",
-    title: "Delivery / Local Service",
-    label: "Demo concept",
+    title: "Delivery / Fleet Website Demo",
+    label: "Готовый demo",
     category: "Local service",
-    image: "assets/images/categories/delivery-fleet.jpg",
-    demoUrl: "",
+    image: "assets/images/delivery-fleet/courier-handoff.jpg",
+    gallery: ["assets/images/delivery-fleet/courier-handoff.jpg", "assets/images/delivery-fleet/parcel-boxes.jpg", "assets/images/delivery-fleet/locker-flow.jpg"],
+    demoUrl: "demos/delivery-fleet/index.html",
     price: "START 10 000 Kč / ≈400 €",
-    timeline: "2-5 дней",
-    short: "Простой сайт для локальной доставки или выездной услуги с понятной воронкой.",
-    forWhom: "Для курьерских услуг, локального сервиса, мастера на выезд или маленькой службы доставки.",
-    features: ["Короткий оффер", "Зоны работы", "Тарифы", "Быстрый контакт"],
-    includes: ["Адаптив", "CTA", "Контакты", "Базовая SEO-разметка"]
+    timeline: "2-6 дней",
+    short: "Сайт для доставки, курьеров и флотилии: зоны, тарифы, заявка клиента, набор курьеров и быстрые контакты.",
+    forWhom: "Для курьерской службы, доставки еды, локального сервиса, флотилии или проекта, которому нужно быстро собирать заявки от клиентов и курьеров.",
+    features: ["Видео hero", "Зоны и тарифы", "Форма заявки", "Курьерский блок", "Mobile bottom nav"],
+    includes: ["Адаптация под бренд", "Замена зон и тарифов", "Форма заявки на почту", "Кнопки Telegram/Facebook", "Подготовка к публикации"]
+  },
+  {
+    id: "beauty-salon",
+    group: "template",
+    title: "Beauty / Salon Website Demo",
+    label: "Готовый demo",
+    category: "Beauty / salon",
+    image: "assets/images/beauty-salon/hero-salon.jpg",
+    gallery: ["assets/images/beauty-salon/hero-salon.jpg", "assets/images/beauty-salon/hair-service.jpg", "assets/images/beauty-salon/nail-service.jpg"],
+    demoUrl: "demos/beauty-salon/index.html",
+    price: "START 10 000 Kč / ≈400 €",
+    timeline: "3-6 дней",
+    short: "Сайт для салона, мастера или beauty-студии: услуги, цены, галерея, запись, контакты и мобильные CTA.",
+    forWhom: "Для парикмахера, nail-мастера, brow/lash-студии, косметолога, массажного кабинета или маленького салона, где важны фото работ и быстрая запись.",
+    features: ["Видео hero", "Услуги и цены", "Галерея работ", "Форма записи", "Mobile bottom nav"],
+    includes: ["Адаптация под бренд", "Замена услуг и цен", "Форма заявки на почту", "Кнопки Telegram/Facebook", "Подготовка к публикации"]
   },
   {
     id: "pracehub",
@@ -157,29 +173,37 @@ const projects = [
     image: "assets/img/pracehub-mobile-home.png",
     gallery: ["assets/img/pracehub-mobile-home.png", "assets/img/pracehub-login.png", "assets/img/pracehub-prague-brand.png"],
     demoUrl: "https://pracehub.cz",
-    price: "MVP / PRO от 20 000 Kč / от ≈800 €",
+    price: "MVP / PRO от 30 000 Kč / от ≈1 200 €",
     timeline: "индивидуально",
-    short: "Живой продукт: роли, чат, Firebase, PWA, Storage, Functions, пользователи и реальные UX-уроки.",
+    short: "Живой продукт: роли, чат, пользователи, заявки и реальные UX-уроки для мини-платформ.",
     forWhom: "Для проектов, где нужен не просто лендинг, а продуктовая логика: роли, пользователи, заявки, чат или кабинет.",
-    features: ["Роли", "Чат", "Firebase", "PWA", "Storage / Functions"],
+    features: ["Роли", "Чат", "Пользователи", "PWA", "Кабинет"],
     includes: ["Scope", "Архитектура", "MVP-логика", "Проверка рисков", "План развития"]
-  },
-  {
-    id: "argus",
-    group: "workflow",
-    title: "ARGUS Control Room",
-    label: "Internal workflow",
-    category: "AI-assisted workflow",
-    image: "assets/img/argus-control-mobile.png",
-    demoUrl: "",
-    price: "индивидуально",
-    timeline: "по процессу",
-    short: "Внутренний локальный контур для контроля AI-assisted разработки, отчётов, файлов и решений.",
-    forWhom: "Для объяснения, как я организую работу: AI помогает, но важные действия проходят через человеческое решение.",
-    features: ["Отчёты", "Протоколы", "Контроль файлов", "Ручные approvals"],
-    includes: ["Понятный workflow", "Этапность", "Отчётность", "Осторожность с чувствительными действиями"]
   }
 ];
+
+const projectIds = new Set(projects.map((project) => project.id));
+const categoryProjectSkips = new Set(["bakery-cafe", "restaurant-cafe", "renovation", "tours-guides", "delivery-fleet", "beauty-salon"]);
+siteCategories.forEach((category) => {
+  if (!category.demoUrl || projectIds.has(category.id) || categoryProjectSkips.has(category.id)) return;
+  projects.push({
+    id: category.id,
+    group: "template",
+    title: category.title,
+    label: category.status,
+    category: category.badge,
+    image: category.image,
+    gallery: [category.image],
+    demoUrl: category.demoUrl,
+    price: category.price,
+    timeline: category.timeline,
+    short: category.description,
+    forWhom: `Для направления: ${category.title}. Demo-шаблон можно адаптировать под реальный бизнес, заменить фото, услуги, цены, контакты и форму заявки.`,
+    features: category.features,
+    includes: ["Адаптация под бренд", "Замена текстов/фото/контактов", "Форма заявки на почту", "Кнопки Telegram/Facebook", "Подготовка к публикации"]
+  });
+  projectIds.add(category.id);
+});
 
 const pricingPlans = [
   {
@@ -187,45 +211,48 @@ const pricingPlans = [
     title: "START",
     subtitle: "Быстрый запуск",
     price: "10 000 Kč / ≈400 €",
+    salePrice: "5 000 Kč / ≈200 €",
     timeline: "2-5 дней",
     goodFor: "Готовый demo-шаблон: меняем тексты, фото, контакты, форму заявки и готовим быстрый запуск.",
     extras: ["+ домен ~150-300 Kč / год", "+ хостинг 0 Kč для обычного лендинга"],
     includes: ["адаптация demo-шаблона", "замена текстов/фото/контактов", "форма заявки", "мобильная версия", "подготовка к публикации"],
-    cta: "Выбрать Start"
+    cta: "Купить Start по акции"
   },
   {
     key: "Plus",
     title: "PLUS",
     subtitle: "Оптимальный вариант",
-    price: "15 000 Kč / ≈600 €",
+    price: "20 000 Kč / ≈800 €",
+    salePrice: "10 000 Kč / ≈400 €",
     timeline: "4-8 дней",
-    goodFor: "Когда нужно больше доработки: дополнительные блоки, второй язык, thank-you страница и базовая аналитика.",
+    goodFor: "Когда нужно больше доработки: дополнительные блоки, второй язык, thank-you страница, базовая аналитика и аккуратная адаптация под бизнес.",
     extras: ["+ домен ~150-300 Kč / год", "+ хостинг 0 Kč для обычного лендинга"],
     includes: ["расширенная структура", "дополнительные секции", "второй язык по задаче", "thank-you page", "базовая аналитика"],
-    cta: "Выбрать Plus",
+    cta: "Купить Plus по акции",
     recommended: true
   },
   {
     key: "Pro",
     title: "PRO",
     subtitle: "Под рекламу и рост",
-    price: "от 20 000 Kč / от ≈800 €",
+    price: "от 30 000 Kč / от ≈1 200 €",
+    salePrice: "от 15 000 Kč / от ≈600 €",
     timeline: "индивидуально",
-    goodFor: "Для сайта под рекламу и рост: аналитика кликов, UTM, SEO-основа, дополнительные секции и подготовка к продвижению.",
+    goodFor: "Для сайта под рекламу и рост: аналитика кликов, UTM, SEO-основа, дополнительные секции и расширенная подготовка. Точный объём фиксируется перед стартом.",
     extras: ["+ домен ~150-300 Kč / год", "+ платные сервисы по задаче"],
     includes: ["расширенная структура", "UTM/аналитика кликов", "SEO-основа", "дополнительные секции", "подготовка к рекламе"],
-    cta: "Обсудить Pro",
+    cta: "Обсудить Pro по акции",
     premium: true
   }
 ];
 
 const faqItems = [
-  ["Сколько стоит сайт?", "Простой сайт по demo-шаблону начинается с пакета START 10 000 Kč / ≈400 €. PLUS стоит 15 000 Kč / ≈600 €, PRO начинается от 20 000 Kč / от ≈800 €."],
+  ["Сколько стоит сайт?", "Простой сайт по demo-шаблону начинается с пакета START 10 000 Kč / ≈400 €. Во время акции START стоит 5 000 Kč / ≈200 €, PLUS 10 000 Kč / ≈400 € вместо 20 000 Kč / ≈800 €, PRO от 15 000 Kč / от ≈600 € вместо от 30 000 Kč / от ≈1 200 €."],
   ["Сколько времени занимает?", "Быстрый landing можно собрать за 2-5 дней. Бизнес-сайт обычно 5-10 дней. MVP оценивается отдельно."],
   ["Можно использовать шаблон как основу?", "Да. Это хороший способ быстрее стартовать, сразу увидеть стиль и снизить неопределённость."],
   ["Что нужно от клиента?", "Описание услуги, контакты, примеры сайтов, фото/логотип если есть, желаемые сроки и примерный бюджет."],
   ["Можно доработать потом?", "Да. Можно сначала запустить базовую версию, потом добавлять секции, формы, аналитику или интеграции."],
-  ["Вы помогаете с публикацией?", "Да, сайт можно подготовить для GitHub Pages или Firebase Hosting. Деплой делается только после отдельного подтверждения."]
+  ["Вы помогаете с публикацией?", "Да, сайт можно подготовить к выбранному способу публикации. Запуск делается только после отдельного подтверждения."]
 ];
 
 const menuToggle = document.querySelector(".menu-toggle");
@@ -239,10 +266,187 @@ const modalContent = document.querySelector("#modalContent");
 const floatingCta = document.querySelector("#floatingCta");
 const closeFloatingCta = document.querySelector("#closeFloatingCta");
 const toast = document.querySelector("#toast");
-let ctaClosed = false;
+const SALE50_ENABLED = true;
+const SALE50_DURATION_HOURS = 3;
+const SALE50_STORAGE_KEY = "nikolaj_sale50_started_at";
+const SALE50_PROMO_CODE = "SALE50_3H";
+const saleConfig = {
+  enabled: SALE50_ENABLED,
+  code: SALE50_PROMO_CODE,
+  label: "Скидка 50% / 3 часа",
+  discountPercent: 50,
+  startedAtKey: SALE50_STORAGE_KEY,
+  stickyClosedKey: "nikolaj_sale50_sticky_closed",
+  durationMs: SALE50_DURATION_HOURS * 60 * 60 * 1000
+};
+let ctaClosed = sessionStorage.getItem(saleConfig.stickyClosedKey) === "1";
+let lastSaleActive = null;
 
 if ("scrollRestoration" in history) {
   history.scrollRestoration = "manual";
+}
+
+function getSaleState() {
+  const now = Date.now();
+  const stored = Number(localStorage.getItem(saleConfig.startedAtKey));
+  const startedAt = Number.isFinite(stored) && stored > 0 ? stored : now;
+  if (!stored) localStorage.setItem(saleConfig.startedAtKey, String(startedAt));
+  const expiresAt = startedAt + saleConfig.durationMs;
+  const remainingMs = Math.max(0, expiresAt - now);
+  return {
+    startedAt,
+    expiresAt,
+    remainingMs,
+    expired: remainingMs <= 0
+  };
+}
+
+function formatSaleTime(ms) {
+  const total = Math.max(0, Math.floor(ms / 1000));
+  const hours = String(Math.floor(total / 3600)).padStart(2, "0");
+  const minutes = String(Math.floor((total % 3600) / 60)).padStart(2, "0");
+  const seconds = String(total % 60).padStart(2, "0");
+  return `${hours}:${minutes}:${seconds}`;
+}
+
+function isSaleActive(state = getSaleState()) {
+  return saleConfig.enabled && !state.expired;
+}
+
+function planButtonLabel(plan, saleActive = isSaleActive()) {
+  if (saleActive) return plan.cta;
+  return plan.key === "Pro" ? "Обсудить Pro" : `Выбрать ${plan.title}`;
+}
+
+function planDisplayPrice(plan, saleActive = isSaleActive()) {
+  return saleActive ? plan.salePrice : plan.price;
+}
+
+function normalLeadLabel(source = "") {
+  if (source.includes("format_help")) return "Подобрать формат сайта";
+  if (source.includes("pricing") || source.includes("package")) return "Оставить заявку";
+  if (source.includes("sticky")) return "Заявка";
+  if (source.includes("hero") || source.includes("showcase")) return "Заказать сайт";
+  return "Оставить заявку";
+}
+
+function applySaleMode(saleActive) {
+  document.documentElement.classList.toggle("sale-expired", !saleActive);
+  document.documentElement.classList.toggle("sale-active", saleActive);
+
+  document.querySelectorAll("[data-package]").forEach((button) => {
+    const plan = pricingPlans.find((item) => item.key === button.dataset.package);
+    if (!plan) return;
+    button.dataset.packagePrice = planDisplayPrice(plan, saleActive);
+    button.dataset.regularPrice = saleActive ? plan.price : "";
+    button.textContent = planButtonLabel(plan, saleActive);
+    const card = button.closest("article");
+    const price = card?.querySelector("strong");
+    if (price) {
+      price.innerHTML = saleActive
+        ? `<span class="price-sale-current">${plan.salePrice}</span><span class="price-sale-old">обычно ${plan.price}</span>`
+        : `<span class="price-sale-current">${plan.price}</span>`;
+    }
+  });
+
+  const quickNote = document.querySelector(".quick-price-note");
+  if (quickNote) {
+    quickNote.innerHTML = saleActive
+      ? `<strong>Минимальный запуск по акции:</strong> START 5 000 Kč / ≈200 € + домен примерно 150-300 Kč в год. Для обычного лендинга хостинг может быть 0 Kč. Таймер: <b data-sale-countdown>03:00:00</b>.`
+      : `<strong>Минимальный запуск:</strong> START 10 000 Kč / ≈400 € + домен примерно 150-300 Kč в год. Для обычного лендинга хостинг может быть 0 Kč.`;
+  }
+
+  if (floatingCta) {
+    const title = floatingCta.querySelector("strong");
+    const text = floatingCta.querySelector("span");
+    if (title) title.innerHTML = saleActive ? `Скидка 50% ещё: <b data-sale-countdown>03:00:00</b>` : "Готовы обсудить сайт?";
+    if (text) text.textContent = saleActive ? "Сайт по акции от 5 000 Kč." : "Пакеты START / PLUS / PRO от 10 000 Kč.";
+  }
+
+  document.querySelectorAll("[data-open-lead][data-sale-source]:not([data-package])").forEach((button) => {
+    if (!button.dataset.saleLabel) button.dataset.saleLabel = button.textContent.trim();
+    button.textContent = saleActive ? button.dataset.saleLabel : normalLeadLabel(button.dataset.saleSource || "");
+  });
+
+  const heroSaleText = document.querySelector(".showcase-top strong");
+  if (heroSaleText) heroSaleText.textContent = saleActive ? "по акции от 5 000 Kč / ≈200 €" : "от 10 000 Kč / ≈400 €";
+
+  const featuredMeta = document.querySelector(".featured-demo-card .project-meta span");
+  if (featuredMeta) featuredMeta.textContent = saleActive ? "SALE START 5 000 Kč / ≈200 €" : "START 10 000 Kč / ≈400 €";
+
+  const quickEyebrow = document.querySelector(".quick-pricing-section .eyebrow");
+  if (quickEyebrow) quickEyebrow.textContent = saleActive ? "Акция -50% на первые заказы" : "Цены";
+  const quickTitle = document.querySelector("#quickPricingTitle");
+  if (quickTitle) quickTitle.textContent = saleActive ? "3 пакета сайта со скидкой 50%" : "3 пакета сайта";
+  const quickPricingText = document.querySelector(".quick-pricing-section .section-head p");
+  if (quickPricingText) {
+    quickPricingText.textContent = saleActive
+      ? "Базовая цена считается в Kč. По акции START начинается от 5 000 Kč / ≈200 €, если проект подходит под готовый demo-шаблон."
+      : "Базовая цена считается в Kč. START начинается от 10 000 Kč / ≈400 €, если проект подходит под готовый demo-шаблон.";
+  }
+
+  const pricingIntro = document.querySelector(".pricing-intro");
+  const pricingEyebrow = pricingIntro?.querySelector(".eyebrow");
+  const pricingTitle = pricingIntro?.querySelector("h2");
+  if (pricingEyebrow) pricingEyebrow.textContent = saleActive ? "Цены по акции" : "Цены";
+  if (pricingTitle) pricingTitle.textContent = saleActive ? "3 пакета сайта со скидкой 50%" : "3 пакета сайта";
+  const hostingLaunch = document.querySelector(".hosting-note div span");
+  if (hostingLaunch) {
+    hostingLaunch.textContent = saleActive
+      ? "START по акции 5 000 Kč / ≈200 € + домен примерно 150-300 Kč / год + бесплатный хостинг."
+      : "START 10 000 Kč / ≈400 € + домен примерно 150-300 Kč / год + бесплатный хостинг.";
+  }
+
+  document.querySelectorAll(".trust-row span").forEach((span) => {
+    if (/акци/i.test(span.textContent)) span.hidden = !saleActive;
+  });
+
+  renderCategories(document.querySelector("[data-category-filter].active")?.dataset.categoryFilter || "all");
+  renderProjects(document.querySelector("[data-filter].active")?.dataset.filter || "all");
+}
+
+function updateSaleCountdowns() {
+  const state = getSaleState();
+  const saleActive = isSaleActive(state);
+  const label = saleActive ? formatSaleTime(state.remainingMs) : "";
+  document.querySelectorAll("[data-sale-countdown]").forEach((item) => {
+    item.textContent = label;
+  });
+  if (lastSaleActive !== saleActive) {
+    lastSaleActive = saleActive;
+    applySaleMode(saleActive);
+  }
+}
+
+function planSalePrice(plan) {
+  return plan ? planDisplayPrice(plan) : "";
+}
+
+function saleMetadata(sourceCta = "sale_cta") {
+  const state = getSaleState();
+  return {
+    promoCode: saleConfig.code,
+    promoLabel: saleConfig.label,
+    discountPercent: saleConfig.discountPercent,
+    sourceCta,
+    saleStartedAt: new Date(state.startedAt).toISOString(),
+    saleExpiresAt: new Date(state.expiresAt).toISOString(),
+    saleRemaining: state.expired ? "expired" : formatSaleTime(state.remainingMs)
+  };
+}
+
+function withSalePayload(payload = {}, sourceCta = "sale_cta") {
+  const data = typeof payload === "string" ? { title: payload } : { ...(payload || {}) };
+  if (!isSaleActive()) return data;
+  return {
+    ...data,
+    sale: true,
+    ...saleMetadata(sourceCta)
+  };
+}
+
+function openSaleLead(payload, sourceCta) {
+  openModal("lead", withSalePayload(payload, sourceCta));
 }
 
 function showToast(message) {
@@ -271,7 +475,6 @@ function openModal(type, payload) {
     details: buildDetailsModal,
     pricing: buildPricingModal,
     lead: buildLeadModal,
-    argus: buildArgusModal,
     category: buildCategoryModal
   };
   modalContent.innerHTML = builders[type](payload);
@@ -281,31 +484,60 @@ function openModal(type, payload) {
   appModal.setAttribute("aria-hidden", "false");
   document.body.style.overflow = "hidden";
   bindModalActions();
+  updateSaleCountdowns();
 }
 
 function normalizeLeadPayload(payload) {
-  if (!payload) return { selected: "", selectedPackage: "", packagePrice: "" };
-  if (typeof payload === "string") return { selected: payload, selectedPackage: "", packagePrice: "" };
+  if (!payload) return { selected: "", selectedPackage: "", packagePrice: "", regularPrice: "", sale: false };
+  if (typeof payload === "string") return { selected: payload, selectedPackage: "", packagePrice: "", regularPrice: "", sale: false };
   if (payload.kind === "package") {
     return {
       selected: payload.template || "",
       selectedPackage: payload.package || "",
-      packagePrice: payload.price || ""
+      packagePrice: payload.price || "",
+      regularPrice: payload.regularPrice || "",
+      sale: Boolean(payload.sale && isSaleActive()),
+      promoCode: payload.promoCode || "",
+      promoLabel: payload.promoLabel || "",
+      discountPercent: payload.discountPercent || "",
+      sourceCta: payload.sourceCta || "",
+      saleStartedAt: payload.saleStartedAt || "",
+      saleExpiresAt: payload.saleExpiresAt || "",
+      saleRemaining: payload.saleRemaining || ""
     };
   }
+  const plan = pricingPlans.find((item) => item.key === payload.selectedPackage || item.title === payload.selectedPackage);
   return {
     selected: payload.title || "",
     selectedPackage: payload.selectedPackage || "",
-    packagePrice: payload.packagePrice || ""
+    packagePrice: payload.packagePrice || (payload.sale ? planSalePrice(plan) : ""),
+    regularPrice: payload.regularPrice || plan?.price || "",
+    sale: Boolean(payload.sale && isSaleActive()),
+    promoCode: payload.promoCode || "",
+    promoLabel: payload.promoLabel || "",
+    discountPercent: payload.discountPercent || "",
+    sourceCta: payload.sourceCta || "",
+    saleStartedAt: payload.saleStartedAt || "",
+    saleExpiresAt: payload.saleExpiresAt || "",
+    saleRemaining: payload.saleRemaining || ""
   };
 }
 
-function leadPackagePayload(plan, template = "") {
-  return {
+function leadPackagePayload(plan, template = "", sale = false, sourceCta = "package_button") {
+  const saleActive = sale && isSaleActive();
+  const payload = {
     kind: "package",
     template,
     package: plan.key,
-    price: plan.price
+    price: planDisplayPrice(plan, saleActive),
+    regularPrice: saleActive ? plan.price : ""
+  };
+  if (saleActive) Object.assign(payload, withSalePayload({}, sourceCta));
+  return {
+    ...payload,
+    kind: "package",
+    template,
+    package: plan.key
   };
 }
 
@@ -376,6 +608,7 @@ function buildDetailsModal(project) {
   const gallery = (project.gallery || [project.image])
     .map((src) => `<img src="${src}" alt="${project.title} screenshot">`)
     .join("");
+  const saleActive = isSaleActive();
 
   return `
     <div class="modal-header">
@@ -391,38 +624,42 @@ function buildDetailsModal(project) {
         <h3>Ключевые фишки</h3>
         <ul>${featureList(project.features)}</ul>
         <div class="modal-meta stacked">
-          <span>${project.price}</span>
+          ${saleActive ? `<span>по акции от 5 000 Kč / ≈200 €</span><span>обычно от 10 000 Kč / ≈400 €</span>` : `<span>от 10 000 Kč / ≈400 €</span>`}
           <span>${project.timeline}</span>
         </div>
-        <button class="btn primary" type="button" data-lead-project="${project.id}">Хочу такой сайт</button>
+        <button class="btn primary" type="button" data-lead-project="${project.id}" data-sale-source="project_detail_sale">${saleActive ? "Хочу такой сайт по акции" : "Хочу такой сайт"}</button>
       </div>
     </div>`;
 }
 
 function buildPricingModal() {
+  const saleActive = isSaleActive();
   return `
     <div class="modal-header">
-      <p class="eyebrow">Цены</p>
-      <h2 id="modalTitle">Простые пакеты для запуска сайта</h2>
-      <p>Для обычного сайта-витрины или лендинга хостинг можно сделать бесплатно. Обычно клиент оплачивает только домен примерно 150-300 Kč в год.</p>
+      <p class="eyebrow">${saleActive ? "Цены по акции -50%" : "Цены"}</p>
+      <h2 id="modalTitle">START / PLUS / PRO</h2>
+      <p>${saleActive ? `Один таймер действует на все пакеты: <strong data-sale-countdown>03:00:00</strong>. ` : ""}Для обычного сайта-витрины или лендинга хостинг можно сделать бесплатно.</p>
     </div>
     <div class="pricing-modal-grid">
       ${pricingPlans.map((plan) => `
         <article class="${plan.recommended ? "is-recommended" : ""} ${plan.premium ? "is-premium" : ""}">
           ${plan.recommended ? "<span class=\"plan-badge\">Популярно / оптимально</span>" : ""}
+          ${saleActive ? `<span class="sale-card-badge">-50% сегодня</span>` : ""}
           <h3>${plan.title}</h3>
           <p class="plan-subtitle">${plan.subtitle}</p>
-          <strong>${plan.price}</strong>
+          <div class="sale-price-block">
+            ${saleActive ? `<del>${plan.price}</del><strong>${plan.salePrice}</strong>` : `<strong>${plan.price}</strong>`}
+          </div>
           <p>${plan.goodFor}</p>
           <span>${plan.timeline}</span>
           <div class="plan-extras">${plan.extras.map((line) => `<small>${line}</small>`).join("")}</div>
           <ul>${featureList(plan.includes)}</ul>
-          <button class="btn primary" type="button" data-lead-package="${plan.key}">${plan.cta}</button>
+          <button class="btn primary" type="button" data-lead-package="${plan.key}" data-sale-source="pricing_${plan.key.toLowerCase()}_sale50">${planButtonLabel(plan, saleActive)}</button>
         </article>`).join("")}
     </div>
     <div class="pricing-note">
-      <h3>Минимальный запуск</h3>
-      <p>START 10 000 Kč / ≈400 € + домен примерно 150-300 Kč / год + бесплатный хостинг.</p>
+      <h3>${saleActive ? "Минимальный запуск по акции" : "Минимальный запуск"}</h3>
+      <p>${saleActive ? "START 5 000 Kč / ≈200 €" : "START 10 000 Kč / ≈400 €"} + домен примерно 150-300 Kč / год + бесплатный хостинг.</p>
       <p>То есть для простого сайта-витрины ежемесячный хостинг может быть 0 Kč.</p>
       <small>Не входит в цену: домен, платные формы, платный хостинг, рекламный бюджет, логотип, профессиональные фото, переводы и сложные функции оплачиваются отдельно.</small>
     </div>`;
@@ -430,19 +667,53 @@ function buildPricingModal() {
 
 function buildLeadModal(projectOrPlan = "") {
   const leadData = normalizeLeadPayload(projectOrPlan);
+  const saleActive = isSaleActive();
   const selected = leadData.selected;
   const selectedPackage = leadData.selectedPackage;
-  const packagePrice = leadData.packagePrice;
+  const selectedPlan = pricingPlans.find((plan) => plan.key === selectedPackage);
+  const packagePrice = leadData.packagePrice || (selectedPlan ? planDisplayPrice(selectedPlan, saleActive) : "");
+  const regularPrice = leadData.regularPrice || (selectedPlan ? selectedPlan.price : "");
+  const isSale = saleActive && (leadData.sale || Boolean(leadData.promoCode));
+  const promoCode = leadData.promoCode || (isSale ? saleConfig.code : "");
+  const promoLabel = leadData.promoLabel || (isSale ? saleConfig.label : "");
+  const discountPercent = leadData.discountPercent || (isSale ? saleConfig.discountPercent : "");
+  const promoStatus = isSale ? "ACTIVE" : "";
+  const saleNote = isSale
+    ? `<div class="sale-form-notice">
+        <strong>Вы выбрали заявку по акции 50%</strong>
+        <span>Промокод: ${promoCode}</span>
+        ${selected ? `<span>Шаблон: ${selected}</span>` : ""}
+        ${selectedPackage ? `<span>Пакет: ${selectedPackage}</span>` : ""}
+        ${packagePrice ? `<span>Цена по акции: ${packagePrice}</span>` : ""}
+        ${regularPrice ? `<span>Обычная цена: ${regularPrice}</span>` : ""}
+        <span>До конца предложения: <b data-sale-countdown>03:00:00</b></span>
+      </div>`
+    : "";
+  const messageValue = isSale
+    ? `Хочу похожий сайт по акции 50%. Demo/шаблон: ${selected || "нужно подобрать"}. Пакет: ${selectedPackage || "нужно обсудить"}.`
+    : "";
   return `
     <div class="modal-header">
       <p class="eyebrow">Заявка</p>
       <h2 id="modalTitle">Опишите задачу</h2>
-      <p>Заявка отправится через Forminit на email Николая. Можно также написать напрямую в Telegram @pracehub или Facebook.</p>
+      <p>Заявка отправится на email Николая. Можно также написать напрямую в Telegram @pracehub или Facebook.</p>
     </div>
+    ${saleNote}
     <form class="lead-form" id="leadForm" action="https://forminit.com/f/kshbr37bfe4" method="POST">
       <input type="hidden" name="selected_template" value="${selected}">
       <input type="hidden" name="selected_package" value="${selectedPackage}">
       <input type="hidden" name="package_price" value="${packagePrice}">
+      <input type="hidden" name="regular_price" value="${regularPrice}">
+      <input type="hidden" name="discount_price" value="${isSale ? packagePrice : ""}">
+      <input type="hidden" name="promo_code" value="${promoCode}">
+      <input type="hidden" name="promo_label" value="${promoLabel}">
+      <input type="hidden" name="discount_percent" value="${discountPercent}">
+      <input type="hidden" name="promo_status" value="${promoStatus}">
+      <input type="hidden" name="source_cta" value="${leadData.sourceCta || ""}">
+      <input type="hidden" name="sale_started_at" value="${leadData.saleStartedAt || ""}">
+      <input type="hidden" name="sale_expires_at" value="${leadData.saleExpiresAt || ""}">
+      <input type="hidden" name="sale_remaining" value="${leadData.saleRemaining || ""}">
+      <input type="hidden" name="_redirect" value="https://nikolay123d.github.io/nikolaj-dev-landing/thank-you.html">
       <input type="hidden" name="fi-sender-fullName" value="">
       <input type="hidden" name="fi-sender-email" value="">
       <input type="hidden" name="fi-text-phone" value="">
@@ -451,6 +722,16 @@ function buildLeadModal(projectOrPlan = "") {
       <input type="hidden" name="fi-text-selected_template" value="${selected}">
       <input type="hidden" name="fi-text-selected_package" value="${selectedPackage}">
       <input type="hidden" name="fi-text-package_price" value="${packagePrice}">
+      <input type="hidden" name="fi-text-regular_price" value="${regularPrice}">
+      <input type="hidden" name="fi-text-discount_price" value="${isSale ? packagePrice : ""}">
+      <input type="hidden" name="fi-text-promo_code" value="${promoCode}">
+      <input type="hidden" name="fi-text-promo_label" value="${promoLabel}">
+      <input type="hidden" name="fi-text-discount_percent" value="${discountPercent}">
+      <input type="hidden" name="fi-text-promo_status" value="${promoStatus}">
+      <input type="hidden" name="fi-text-source_cta" value="${leadData.sourceCta || ""}">
+      <input type="hidden" name="fi-text-sale_started_at" value="${leadData.saleStartedAt || ""}">
+      <input type="hidden" name="fi-text-sale_expires_at" value="${leadData.saleExpiresAt || ""}">
+      <input type="hidden" name="fi-text-sale_remaining" value="${leadData.saleRemaining || ""}">
       <input type="hidden" name="fi-text-message" value="">
       <input type="hidden" name="fi-select-project_type" value="">
       <input type="hidden" name="fi-select-budget" value="">
@@ -470,16 +751,16 @@ function buildLeadModal(projectOrPlan = "") {
           <option ${selected.includes("MVP") ? "selected" : ""}>MVP / Mini Platform</option>
           <option ${selected.includes("Audit") ? "selected" : ""}>Audit / Rescue</option>
           <option>Bug fixing</option>
-          <option>AI-assisted workflow</option>
+          <option>Подготовка сайта к запуску</option>
         </select></label>
       </div>
       <div class="field-row">
         <label>Бюджет<select name="budget">
           <option>Нужно обсудить</option>
           <option>до 10 000 Kč</option>
-          <option>START 10 000 Kč / ≈400 €</option>
-          <option>PLUS 15 000 Kč / ≈600 €</option>
-          <option>PRO от 20 000 Kč / от ≈800 €</option>
+          <option ${selectedPackage === "Start" ? "selected" : ""}>${saleActive ? "START по акции 5 000 Kč / ≈200 €" : "START 10 000 Kč / ≈400 €"}</option>
+          <option ${selectedPackage === "Plus" ? "selected" : ""}>${saleActive ? "PLUS по акции 10 000 Kč / ≈400 €" : "PLUS 20 000 Kč / ≈800 €"}</option>
+          <option ${selectedPackage === "Pro" ? "selected" : ""}>${saleActive ? "PRO по акции от 15 000 Kč / от ≈600 €" : "PRO от 30 000 Kč / от ≈1 200 €"}</option>
         </select></label>
         <label>Срок<select name="timeline">
           <option>Нужно обсудить</option>
@@ -493,11 +774,11 @@ function buildLeadModal(projectOrPlan = "") {
       <div class="field-row">
         <label>Пакет / уровень запуска<select name="selected_package_visible" required>
           <option value="">Нужно обсудить</option>
-          ${pricingPlans.map((plan) => `<option value="${plan.key}" ${selectedPackage === plan.key ? "selected" : ""}>${plan.title} - ${plan.price} — ${plan.subtitle}</option>`).join("")}
+          ${pricingPlans.map((plan) => `<option value="${plan.key}" ${selectedPackage === plan.key ? "selected" : ""}>${plan.title} — ${saleActive ? `акция ${plan.salePrice} / обычно ${plan.price}` : plan.price} — ${plan.subtitle}</option>`).join("")}
         </select></label>
         <label>Цена пакета<input name="package_price_visible" value="${packagePrice}" placeholder="Автоматически после выбора" readonly></label>
       </div>
-      <label>Что нужно сделать?<textarea name="message" rows="5" required placeholder="Опишите услугу, сроки, материалы, что уже есть"></textarea></label>
+      <label>Что нужно сделать?<textarea name="message" rows="5" required placeholder="Опишите услугу, сроки, материалы, что уже есть">${messageValue}</textarea></label>
       <button class="btn dark full" type="submit">Отправить заявку</button>
       <div class="messenger-row">
         <a href="https://t.me/pracehub" target="_blank" rel="noopener">Telegram @pracehub</a>
@@ -507,30 +788,8 @@ function buildLeadModal(projectOrPlan = "") {
     </form>`;
 }
 
-function buildArgusModal() {
-  return `
-    <div class="modal-header">
-      <p class="eyebrow">ARGUS approach</p>
-      <h2 id="modalTitle">AI помогает, но решения остаются под контролем</h2>
-      <p>ARGUS - мой внутренний рабочий процесс, который помогает не терять структуру при AI-assisted разработке.</p>
-    </div>
-    <div class="argus-modal">
-      <img src="assets/img/argus-control-mobile.png" alt="ARGUS Control Room preview">
-      <div>
-        <h3>Что это даёт клиенту</h3>
-        <ul>
-          <li>задачи и решения фиксируются понятнее;</li>
-          <li>важные действия не делаются хаотично;</li>
-          <li>AI ускоряет черновики, анализ и варианты;</li>
-          <li>человек утверждает важные шаги;</li>
-          <li>ARGUS не является публичным скачиваемым продуктом.</li>
-        </ul>
-        <button class="btn primary" type="button" data-open-lead>Обсудить проект</button>
-      </div>
-    </div>`;
-}
-
 function buildCategoryModal(category) {
+  const saleActive = isSaleActive();
   return `
     <div class="modal-header">
       <p class="eyebrow">${category.status}</p>
@@ -541,7 +800,7 @@ function buildCategoryModal(category) {
       ${renderCategoryVisual(category, false)}
       <div>
         <div class="modal-meta stacked">
-          <span>${category.price}</span>
+          ${saleActive ? `<span>по акции от 5 000 Kč / ≈200 €</span><span>обычно от 10 000 Kč / ≈400 €</span>` : `<span>от 10 000 Kč / ≈400 €</span>`}
           <span>${category.timeline}</span>
           <span>${category.badge}</span>
         </div>
@@ -549,7 +808,7 @@ function buildCategoryModal(category) {
         <ul>${featureList(category.features)}</ul>
         <div class="modal-actions-row">
           ${category.demoUrl ? `<a class="btn dark" href="${category.demoUrl}">Посмотреть шаблон</a>` : ""}
-          <button class="btn primary" type="button" data-lead-category="${category.id}">Заказать похожий</button>
+          <button class="btn primary" type="button" data-lead-category="${category.id}" data-sale-source="category_detail_sale">${saleActive ? "Заказать со скидкой -50%" : "Заказать похожий"}</button>
         </div>
       </div>
     </div>`;
@@ -557,20 +816,26 @@ function buildCategoryModal(category) {
 
 function bindModalActions() {
   modalContent.querySelectorAll("[data-lead-project]").forEach((button) => {
-    button.addEventListener("click", () => openModal("lead", projects.find((item) => item.id === button.dataset.leadProject)));
+    button.addEventListener("click", () => openSaleLead(projects.find((item) => item.id === button.dataset.leadProject), button.dataset.saleSource || "project_modal_sale"));
   });
   modalContent.querySelectorAll("[data-lead-plan]").forEach((button) => {
-    button.addEventListener("click", () => openModal("lead", button.dataset.leadPlan));
+    button.addEventListener("click", () => openSaleLead(button.dataset.leadPlan, button.dataset.saleSource || "plan_modal_sale"));
   });
   modalContent.querySelectorAll("[data-lead-package]").forEach((button) => {
     const plan = pricingPlans.find((item) => item.key === button.dataset.leadPackage);
-    button.addEventListener("click", () => openModal("lead", leadPackagePayload(plan)));
+    button.addEventListener("click", () => openModal("lead", leadPackagePayload(plan, "", true, button.dataset.saleSource || "pricing_modal_sale")));
   });
   modalContent.querySelectorAll("[data-details-project]").forEach((button) => {
     button.addEventListener("click", () => openModal("details", projects.find((item) => item.id === button.dataset.detailsProject)));
   });
   modalContent.querySelectorAll("[data-lead-category]").forEach((button) => {
-    button.addEventListener("click", () => openModal("lead", siteCategories.find((item) => item.id === button.dataset.leadCategory)));
+    const startPlan = pricingPlans.find((item) => item.key === "Start");
+    button.addEventListener("click", () => openSaleLead({
+      ...(siteCategories.find((item) => item.id === button.dataset.leadCategory) || {}),
+      selectedPackage: "Start",
+      packagePrice: planDisplayPrice(startPlan),
+      regularPrice: isSaleActive() ? startPlan.price : ""
+    }, button.dataset.saleSource || "category_modal_sale"));
   });
   modalContent.querySelectorAll("[data-open-lead]").forEach((button) => {
     button.addEventListener("click", () => openModal("lead", packagePayloadFromButton(button)));
@@ -581,10 +846,12 @@ function bindModalActions() {
   if (packageSelect && packagePriceInput) {
     packageSelect.addEventListener("change", () => {
       const plan = pricingPlans.find((item) => item.key === packageSelect.value);
-      packagePriceInput.value = plan ? plan.price : "";
+      packagePriceInput.value = plan ? planDisplayPrice(plan, isSaleActive()) : "";
     });
   }
   if (leadForm) leadForm.addEventListener("submit", () => {
+    const state = getSaleState();
+    const saleActive = isSaleActive(state);
     const visibleTemplate = leadForm.querySelector("[name='selected_template_visible']");
     const hiddenTemplate = leadForm.querySelector("[name='selected_template']");
     if (visibleTemplate && hiddenTemplate) hiddenTemplate.value = visibleTemplate.value;
@@ -594,8 +861,47 @@ function bindModalActions() {
     const hiddenPackagePrice = leadForm.querySelector("[name='package_price']");
     if (visiblePackage && hiddenPackage) hiddenPackage.value = visiblePackage.value;
     const selectedPlan = pricingPlans.find((plan) => plan.key === visiblePackage?.value);
-    if (visiblePackagePrice && selectedPlan && !visiblePackagePrice.value) visiblePackagePrice.value = selectedPlan.price;
+    if (visiblePackagePrice && selectedPlan) visiblePackagePrice.value = planDisplayPrice(selectedPlan, saleActive);
     if (visiblePackagePrice && hiddenPackagePrice) hiddenPackagePrice.value = visiblePackagePrice.value;
+    const hiddenRegularPrice = leadForm.querySelector("[name='regular_price']");
+    const hiddenDiscountPrice = leadForm.querySelector("[name='discount_price']");
+    const hiddenSaleRemaining = leadForm.querySelector("[name='sale_remaining']");
+    const hiddenSaleStarted = leadForm.querySelector("[name='sale_started_at']");
+    const hiddenSaleExpires = leadForm.querySelector("[name='sale_expires_at']");
+    const hiddenPromo = leadForm.querySelector("[name='promo_code']");
+    const hiddenPromoLabel = leadForm.querySelector("[name='promo_label']");
+    const hiddenDiscountPercent = leadForm.querySelector("[name='discount_percent']");
+    const hiddenPromoStatus = leadForm.querySelector("[name='promo_status']");
+    if (selectedPlan && hiddenRegularPrice) hiddenRegularPrice.value = selectedPlan.price;
+    if (hiddenDiscountPrice) hiddenDiscountPrice.value = saleActive ? (visiblePackagePrice?.value || "") : "";
+    if (hiddenPromo) hiddenPromo.value = saleActive ? saleConfig.code : "";
+    if (hiddenPromoLabel) hiddenPromoLabel.value = saleActive ? saleConfig.label : "";
+    if (hiddenDiscountPercent) hiddenDiscountPercent.value = saleActive ? saleConfig.discountPercent : "";
+    if (hiddenPromoStatus) hiddenPromoStatus.value = saleActive ? "ACTIVE" : (state.expired ? "EXPIRED" : "");
+    if (hiddenSaleStarted) hiddenSaleStarted.value = saleActive ? new Date(state.startedAt).toISOString() : "";
+    if (hiddenSaleExpires) hiddenSaleExpires.value = saleActive ? new Date(state.expiresAt).toISOString() : "";
+    if (hiddenSaleRemaining) hiddenSaleRemaining.value = saleActive ? formatSaleTime(state.remainingMs) : "";
+    const messageField = leadForm.querySelector("[name='message']");
+    const hiddenSource = leadForm.querySelector("[name='source_cta']");
+    const summaryLines = saleActive
+      ? [
+        "SALE 50%",
+        `Пакет: ${hiddenPackage?.value || "не выбран"}`,
+        `Обычная цена: ${hiddenRegularPrice?.value || "не указана"}`,
+        `Цена по акции: ${hiddenDiscountPrice?.value || hiddenPackagePrice?.value || "не указана"}`,
+        `Промокод: ${saleConfig.code}`,
+        `Источник кнопки: ${hiddenSource?.value || "lead_form"}`,
+        `Осталось времени по таймеру: ${hiddenSaleRemaining?.value || "не указано"}`
+      ]
+      : [
+        "Заявка без активной акции",
+        `Пакет: ${hiddenPackage?.value || "не выбран"}`,
+        `Цена пакета: ${hiddenPackagePrice?.value || hiddenRegularPrice?.value || "не указана"}`,
+        `Источник кнопки: ${hiddenSource?.value || "lead_form"}`
+      ];
+    if (messageField && !messageField.value.includes("SALE 50%") && !messageField.value.includes("Заявка без активной акции")) {
+      messageField.value = `${messageField.value.trim()}\n\n${summaryLines.join("\n")}`.trim();
+    }
     const syncPairs = [
       ["name", "fi-sender-fullName"],
       ["email", "fi-sender-email"],
@@ -605,6 +911,16 @@ function bindModalActions() {
       ["selected_template", "fi-text-selected_template"],
       ["selected_package", "fi-text-selected_package"],
       ["package_price", "fi-text-package_price"],
+      ["regular_price", "fi-text-regular_price"],
+      ["discount_price", "fi-text-discount_price"],
+      ["promo_code", "fi-text-promo_code"],
+      ["promo_label", "fi-text-promo_label"],
+      ["discount_percent", "fi-text-discount_percent"],
+      ["promo_status", "fi-text-promo_status"],
+      ["source_cta", "fi-text-source_cta"],
+      ["sale_started_at", "fi-text-sale_started_at"],
+      ["sale_expires_at", "fi-text-sale_expires_at"],
+      ["sale_remaining", "fi-text-sale_remaining"],
       ["message", "fi-text-message"],
       ["project_type", "fi-select-project_type"],
       ["budget", "fi-select-budget"],
@@ -615,17 +931,41 @@ function bindModalActions() {
       const to = leadForm.querySelector(`[name='${toName}']`);
       if (from && to) to.value = from.value;
     });
-    showToast("Отправляю заявку через Forminit.");
+    if (saleActive) {
+      sessionStorage.setItem("nikolaj_last_sale_lead", JSON.stringify({
+        promo_code: hiddenPromo?.value || "",
+        promo_status: "ACTIVE",
+        selected_package: hiddenPackage?.value || "",
+        selected_template: hiddenTemplate?.value || "",
+        discount_price: hiddenDiscountPrice?.value || "",
+        regular_price: hiddenRegularPrice?.value || ""
+      }));
+    } else {
+      sessionStorage.removeItem("nikolaj_last_sale_lead");
+    }
+    showToast("Отправляю заявку на email.");
   });
 }
 
 function packagePayloadFromButton(button) {
-  if (!button?.dataset?.package) return "";
+  const saleActive = isSaleActive();
+  const startPlan = pricingPlans.find((item) => item.key === "Start");
+  if (!button?.dataset?.package) {
+    return button?.dataset?.saleSource ? withSalePayload({
+      selectedPackage: "Start",
+      packagePrice: planDisplayPrice(startPlan, saleActive),
+      regularPrice: saleActive ? startPlan.price : ""
+    }, button.dataset.saleSource) : "";
+  }
+  const plan = pricingPlans.find((item) => item.key === button.dataset.package);
+  const isSale = saleActive && Boolean(button.dataset.saleSource || button.dataset.regularPrice);
   return {
     kind: "package",
     template: button.dataset.template || "",
     package: button.dataset.package,
-    price: button.dataset.packagePrice || ""
+    price: plan ? planDisplayPrice(plan, saleActive) : button.dataset.packagePrice || "",
+    regularPrice: isSale ? (button.dataset.regularPrice || plan?.price || "") : "",
+    ...(isSale ? saleMetadata(button.dataset.saleSource || "package_button_sale") : {})
   };
 }
 
@@ -660,6 +1000,8 @@ function renderCategoryVisual(category, lazy = true) {
 
 function renderCategories(filter = "all") {
   if (!categoryGrid) return;
+  const saleActive = isSaleActive();
+  const startPlan = pricingPlans.find((item) => item.key === "Start");
   const list = filter === "all" ? siteCategories : siteCategories.filter((category) => category.filter === filter);
   categoryGrid.innerHTML = list.map((category) => `
     <article class="category-card">
@@ -668,24 +1010,30 @@ function renderCategories(filter = "all") {
         <div class="category-labels">
           <span>${category.badge}</span>
           <span>${category.status}</span>
+          ${saleActive ? `<span class="sale-card-badge">-50% сегодня</span>` : ""}
         </div>
         <h3>${category.title}</h3>
         <p>${category.description}</p>
         <div class="project-meta">
-          <span>${category.price}</span>
+          <span>${saleActive ? "по акции от 5 000 Kč / ≈200 €" : "от 10 000 Kč / ≈400 €"}</span>
           <span>${category.timeline}</span>
         </div>
         <ul>${featureList(category.features.slice(0, 4))}</ul>
         <div class="category-actions">
           ${category.demoUrl ? `<a class="btn dark" href="${category.demoUrl}">Посмотреть шаблон</a>` : ""}
-          <button class="btn primary" type="button" data-order-category="${category.id}">Заказать похожий</button>
+          <button class="btn primary" type="button" data-order-category="${category.id}">${saleActive ? "Заказать со скидкой -50%" : "Заказать похожий"}</button>
           <button class="btn secondary" type="button" data-category-details="${category.id}">Подробнее</button>
         </div>
       </div>
     </article>
   `).join("");
   categoryGrid.querySelectorAll("[data-order-category]").forEach((button) => {
-    button.addEventListener("click", () => openModal("lead", siteCategories.find((item) => item.id === button.dataset.orderCategory)));
+    button.addEventListener("click", () => openSaleLead({
+      ...(siteCategories.find((item) => item.id === button.dataset.orderCategory) || {}),
+      selectedPackage: "Start",
+      packagePrice: planDisplayPrice(startPlan, isSaleActive()),
+      regularPrice: isSaleActive() ? startPlan.price : ""
+    }, "category_card_sale_button"));
   });
   categoryGrid.querySelectorAll("[data-category-details]").forEach((button) => {
     button.addEventListener("click", () => openModal("category", siteCategories.find((item) => item.id === button.dataset.categoryDetails)));
@@ -705,23 +1053,33 @@ function renderServices() {
   servicesGrid.querySelectorAll("[data-service]").forEach((button) => {
     button.addEventListener("click", () => {
       const service = services.find((item) => item.id === button.dataset.service);
-      if (service.action === "argus") openModal("argus");
-      else openModal("lead", service.title);
+      const planKey = service.id === "business-site" ? "Plus" : service.id === "mvp" ? "Pro" : "Start";
+      const plan = pricingPlans.find((item) => item.key === planKey);
+      const saleActive = isSaleActive();
+      openSaleLead({
+        title: service.title,
+        selectedPackage: planKey,
+        packagePrice: planDisplayPrice(plan, saleActive),
+        regularPrice: saleActive ? plan.price : ""
+      }, "service_card_sale_button");
     });
   });
 }
 
 function renderProjects(filter = "all") {
+  const saleActive = isSaleActive();
+  const startPlan = pricingPlans.find((item) => item.key === "Start");
   const list = filter === "all" ? projects : projects.filter((project) => project.group === filter);
   projectGrid.innerHTML = list.map((project) => `
     <article class="project-card" data-card="${project.id}">
       <img src="${project.image}" alt="${project.title} preview">
       <div class="project-body">
         <span class="project-label">${project.label}</span>
+        ${saleActive ? `<span class="sale-card-badge">-50% сегодня · от 5 000 Kč</span>` : ""}
         <h3>${project.title}</h3>
         <p>${project.short}</p>
         <div class="project-meta">
-          <span>${project.price}</span>
+          <span>${saleActive ? "по акции от 5 000 Kč / ≈200 €" : "от 10 000 Kč / ≈400 €"}</span>
           <span>${project.timeline}</span>
         </div>
         <ul>${featureList(project.features.slice(0, 3))}</ul>
@@ -730,7 +1088,7 @@ function renderProjects(filter = "all") {
             ? `<a href="${project.demoUrl}" data-demo-link="${project.id}">Посмотреть шаблон</a>`
             : `<button type="button" data-preview="${project.id}">Посмотреть проект</button>`}
           <button type="button" data-details="${project.id}">Подробнее</button>
-          <button type="button" data-order="${project.id}">Заказать похожий</button>
+          <button type="button" data-order="${project.id}">${saleActive ? "Заказать со скидкой -50%" : "Заказать похожий"}</button>
         </div>
       </div>
     </article>
@@ -743,7 +1101,12 @@ function renderProjects(filter = "all") {
     button.addEventListener("click", () => openModal("details", projects.find((item) => item.id === button.dataset.details)));
   });
   projectGrid.querySelectorAll("[data-order]").forEach((button) => {
-    button.addEventListener("click", () => openModal("lead", projects.find((item) => item.id === button.dataset.order)));
+    button.addEventListener("click", () => openSaleLead({
+      ...(projects.find((item) => item.id === button.dataset.order) || {}),
+      selectedPackage: "Start",
+      packagePrice: planDisplayPrice(startPlan, isSaleActive()),
+      regularPrice: isSaleActive() ? startPlan.price : ""
+    }, "project_card_sale_button"));
   });
   projectGrid.querySelectorAll("[data-card]").forEach((card) => {
     card.addEventListener("click", (event) => {
@@ -789,10 +1152,6 @@ document.querySelectorAll("[data-open-pricing]").forEach((button) => {
 
 document.querySelectorAll("[data-open-lead]").forEach((button) => {
   button.addEventListener("click", () => openModal("lead", packagePayloadFromButton(button)));
-});
-
-document.querySelectorAll("[data-open-argus]").forEach((button) => {
-  button.addEventListener("click", () => openModal("argus"));
 });
 
 document.querySelectorAll("[data-close-modal]").forEach((item) => item.addEventListener("click", closeModal));
@@ -883,6 +1242,7 @@ window.addEventListener("scroll", () => {
 
 closeFloatingCta.addEventListener("click", () => {
   ctaClosed = true;
+  sessionStorage.setItem(saleConfig.stickyClosedKey, "1");
   floatingCta.classList.remove("visible");
 });
 
@@ -890,4 +1250,6 @@ renderServices();
 renderCategories();
 renderProjects();
 renderFaq();
+updateSaleCountdowns();
+window.setInterval(updateSaleCountdowns, 1000);
 openLeadFromUrl();

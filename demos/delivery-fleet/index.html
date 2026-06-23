@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Demo landing page for courier delivery, local service, fleet and courier recruitment: zones, tariffs, order flow, contact form and mobile CTA.">
+  <meta property="og:title" content="Delivery / Fleet Website Demo | Nikolaj Dev">
+  <meta property="og:description" content="Demo website for delivery and courier service: video hero, zones, tariffs, courier recruitment, business requests and lead form.">
+  <meta property="og:image" content="../../assets/images/delivery-fleet/courier-handoff.jpg">
+  <title>Delivery / Fleet Website Demo | Nikolaj Dev</title>
+  <style>
+    :root {
+      --bg: #f4f7fb;
+      --paper: #ffffff;
+      --paper2: #edf4ff;
+      --ink: #111827;
+      --navy: #0b1633;
+      --blue: #2563eb;
+      --cyan: #06b6d4;
+      --green: #16a34a;
+      --lime: #b9f24a;
+      --orange: #f59e0b;
+      --muted: #64748b;
+      --line: rgba(17, 24, 39, .12);
+      --shadow: 0 22px 70px rgba(15, 23, 42, .16);
+      --r: 22px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 84px; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 12% 3%, rgba(37, 99, 235, .18), transparent 30rem),
+        radial-gradient(circle at 88% 8%, rgba(6, 182, 212, .16), transparent 28rem),
+        linear-gradient(180deg, #f9fbff, var(--bg));
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.55;
+      overflow-x: hidden;
+      padding-bottom: 76px;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img, video { display: block; max-width: 100%; }
+    button, input, select, textarea { font: inherit; }
+    .shell { width: min(1160px, calc(100% - 32px)); margin: 0 auto; }
+
+    .demo-bar {
+      position: sticky;
+      top: 0;
+      z-index: 60;
+      min-height: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 7px 12px;
+      color: #fff;
+      background: rgba(11, 22, 51, .94);
+      border-bottom: 1px solid rgba(185, 242, 74, .22);
+      backdrop-filter: blur(14px);
+      font-size: 12px;
+      font-weight: 900;
+    }
+    .demo-bar a { padding: 5px 10px; border-radius: 999px; background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.16); }
+    .demo-bar .order { background: linear-gradient(135deg, var(--lime), var(--cyan)); color: #07111f; border: 0; }
+
+    .site-nav {
+      position: sticky;
+      top: 38px;
+      z-index: 55;
+      background: rgba(255, 255, 255, .88);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(18px);
+    }
+    .nav-inner { height: 66px; display: flex; align-items: center; justify-content: space-between; gap: 18px; }
+    .brand { display: flex; align-items: center; gap: 10px; font-weight: 950; color: var(--navy); }
+    .brand-mark { width: 40px; height: 40px; display: grid; place-items: center; border-radius: 14px; background: linear-gradient(135deg, var(--blue), var(--cyan)); color: #fff; box-shadow: 0 14px 30px rgba(37, 99, 235, .26); }
+    .brand small { display: block; color: var(--muted); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; }
+    .nav-links { display: flex; align-items: center; gap: 4px; }
+    .nav-links a { padding: 9px 12px; border-radius: 999px; color: var(--muted); font-size: 14px; font-weight: 850; }
+    .nav-links a:hover { background: #edf4ff; color: var(--navy); }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 46px;
+      border: 1px solid transparent;
+      border-radius: 999px;
+      padding: 12px 18px;
+      font-weight: 950;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .btn.primary { color: #07111f; background: linear-gradient(135deg, var(--lime), var(--cyan)); box-shadow: 0 18px 42px rgba(6, 182, 212, .24); }
+    .btn.dark { color: #fff; background: var(--navy); }
+    .btn.ghost { color: var(--navy); background: #fff; border-color: var(--line); }
+    .btn.telegram { color: #fff; background: linear-gradient(135deg, #1d9bf0, #2563eb); }
+    .btn.full { width: 100%; }
+
+    .hero {
+      position: relative;
+      min-height: calc(100svh - 38px);
+      display: grid;
+      align-items: end;
+      overflow: hidden;
+      isolation: isolate;
+      background: var(--navy);
+    }
+    .hero-poster, .hero-video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .hero-poster { z-index: -3; filter: saturate(1.03) contrast(1.04); }
+    .hero-video { z-index: -2; opacity: 0; transition: opacity .7s ease; will-change: opacity; filter: saturate(1.12) contrast(1.08); }
+    .hero-video.is-ready { opacity: .78; }
+    .hero-video.is-disabled { display: none; }
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background:
+        radial-gradient(circle at 72% 28%, rgba(6, 182, 212, .25), transparent 28rem),
+        linear-gradient(90deg, rgba(8, 14, 31, .92), rgba(8, 14, 31, .68) 42%, rgba(8, 14, 31, .28)),
+        linear-gradient(0deg, rgba(8, 14, 31, .88), rgba(8, 14, 31, .08) 48%);
+    }
+    .hero-content { position: relative; z-index: 1; padding: 112px 0 78px; color: #fff; }
+    .eyebrow { margin: 0 0 12px; color: var(--lime); text-transform: uppercase; letter-spacing: .14em; font-size: 12px; font-weight: 950; }
+    h1, h2, h3 { margin: 0; line-height: 1.02; color: inherit; letter-spacing: -.02em; }
+    h1 { max-width: 860px; font-size: clamp(42px, 8vw, 88px); }
+    h2 { font-size: clamp(32px, 5vw, 58px); }
+    h3 { font-size: 23px; }
+    .hero p { max-width: 720px; margin: 18px 0 26px; color: rgba(255,255,255,.84); font-size: clamp(17px, 2vw, 21px); }
+    .hero-actions, .cta-row { display: flex; flex-wrap: wrap; gap: 10px; }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
+    .chips span { padding: 8px 12px; border-radius: 999px; color: #fff; background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.18); font-size: 13px; font-weight: 850; }
+
+    .info-strip { position: relative; z-index: 2; margin-top: -34px; }
+    .info-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; padding: 12px; border: 1px solid var(--line); border-radius: 24px; background: rgba(255,255,255,.94); box-shadow: var(--shadow); }
+    .info-grid article { padding: 14px; border-radius: 16px; background: #fff; }
+    .info-grid span { display: block; color: var(--muted); font-size: 12px; font-weight: 850; }
+    .info-grid strong { display: block; margin-top: 4px; }
+
+    .section { padding: 76px 0; }
+    .section-head { display: flex; justify-content: space-between; gap: 28px; align-items: end; margin-bottom: 28px; }
+    .section-head p, .lead { color: var(--muted); font-size: 18px; }
+    .section-head p { max-width: 540px; margin: 0; }
+    .split { display: grid; grid-template-columns: 1fr .9fr; gap: 36px; align-items: center; }
+
+    .card-grid, .service-grid, .tariff-grid, .trust-grid, .faq-grid, .template-pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .card, .service-card, .tariff-card, .trust-grid article, .faq-grid details, .template-price-card {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: var(--r);
+      padding: 22px;
+      box-shadow: 0 14px 44px rgba(15, 23, 42, .08);
+    }
+    .card p, .service-card p, .tariff-card p, .trust-grid p, .faq-grid p, .template-price-card p { color: var(--muted); margin: 9px 0 0; }
+    .num { display: inline-grid; place-items: center; width: 38px; height: 38px; border-radius: 12px; color: #07111f; background: linear-gradient(135deg, var(--lime), var(--cyan)); font-weight: 950; margin-bottom: 16px; }
+
+    .media-card, .video-band {
+      position: relative;
+      overflow: hidden;
+      border-radius: 28px;
+      min-height: 390px;
+      background: var(--navy);
+      box-shadow: var(--shadow);
+      isolation: isolate;
+    }
+    .media-card img, .video-band img, .video-band video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .media-card::after, .video-band::after { content: ""; position: absolute; inset: 0; z-index: 2; background: linear-gradient(0deg, rgba(8,14,31,.72), rgba(8,14,31,.16)); }
+    .lazy-video { z-index: 1; opacity: 0; transition: opacity .7s ease; will-change: opacity; }
+    .lazy-video.is-ready { opacity: .82; }
+    .video-copy { position: relative; z-index: 3; max-width: 680px; padding: 64px; color: #fff; }
+    .video-copy p { color: rgba(255,255,255,.82); font-size: 19px; }
+
+    .service-card img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; border-radius: 18px; margin-bottom: 16px; }
+    .route-board { background: var(--navy); color: #fff; border-radius: 28px; padding: 28px; box-shadow: var(--shadow); }
+    .route-board p { color: rgba(255,255,255,.72); }
+    .route-list { display: grid; gap: 12px; margin-top: 22px; }
+    .route-list div { display: grid; grid-template-columns: auto 1fr auto; gap: 12px; align-items: center; padding: 12px; border: 1px solid rgba(255,255,255,.12); border-radius: 16px; background: rgba(255,255,255,.06); }
+    .dot { width: 12px; height: 12px; border-radius: 50%; background: var(--lime); box-shadow: 0 0 0 6px rgba(185,242,74,.13); }
+
+    .tariffs { background: linear-gradient(180deg, #fff, #edf4ff); }
+    .tariff-card strong, .template-price-card strong { display: block; font-size: 33px; line-height: 1; color: var(--navy); }
+    .tariff-card small, .template-price-card small { display: block; color: var(--muted); font-weight: 800; margin-top: 8px; }
+    .template-price-card.recommended { border-color: rgba(37,99,235,.38); background: linear-gradient(180deg, #fff, #eef5ff); }
+    .template-price-card.premium { color: #fff; background: linear-gradient(145deg, var(--navy), #172653); border-color: rgba(185,242,74,.24); }
+    .template-price-card.premium strong { color: #fff; }
+    .template-price-card.premium p, .template-price-card.premium small { color: rgba(255,255,255,.74); }
+    .badge { align-self: flex-start; display: inline-flex; padding: 6px 10px; border-radius: 999px; background: #eaf2ff; color: var(--blue); font-size: 12px; font-weight: 950; }
+    .template-price-card .btn { width: 100%; margin-top: 14px; }
+    .template-cost-note { margin-top: 16px; padding: 18px; border: 1px solid var(--line); border-radius: 18px; background: #fff; color: var(--muted); font-weight: 800; }
+    .template-cost-note strong { color: var(--navy); }
+
+    .gallery { display: grid; grid-template-columns: 1.1fr .9fr .9fr; gap: 14px; }
+    .gallery img { width: 100%; height: 270px; object-fit: cover; border-radius: 22px; box-shadow: 0 16px 44px rgba(15,23,42,.1); }
+    .gallery img:first-child { height: 554px; grid-row: span 2; }
+
+    .booking { color: #fff; background: linear-gradient(135deg, var(--navy), #13224d); }
+    .booking .lead { color: rgba(255,255,255,.76); }
+    .booking-card { background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.14); border-radius: 26px; padding: 24px; }
+    .form { display: grid; gap: 12px; }
+    .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    label { display: grid; gap: 7px; font-weight: 850; }
+    input, select, textarea { width: 100%; border: 1px solid rgba(15,23,42,.14); border-radius: 14px; background: #fff; padding: 13px; color: var(--ink); outline: 0; }
+    textarea { resize: vertical; }
+    .booking input, .booking select, .booking textarea { background: rgba(255,255,255,.96); }
+    .booking small { color: rgba(255,255,255,.68); }
+
+    .final-cta { background: var(--navy); color: #fff; }
+    .final-card { display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: center; }
+    .final-card p { color: rgba(255,255,255,.76); max-width: 760px; }
+    .final-actions { display: grid; gap: 10px; min-width: 230px; }
+    footer { padding: 34px 0; background: #070d1f; color: rgba(255,255,255,.68); }
+    footer .shell { display: flex; justify-content: space-between; gap: 18px; flex-wrap: wrap; }
+
+    .bottom-nav {
+      position: fixed;
+      left: 10px;
+      right: 10px;
+      bottom: 10px;
+      z-index: 70;
+      display: none;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 6px;
+      padding: 7px;
+      border: 1px solid rgba(185,242,74,.22);
+      border-radius: 18px;
+      background: rgba(8,14,31,.94);
+      backdrop-filter: blur(14px);
+    }
+    .bottom-nav a { color: #fff; text-align: center; font-size: 12px; font-weight: 950; padding: 8px 4px; border-radius: 12px; }
+    .bottom-nav a:hover { background: rgba(255,255,255,.1); }
+
+    @media (prefers-reduced-motion: reduce) {
+      .hero-video, .lazy-video { display: none; }
+      html { scroll-behavior: auto; }
+    }
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .split, .final-card { grid-template-columns: 1fr; }
+      .info-grid, .card-grid, .service-grid, .tariff-grid, .trust-grid, .faq-grid, .template-pricing-grid { grid-template-columns: repeat(2, 1fr); }
+      .gallery { grid-template-columns: 1fr 1fr; }
+      .gallery img:first-child { grid-column: 1 / -1; height: 340px; }
+    }
+    @media (max-width: 640px) {
+      body { padding-bottom: 84px; }
+      .demo-bar { justify-content: flex-start; overflow-x: auto; white-space: nowrap; min-height: 34px; font-size: 11px; }
+      .site-nav { top: 34px; }
+      .nav-inner { height: 58px; }
+      .hero { min-height: calc(100svh - 34px); }
+      .hero-content { padding: 92px 0 92px; }
+      .hero p { font-size: 16px; }
+      .hero-actions .btn, .cta-row .btn { width: 100%; }
+      .info-strip { margin-top: 0; }
+      .info-grid, .card-grid, .service-grid, .tariff-grid, .trust-grid, .faq-grid, .template-pricing-grid, .field-row { grid-template-columns: 1fr; }
+      .section { padding: 58px 0; }
+      .section-head { display: block; }
+      .media-card, .video-band { min-height: 320px; }
+      .video-copy { padding: 34px 22px; }
+      .route-list div { grid-template-columns: auto 1fr; }
+      .route-list strong { grid-column: 2; }
+      .gallery { grid-template-columns: 1fr; }
+      .gallery img, .gallery img:first-child { height: 260px; }
+      .final-actions { min-width: 0; }
+      .bottom-nav { display: grid; }
+    }
+  </style>
+</head>
+<body>
+  <div class="demo-bar">
+    <span>DEMO-шаблон доставки</span>
+    <a href="../../index.html#catalog">← Назад к портфолио</a>
+    <a class="order" href="#order">Заказать похожий</a>
+  </div>
+
+  <nav class="site-nav" aria-label="Delivery demo navigation">
+    <div class="shell nav-inner">
+      <a class="brand" href="#top">
+        <span class="brand-mark">SF</span>
+        <span>SprintFleet <small>delivery & couriers</small></span>
+      </a>
+      <div class="nav-links">
+        <a href="#services">Услуги</a>
+        <a href="#zones">Зоны</a>
+        <a href="#couriers">Курьерам</a>
+        <a href="#pricing">Цена сайта</a>
+        <a href="#order">Заявка</a>
+      </div>
+      <a class="btn dark" href="#order">Оставить заявку</a>
+    </div>
+  </nav>
+
+  <main id="top">
+    <section class="hero">
+      <img class="hero-poster" src="../../assets/images/delivery-fleet/courier-handoff.jpg" alt="" aria-hidden="true" loading="eager" decoding="async">
+      <video class="hero-video" muted loop playsinline preload="metadata" poster="../../assets/images/delivery-fleet/courier-handoff.jpg" aria-hidden="true">
+        <source src="../../assets/videos/delivery-fleet/dispatch-motion.mp4" type="video/mp4">
+      </video>
+      <div class="shell hero-content">
+        <p class="eyebrow">SprintFleet Prague · demo website</p>
+        <h1>Сайт для доставки, курьеров и локального сервиса</h1>
+        <p>Зоны работы, тарифы, быстрый заказ, заявка для клиентов и отдельный блок для набора курьеров — всё, что нужно локальной delivery-команде на телефоне.</p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#services">Посмотреть услуги</a>
+          <a class="btn dark" href="#order">Оставить заявку</a>
+          <a class="btn ghost" href="#couriers">Для курьеров</a>
+        </div>
+        <div class="chips">
+          <span>Same-day delivery</span>
+          <span>Зоны и тарифы</span>
+          <span>Заявка с телефона</span>
+          <span>Набор курьеров</span>
+          <span>Заявка на email</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="info-strip" aria-label="Quick info">
+      <div class="shell info-grid">
+        <article><span>Работа</span><strong>7:00-22:00</strong></article>
+        <article><span>Зоны</span><strong>City / Suburbs</strong></article>
+        <article><span>Старт</span><strong>от 89 Kč</strong></article>
+        <article><span>Курьеры</span><strong>заявка онлайн</strong></article>
+        <article><span>Бизнес</span><strong>регулярные рейсы</strong></article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="shell split">
+        <div>
+          <p class="eyebrow">Коммерческий каркас</p>
+          <h2>Гость или клиент сразу понимает, как заказать доставку</h2>
+          <p class="lead">Такой сайт подходит для курьерской службы, доставки еды, локального сервиса, флотилии, рекрутинга курьеров или малого бизнеса, которому нужен быстрый поток заявок без сложного приложения.</p>
+          <div class="card-grid" style="margin-top:22px">
+            <article class="card"><span class="num">1</span><h3>Клиенты</h3><p>Видят зоны, сроки, тарифы и оставляют заказ через форму или мессенджер.</p></article>
+            <article class="card"><span class="num">2</span><h3>Курьеры</h3><p>Понимают условия, график, требования и отправляют заявку на работу.</p></article>
+            <article class="card"><span class="num">3</span><h3>Бизнес</h3><p>Может запросить регулярные рейсы, доставку документов, посылок или заказов.</p></article>
+          </div>
+        </div>
+        <div class="route-board">
+          <p class="eyebrow">Live route feeling</p>
+          <h2>Заявка → диспетчер → курьер → доставка</h2>
+          <p>В реальном проекте сюда можно подключить карту, CRM, Telegram-уведомления или простую таблицу заявок. В START-версии достаточно формы, контактов и понятной структуры.</p>
+          <div class="route-list">
+            <div><span class="dot"></span><span>Новый заказ</span><strong>0 мин</strong></div>
+            <div><span class="dot"></span><span>Подбор курьера</span><strong>5 мин</strong></div>
+            <div><span class="dot"></span><span>Забор посылки</span><strong>20 мин</strong></div>
+            <div><span class="dot"></span><span>Доставка клиенту</span><strong>45 мин</strong></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="services">
+      <div class="shell">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Что можно продавать</p>
+            <h2>Услуги доставки на одной понятной странице</h2>
+          </div>
+          <p>Карточки можно заменить под конкретный бизнес: еда, документы, посылки, запчасти, аптека, цветы или курьерская флотилия.</p>
+        </div>
+        <div class="service-grid">
+          <article class="service-card">
+            <img src="../../assets/images/delivery-fleet/courier-handoff.jpg" alt="Курьер передаёт посылку" loading="lazy">
+            <h3>Экспресс-доставка</h3>
+            <p>Срочные заказы по городу: документы, маленькие посылки, покупки и локальные поручения.</p>
+          </article>
+          <article class="service-card">
+            <img src="../../assets/images/delivery-fleet/parcel-boxes.jpg" alt="Посылки для доставки" loading="lazy">
+            <h3>Регулярные рейсы</h3>
+            <p>Для бизнеса: ежедневные маршруты, забор заказов, развоз по точкам и понятный контакт.</p>
+          </article>
+          <article class="service-card">
+            <img src="../../assets/images/delivery-fleet/locker-flow.jpg" alt="Почтовые шкафы и локеры" loading="lazy">
+            <h3>Пункты и локеры</h3>
+            <p>Сценарии доставки до локеров, офисов, выдачи, склада или точки самовывоза.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section tariffs" id="zones">
+      <div class="shell">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Зоны и тарифы</p>
+            <h2>Цены видны до заявки</h2>
+          </div>
+          <p>Для реального клиента тарифы меняются под город, радиус, вес, срочность и тип доставки.</p>
+        </div>
+        <div class="tariff-grid">
+          <article class="tariff-card"><span class="badge">City</span><h3>Внутри района</h3><strong>от 89 Kč</strong><p>Маленькая посылка, документы, доставка до 3 км.</p></article>
+          <article class="tariff-card"><span class="badge">Popular</span><h3>По городу</h3><strong>от 149 Kč</strong><p>Стандартный заказ до 8 км, курьер или авто по задаче.</p></article>
+          <article class="tariff-card"><span class="badge">Business</span><h3>Регулярные рейсы</h3><strong>по запросу</strong><p>Фиксированные маршруты, договорённости, отдельные условия.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="couriers">
+      <div class="shell split">
+        <div class="media-card">
+          <img src="../../assets/images/delivery-fleet/sorted-parcels.jpg" alt="Подготовленные посылки для доставки" loading="lazy">
+        </div>
+        <div>
+          <p class="eyebrow">Для курьеров</p>
+          <h2>Отдельный блок для набора людей</h2>
+          <p class="lead">Если сайт нужен не только для клиентов, но и для поиска курьеров, можно добавить условия работы, график, требования, FAQ и форму отклика.</p>
+          <div class="card-grid" style="grid-template-columns:1fr 1fr;margin-top:22px">
+            <article class="card"><h3>Гибкий график</h3><p>Утро, вечер, выходные или регулярные смены.</p></article>
+            <article class="card"><h3>Транспорт</h3><p>Пешком, велосипед, авто или cargo-bike.</p></article>
+            <article class="card"><h3>Заявка</h3><p>Имя, телефон, район, опыт и тип транспорта.</p></article>
+            <article class="card"><h3>Быстрый контакт</h3><p>Telegram / Facebook / телефон рядом с формой.</p></article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="shell">
+        <div class="video-band">
+          <img src="../../assets/images/delivery-fleet/parcel-drop.webp" alt="" aria-hidden="true" loading="lazy">
+          <video class="lazy-video" muted loop playsinline preload="none" poster="../../assets/images/delivery-fleet/parcel-drop.webp" aria-hidden="true" data-src="../../assets/videos/delivery-fleet/route-motion.mp4"></video>
+          <div class="video-copy">
+            <p class="eyebrow">Dispatch system mood</p>
+            <h2>Визуально сайт показывает скорость, маршрут и контроль</h2>
+            <p>Видеофон грузится только рядом с секцией. Если браузер слабый или видео не загрузится, остаётся poster-фото, поэтому страница не дёргается.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="shell">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Фотографии</p>
+            <h2>В реальном проекте ставятся ваши курьеры, авто и точки выдачи</h2>
+          </div>
+          <p>Для demo используются открытые локальные изображения. Реальный клиент получает свои фото, цвета, контакты и тексты.</p>
+        </div>
+        <div class="gallery">
+          <img src="../../assets/images/delivery-fleet/courier-handoff.jpg" alt="Передача посылки" loading="lazy">
+          <img src="../../assets/images/delivery-fleet/parcel-boxes.jpg" alt="Посылки" loading="lazy">
+          <img src="../../assets/images/delivery-fleet/locker-flow.jpg" alt="Локеры" loading="lazy">
+          <img src="../../assets/images/delivery-fleet/sorted-parcels.jpg" alt="Сортировка посылок" loading="lazy">
+          <img src="../../assets/images/delivery-fleet/parcel-drop.webp" alt="Посылочный ящик" loading="lazy">
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="pricing">
+      <div class="shell">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Цена сайта</p>
+            <h2>Пакеты для delivery / courier landing</h2>
+          </div>
+          <p>START подходит, если берём этот demo-шаблон и быстро меняем тексты, фото, контакты и форму. PLUS/PRO — когда нужна более сильная структура или подготовка под рекламу.</p>
+        </div>
+        <div class="template-pricing-grid">
+          <article class="template-price-card">
+            <span class="badge">START</span>
+            <strong>10 000 Kč <small>≈400 €</small></strong>
+            <h3>Start Fleet Landing</h3>
+            <p>Готовый demo-шаблон, ваши фото/тексты, контакты, форма заявки и мобильная версия.</p>
+            <small>+ домен ~150-300 Kč / год</small>
+            <small>+ хостинг 0 Kč для обычного лендинга</small>
+            <a class="btn primary" href="#order" data-package="Start" data-package-price="10 000 Kč / ≈400 €">Выбрать Start</a>
+          </article>
+          <article class="template-price-card recommended">
+            <span class="badge">Популярно</span>
+            <strong>20 000 Kč <small>≈800 €</small></strong>
+            <h3>Fleet Plus</h3>
+            <p>Больше блоков, второй язык, thank-you page, больше сценариев и базовая аналитика.</p>
+            <small>+ домен ~150-300 Kč / год</small>
+            <small>+ хостинг 0 Kč для обычного лендинга</small>
+            <a class="btn primary" href="#order" data-package="Plus" data-package-price="20 000 Kč / ≈800 €">Выбрать Plus</a>
+          </article>
+          <article class="template-price-card premium">
+            <span class="badge">PRO</span>
+            <strong>от 30 000 Kč <small>от ≈1 200 €</small></strong>
+            <h3>Fleet Pro</h3>
+            <p>UTM, SEO-основа, аналитика кликов, дополнительные секции и подготовка под рекламу.</p>
+            <small>+ домен ~150-300 Kč / год</small>
+            <small>+ платные сервисы по задаче</small>
+            <a class="btn primary" href="#order" data-package="Pro" data-package-price="от 30 000 Kč / от ≈1 200 €">Обсудить Pro</a>
+          </article>
+        </div>
+        <div class="template-cost-note">
+          <strong>Минимальный запуск:</strong> START 10 000 Kč / ≈400 € + домен примерно 150-300 Kč / год + бесплатный хостинг. Для простого сайта-витрины ежемесячный хостинг может быть 0 Kč.
+        </div>
+      </div>
+    </section>
+
+    <section class="section booking" id="order">
+      <div class="shell split">
+        <div>
+          <p class="eyebrow">Заявка</p>
+          <h2>Хотите такой сайт для доставки или курьеров?</h2>
+          <p class="lead">Этот demo-шаблон можно адаптировать под курьерскую службу, доставку еды, локальный сервис, флотилию или набор курьеров: заменить фото, зоны, тарифы, контакты, подключить форму и опубликовать сайт.</p>
+          <div class="cta-row">
+            <a class="btn telegram" href="https://t.me/pracehub" target="_blank" rel="noopener">Написать в Telegram</a>
+            <a class="btn ghost" href="../../index.html#catalog">Вернуться к портфолио</a>
+          </div>
+        </div>
+        <div class="booking-card">
+          <form class="form" action="https://forminit.com/f/kshbr37bfe4" method="POST">
+            <input type="hidden" name="selected_template" value="Delivery / Fleet Website Demo">
+            <input type="hidden" name="selected_package" value="">
+            <input type="hidden" name="package_price" value="">
+            <input type="hidden" name="source" value="delivery-fleet-demo">
+            <label>Пакет сайта
+              <select name="selected_package_visible" required>
+                <option value="">Выберите пакет</option>
+                <option value="Start" data-price="10 000 Kč / ≈400 €">START — 10 000 Kč / ≈400 € — готовый demo-шаблон</option>
+                <option value="Plus" data-price="20 000 Kč / ≈800 €">PLUS — 20 000 Kč / ≈800 € — больше блоков и доработка</option>
+                <option value="Pro" data-price="от 30 000 Kč / от ≈1 200 €">PRO — от 30 000 Kč / от ≈1 200 € — под рекламу и рост</option>
+              </select>
+            </label>
+            <label>Цена пакета<input name="package_price_visible" placeholder="Автоматически после выбора" readonly></label>
+            <div class="field-row">
+              <label>Имя<input name="name" autocomplete="name" required></label>
+              <label>Телефон<input name="phone" autocomplete="tel" required></label>
+            </div>
+            <label>Email<input name="email" type="email" autocomplete="email" required></label>
+            <label>Telegram / WhatsApp<input name="telegram_whatsapp" placeholder="@username или номер"></label>
+            <label>Тип бизнеса<input name="business_type" value="Delivery / Fleet / Courier"></label>
+            <label>Что нужно сделать?<textarea name="message" rows="5" required placeholder="Например: доставка еды, курьерская служба, набор курьеров, зоны, тарифы, форма заявки"></textarea></label>
+            <button class="btn primary full" type="submit">Отправить заявку</button>
+            <small>Форма отправляется на email. Выбранный пакет и цена попадут в заявку.</small>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="shell">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Доверие</p>
+            <h2>Что важно для сайта доставки</h2>
+          </div>
+          <p>Не обещаем магические продажи. Цель demo — показать структуру, которая помогает быстрее понять услугу и оставить заявку.</p>
+        </div>
+        <div class="trust-grid">
+          <article><h3>Зоны и ограничения</h3><p>Клиент заранее видит, где вы работаете, какой радиус и какие условия.</p></article>
+          <article><h3>Тарифы без сюрпризов</h3><p>Цена “от” видна, сложные заказы уходят в обсуждение.</p></article>
+          <article><h3>Форма под задачу</h3><p>Можно собирать заявки от клиентов, курьеров или бизнес-партнёров.</p></article>
+          <article><h3>Мессенджеры рядом</h3><p>Telegram, Facebook, WhatsApp или телефон рядом с CTA.</p></article>
+          <article><h3>Мобильная версия</h3><p>Заказ доставки чаще приходит с телефона, поэтому кнопки крупные.</p></article>
+          <article><h3>Можно расширять</h3><p>Позже можно добавить CRM, базу, кабинет, карту или уведомления.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section final-cta">
+      <div class="shell final-card">
+        <div>
+          <p class="eyebrow">Nikolaj Dev template</p>
+          <h2>Готовая структура уже есть — остаётся подставить ваш бизнес</h2>
+          <p>Заменим название, фото, зоны, тарифы, контакты и тексты. Подключим форму заявки, проверим телефон и подготовим публикацию.</p>
+        </div>
+        <div class="final-actions">
+          <a class="btn primary" href="#order">Заказать похожий</a>
+          <a class="btn ghost" href="../../index.html#catalog">К портфолио</a>
+          <a class="btn telegram" href="https://t.me/pracehub" target="_blank" rel="noopener">Telegram</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <nav class="bottom-nav" aria-label="Mobile quick actions">
+    <a href="#services">Услуги</a>
+    <a href="#zones">Тарифы</a>
+    <a href="#couriers">Курьеры</a>
+    <a href="#order">Заявка</a>
+  </nav>
+
+  <footer>
+    <div class="shell">
+      <span>SprintFleet demo · Delivery / Fleet Website Demo</span>
+      <a href="../../index.html#catalog">Nikolaj Dev portfolio</a>
+    </div>
+  </footer>
+
+  <script>
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const inAppBrowser = /FBAN|FBAV|FB_IAB|Instagram|Messenger/i.test(navigator.userAgent || "");
+
+    function startVideo(video) {
+      if (!video || reduceMotion || inAppBrowser) {
+        video?.classList.add("is-disabled");
+        return;
+      }
+      video.addEventListener("canplay", () => video.classList.add("is-ready"), { once: true });
+      const play = () => video.play().catch(() => video.classList.remove("is-ready"));
+      if ("requestIdleCallback" in window) {
+        window.requestIdleCallback(play, { timeout: 1600 });
+      } else {
+        window.setTimeout(play, 700);
+      }
+    }
+
+    document.querySelectorAll(".hero-video").forEach(startVideo);
+
+    document.querySelectorAll(".lazy-video").forEach((video) => {
+      if (!("IntersectionObserver" in window) || reduceMotion || inAppBrowser) {
+        video.classList.add("is-disabled");
+        return;
+      }
+      const loadVideo = () => {
+        if (video.dataset.loaded) return;
+        video.dataset.loaded = "true";
+        const source = document.createElement("source");
+        source.src = video.dataset.src;
+        source.type = "video/mp4";
+        video.appendChild(source);
+        video.addEventListener("canplay", () => {
+          video.classList.add("is-ready");
+          video.play().catch(() => {});
+        }, { once: true });
+        video.load();
+      };
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            loadVideo();
+            video.play().catch(() => {});
+          } else {
+            video.pause();
+          }
+        });
+      }, { rootMargin: "360px 0px", threshold: .08 });
+      observer.observe(video);
+    });
+
+    const orderForm = document.querySelector("#order form");
+    const packageSelect = orderForm?.querySelector("[name='selected_package_visible']");
+    const packagePriceVisible = orderForm?.querySelector("[name='package_price_visible']");
+    const syncPackage = (packageName, packagePrice) => {
+      if (!orderForm) return;
+      orderForm.querySelector("[name='selected_package']").value = packageName || "";
+      orderForm.querySelector("[name='package_price']").value = packagePrice || "";
+      if (packageSelect) packageSelect.value = packageName || "";
+      if (packagePriceVisible) packagePriceVisible.value = packagePrice || "";
+    };
+    packageSelect?.addEventListener("change", () => {
+      const option = packageSelect.selectedOptions[0];
+      syncPackage(packageSelect.value, option?.dataset.price || "");
+    });
+    orderForm?.addEventListener("submit", () => {
+      const option = packageSelect?.selectedOptions[0];
+      syncPackage(packageSelect?.value || "", option?.dataset.price || packagePriceVisible?.value || "");
+    });
+    document.querySelectorAll("[data-package]").forEach((link) => {
+      link.addEventListener("click", () => syncPackage(link.dataset.package || "", link.dataset.packagePrice || ""));
+    });
+  </script>
+  <script src="../../assets/js/demo-sale.js"></script>
+</body>
+</html>

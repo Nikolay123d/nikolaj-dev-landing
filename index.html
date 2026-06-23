@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Nikolaj Dev builds landing pages, websites, MVPs, project audits and AI-assisted workflows with clear human control.">
+  <meta name="description" content="Nikolaj Dev builds landing pages, websites, MVPs and project audits for small business, local services and portfolio sales pages.">
   <title>Nikolaj Dev - сайты, лендинги, MVP и аудит проектов</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,10 +23,9 @@
       <a href="#work">Работы</a>
       <button type="button" data-open-pricing>Цены</button>
       <a href="#process">Как работаю</a>
-      <button type="button" data-open-argus>ARGUS</button>
       <a href="#contacts">Контакты</a>
     </nav>
-    <button class="header-cta" type="button" data-open-lead>Оставить заявку</button>
+    <button class="header-cta" type="button" data-open-lead data-sale-source="header_sale">Скидка -50%</button>
     <button class="menu-toggle" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="mobileMenu">
       <span></span><span></span><span></span>
     </button>
@@ -39,10 +38,18 @@
     <a href="#work">Работы</a>
     <button type="button" data-open-pricing>Цены</button>
     <a href="#process">Как работаю</a>
-    <button type="button" data-open-argus>ARGUS</button>
     <a href="#contacts">Контакты</a>
-    <button class="mobile-cta" type="button" data-open-lead>Оставить заявку</button>
+    <button class="mobile-cta" type="button" data-open-lead data-sale-source="mobile_menu_sale">Забрать скидку</button>
   </nav>
+
+  <div class="sale-side-ribbon sale-side-left" aria-hidden="true">
+    <span>АКЦИЯ -50%</span>
+    <strong data-sale-countdown>03:00:00</strong>
+  </div>
+  <div class="sale-side-ribbon sale-side-right" aria-hidden="true">
+    <span>от 5 000 Kč</span>
+    <strong>SALE50</strong>
+  </div>
 
   <main>
     <section class="hero" id="home">
@@ -54,11 +61,16 @@
       <div class="page-shell hero-grid">
         <div class="hero-copy">
           <p class="eyebrow">Websites / Landing pages / MVP / Audit</p>
+          <div class="sale-hero-badge sale-hero-block">
+            <span>-50%</span>
+            <strong>Стартовая акция 50%</strong>
+            <small>Сайт по готовому demo-шаблону от 5 000 Kč вместо 10 000 Kč. Цена закрепляется на 3 часа после открытия страницы. До конца предложения: <b data-sale-countdown>03:00:00</b></small>
+          </div>
           <h1>Сайты и лендинги, которые можно быстро запустить под ваш бизнес</h1>
           <p class="hero-sub">Делаю современные сайты для услуг, локального бизнеса, туров, доставки, ремонта, салонов и личного бренда. Можно начать с готового demo-шаблона, адаптировать его под ваш бизнес и получить страницу, которая принимает заявки.</p>
           <div class="hero-actions">
             <a class="btn primary" href="#catalog">Посмотреть шаблоны</a>
-            <button class="btn dark" type="button" data-open-lead>Оставить заявку</button>
+            <button class="btn dark" type="button" data-open-lead data-sale-source="hero_sale_primary">Забрать скидку -50%</button>
             <a class="btn telegram" href="https://t.me/pracehub" target="_blank" rel="noopener">Написать в Telegram</a>
           </div>
           <div class="trust-row" aria-label="Преимущества">
@@ -67,12 +79,13 @@
             <span>Форма заявки на почту</span>
             <span>Помощь с публикацией</span>
             <span>Прага / удалённо</span>
+            <span>Акция от 5 000 Kč</span>
           </div>
         </div>
         <aside class="hero-showcase" aria-label="Быстрый обзор">
           <div class="showcase-top">
             <span>Готовые demo-шаблоны</span>
-            <strong>от 10 000 Kč / ≈400 €</strong>
+            <strong>по акции от 5 000 Kč / ≈200 €</strong>
           </div>
           <div class="hero-demo-stack">
             <a class="hero-demo-card is-featured" href="demos/bakery-cafe/index.html">
@@ -96,7 +109,7 @@
           </div>
           <div class="hero-showcase-actions">
             <a class="btn primary" href="#catalog">Все шаблоны</a>
-            <button class="btn ghost" type="button" data-open-lead>Заказать похожий</button>
+            <button class="btn ghost" type="button" data-open-lead data-sale-source="hero_showcase_sale">Заказать со скидкой</button>
           </div>
         </aside>
       </div>
@@ -113,13 +126,13 @@
           <h2 id="featuredBakeryTitle">Bakery / Cafe Website Demo</h2>
           <p>Сайт для пекарни, кафе или кофейни: видео на первом экране, меню, фото продукции, кофе, карта, контакты и заявки. Теперь этот demo можно открыть сразу, без поиска по всему каталогу.</p>
           <div class="project-meta">
-            <span>START 10 000 Kč / ≈400 €</span>
+            <span>SALE START 5 000 Kč / ≈200 €</span>
             <span>3-7 дней</span>
             <span>Готовый demo</span>
           </div>
           <div class="featured-demo-actions">
             <a class="btn primary" href="demos/bakery-cafe/index.html">Посмотреть шаблон</a>
-            <a class="btn dark" href="demos/bakery-cafe/index.html#order">Заказать похожий</a>
+            <button class="btn dark" type="button" data-open-lead data-template="Bakery / Cafe Website Demo" data-package="Start" data-package-price="5 000 Kč / ≈200 €" data-sale-source="featured_bakery_sale">Заказать по акции</button>
             <a class="btn ghost" href="#catalog">К другим шаблонам</a>
           </div>
         </div>
@@ -130,37 +143,37 @@
       <div class="page-shell">
         <div class="section-head split">
           <div>
-            <p class="eyebrow">3 варианта запуска</p>
-            <h2 id="quickPricingTitle">Сколько стоит сделать сайт по demo-шаблону</h2>
+            <p class="eyebrow">Акция -50% на 3 часа</p>
+            <h2 id="quickPricingTitle">Сколько стоит сделать сайт по demo-шаблону сейчас</h2>
           </div>
-          <p>Базовая цена считается в Kč. Евро указаны примерно, чтобы клиенту было проще понять уровень бюджета.</p>
+          <p>Базовая цена считается в Kč. По акции START начинается от 5 000 Kč / ≈200 €, если проект подходит под готовый demo-шаблон.</p>
         </div>
         <div class="quick-price-grid">
           <article>
             <span>START</span>
-            <strong>10 000 Kč <small>≈ 400 €</small></strong>
+            <strong><span class="price-sale-current">5 000 Kč <small>≈200 €</small></span><span class="price-sale-old">обычно 10 000 Kč / ≈400 €</span></strong>
             <h3>Готовый demo-шаблон</h3>
             <p>Подставить ваши тексты, фото, контакты, форму заявки, домен — и через несколько дней сайт готов к запуску.</p>
-            <button class="btn primary" type="button" data-open-lead data-package="Start" data-package-price="10 000 Kč / ≈400 €">Выбрать Start</button>
+            <button class="btn primary" type="button" data-open-lead data-package="Start" data-package-price="5 000 Kč / ≈200 €" data-regular-price="10 000 Kč / ≈400 €" data-sale-source="pricing_start_sale50">Купить Start по акции</button>
           </article>
           <article class="recommended">
             <em>Популярно</em>
             <span>PLUS</span>
-            <strong>15 000 Kč <small>≈ 600 €</small></strong>
+            <strong><span class="price-sale-current">10 000 Kč <small>≈400 €</small></span><span class="price-sale-old">обычно 20 000 Kč / ≈800 €</span></strong>
             <h3>Больше блоков и доработка</h3>
             <p>Если нужно больше секций, второй язык, thank-you страница, базовая аналитика и аккуратная адаптация под бизнес.</p>
-            <button class="btn primary" type="button" data-open-lead data-package="Plus" data-package-price="15 000 Kč / ≈600 €">Выбрать Plus</button>
+            <button class="btn primary" type="button" data-open-lead data-package="Plus" data-package-price="10 000 Kč / ≈400 €" data-regular-price="20 000 Kč / ≈800 €" data-sale-source="pricing_plus_sale50">Купить Plus по акции</button>
           </article>
           <article class="premium">
             <span>PRO</span>
-            <strong>от 20 000 Kč <small>от ≈ 800 €</small></strong>
+            <strong><span class="price-sale-current">от 15 000 Kč <small>от ≈600 €</small></span><span class="price-sale-old">обычно от 30 000 Kč / от ≈1 200 €</span></strong>
             <h3>Под рекламу и рост</h3>
-            <p>Для более серьёзной структуры: UTM, аналитика кликов, SEO-основа, дополнительные секции и подготовка к продвижению.</p>
-            <button class="btn primary" type="button" data-open-lead data-package="Pro" data-package-price="от 20 000 Kč / от ≈800 €">Обсудить Pro</button>
+            <p>Для более серьёзной структуры: UTM, аналитика кликов, SEO-основа, дополнительные секции и подготовка к продвижению. Объём фиксируем заранее.</p>
+            <button class="btn primary" type="button" data-open-lead data-package="Pro" data-package-price="от 15 000 Kč / от ≈600 €" data-regular-price="от 30 000 Kč / от ≈1 200 €" data-sale-source="pricing_pro_sale50">Обсудить Pro по акции</button>
           </article>
         </div>
         <div class="quick-price-note">
-          <strong>Минимальный запуск:</strong> START 10 000 Kč / ≈400 € + домен примерно 150-300 Kč в год. Для обычного лендинга хостинг может быть 0 Kč.
+          <strong>Минимальный запуск по акции:</strong> START 5 000 Kč / ≈200 € + домен примерно 150-300 Kč в год. Для обычного лендинга хостинг может быть 0 Kč. Таймер: <b data-sale-countdown>03:00:00</b>.
         </div>
       </div>
     </section>
@@ -203,13 +216,13 @@
           <article><span>02</span><h3>Услуги и цены</h3><p>Структура, где видно, что можно заказать, сколько примерно стоит и какой срок.</p></article>
           <article><span>03</span><h3>Фото, галерея, портфолио</h3><p>Визуальные блоки под ваш бизнес: работы, примеры, объекты, маршруты или товары.</p></article>
           <article><span>04</span><h3>Кнопки связи</h3><p>Telegram, Facebook, WhatsApp или email рядом с важными CTA, чтобы не терять заявки.</p></article>
-          <article><span>05</span><h3>Forminit-заявка</h3><p>Форма отправляет данные на почту, сохраняет выбранный шаблон и ведёт на thank-you страницу.</p></article>
+          <article><span>05</span><h3>Заявка на почту</h3><p>Форма отправляет данные на email, сохраняет выбранный шаблон и ведёт на thank-you страницу.</p></article>
           <article><span>06</span><h3>Мобильная версия</h3><p>Карточки, кнопки, форма и demo-просмотр проверяются под телефон.</p></article>
           <article><span>07</span><h3>FAQ и доверие</h3><p>Ответы на вопросы, процесс работы, честные ограничения и понятные ожидания.</p></article>
-          <article><span>08</span><h3>Помощь с публикацией</h3><p>Подготовка к GitHub Pages или другому хостингу после отдельного подтверждения.</p></article>
+          <article><span>08</span><h3>Помощь с публикацией</h3><p>Подготовка к выбранному способу публикации после отдельного подтверждения.</p></article>
         </div>
         <div class="section-cta-row">
-          <button class="btn primary" type="button" data-open-lead>Оставить заявку</button>
+          <button class="btn primary" type="button" data-open-lead data-sale-source="value_section_sale">Оставить заявку по акции</button>
           <a class="btn telegram" href="https://t.me/pracehub" target="_blank" rel="noopener">Написать в Telegram</a>
           <a class="btn ghost" href="#catalog">Смотреть шаблоны</a>
         </div>
@@ -234,13 +247,12 @@
             <p class="eyebrow">Работы и шаблоны</p>
             <h2>Примеры, которые можно открыть и посмотреть</h2>
           </div>
-          <p>Самые важные демо уже есть в каталоге выше. Здесь собраны готовые примеры, live-проект и workflow-кейсы.</p>
+          <p>Самые важные демо уже есть в каталоге выше. Здесь собраны готовые примеры, live-проект и направления, которые можно заказать.</p>
         </div>
         <div class="work-toolbar" aria-label="Фильтры работ">
           <button class="active" type="button" data-filter="all">Все</button>
           <button type="button" data-filter="template">Шаблоны</button>
           <button type="button" data-filter="real">Реальные проекты</button>
-          <button type="button" data-filter="workflow">Workflow</button>
         </div>
         <div class="project-grid" id="projectGrid"></div>
       </div>
@@ -260,7 +272,7 @@
           <article><span>05</span><h3>Публикуем сайт</h3><p>После подтверждения готовлю публикацию и проверяю, что форма и ссылки работают.</p></article>
         </div>
         <div class="section-cta-row">
-          <button class="btn primary" type="button" data-open-lead>Оставить заявку</button>
+          <button class="btn primary" type="button" data-open-lead data-sale-source="process_section_sale">Оставить заявку по акции</button>
           <a class="btn telegram" href="https://t.me/pracehub" target="_blank" rel="noopener">Написать в Telegram</a>
           <a class="btn ghost" href="#catalog">Смотреть шаблоны</a>
         </div>
@@ -270,45 +282,45 @@
     <section class="section pricing-strip" id="pricing">
       <div class="page-shell pricing-card pricing-card-full">
         <div class="pricing-intro">
-          <p class="eyebrow">Цены</p>
-          <h2>Простые пакеты для сайта без скрытого хостинга</h2>
+          <p class="eyebrow">Цены по акции</p>
+          <h2>3 пакета сайта со скидкой 50%</h2>
           <p>Сначала выбираем уровень запуска. Домен и платные сервисы считаются отдельно, а обычный лендинг можно держать на бесплатном хостинге.</p>
         </div>
         <div class="simple-pricing-grid" aria-label="Пакеты сайта">
           <article class="simple-price-card">
             <span class="plan-kicker">START</span>
-            <strong>10 000 Kč <small>≈400 €</small></strong>
+            <strong><span class="price-sale-current">5 000 Kč <small>≈200 €</small></span><span class="price-sale-old">обычно 10 000 Kč / ≈400 €</span></strong>
             <h3>Быстрый запуск</h3>
             <p>Сайт по готовому demo-шаблону: фото, тексты, контакты, форма заявки и мобильная версия.</p>
             <small>+ домен ~150-300 Kč / год</small>
             <small>+ хостинг 0 Kč для обычного лендинга</small>
-            <button class="btn primary" type="button" data-open-lead data-package="Start" data-package-price="10 000 Kč / ≈400 €">Выбрать Start</button>
+            <button class="btn primary" type="button" data-open-lead data-package="Start" data-package-price="5 000 Kč / ≈200 €" data-regular-price="10 000 Kč / ≈400 €" data-sale-source="pricing_start_sale50">Купить Start по акции</button>
           </article>
           <article class="simple-price-card recommended">
             <span class="plan-badge">Популярно / оптимально</span>
             <span class="plan-kicker">PLUS</span>
-            <strong>15 000 Kč <small>≈600 €</small></strong>
+            <strong><span class="price-sale-current">10 000 Kč <small>≈400 €</small></span><span class="price-sale-old">обычно 20 000 Kč / ≈800 €</span></strong>
             <h3>Оптимальный вариант</h3>
             <p>Больше блоков, фото, второй язык, thank-you страница и базовая аналитика.</p>
             <small>+ домен ~150-300 Kč / год</small>
             <small>+ хостинг 0 Kč для обычного лендинга</small>
-            <button class="btn primary" type="button" data-open-lead data-package="Plus" data-package-price="15 000 Kč / ≈600 €">Выбрать Plus</button>
+            <button class="btn primary" type="button" data-open-lead data-package="Plus" data-package-price="10 000 Kč / ≈400 €" data-regular-price="20 000 Kč / ≈800 €" data-sale-source="pricing_plus_sale50">Купить Plus по акции</button>
           </article>
           <article class="simple-price-card premium">
             <span class="plan-kicker">PRO</span>
-            <strong>от 20 000 Kč <small>от ≈800 €</small></strong>
+            <strong><span class="price-sale-current">от 15 000 Kč <small>от ≈600 €</small></span><span class="price-sale-old">обычно от 30 000 Kč / от ≈1 200 €</span></strong>
             <h3>Под рекламу и рост</h3>
-            <p>Аналитика кликов, UTM, SEO-основа, дополнительные секции и подготовка к продвижению.</p>
+            <p>Аналитика кликов, UTM, SEO-основа, дополнительные секции и подготовка к продвижению. Объём фиксируем заранее.</p>
             <small>+ домен ~150-300 Kč / год</small>
             <small>+ платные сервисы по задаче</small>
-            <button class="btn primary" type="button" data-open-lead data-package="Pro" data-package-price="от 20 000 Kč / от ≈800 €">Обсудить Pro</button>
+            <button class="btn primary" type="button" data-open-lead data-package="Pro" data-package-price="от 15 000 Kč / от ≈600 €" data-regular-price="от 30 000 Kč / от ≈1 200 €" data-sale-source="pricing_pro_sale50">Обсудить Pro по акции</button>
           </article>
         </div>
         <div class="hosting-note">
           <p>Для обычного сайта-витрины или лендинга хостинг можно сделать бесплатно. Обычно клиент оплачивает только домен примерно 150-300 Kč в год. Если позже нужны база данных, платежи, личный кабинет, CRM, сложные формы или платные сервисы — это обсуждается отдельно.</p>
           <div>
             <strong>Минимальный запуск</strong>
-            <span>START 10 000 Kč / ≈400 € + домен примерно 150-300 Kč / год + бесплатный хостинг.</span>
+            <span>START по акции 5 000 Kč / ≈200 € + домен примерно 150-300 Kč / год + бесплатный хостинг.</span>
             <span>То есть для простого сайта-витрины ежемесячный хостинг может быть 0 Kč.</span>
           </div>
           <small>Не входит в цену: домен, платные формы, платный хостинг, рекламный бюджет, логотип, профессиональные фото, переводы и сложные функции оплачиваются отдельно.</small>
@@ -328,12 +340,12 @@
         <div class="section-head">
           <p class="eyebrow">Доступная цена сейчас</p>
           <h2>Портфолио растёт, поэтому первые проекты можно сделать выгоднее</h2>
-          <p>Сейчас я развиваю портфолио, поэтому первые проекты беру по более доступной цене. Для вас это возможность получить нормальный рабочий сайт дешевле, чем такая работа будет стоить позже. Для меня — добавить ещё один реальный кейс и отзыв в портфолио.</p>
+          <p>Сейчас я развиваю портфолио, поэтому первые проекты беру по более доступной цене. Для вас это возможность получить нормальный рабочий сайт дешевле, чем такая работа будет стоить позже. Для меня — добавить ещё один реальный кейс в портфолио.</p>
         </div>
         <div class="price-trust-card">
           <strong>Это не “дёшево любой ценой”</strong>
           <p>Цена остаётся честной: сначала коротко разбираем задачу, фиксируем объём, затем делаем сайт по этапам. Если задача требует больше логики, интеграций или материалов, это обсуждается заранее.</p>
-          <button class="btn dark" type="button" data-open-pricing>Смотреть цены</button>
+          <button class="btn dark" type="button" data-open-pricing>Смотреть цены по акции</button>
         </div>
       </div>
     </section>
@@ -350,20 +362,25 @@
           <article><h3>Работаю по этапам</h3><p>Сначала структура, потом визуал, затем форма, мобильная проверка и публикация.</p></article>
           <article><h3>Подключаю заявку</h3><p>Форма, Telegram, Facebook и email ведут к понятному контакту, а не к пустой кнопке.</p></article>
           <article><h3>Не обещаю магические продажи</h3><p>Сайт помогает принимать заявки, но рекламу, оффер и рынок нужно оценивать честно.</p></article>
-          <article><h3>AI ускоряет, человек проверяет</h3><p>AI помогает быстрее готовить варианты, но финальная структура и проверка остаются под человеческим контролем.</p></article>
+          <article><h3>Сначала результат для клиента</h3><p>Фокус на понятном предложении, заявках, мобильной версии и готовности сайта к запуску.</p></article>
         </div>
       </div>
     </section>
 
-    <section class="section argus-lite" id="argus">
-      <div class="page-shell argus-grid">
+    <section class="section sale-campaign-section" id="sale">
+      <div class="page-shell sale-campaign-grid">
         <div>
-          <p class="eyebrow">ARGUS approach</p>
-          <h2>Контролируемый AI-assisted workflow</h2>
-          <p>ARGUS - мой внутренний рабочий контур организации разработки. Он помогает держать задачи, файлы, отчёты и важные решения под контролем. Это не публичный продукт и не “магия AI”, а аккуратный процесс работы.</p>
-          <button class="btn primary" type="button" data-open-argus>Как это работает</button>
+          <p class="eyebrow">Распродажа demo-шаблонов</p>
+          <h2>Можно закрепить цену -50%</h2>
+          <p>Выберите готовый demo-шаблон, оставьте заявку и укажите пакет START / PLUS / PRO. Если задача подходит под готовую структуру, я адаптирую сайт под ваш бизнес по акционной цене.</p>
+          <div class="sale-campaign-timer">До конца предложения: <strong data-sale-countdown>03:00:00</strong></div>
+          <button class="btn primary" type="button" data-open-lead data-sale-source="sale_campaign_section">Забрать скидку -50%</button>
         </div>
-        <img src="assets/img/argus-control-mobile.png" alt="ARGUS Control Room preview">
+        <div class="sale-campaign-card">
+          <span>-50%</span>
+          <strong>START от 5 000 Kč / ≈200 €</strong>
+          <p>Подставить ваши фото, тексты, контакты и форму заявки в готовый demo-шаблон.</p>
+        </div>
       </div>
     </section>
 
@@ -385,7 +402,7 @@
           <p>Оставьте короткую заявку. Я посмотрю вашу ситуацию и предложу подходящий вариант: простой лендинг, сайт услуг, каталог, страница для заявок, сайт для рекламы или более сложный MVP.</p>
         </div>
         <div class="format-help-actions">
-          <button class="btn primary" type="button" data-open-lead>Подобрать формат сайта</button>
+          <button class="btn primary" type="button" data-open-lead data-sale-source="format_help_sale">Подобрать формат по акции</button>
           <a class="btn telegram" href="https://t.me/pracehub" target="_blank" rel="noopener">Написать в Telegram</a>
           <a class="btn facebook" href="https://www.facebook.com/share/18hdnUyhLG/" target="_blank" rel="noopener">Facebook / Messenger</a>
         </div>
@@ -397,7 +414,7 @@
         <div>
           <p class="eyebrow">Контакты</p>
           <h2>Опишите задачу - отвечу быстро</h2>
-          <p>Можно написать коротко: что нужно сделать, есть ли пример сайта, какие сроки и какой бюджет. Заявка отправляется через Forminit.</p>
+          <p>Можно написать коротко: что нужно сделать, есть ли пример сайта, какие сроки и какой бюджет. Заявка приходит на email.</p>
           <div class="contact-links">
             <a href="mailto:nikyrchenko71@gmail.com">nikyrchenko71@gmail.com</a>
             <a href="https://t.me/pracehub" target="_blank" rel="noopener">Telegram: @pracehub</a>
@@ -412,7 +429,7 @@
           </div>
           <strong>Быстрая заявка</strong>
           <p>Откройте форму в отдельном окне, выберите тип проекта и отправьте заявку.</p>
-          <button class="btn dark" type="button" data-open-lead>Оставить заявку</button>
+          <button class="btn dark" type="button" data-open-lead data-sale-source="contact_panel_sale">Оставить заявку по акции</button>
           <a class="btn telegram" href="https://t.me/pracehub" target="_blank" rel="noopener">Написать в Telegram</a>
           <a class="btn facebook" href="https://www.facebook.com/share/18hdnUyhLG/" target="_blank" rel="noopener">Facebook</a>
         </div>
@@ -423,10 +440,10 @@
   <aside class="floating-cta" id="floatingCta" aria-live="polite">
     <button type="button" id="closeFloatingCta" aria-label="Закрыть">×</button>
     <div>
-      <strong>Готовы обсудить проект?</strong>
-      <span>Откройте короткую заявку или посмотрите цены.</span>
+      <strong>Скидка 50% ещё: <b data-sale-countdown>03:00:00</b></strong>
+      <span>Сайт по акции от 5 000 Kč.</span>
     </div>
-    <button type="button" data-open-lead>Заявка</button>
+    <button type="button" data-open-lead data-sale-source="sticky_sale_cta">Заявка</button>
     <button type="button" data-open-pricing>Цены</button>
   </aside>
 

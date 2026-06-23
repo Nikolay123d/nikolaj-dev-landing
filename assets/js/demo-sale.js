@@ -127,7 +127,6 @@
     ensureHidden(form, "sale_started_at").value = active ? new Date(state.startedAt).toISOString() : "";
     ensureHidden(form, "sale_expires_at").value = active ? new Date(state.expiresAt).toISOString() : "";
     ensureHidden(form, "sale_remaining").value = active ? formatSaleTime(state.remainingMs) : "";
-    ensureHidden(form, "_redirect", "https://nikolay123d.github.io/nikolaj-dev-landing/thank-you.html");
     const message = form.querySelector("[name='message']");
     if (message && !message.value.trim()) {
       message.value = active

@@ -713,7 +713,6 @@ function buildLeadModal(projectOrPlan = "") {
       <input type="hidden" name="sale_started_at" value="${leadData.saleStartedAt || ""}">
       <input type="hidden" name="sale_expires_at" value="${leadData.saleExpiresAt || ""}">
       <input type="hidden" name="sale_remaining" value="${leadData.saleRemaining || ""}">
-      <input type="hidden" name="_redirect" value="https://nikolay123d.github.io/nikolaj-dev-landing/thank-you.html">
       <input type="hidden" name="fi-sender-fullName" value="">
       <input type="hidden" name="fi-sender-email" value="">
       <input type="hidden" name="fi-text-phone" value="">

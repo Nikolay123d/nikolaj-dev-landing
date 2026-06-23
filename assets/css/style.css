@@ -73,6 +73,10 @@ img{max-width:100%;display:block}
 }
 .desktop-nav a:hover,.desktop-nav button:hover{background:#edf3ff;color:var(--ink)}
 .header-cta,.mobile-cta{border:0;border-radius:14px;background:var(--dark);color:#fff;padding:12px 17px;font-weight:900}
+.sale-active .header-cta,.sale-active .mobile-cta{
+  background:linear-gradient(135deg,#2563eb,#7c3aed 58%,#d79a35);
+  box-shadow:0 14px 34px rgba(37,99,235,.28);
+}
 .menu-toggle{display:none;width:44px;height:42px;border:1px solid var(--line);border-radius:14px;background:#fff;padding:9px}
 .menu-toggle span{display:block;height:2px;background:var(--ink);margin:5px 0;border-radius:2px;transition:.2s}
 .menu-toggle[aria-expanded=true] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
@@ -92,8 +96,10 @@ img{max-width:100%;display:block}
 .hero-video.is-disabled{display:none}
 .hero-overlay{position:absolute;inset:0;z-index:2;background:linear-gradient(90deg,rgba(249,251,255,.95) 0%,rgba(249,251,255,.76) 43%,rgba(249,251,255,.16) 100%);pointer-events:none}
 .hero-grid{position:relative;z-index:3;display:grid;grid-template-columns:minmax(0,1.05fr) 410px;gap:44px;align-items:center}
+.hero-grid>*{min-width:0}
 .hero h1{font-family:"Space Grotesk",Manrope,sans-serif;font-size:clamp(43px,7vw,78px);line-height:.97;margin:0 0 22px;letter-spacing:0}
 .hero-sub{font-size:clamp(18px,2.2vw,22px);max-width:740px;color:var(--muted);margin:0 0 28px}
+.hero h1,.hero-sub,.trust-row,.sale-hero-badge,.hero-showcase{max-width:100%}
 .hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:22px}
 .btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:13px 18px;border-radius:14px;border:1px solid transparent;text-decoration:none;font-weight:900}
 .btn.primary{background:linear-gradient(135deg,var(--blue),var(--violet));color:#fff;box-shadow:0 14px 38px rgba(37,99,235,.25)}
@@ -115,8 +121,8 @@ img{max-width:100%;display:block}
   border:1px solid rgba(255,255,255,.3);
   border-radius:999px;
   color:#fff;
-  background:linear-gradient(135deg,rgba(37,99,235,.94),rgba(124,58,237,.94));
-  box-shadow:0 18px 52px rgba(37,99,235,.28);
+  background:linear-gradient(135deg,rgba(16,24,39,.96),rgba(37,99,235,.94) 44%,rgba(124,58,237,.94));
+  box-shadow:0 18px 52px rgba(37,99,235,.28),inset 0 0 0 1px rgba(255,212,95,.24);
   pointer-events:none;
 }
 .sale-side-ribbon span{font-size:12px;font-weight:950;letter-spacing:.12em}
@@ -131,8 +137,8 @@ img{max-width:100%;display:block}
   padding:8px 12px 8px 8px;
   border:1px solid rgba(215,154,53,.42);
   border-radius:999px;
-  background:rgba(255,255,255,.88);
-  box-shadow:0 16px 44px rgba(31,47,71,.14);
+  background:linear-gradient(135deg,rgba(255,255,255,.96),rgba(255,248,232,.93));
+  box-shadow:0 18px 52px rgba(31,47,71,.16),0 0 0 4px rgba(255,212,95,.12);
   color:var(--ink);
   font-weight:900;
 }
@@ -151,6 +157,9 @@ img{max-width:100%;display:block}
 .sale-hero-block strong{min-width:max-content}
 .sale-hero-block small{display:block;line-height:1.35}
 .sale-card-badge,.sale-mini-badge{align-self:flex-start;padding:6px 9px;font-size:12px}
+.sale-active .sale-card-badge,.sale-active .sale-mini-badge{
+  box-shadow:0 10px 24px rgba(215,154,53,.24);
+}
 .sale-price-block{display:grid;gap:4px}
 .sale-price-block del{color:var(--soft);font-weight:850}
 .sale-price-block strong{font-family:"Space Grotesk",Manrope,sans-serif;font-size:32px;color:var(--blue)}
@@ -167,7 +176,13 @@ img{max-width:100%;display:block}
 }
 .sale-form-notice strong{font-size:19px}
 .sale-form-notice span{color:var(--muted);font-weight:850}
-.sale-campaign-section{background:linear-gradient(135deg,#101827,#1e2a44);color:#fff}
+.sale-campaign-section{
+  background:
+    radial-gradient(circle at 12% 15%,rgba(255,212,95,.2),transparent 22rem),
+    radial-gradient(circle at 86% 18%,rgba(124,58,237,.32),transparent 24rem),
+    linear-gradient(135deg,#101827,#1e2a44);
+  color:#fff;
+}
 .sale-campaign-section .eyebrow{color:#7dd3fc}
 .sale-campaign-grid{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:30px;align-items:center}
 .sale-campaign-grid h2{font-family:"Space Grotesk",Manrope,sans-serif;font-size:clamp(32px,5vw,58px);line-height:1.02;margin:0 0 14px;color:#fff}
@@ -399,6 +414,15 @@ img{max-width:100%;display:block}
 .contact-panel{background:var(--dark);color:#fff;border-radius:var(--radius2);padding:26px;box-shadow:var(--shadow2)}.contact-panel p{color:#cbd5e1}.contact-panel .btn{width:100%;margin-top:10px}
 
 .floating-cta{position:fixed;right:18px;bottom:18px;z-index:160;display:grid;grid-template-columns:auto minmax(0,1fr) auto auto;gap:10px;align-items:center;max-width:min(620px,calc(100vw - 28px));background:linear-gradient(135deg,#fff,#fff8e8);border:1px solid rgba(215,154,53,.36);border-radius:18px;padding:12px;box-shadow:var(--shadow2);transform:translateY(150%);opacity:0;pointer-events:none;transition:.3s}
+.sale-active .floating-cta{
+  background:linear-gradient(135deg,#ffffff,#fff6d8 54%,#eef5ff);
+  border-color:rgba(215,154,53,.52);
+  box-shadow:0 24px 74px rgba(37,99,235,.2),0 10px 36px rgba(215,154,53,.18);
+}
+.sale-active .floating-cta strong{color:#172554}
+.sale-active .btn.primary{
+  box-shadow:0 16px 44px rgba(37,99,235,.28),0 8px 22px rgba(124,58,237,.16);
+}
 .floating-cta.visible{transform:translateY(0);opacity:1;pointer-events:auto}.floating-cta>button:first-child{width:31px;height:31px;border:1px solid var(--line);border-radius:10px;background:#f8fafc}.floating-cta strong,.floating-cta span{display:block}.floating-cta span{color:var(--muted);font-size:13px}.floating-cta button:not(:first-child){border:0;border-radius:12px;background:var(--dark);color:#fff;padding:10px 12px;font-weight:900}.floating-cta button:last-child{background:#eef5ff;color:var(--blue)}
 
 .modal{position:fixed;inset:0;z-index:500;display:none}.modal.open{display:block}.modal-backdrop{position:absolute;inset:0;background:rgba(15,23,42,.58);backdrop-filter:blur(8px)}
@@ -437,10 +461,25 @@ img{max-width:100%;display:block}
 }
 @media (max-width:640px){
   html{scroll-padding-top:72px}.site-header{height:64px}.mobile-menu{top:64px}
-  .page-shell{width:min(100% - 28px,1160px)}
-  .hero{min-height:660px;padding:104px 0 54px}.hero h1{font-size:40px}
+  .page-shell{width:calc(100% - 28px);max-width:100%;overflow-wrap:anywhere}
+  .hero{min-height:660px;padding:104px 0 54px}.hero h1{font-size:36px}
+  .hero-grid{width:100%;max-width:100%}
+  .hero-grid>div{width:100%;max-width:100%;min-width:0}
+  .hero h1,.hero-sub{max-width:100%;overflow-wrap:anywhere}
+  .hero-actions{display:grid;grid-template-columns:1fr}
+  .hero-actions .btn,.hero-showcase-actions .btn{width:100%;min-width:0;white-space:normal;text-align:center}
+  .hero-showcase-actions{grid-template-columns:1fr}
+  .hero-showcase,.showcase-top,.hero-demo-card{min-width:0}
+  .showcase-top{display:grid;gap:3px}
+  .hero-demo-card{grid-template-columns:78px minmax(0,1fr)}
+  .hero-demo-card img{width:78px}
+  .hero-demo-card strong,.hero-demo-card small,.hero-demo-card span{min-width:0;overflow-wrap:anywhere}
   .sale-hero-badge{display:grid;grid-template-columns:auto 1fr;align-items:center;border-radius:18px}
+  .sale-hero-badge{width:100%;max-width:100%;min-width:0}
+  .sale-hero-badge span{min-width:0}
+  .sale-hero-badge strong,.sale-hero-badge small{min-width:0;overflow-wrap:anywhere;word-break:break-word}
   .sale-hero-badge small{grid-column:1 / -1}
+  .trust-row span{max-width:100%;overflow-wrap:anywhere}
   .sale-campaign-card strong{font-size:23px}
   .featured-demo-section{padding:22px 0 12px}
   .featured-demo-card{padding:12px;border-radius:22px;gap:16px}

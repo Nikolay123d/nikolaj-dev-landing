@@ -386,7 +386,6 @@
             <input type="hidden" name="sale_expires_at" value="">
             <input type="hidden" name="sale_remaining" value="">
             <input type="hidden" name="source" value="${cfg.slug}-demo">
-            <input type="hidden" name="_redirect" value="https://nikolay123d.github.io/nikolaj-dev-landing/thank-you.html">
             ${saleActive ? `<div class="sale-form-note">
               <strong>Заявка по акции 50%</strong>
               <span>До конца предложения: <b data-sale-countdown>03:00:00</b></span>
@@ -620,6 +619,13 @@
       sessionStorage.removeItem("nikolaj_last_sale_lead");
     }
   });
+
+  if (!document.querySelector("script[data-forminit-safe-submit]")) {
+    const safeSubmitScript = document.createElement("script");
+    safeSubmitScript.src = "../../assets/js/forminit-submit.js?v=forminit-safe-1";
+    safeSubmitScript.dataset.forminitSafeSubmit = "1";
+    document.body.appendChild(safeSubmitScript);
+  }
 
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const inAppBrowser = /FBAN|FBAV|FB_IAB|Instagram|Messenger/i.test(navigator.userAgent || "");

@@ -622,7 +622,7 @@
 
   if (!document.querySelector("script[data-forminit-safe-submit]")) {
     const safeSubmitScript = document.createElement("script");
-    safeSubmitScript.src = "../../assets/js/forminit-submit.js?v=forminit-safe-1";
+    safeSubmitScript.src = "../../assets/js/forminit-submit.js?v=forminit-safe-2";
     safeSubmitScript.dataset.forminitSafeSubmit = "1";
     document.body.appendChild(safeSubmitScript);
   }

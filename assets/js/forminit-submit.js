@@ -210,8 +210,12 @@
         method: "POST",
         body: formData
       });
+      if (response.redirected || /thank-you\.html/i.test(response.url || "")) {
+        window.location.href = rootThankYouUrl();
+        return;
+      }
       const text = await response.clone().text().catch(() => "");
-      if (!response.ok || /block key|invalid field|rejected|error/i.test(text)) {
+      if (!response.ok || /block key|invalid field|invalid block|field name|forminit[^<]{0,80}(reject|declin|denied)/i.test(text)) {
         throw new Error(text.slice(0, 220) || `Forminit response ${response.status}`);
       }
       window.location.href = rootThankYouUrl();

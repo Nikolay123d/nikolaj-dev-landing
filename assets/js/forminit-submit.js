@@ -79,7 +79,9 @@
         `Regular price: ${meta.regularPrice || "not specified"}`,
         `Discount price: ${meta.discountPrice || meta.packagePrice || "not specified"}`,
         `Sale remaining: ${meta.saleRemaining || "not specified"}`,
-        `Source CTA: ${meta.sourceCta || "form_submit"}`
+        `Source CTA: ${meta.sourceCta || "form_submit"}`,
+        `Request type: ${meta.requestType || "not specified"}`,
+        `Message source: ${meta.messageSource || "not specified"}`
       );
     } else {
       lines.push(
@@ -87,7 +89,9 @@
         "Normal request",
         `Package: ${meta.selectedPackage || "not selected"}`,
         `Package price: ${meta.packagePrice || meta.regularPrice || "not specified"}`,
-        `Source CTA: ${meta.sourceCta || "form_submit"}`
+        `Source CTA: ${meta.sourceCta || "form_submit"}`,
+        `Request type: ${meta.requestType || "not specified"}`,
+        `Message source: ${meta.messageSource || "not specified"}`
       );
     }
     return lines.join("\n").trim();
@@ -118,7 +122,9 @@
       saleStartedAt,
       saleExpiresAt,
       saleRemaining,
-      sourceCta: value(form, ["source_cta"]) || "form_submit"
+      sourceCta: value(form, ["source_cta"]) || "form_submit",
+      requestType: value(form, ["request_type", "fi-text-requestType"]),
+      messageSource: value(form, ["message_source", "fi-text-messageSource"])
     };
 
     const formData = new FormData();
@@ -145,6 +151,8 @@
     appendIf(formData, "fi-text-saleExpiresAt", meta.saleExpiresAt);
     appendIf(formData, "fi-text-saleRemaining", meta.saleRemaining);
     appendIf(formData, "fi-text-sourceCta", meta.sourceCta);
+    appendIf(formData, "fi-text-requestType", meta.requestType);
+    appendIf(formData, "fi-text-messageSource", meta.messageSource);
     appendIf(formData, "fi-text-pageUrl", window.location.href);
     appendIf(formData, "fi-text-userAgent", navigator.userAgent || "");
     return { formData, meta };

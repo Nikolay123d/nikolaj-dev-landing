@@ -266,6 +266,9 @@ const modalContent = document.querySelector("#modalContent");
 const floatingCta = document.querySelector("#floatingCta");
 const closeFloatingCta = document.querySelector("#closeFloatingCta");
 const toast = document.querySelector("#toast");
+const FACEBOOK_URL = "https://www.facebook.com/share/1D8igDrmuT/";
+const PRELOADER_KEY = "nikolaj_preloader_seen";
+const CONTACT_POPUP_CLOSED_KEY = "nikolaj_contact_popup_closed";
 const SALE50_ENABLED = true;
 const SALE50_DURATION_HOURS = 3;
 const SALE50_STORAGE_KEY = "nikolaj_sale50_started_at";
@@ -488,8 +491,8 @@ function openModal(type, payload) {
 }
 
 function normalizeLeadPayload(payload) {
-  if (!payload) return { selected: "", selectedPackage: "", packagePrice: "", regularPrice: "", sale: false };
-  if (typeof payload === "string") return { selected: payload, selectedPackage: "", packagePrice: "", regularPrice: "", sale: false };
+  if (!payload) return { selected: "", selectedPackage: "", packagePrice: "", regularPrice: "", sale: false, requestType: "", messageSource: "", messagePrefill: "" };
+  if (typeof payload === "string") return { selected: payload, selectedPackage: "", packagePrice: "", regularPrice: "", sale: false, requestType: "", messageSource: "", messagePrefill: "" };
   if (payload.kind === "package") {
     return {
       selected: payload.template || "",
@@ -503,7 +506,10 @@ function normalizeLeadPayload(payload) {
       sourceCta: payload.sourceCta || "",
       saleStartedAt: payload.saleStartedAt || "",
       saleExpiresAt: payload.saleExpiresAt || "",
-      saleRemaining: payload.saleRemaining || ""
+      saleRemaining: payload.saleRemaining || "",
+      requestType: payload.requestType || "",
+      messageSource: payload.messageSource || "",
+      messagePrefill: payload.messagePrefill || ""
     };
   }
   const plan = pricingPlans.find((item) => item.key === payload.selectedPackage || item.title === payload.selectedPackage);
@@ -519,7 +525,10 @@ function normalizeLeadPayload(payload) {
     sourceCta: payload.sourceCta || "",
     saleStartedAt: payload.saleStartedAt || "",
     saleExpiresAt: payload.saleExpiresAt || "",
-    saleRemaining: payload.saleRemaining || ""
+    saleRemaining: payload.saleRemaining || "",
+    requestType: payload.requestType || "",
+    messageSource: payload.messageSource || "",
+    messagePrefill: payload.messagePrefill || ""
   };
 }
 
@@ -678,6 +687,8 @@ function buildLeadModal(projectOrPlan = "") {
   const promoLabel = leadData.promoLabel || (isSale ? saleConfig.label : "");
   const discountPercent = leadData.discountPercent || (isSale ? saleConfig.discountPercent : "");
   const promoStatus = isSale ? "ACTIVE" : "";
+  const requestType = leadData.requestType || "";
+  const messageSource = leadData.messageSource || "";
   const saleNote = isSale
     ? `<div class="sale-form-notice">
         <strong>Вы выбрали заявку по акции 50%</strong>
@@ -689,15 +700,19 @@ function buildLeadModal(projectOrPlan = "") {
         <span>До конца предложения: <b data-sale-countdown>03:00:00</b></span>
       </div>`
     : "";
-  const messageValue = isSale
+  const messageValue = leadData.messagePrefill || (isSale
     ? `Хочу похожий сайт по акции 50%. Demo/шаблон: ${selected || "нужно подобрать"}. Пакет: ${selectedPackage || "нужно обсудить"}.`
-    : "";
+    : "");
   return `
     <div class="modal-header">
       <p class="eyebrow">Заявка</p>
       <h2 id="modalTitle">Опишите задачу</h2>
-      <p>Заявка отправится на email Николая. Можно также написать напрямую в Telegram @pracehub или Facebook.</p>
+      <p>Заявка отправится на email Николая. Быстрее всего можно написать напрямую в Facebook / Messenger, Telegram остаётся как второй канал.</p>
     </div>
+    ${requestType === "consultant_popup" ? `<div class="sale-form-notice">
+      <strong>Вы пришли из помощника подбора</strong>
+      <span>Напишите, для какого бизнеса нужен сайт — я предложу подходящий demo-вариант и примерную цену.</span>
+    </div>` : ""}
     ${saleNote}
     <form class="lead-form" id="leadForm" action="https://forminit.com/f/kshbr37bfe4" method="POST">
       <input type="hidden" name="selected_template" value="${selected}">
@@ -710,27 +725,31 @@ function buildLeadModal(projectOrPlan = "") {
       <input type="hidden" name="discount_percent" value="${discountPercent}">
       <input type="hidden" name="promo_status" value="${promoStatus}">
       <input type="hidden" name="source_cta" value="${leadData.sourceCta || ""}">
+      <input type="hidden" name="request_type" value="${requestType}">
+      <input type="hidden" name="message_source" value="${messageSource}">
       <input type="hidden" name="sale_started_at" value="${leadData.saleStartedAt || ""}">
       <input type="hidden" name="sale_expires_at" value="${leadData.saleExpiresAt || ""}">
       <input type="hidden" name="sale_remaining" value="${leadData.saleRemaining || ""}">
       <input type="hidden" name="fi-sender-fullName" value="">
       <input type="hidden" name="fi-sender-email" value="">
       <input type="hidden" name="fi-text-phone" value="">
-      <input type="hidden" name="fi-text-telegram_whatsapp" value="">
-      <input type="hidden" name="fi-text-business_type" value="">
-      <input type="hidden" name="fi-text-selected_template" value="${selected}">
-      <input type="hidden" name="fi-text-selected_package" value="${selectedPackage}">
-      <input type="hidden" name="fi-text-package_price" value="${packagePrice}">
-      <input type="hidden" name="fi-text-regular_price" value="${regularPrice}">
-      <input type="hidden" name="fi-text-discount_price" value="${isSale ? packagePrice : ""}">
-      <input type="hidden" name="fi-text-promo_code" value="${promoCode}">
-      <input type="hidden" name="fi-text-promo_label" value="${promoLabel}">
-      <input type="hidden" name="fi-text-discount_percent" value="${discountPercent}">
-      <input type="hidden" name="fi-text-promo_status" value="${promoStatus}">
-      <input type="hidden" name="fi-text-source_cta" value="${leadData.sourceCta || ""}">
-      <input type="hidden" name="fi-text-sale_started_at" value="${leadData.saleStartedAt || ""}">
-      <input type="hidden" name="fi-text-sale_expires_at" value="${leadData.saleExpiresAt || ""}">
-      <input type="hidden" name="fi-text-sale_remaining" value="${leadData.saleRemaining || ""}">
+      <input type="hidden" name="fi-text-telegramWhatsapp" value="">
+      <input type="hidden" name="fi-text-businessType" value="">
+      <input type="hidden" name="fi-text-selectedTemplate" value="${selected}">
+      <input type="hidden" name="fi-text-selectedPackage" value="${selectedPackage}">
+      <input type="hidden" name="fi-text-packagePrice" value="${packagePrice}">
+      <input type="hidden" name="fi-text-regularPrice" value="${regularPrice}">
+      <input type="hidden" name="fi-text-discountPrice" value="${isSale ? packagePrice : ""}">
+      <input type="hidden" name="fi-text-promoCode" value="${promoCode}">
+      <input type="hidden" name="fi-text-promoLabel" value="${promoLabel}">
+      <input type="hidden" name="fi-text-discountPercent" value="${discountPercent}">
+      <input type="hidden" name="fi-text-promoStatus" value="${promoStatus}">
+      <input type="hidden" name="fi-text-sourceCta" value="${leadData.sourceCta || ""}">
+      <input type="hidden" name="fi-text-requestType" value="${requestType}">
+      <input type="hidden" name="fi-text-messageSource" value="${messageSource}">
+      <input type="hidden" name="fi-text-saleStartedAt" value="${leadData.saleStartedAt || ""}">
+      <input type="hidden" name="fi-text-saleExpiresAt" value="${leadData.saleExpiresAt || ""}">
+      <input type="hidden" name="fi-text-saleRemaining" value="${leadData.saleRemaining || ""}">
       <input type="hidden" name="fi-text-message" value="">
       <input type="hidden" name="fi-select-project_type" value="">
       <input type="hidden" name="fi-select-budget" value="">
@@ -780,8 +799,8 @@ function buildLeadModal(projectOrPlan = "") {
       <label>Что нужно сделать?<textarea name="message" rows="5" required placeholder="Опишите услугу, сроки, материалы, что уже есть">${messageValue}</textarea></label>
       <button class="btn dark full" type="submit">Отправить заявку</button>
       <div class="messenger-row">
+        <a href="https://www.facebook.com/share/1D8igDrmuT/" target="_blank" rel="noopener">Facebook</a>
         <a href="https://t.me/pracehub" target="_blank" rel="noopener">Telegram @pracehub</a>
-        <a href="https://www.facebook.com/share/18hdnUyhLG/" target="_blank" rel="noopener">Facebook</a>
         <a href="mailto:nikyrchenko71@gmail.com">Email</a>
       </div>
     </form>`;
@@ -905,21 +924,23 @@ function bindModalActions() {
       ["name", "fi-sender-fullName"],
       ["email", "fi-sender-email"],
       ["phone", "fi-text-phone"],
-      ["telegram_whatsapp", "fi-text-telegram_whatsapp"],
-      ["business_type", "fi-text-business_type"],
-      ["selected_template", "fi-text-selected_template"],
-      ["selected_package", "fi-text-selected_package"],
-      ["package_price", "fi-text-package_price"],
-      ["regular_price", "fi-text-regular_price"],
-      ["discount_price", "fi-text-discount_price"],
-      ["promo_code", "fi-text-promo_code"],
-      ["promo_label", "fi-text-promo_label"],
-      ["discount_percent", "fi-text-discount_percent"],
-      ["promo_status", "fi-text-promo_status"],
-      ["source_cta", "fi-text-source_cta"],
-      ["sale_started_at", "fi-text-sale_started_at"],
-      ["sale_expires_at", "fi-text-sale_expires_at"],
-      ["sale_remaining", "fi-text-sale_remaining"],
+      ["telegram_whatsapp", "fi-text-telegramWhatsapp"],
+      ["business_type", "fi-text-businessType"],
+      ["selected_template", "fi-text-selectedTemplate"],
+      ["selected_package", "fi-text-selectedPackage"],
+      ["package_price", "fi-text-packagePrice"],
+      ["regular_price", "fi-text-regularPrice"],
+      ["discount_price", "fi-text-discountPrice"],
+      ["promo_code", "fi-text-promoCode"],
+      ["promo_label", "fi-text-promoLabel"],
+      ["discount_percent", "fi-text-discountPercent"],
+      ["promo_status", "fi-text-promoStatus"],
+      ["source_cta", "fi-text-sourceCta"],
+      ["request_type", "fi-text-requestType"],
+      ["message_source", "fi-text-messageSource"],
+      ["sale_started_at", "fi-text-saleStartedAt"],
+      ["sale_expires_at", "fi-text-saleExpiresAt"],
+      ["sale_remaining", "fi-text-saleRemaining"],
       ["message", "fi-text-message"],
       ["project_type", "fi-select-project_type"],
       ["budget", "fi-select-budget"],
@@ -1162,24 +1183,52 @@ document.addEventListener("keydown", (event) => {
   }
 });
 
-document.querySelectorAll(".hero-video").forEach((video) => {
-  const userAgent = navigator.userAgent || "";
+function setupPreloader() {
+  const preloader = document.querySelector("#sitePreloader");
+  if (!preloader) return;
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const inAppBrowser = /FBAN|FBAV|FB_IAB|Instagram|Messenger/i.test(userAgent);
-  if (reducedMotion || inAppBrowser) {
+  const seen = sessionStorage.getItem(PRELOADER_KEY) === "1";
+  const hide = () => {
+    preloader.classList.add("is-hidden");
+    document.documentElement.classList.remove("preloader-active");
+    window.setTimeout(() => preloader.remove(), 520);
+  };
+  document.querySelectorAll(".hero-video").forEach((video) => {
+    try { video.load(); } catch (error) {}
+  });
+  if (seen || reducedMotion) {
+    hide();
+    return;
+  }
+  sessionStorage.setItem(PRELOADER_KEY, "1");
+  document.documentElement.classList.add("preloader-active");
+  window.setTimeout(hide, 1650);
+  window.setTimeout(hide, 2200);
+}
+
+document.querySelectorAll(".hero-video").forEach((video) => {
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (reducedMotion) {
     video.classList.add("is-disabled");
     video.pause();
     return;
   }
+  video.muted = true;
+  video.defaultMuted = true;
+  video.setAttribute("muted", "");
+  video.setAttribute("playsinline", "");
 
   const startVideo = () => {
-    if (video.readyState >= 3) {
+    if (video.dataset.started === "1") return;
+    video.dataset.started = "1";
+    const reveal = () => {
       video.classList.add("is-ready");
-    } else {
-      video.addEventListener("canplay", () => {
-        video.classList.add("is-ready");
-      }, { once: true });
-    }
+    };
+    if (video.readyState >= 2) reveal();
+    video.addEventListener("loadeddata", reveal, { once: true });
+    video.addEventListener("canplay", reveal, { once: true });
+    video.addEventListener("playing", reveal, { once: true });
+    try { video.load(); } catch (error) {}
     video.play().catch(() => {
       video.classList.remove("is-ready");
     });
@@ -1191,6 +1240,103 @@ document.querySelectorAll(".hero-video").forEach((video) => {
     window.setTimeout(startVideo, 900);
   }
 });
+
+function openContactPopupLead(kind = "demo_match") {
+  const startPlan = pricingPlans.find((item) => item.key === "Start");
+  const saleActive = isSaleActive();
+  const isDemoMatch = kind === "demo_match";
+  openModal("lead", withSalePayload({
+    title: isDemoMatch ? "Бесплатный подбор demo под бизнес" : "Заявка на сайт",
+    selectedPackage: "Start",
+    packagePrice: planDisplayPrice(startPlan, saleActive),
+    regularPrice: saleActive ? startPlan.price : "",
+    sourceCta: isDemoMatch ? "scroll50_popup_demo_match" : "scroll50_popup_form",
+    requestType: isDemoMatch ? "free_demo_consultation" : "consultant_popup",
+    messageSource: "mobile_contact_widget",
+    messagePrefill: isDemoMatch
+      ? "Хочу бесплатную консультацию и подбор demo-шаблона под мой бизнес. Подскажите подходящий вариант и примерную цену."
+      : "Хочу оставить заявку на сайт. Подскажите подходящий пакет, сроки и примерную цену."
+  }, isDemoMatch ? "scroll50_popup_demo_match" : "scroll50_popup_form"));
+}
+
+function showContactPopup(source = "scroll50_popup") {
+  if (sessionStorage.getItem(CONTACT_POPUP_CLOSED_KEY) === "1" || document.querySelector(".lead-capture-popup") || appModal.classList.contains("open")) return false;
+  const popup = document.createElement("aside");
+  popup.className = "lead-capture-popup";
+  popup.setAttribute("aria-live", "polite");
+  popup.innerHTML = `
+    <div class="lead-capture-top">
+      <button class="lead-capture-toggle" type="button" aria-label="Свернуть виджет" aria-expanded="true">−</button>
+      <div class="lead-capture-title">
+        <strong>Связаться с нами</strong>
+        <span>Бесплатно подберу demo под ваш бизнес</span>
+      </div>
+      <button class="lead-capture-close" type="button" aria-label="Закрыть">×</button>
+    </div>
+    <div class="lead-capture-body">
+      <p>Напишите в Facebook или оставьте заявку — подберу подходящий demo-шаблон и скажу примерную цену.</p>
+      <small>Консультация бесплатная. Можно начать с готового шаблона и адаптировать под ваш бизнес.</small>
+      <div class="lead-capture-actions">
+        <a class="btn facebook" href="${FACEBOOK_URL}" target="_blank" rel="noopener" data-source-cta="${source}_facebook">Написать в Facebook</a>
+        <button class="btn primary" type="button" data-contact-demo>Подобрать demo бесплатно</button>
+        <button class="btn dark" type="button" data-contact-apply>Оставить заявку</button>
+        <button class="btn soft" type="button" data-contact-collapse>Свернуть</button>
+      </div>
+    </div>
+  `;
+  document.body.appendChild(popup);
+  document.body.classList.add("contact-popup-visible");
+  requestAnimationFrame(() => popup.classList.add("visible"));
+  const toggleButton = popup.querySelector(".lead-capture-toggle");
+  const collapse = () => {
+    popup.classList.add("is-collapsed");
+    toggleButton.textContent = "+";
+    toggleButton.setAttribute("aria-label", "Развернуть виджет");
+    toggleButton.setAttribute("aria-expanded", "false");
+  };
+  const expand = () => {
+    popup.classList.remove("is-collapsed");
+    toggleButton.textContent = "−";
+    toggleButton.setAttribute("aria-label", "Свернуть виджет");
+    toggleButton.setAttribute("aria-expanded", "true");
+  };
+  const close = () => {
+    sessionStorage.setItem(CONTACT_POPUP_CLOSED_KEY, "1");
+    document.body.classList.remove("contact-popup-visible");
+    popup.classList.remove("visible");
+    window.setTimeout(() => popup.remove(), 260);
+  };
+  const removeWithoutClosingSession = () => {
+    document.body.classList.remove("contact-popup-visible");
+    popup.classList.remove("visible");
+    window.setTimeout(() => popup.remove(), 260);
+  };
+  toggleButton.addEventListener("click", () => {
+    if (popup.classList.contains("is-collapsed")) expand();
+    else collapse();
+  });
+  popup.querySelector(".lead-capture-close").addEventListener("click", close);
+  popup.querySelector("[data-contact-collapse]").addEventListener("click", collapse);
+  popup.querySelector("[data-contact-demo]").addEventListener("click", () => {
+    removeWithoutClosingSession();
+    openContactPopupLead("demo_match");
+  });
+  popup.querySelector("[data-contact-apply]").addEventListener("click", () => {
+    removeWithoutClosingSession();
+    openContactPopupLead("lead_request");
+  });
+  return true;
+}
+
+let contactPopupTriggered = false;
+function maybeShowContactPopup() {
+  if (contactPopupTriggered || sessionStorage.getItem(CONTACT_POPUP_CLOSED_KEY) === "1") return;
+  const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+  const progress = maxScroll > 0 ? window.scrollY / maxScroll : 0;
+  if (progress >= 0.5) {
+    contactPopupTriggered = showContactPopup("scroll50_popup");
+  }
+}
 
 document.querySelectorAll(".ambient-video").forEach((video) => {
   const src = video.dataset.src;
@@ -1232,12 +1378,21 @@ document.querySelectorAll(".ambient-video").forEach((video) => {
 });
 
 window.addEventListener("scroll", () => {
-  if (ctaClosed) return;
   const hero = document.querySelector(".hero");
   const heroHeight = hero ? hero.offsetHeight : window.innerHeight;
-  const shouldShow = window.scrollY > Math.max(heroHeight + 80, 1400);
-  floatingCta.classList.toggle("visible", shouldShow);
+  const videoStage = document.querySelector(".hero-video-stage");
+  const videoHeight = videoStage ? videoStage.offsetHeight : 0;
+  document.documentElement.classList.toggle("side-ribbons-visible", window.scrollY > Math.max(videoHeight - 80, 260));
+  if (!ctaClosed) {
+    const shouldShow = window.scrollY > Math.max(heroHeight + 80, 1400);
+    floatingCta.classList.toggle("visible", shouldShow);
+  }
 }, { passive: true });
+
+window.addEventListener("scroll", maybeShowContactPopup, { passive: true });
+window.setTimeout(() => {
+  maybeShowContactPopup();
+}, 35000);
 
 closeFloatingCta.addEventListener("click", () => {
   ctaClosed = true;
@@ -1245,6 +1400,7 @@ closeFloatingCta.addEventListener("click", () => {
   floatingCta.classList.remove("visible");
 });
 
+setupPreloader();
 renderServices();
 renderCategories();
 renderProjects();

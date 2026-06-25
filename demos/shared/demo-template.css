@@ -142,6 +142,7 @@ button { cursor: pointer; }
 }
 .btn.dark { color: #fff; background: var(--dark); }
 .btn.soft { color: var(--dark); background: var(--paper); border-color: var(--line); }
+.btn.facebook { color: #fff; background: linear-gradient(135deg, #1877f2, #0f3e8a); box-shadow: 0 14px 34px rgba(24, 119, 242, .22); }
 .btn.telegram { color: #fff; background: linear-gradient(135deg, #2aabee, #6874ff); }
 .btn.full { width: 100%; }
 

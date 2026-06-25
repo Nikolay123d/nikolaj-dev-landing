@@ -8,9 +8,19 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css?v=pricing-eur-1">
+  <link rel="stylesheet" href="assets/css/style.css?v=first-impression-1">
 </head>
 <body>
+  <div class="site-preloader" id="sitePreloader" aria-hidden="true">
+    <div class="preloader-card">
+      <span class="preloader-mark">N/</span>
+      <strong>Nikolaj Dev</strong>
+      <p>Websites • Landing Pages • MVP</p>
+      <small>Preparing your digital presence</small>
+      <i></i>
+    </div>
+  </div>
+
   <header class="site-header" id="top">
     <a class="brand" href="#home" aria-label="Nikolaj Dev home">
       <span class="brand-mark">N/</span>
@@ -52,26 +62,29 @@
   </div>
 
   <main>
-    <section class="hero" id="home">
-      <img class="hero-poster" src="assets/img/portfolio-hero-poster.jpg" alt="" aria-hidden="true" loading="eager" decoding="sync">
-      <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="assets/img/portfolio-hero-poster.jpg" aria-hidden="true">
-        <source src="assets/videos/portfolio-hero-tech.mp4" type="video/mp4">
-      </video>
-      <div class="hero-overlay" aria-hidden="true"></div>
-      <div class="page-shell hero-grid">
-        <div class="hero-copy">
+    <section class="hero hero-video-first" id="home">
+      <div class="hero-video-stage" aria-label="Nikolaj Dev video intro">
+        <img class="hero-poster" src="assets/img/hero-business-poster.jpg" alt="" aria-hidden="true" loading="eager" decoding="sync">
+        <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="assets/img/hero-business-poster.jpg" aria-hidden="true">
+          <source src="assets/videos/hero-business.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="hero-content-band">
+        <div class="page-shell hero-grid">
+          <div class="hero-copy">
           <p class="eyebrow">Websites / Landing pages / MVP / Audit</p>
           <div class="sale-hero-badge sale-hero-block">
             <span>-50%</span>
             <strong>Стартовая акция 50%</strong>
-            <small>Сайт по готовому demo-шаблону от 5 000 Kč вместо 10 000 Kč. Цена закрепляется на 3 часа после открытия страницы. До конца предложения: <b data-sale-countdown>03:00:00</b></small>
+            <small>Сайт по demo-шаблону от 5 000 Kč. До конца предложения: <b data-sale-countdown>03:00:00</b></small>
           </div>
-          <h1>Сайты и лендинги, которые можно быстро запустить под ваш бизнес</h1>
+          <h1>Сайты и лендинги<br>под ваш бизнес</h1>
           <p class="hero-sub">Делаю современные сайты для услуг, локального бизнеса, туров, доставки, ремонта, салонов и личного бренда. Можно начать с готового demo-шаблона, адаптировать его под ваш бизнес и получить страницу, которая принимает заявки.</p>
           <div class="hero-actions">
             <a class="btn primary" href="#catalog">Посмотреть шаблоны</a>
-            <button class="btn dark" type="button" data-open-lead data-sale-source="hero_sale_primary">Забрать скидку -50%</button>
-            <a class="btn telegram" href="https://t.me/pracehub" target="_blank" rel="noopener">Написать в Telegram</a>
+            <a class="btn facebook" href="https://www.facebook.com/share/1D8igDrmuT/" target="_blank" rel="noopener" data-source-cta="hero_facebook_primary">Написать в Facebook</a>
+            <button class="btn dark" type="button" data-open-lead data-sale-source="hero_sale_primary">Заказать сайт</button>
+            <a class="btn ghost" href="https://t.me/pracehub" target="_blank" rel="noopener">Telegram</a>
           </div>
           <div class="trust-row" aria-label="Преимущества">
             <span>Живые demo-шаблоны</span>
@@ -79,10 +92,11 @@
             <span>Форма заявки на почту</span>
             <span>Помощь с публикацией</span>
             <span>Прага / удалённо</span>
+            <span>Facebook / Messenger</span>
             <span>Акция от 5 000 Kč</span>
           </div>
-        </div>
-        <aside class="hero-showcase" aria-label="Быстрый обзор">
+          </div>
+          <aside class="hero-showcase" aria-label="Быстрый обзор">
           <div class="showcase-top">
             <span>Готовые demo-шаблоны</span>
             <strong>по акции от 5 000 Kč / ≈200 €</strong>
@@ -111,7 +125,8 @@
             <a class="btn primary" href="#catalog">Все шаблоны</a>
             <button class="btn ghost" type="button" data-open-lead data-sale-source="hero_showcase_sale">Заказать со скидкой</button>
           </div>
-        </aside>
+          </aside>
+        </div>
       </div>
     </section>
 
@@ -223,7 +238,8 @@
         </div>
         <div class="section-cta-row">
           <button class="btn primary" type="button" data-open-lead data-sale-source="value_section_sale">Оставить заявку по акции</button>
-          <a class="btn telegram" href="https://t.me/pracehub" target="_blank" rel="noopener">Написать в Telegram</a>
+          <a class="btn facebook" href="https://www.facebook.com/share/1D8igDrmuT/" target="_blank" rel="noopener">Написать в Facebook</a>
+          <a class="btn ghost" href="https://t.me/pracehub" target="_blank" rel="noopener">Telegram</a>
           <a class="btn ghost" href="#catalog">Смотреть шаблоны</a>
         </div>
       </div>
@@ -273,7 +289,8 @@
         </div>
         <div class="section-cta-row">
           <button class="btn primary" type="button" data-open-lead data-sale-source="process_section_sale">Оставить заявку по акции</button>
-          <a class="btn telegram" href="https://t.me/pracehub" target="_blank" rel="noopener">Написать в Telegram</a>
+          <a class="btn facebook" href="https://www.facebook.com/share/1D8igDrmuT/" target="_blank" rel="noopener">Написать в Facebook</a>
+          <a class="btn ghost" href="https://t.me/pracehub" target="_blank" rel="noopener">Telegram</a>
           <a class="btn ghost" href="#catalog">Смотреть шаблоны</a>
         </div>
       </div>
@@ -328,8 +345,8 @@
         <div class="pricing-actions pricing-actions-inline">
           <button class="btn dark" type="button" data-open-pricing>Смотреть подробнее</button>
           <div class="ambient-video-card compact" aria-hidden="true">
-            <img src="assets/img/portfolio-hero-poster.jpg" alt="" loading="lazy">
-            <video class="ambient-video" muted loop playsinline preload="none" poster="assets/img/portfolio-hero-poster.jpg" data-src="assets/videos/portfolio-hero-tech.mp4"></video>
+            <img src="assets/img/hero-business-poster.jpg" alt="" loading="lazy">
+            <video class="ambient-video" muted loop playsinline preload="none" poster="assets/img/hero-business-poster.jpg" data-src="assets/videos/hero-business.mp4"></video>
           </div>
         </div>
       </div>
@@ -403,8 +420,8 @@
         </div>
         <div class="format-help-actions">
           <button class="btn primary" type="button" data-open-lead data-sale-source="format_help_sale">Подобрать формат по акции</button>
-          <a class="btn telegram" href="https://t.me/pracehub" target="_blank" rel="noopener">Написать в Telegram</a>
-          <a class="btn facebook" href="https://www.facebook.com/share/18hdnUyhLG/" target="_blank" rel="noopener">Facebook / Messenger</a>
+          <a class="btn facebook" href="https://www.facebook.com/share/1D8igDrmuT/" target="_blank" rel="noopener">Написать в Facebook</a>
+          <a class="btn ghost" href="https://t.me/pracehub" target="_blank" rel="noopener">Telegram</a>
         </div>
       </div>
     </section>
@@ -417,21 +434,21 @@
           <p>Можно написать коротко: что нужно сделать, есть ли пример сайта, какие сроки и какой бюджет. Заявка приходит на email.</p>
           <div class="contact-links">
             <a href="mailto:nikyrchenko71@gmail.com">nikyrchenko71@gmail.com</a>
+            <a href="https://www.facebook.com/share/1D8igDrmuT/" target="_blank" rel="noopener">Facebook / Messenger</a>
             <a href="https://t.me/pracehub" target="_blank" rel="noopener">Telegram: @pracehub</a>
-            <a href="https://www.facebook.com/share/18hdnUyhLG/" target="_blank" rel="noopener">Facebook / Messenger</a>
             <span>Prague, Czechia / remote</span>
           </div>
         </div>
         <div class="contact-panel">
           <div class="ambient-video-card contact-video" aria-hidden="true">
-            <img src="assets/img/portfolio-hero-poster.jpg" alt="" loading="lazy">
-            <video class="ambient-video" muted loop playsinline preload="none" poster="assets/img/portfolio-hero-poster.jpg" data-src="assets/videos/portfolio-hero-tech.mp4"></video>
+            <img src="assets/img/hero-business-poster.jpg" alt="" loading="lazy">
+            <video class="ambient-video" muted loop playsinline preload="none" poster="assets/img/hero-business-poster.jpg" data-src="assets/videos/hero-business.mp4"></video>
           </div>
           <strong>Быстрая заявка</strong>
           <p>Откройте форму в отдельном окне, выберите тип проекта и отправьте заявку.</p>
           <button class="btn dark" type="button" data-open-lead data-sale-source="contact_panel_sale">Оставить заявку по акции</button>
-          <a class="btn telegram" href="https://t.me/pracehub" target="_blank" rel="noopener">Написать в Telegram</a>
-          <a class="btn facebook" href="https://www.facebook.com/share/18hdnUyhLG/" target="_blank" rel="noopener">Facebook</a>
+          <a class="btn facebook" href="https://www.facebook.com/share/1D8igDrmuT/" target="_blank" rel="noopener">Написать в Facebook</a>
+          <a class="btn ghost" href="https://t.me/pracehub" target="_blank" rel="noopener">Telegram</a>
         </div>
       </div>
     </section>
@@ -464,8 +481,8 @@
     </div>
   </footer>
 
-  <script src="assets/js/site-categories.js?v=pricing-eur-1"></script>
-  <script src="assets/js/app.js?v=pricing-eur-1"></script>
-  <script src="assets/js/forminit-submit.js?v=forminit-safe-2"></script>
+  <script src="assets/js/site-categories.js?v=first-impression-1"></script>
+  <script src="assets/js/app.js?v=first-impression-1"></script>
+  <script src="assets/js/forminit-submit.js?v=first-impression-1"></script>
 </body>
 </html>

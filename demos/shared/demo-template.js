@@ -10,6 +10,7 @@
     startedAtKey: "nikolaj_sale50_started_at",
     durationMs: 3 * 60 * 60 * 1000
   };
+  const facebookUrl = "https://www.facebook.com/share/1D8igDrmuT/";
 
   function getSaleState() {
     const now = Date.now();
@@ -151,6 +152,7 @@
     const actions = `
       <div class="hero-actions">
         <a class="btn primary" href="#request">Оставить заявку</a>
+        <a class="btn facebook" href="${facebookUrl}" target="_blank" rel="noopener">Facebook</a>
         <a class="btn soft" href="#offers">Посмотреть структуру</a>
         <a class="btn telegram" href="https://t.me/pracehub" target="_blank" rel="noopener">Telegram</a>
       </div>
@@ -366,8 +368,8 @@
           <h2>Заказать похожий сайт</h2>
           <p class="lead">Форма отправляет заявку на email. В письме будет видно выбранный шаблон и пакет START / PLUS / PRO.</p>
           <div class="cta-row">
+            <a class="btn facebook" href="${facebookUrl}" target="_blank" rel="noopener">Написать в Facebook</a>
             <a class="btn telegram" href="https://t.me/pracehub" target="_blank" rel="noopener">Написать в Telegram</a>
-            <a class="btn soft" href="https://www.facebook.com/share/18hdnUyhLG/" target="_blank" rel="noopener">Facebook / Messenger</a>
           </div>
         </div>
         <div class="panel">
@@ -382,6 +384,8 @@
             <input type="hidden" name="discount_percent" value="${saleActive ? saleConfig.discountPercent : ""}">
             <input type="hidden" name="promo_status" value="${saleActive ? "ACTIVE" : ""}">
             <input type="hidden" name="source_cta" value="${cfg.slug}-demo_form">
+            <input type="hidden" name="request_type" value="">
+            <input type="hidden" name="message_source" value="">
             <input type="hidden" name="sale_started_at" value="">
             <input type="hidden" name="sale_expires_at" value="">
             <input type="hidden" name="sale_remaining" value="">
@@ -450,6 +454,7 @@
         <div class="cta-row">
           <a class="btn primary" href="#request">Заказать похожий</a>
           <a class="btn soft" href="../../index.html#catalog">Вернуться к портфолио</a>
+          <a class="btn facebook" href="${facebookUrl}" target="_blank" rel="noopener">Facebook</a>
           <a class="btn telegram" href="https://t.me/pracehub" target="_blank" rel="noopener">Telegram</a>
         </div>
       </div>
@@ -508,6 +513,7 @@
       <p>Сейчас можно заказать похожий по акции -50%. Цена от 5 000 Kč, если проект подходит под готовый demo-шаблон.</p>
       <span>До конца предложения: <b data-sale-countdown>03:00:00</b></span>
       <div>
+        <a class="btn facebook" href="${facebookUrl}" target="_blank" rel="noopener">Написать в Facebook</a>
         <a class="btn primary" href="#request">Заказать похожий по акции</a>
         <button class="btn soft" type="button">Продолжить смотреть</button>
       </div>
@@ -518,7 +524,11 @@
     popup.querySelector(".btn.primary").addEventListener("click", () => {
       syncPackage("Start", "5 000 Kč / ≈200 €", "10 000 Kč / ≈400 €");
       const sourceInput = form?.querySelector("[name='source_cta']");
-      if (sourceInput) sourceInput.value = "demo_mid_scroll_sale_popup";
+      const requestType = form?.querySelector("[name='request_type']");
+      const messageSource = form?.querySelector("[name='message_source']");
+      if (sourceInput) sourceInput.value = "demo_scroll50_popup_form";
+      if (requestType) requestType.value = "demo_sale_popup";
+      if (messageSource) messageSource.value = "demo_scroll50_popup";
       popup.remove();
     });
     updateSaleCountdowns();
@@ -595,13 +605,17 @@
         `Цена по акции: ${form.querySelector("[name='discount_price']").value || "не указана"}`,
         `Промокод: ${saleConfig.code}`,
         `Источник кнопки: ${form.querySelector("[name='source_cta']").value || "demo_form"}`,
+        `Тип запроса: ${form.querySelector("[name='request_type']").value || "не указан"}`,
+        `Источник сообщения: ${form.querySelector("[name='message_source']").value || "не указан"}`,
         `Осталось времени по таймеру: ${form.querySelector("[name='sale_remaining']").value || "не указано"}`
       ]
       : [
         "Заявка без активной акции",
         `Пакет: ${form.querySelector("[name='selected_package']").value || "не выбран"}`,
         `Цена пакета: ${form.querySelector("[name='package_price']").value || "не указана"}`,
-        `Источник кнопки: ${form.querySelector("[name='source_cta']").value || "demo_form"}`
+        `Источник кнопки: ${form.querySelector("[name='source_cta']").value || "demo_form"}`,
+        `Тип запроса: ${form.querySelector("[name='request_type']").value || "не указан"}`,
+        `Источник сообщения: ${form.querySelector("[name='message_source']").value || "не указан"}`
       ];
     if (message && !message.value.includes("SALE 50%") && !message.value.includes("Заявка без активной акции")) {
       message.value = `${message.value.trim()}\n\n${summaryLines.join("\n")}`.trim();
@@ -628,16 +642,24 @@
   }
 
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const inAppBrowser = /FBAN|FBAV|FB_IAB|Instagram|Messenger/i.test(navigator.userAgent || "");
 
   document.querySelectorAll(".hero-video").forEach((item) => {
-    if (reducedMotion || inAppBrowser) {
+    if (reducedMotion) {
       item.classList.add("is-disabled");
       item.pause();
       return;
     }
+    item.muted = true;
+    item.defaultMuted = true;
+    item.setAttribute("muted", "");
+    item.setAttribute("playsinline", "");
     const start = () => {
-      item.addEventListener("canplay", () => item.classList.add("is-ready"), { once: true });
+      const reveal = () => item.classList.add("is-ready");
+      if (item.readyState >= 2) reveal();
+      item.addEventListener("loadeddata", reveal, { once: true });
+      item.addEventListener("canplay", reveal, { once: true });
+      item.addEventListener("playing", reveal, { once: true });
+      try { item.load(); } catch (error) {}
       item.play().catch(() => item.classList.remove("is-ready"));
     };
     if ("requestIdleCallback" in window) window.requestIdleCallback(start, { timeout: 1500 });
@@ -646,6 +668,7 @@
 
   document.querySelectorAll(".lazy-video").forEach((item) => {
     const src = item.dataset.src;
+    const inAppBrowser = /FBAN|FBAV|FB_IAB|Instagram|Messenger/i.test(navigator.userAgent || "");
     if (!src || reducedMotion || inAppBrowser) {
       item.classList.add("is-disabled");
       return;

@@ -68,7 +68,7 @@ Email: [nikyrchenko71@gmail.com](mailto:nikyrchenko71@gmail.com)
 
 Telegram: [@pracehub](https://t.me/pracehub)
 
-Facebook: [Facebook / Messenger](https://www.facebook.com/share/18hdnUyhLG/)
+Facebook: [Facebook / Messenger](https://www.facebook.com/share/1D8igDrmuT/)
 
 The contact form submits to Forminit endpoint `https://forminit.com/f/kshbr37bfe4`. Forminit dashboard redirect should point to the published `thank-you.html` URL.
 

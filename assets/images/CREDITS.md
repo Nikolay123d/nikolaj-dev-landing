@@ -4,6 +4,19 @@ Images are stored locally for the Nikolaj Dev landing page. Sources were selecte
 
 Additional per-demo media for the 17 generated niche templates is stored in `assets/images/demo-media/`. Source, creator and license details for those files are recorded in `assets/images/demo-media/CREDITS.md` and `assets/images/demo-media/OPENVERSE_CREDITS.json`.
 
+# Main Landing Video Credits
+
+## assets/videos/hero-copy-wallpaper.mp4
+- Source: https://mixkit.co/free-stock-video/blue-background-with-glowing-center-101438/
+- Title: Blue Background with Glowing Center
+- Source note: Mixkit free stock video, commercial/personal use under the Mixkit Stock Video Free License.
+- Local role: lightweight dark blue/purple video wallpaper behind the main hero text block.
+- Local optimized file: 960x540 MP4, muted loop, poster-first.
+
+## assets/img/hero-copy-wallpaper-poster.jpg
+- Source: still frame generated from `assets/videos/hero-copy-wallpaper.mp4`
+- Local role: poster/fallback for the main hero text block video wallpaper.
+
 ## restaurant-cafe.jpg
 - Source: https://www.flickr.com/photos/10559879@N00/4198678349
 - Title: Soda siphons - Capital Kitchen

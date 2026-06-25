@@ -189,6 +189,38 @@ img{max-width:100%;display:block}
   border-top:1px solid rgba(255,255,255,.1);
   overflow:hidden;
 }
+.hero-copy-poster,
+.hero-copy-video,
+.hero-copy-overlay{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  pointer-events:none;
+}
+.hero-copy-poster,
+.hero-copy-video{
+  object-fit:cover;
+  background:#07111f;
+}
+.hero-copy-poster{
+  z-index:0;
+  opacity:.72;
+}
+.hero-copy-video{
+  z-index:1;
+  opacity:0;
+  transition:opacity .8s ease;
+}
+.hero-copy-video.is-ready{opacity:.64}
+.hero-copy-video.is-disabled{display:none}
+.hero-copy-overlay{
+  z-index:2;
+  background:
+    linear-gradient(90deg,rgba(7,17,31,.9) 0%,rgba(15,23,42,.72) 52%,rgba(17,24,39,.84) 100%),
+    radial-gradient(circle at 18% 18%,rgba(37,99,235,.28),transparent 28rem),
+    radial-gradient(circle at 80% 12%,rgba(124,58,237,.22),transparent 25rem);
+}
 .hero-grid{position:relative;z-index:3;display:grid;grid-template-columns:minmax(0,1.05fr) 410px;gap:44px;align-items:center}
 .hero-grid>*{min-width:0}
 .hero-copy{min-width:0;max-width:100%;overflow-wrap:anywhere}

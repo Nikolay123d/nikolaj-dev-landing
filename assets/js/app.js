@@ -69,6 +69,23 @@ const projects = [
     includes: ["Адаптация под бренд", "Замена меню и фото", "Форма заявки", "Кнопки Telegram/Facebook/звонок", "Подготовка к публикации"]
   },
   {
+    id: "tedition-eu",
+    group: "template",
+    title: "Tedition EU — русский demo-сайт",
+    label: "Новый проект",
+    category: "Business services / documents / projects",
+    image: "demos/tedition-eu/assets/img/hero-poster.jpg",
+    gallery: ["demos/tedition-eu/assets/img/hero-poster.jpg", "demos/tedition-eu/assets/img/meeting.webp", "demos/tedition-eu/assets/img/solar-project.webp"],
+    demoUrl: "demos/tedition-eu/index.html",
+    highlight: "client-project",
+    price: "START 10 000 Kč / ≈400 €",
+    timeline: "3-7 дней",
+    short: "Русская demo-версия корпоративного сайта Tedition EU: работа, документы, S.R.O / ИП / A1, фактуры, DPH и проектная поддержка в Чехии.",
+    forWhom: "Для сервисных компаний, кадровых проектов, бизнес-поддержки и направлений, где нужно серьёзно объяснить услуги и собирать заявки.",
+    features: ["Corporate hero video", "Facebook CTA", "Форма заявки", "Popup при скролле", "Мобильная версия"],
+    includes: ["Адаптация под бренд", "Замена текстов/фото/контактов", "Facebook контакт", "Форма заявки", "Подготовка к публикации"]
+  },
+  {
     id: "restaurant-cafe",
     group: "template",
     title: "Restaurant / Cafe Website",
@@ -183,7 +200,7 @@ const projects = [
 ];
 
 const projectIds = new Set(projects.map((project) => project.id));
-const categoryProjectSkips = new Set(["bakery-cafe", "restaurant-cafe", "renovation", "tours-guides", "delivery-fleet", "beauty-salon"]);
+const categoryProjectSkips = new Set(["bakery-cafe", "tedition-eu", "restaurant-cafe", "renovation", "tours-guides", "delivery-fleet", "beauty-salon"]);
 siteCategories.forEach((category) => {
   if (!category.demoUrl || projectIds.has(category.id) || categoryProjectSkips.has(category.id)) return;
   projects.push({
@@ -1024,7 +1041,7 @@ function renderCategories(filter = "all") {
   const startPlan = pricingPlans.find((item) => item.key === "Start");
   const list = filter === "all" ? siteCategories : siteCategories.filter((category) => category.filter === filter);
   categoryGrid.innerHTML = list.map((category) => `
-    <article class="category-card">
+    <article class="category-card ${category.highlight ? `category-card--${category.highlight}` : ""}">
       ${renderCategoryVisual(category)}
       <div class="category-body">
         <div class="category-labels">
@@ -1091,7 +1108,7 @@ function renderProjects(filter = "all") {
   const startPlan = pricingPlans.find((item) => item.key === "Start");
   const list = filter === "all" ? projects : projects.filter((project) => project.group === filter);
   projectGrid.innerHTML = list.map((project) => `
-    <article class="project-card" data-card="${project.id}">
+    <article class="project-card ${project.highlight ? `project-card--${project.highlight}` : ""}" data-card="${project.id}">
       <img src="${project.image}" alt="${project.title} preview">
       <div class="project-body">
         <span class="project-label">${project.label}</span>

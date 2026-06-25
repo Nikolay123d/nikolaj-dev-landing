@@ -13,6 +13,20 @@ window.siteCategories = [
     demoUrl: "demos/bakery-cafe/index.html"
   },
   {
+    id: "tedition-eu",
+    filter: "b2b",
+    title: "Tedition EU — сервисный бизнес-хаб",
+    badge: "Новый проект",
+    status: "Особая карточка",
+    description: "Русская demo-версия корпоративного сайта: работа, документы, S.R.O / ИП / A1, фактуры, DPH и проектная поддержка.",
+    price: "START 10 000 Kč / ≈400 € · PLUS 20 000 Kč / ≈800 €",
+    timeline: "3-7 дней",
+    image: "demos/tedition-eu/assets/img/hero-poster.jpg",
+    features: ["Corporate стиль", "Facebook CTA", "Форма", "Popup"],
+    demoUrl: "demos/tedition-eu/index.html",
+    highlight: "client-project"
+  },
+  {
     id: "restaurant-cafe",
     filter: "restaurants",
     title: "Сайт для ресторана / кафе",

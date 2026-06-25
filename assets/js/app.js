@@ -1193,7 +1193,7 @@ function setupPreloader() {
     document.documentElement.classList.remove("preloader-active");
     window.setTimeout(() => preloader.remove(), 520);
   };
-  document.querySelectorAll(".hero-video, .hero-copy-video").forEach((video) => {
+  document.querySelectorAll(".hero-video, .hero-copy-video, .site-wallpaper-video").forEach((video) => {
     try { video.load(); } catch (error) {}
   });
   if (seen || reducedMotion) {
@@ -1206,7 +1206,7 @@ function setupPreloader() {
   window.setTimeout(hide, 2200);
 }
 
-document.querySelectorAll(".hero-video, .hero-copy-video").forEach((video) => {
+document.querySelectorAll(".hero-video, .hero-copy-video, .site-wallpaper-video").forEach((video) => {
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   if (reducedMotion) {
     video.classList.add("is-disabled");

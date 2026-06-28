@@ -3,14 +3,491 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Demo website template by Nikolaj Dev.">
-  <title>Nikolaj Dev Demo</title>
-  <link rel="stylesheet" href="../shared/demo-template.css">
+  <meta name="description" content="Premium demo-сайт для риелтора в Праге: продажа, покупка и аренда недвижимости с персональным сопровождением.">
+  <meta property="og:title" content="Premium Real Estate - риелтор в Праге">
+  <meta property="og:description" content="Демо premium landing page для риелтора или агентства недвижимости в Праге.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/images/hero-prague.jpg">
+  <meta name="theme-color" content="#0b1624">
+  <title>Premium Real Estate - риелтор в Праге</title>
+  <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
+  <link rel="preload" as="image" href="assets/images/hero-prague.jpg">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script defer src="assets/js/preloader.js"></script>
+  <script defer src="assets/js/media-loader.js"></script>
+  <script defer src="assets/js/app.js"></script>
 </head>
-<body>
-  <div id="demo-root"></div>
-  <script>window.demoSlug = "real-estate";</script>
-  <script src="../shared/demo-configs.js"></script>
-  <script src="../shared/demo-template.js"></script>
+<body class="is-loading">
+  <div class="preloader" id="preloader" aria-hidden="true">
+    <div class="preloader-card">
+      <div class="preloader-mark">RE</div>
+      <div class="preloader-copy">
+        <span class="preloader-kicker">Premium real estate presentation</span>
+        <strong>Prague Real Estate</strong>
+        <span>Подготавливаем презентацию недвижимости...</span>
+      </div>
+      <div class="preloader-meta">
+        <span>Praha</span>
+        <span>Prodej</span>
+        <span>Pronajem</span>
+      </div>
+      <div class="preloader-line"><i></i></div>
+    </div>
+  </div>
+
+  <header class="site-header" id="top">
+    <a class="brand" href="#top" aria-label="Real Estate Prague home">
+      <span class="brand-mark">RE</span>
+      <span>
+        <strong>Real Estate Prague</strong>
+        <small>Риелтор в Праге</small>
+      </span>
+    </a>
+    <nav class="desktop-nav" aria-label="Главная навигация">
+      <a href="#services">Услуги</a>
+      <a href="#listings">Объекты</a>
+      <a href="#about">О риелторе</a>
+      <a href="#reviews">Отзывы</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Контакты</a>
+    </nav>
+    <button class="header-cta" type="button" data-open-consult data-context="Консультация из шапки">Консультация</button>
+    <button class="menu-toggle" type="button" aria-label="Открыть меню" aria-expanded="false" data-menu-toggle>
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <aside class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <div class="mobile-menu-panel">
+      <div class="mobile-menu-head">
+        <span class="brand-mark">RE</span>
+        <button type="button" aria-label="Закрыть меню" data-menu-close>×</button>
+      </div>
+      <nav aria-label="Мобильная навигация">
+        <button type="button" data-open-info="services">Услуги</button>
+        <button type="button" data-open-info="listings">Объекты</button>
+        <button type="button" data-open-info="sellers">Собственникам</button>
+        <button type="button" data-open-info="buyers">Покупателям</button>
+        <button type="button" data-open-info="about">О риелторе</button>
+        <button type="button" data-open-info="contacts">Контакты</button>
+      </nav>
+      <div class="mobile-menu-actions">
+        <button class="btn btn-primary" type="button" data-open-consult data-context="Оценить объект">Оценить объект</button>
+        <button class="btn btn-ghost" type="button" data-open-contact>Позвонить</button>
+      </div>
+      <div class="mobile-socials" aria-label="Социальные ссылки">
+        <button class="social-whatsapp" type="button" data-open-contact>WhatsApp</button>
+        <button class="social-telegram" type="button" data-open-contact>Telegram</button>
+        <button class="social-instagram" type="button" data-open-contact>Instagram</button>
+        <button class="social-facebook" type="button" data-open-contact>Facebook</button>
+      </div>
+    </div>
+  </aside>
+
+  <main>
+    <section class="hero section-dark">
+      <div class="page-shell hero-grid">
+        <div class="hero-copy reveal">
+          <p class="eyebrow">Realitni makler v Praze</p>
+          <h1>Риелтор в Праге</h1>
+          <p class="hero-text">Продажа, покупка и аренда недвижимости с понятным сопровождением.</p>
+          <div class="hero-actions">
+            <button class="btn btn-primary" type="button" data-open-consult data-context="Бесплатная консультация из hero">Бесплатная консультация</button>
+            <button class="btn btn-secondary" type="button" data-open-contact>Быстрая связь</button>
+          </div>
+        </div>
+        <div class="hero-visual reveal" aria-label="Видео-презентация недвижимости">
+          <div class="hero-video-card">
+            <video class="hero-video" id="heroVideo" muted playsinline loop preload="none" poster="assets/images/hero-prague.jpg" data-src="assets/videos/realtor-showing-apartment.mp4"></video>
+          </div>
+          <h2>Показ объекта</h2>
+          <p>Видео-презентация и сопровождение сделки.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="trust-strip" aria-label="Короткое доверие">
+      <div class="page-shell trust-grid">
+        <div><strong>Прага и окрестности</strong><span>Локальная специализация</span></div>
+        <div><strong>Продажа / аренда / покупка</strong><span>Для обеих сторон сделки</span></div>
+        <div><strong>RU / CZ / UA / EN</strong><span>Коммуникация под клиента</span></div>
+        <div><strong>Персональное сопровождение</strong><span>Понятный следующий шаг</span></div>
+      </div>
+    </section>
+
+    <section class="section section-light" id="services">
+      <div class="page-shell">
+        <div class="section-head">
+          <p class="eyebrow">Услуги</p>
+          <h2>Основные сценарии сделки.</h2>
+          <p>Коротко, визуально и без перегруза: клиент быстро понимает, куда обратиться.</p>
+        </div>
+        <div class="service-grid">
+          <article class="service-card reveal">
+            <img src="assets/images/viewing.jpg" alt="Показ квартиры клиенту" width="900" height="650" loading="lazy">
+            <div>
+              <span class="service-badge">Prodej</span>
+              <h3>Продажа объекта</h3>
+              <p>Оценка, презентация, показы, переговоры и сопровождение сделки.</p>
+              <button type="button" data-open-consult data-context="Продажа объекта">Оценить объект</button>
+            </div>
+          </article>
+          <article class="service-card reveal">
+            <img src="assets/images/buyer-interior.jpg" alt="Подбор квартиры в Праге" width="900" height="650" loading="lazy">
+            <div>
+              <span class="service-badge">Koupe</span>
+              <h3>Покупка недвижимости</h3>
+              <p>Подбор вариантов, просмотры и помощь в переговорах.</p>
+              <button type="button" data-open-consult data-context="Покупка недвижимости">Подобрать объект</button>
+            </div>
+          </article>
+          <article class="service-card reveal">
+            <img src="assets/images/apartment-light.jpg" alt="Квартира для аренды" width="900" height="650" loading="lazy">
+            <div>
+              <span class="service-badge">Pronajem</span>
+              <h3>Аренда и управление</h3>
+              <p>Презентация объекта, поиск арендатора и понятная коммуникация.</p>
+              <button type="button" data-open-consult data-context="Аренда и управление">Сдать квартиру</button>
+            </div>
+          </article>
+          <article class="service-card reveal">
+            <img src="assets/images/documents.jpg" alt="Документы по недвижимости" width="900" height="650" loading="lazy">
+            <div>
+              <span class="service-badge">Meeting</span>
+              <h3>Консультация</h3>
+              <p>Разбор ситуации, рисков и плана действий перед сделкой.</p>
+              <button type="button" data-open-consult data-context="Консультация">Записаться</button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-media section-light" id="presentation">
+      <div class="page-shell presentation-grid">
+        <div class="presentation-copy reveal">
+          <p class="eyebrow">Презентация объекта</p>
+          <h2>Продажа начинается с того, как объект выглядит в первые 10 секунд.</h2>
+          <p>Фото, короткое видео, понятная карточка и спокойная коммуникация повышают доверие ещё до первого звонка.</p>
+          <div class="presentation-points">
+            <span>Оценка объекта</span>
+            <span>Фото и описание</span>
+            <span>Показы и переговоры</span>
+          </div>
+          <button class="btn btn-primary" type="button" data-open-consult data-context="Презентация объекта">Оценить объект</button>
+        </div>
+        <div class="video-card reveal">
+          <video class="lazy-video" muted playsinline loop preload="none" poster="assets/images/apartment-premium.jpg" data-src="assets/videos/house-interior-presentation.mp4"></video>
+          <div class="video-caption">
+            <strong>Ukazkove video</strong>
+            <span>Демо-блок для презентации объекта</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-dark split" id="sellers">
+      <div class="page-shell split-grid">
+        <div class="media-frame">
+          <img src="assets/images/consultation.jpg" alt="Консультация с собственником недвижимости" width="1200" height="900" loading="lazy">
+        </div>
+        <div class="split-copy">
+          <p class="eyebrow">Для собственников</p>
+          <h2>Если вы хотите продать или сдать объект.</h2>
+          <p>Задача риелтора - не просто разместить объявление, а показать ценность объекта и вести процесс спокойно.</p>
+          <ul class="check-list">
+            <li>рыночная оценка и стратегия цены;</li>
+            <li>подготовка объекта к презентации;</li>
+            <li>профессиональные фото и описание;</li>
+            <li>показы, переговоры и финальные условия;</li>
+            <li>сопровождение до передачи объекта.</li>
+          </ul>
+          <button class="btn btn-primary" type="button" data-open-consult data-context="Для собственника">Получить оценку</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-light split" id="buyers">
+      <div class="page-shell split-grid split-grid-reverse">
+        <div class="split-copy">
+          <p class="eyebrow">Для покупателей и арендаторов</p>
+          <h2>Если вы ищете квартиру или дом в Праге.</h2>
+          <p>Подбор недвижимости должен экономить время: запрос, фильтрация, просмотры, переговоры и финальное решение.</p>
+          <ul class="check-list">
+            <li>уточнение бюджета и районов;</li>
+            <li>фильтрация вариантов до реальных кандидатов;</li>
+            <li>организация просмотров;</li>
+            <li>коммуникация с продавцом или арендодателем;</li>
+            <li>помощь на следующих шагах.</li>
+          </ul>
+          <button class="btn btn-primary" type="button" data-open-consult data-context="Для покупателя или арендатора">Подобрать объект</button>
+        </div>
+        <div class="media-frame">
+          <img src="assets/images/apartment-premium.jpg" alt="Современная квартира в Праге" width="1200" height="900" loading="lazy">
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-dark" id="listings">
+      <div class="page-shell">
+        <div class="section-head">
+          <p class="eyebrow">Featured listings</p>
+          <h2>Объекты в premium-подаче.</h2>
+          <p>Demo-карточки показывают формат. В реальном проекте сюда ставятся актуальные предложения клиента.</p>
+        </div>
+        <div class="listing-grid">
+          <article class="listing-card reveal">
+            <img src="assets/images/apartment-premium.jpg" alt="Demo listing Vinohrady 3+kk" width="900" height="675" loading="eager">
+            <div class="listing-body">
+              <span class="demo-pill">Demo listing</span>
+              <h3>3+kk с балконом, Vinohrady</h3>
+              <p>Светлая квартира после реконструкции рядом с парком и транспортом.</p>
+              <div class="listing-facts"><span>Praha 2</span><span>82 m²</span><span>3+kk</span><span>4. patro</span></div>
+              <div class="listing-meta"><strong>15 900 000 Kč</strong><span>Продажа</span></div>
+              <div class="card-actions"><button type="button" data-open-consult data-context="Просмотр: Vinohrady 3+kk">Просмотр</button><button type="button" data-open-listing="Vinohrady 3+kk" data-listing-price="15 900 000 Kč" data-listing-facts="Praha 2 · 82 m² · 3+kk · 4. patro">Детали</button></div>
+            </div>
+          </article>
+          <article class="listing-card reveal">
+            <img src="assets/images/apartment-light.jpg" alt="Demo listing Zizkov 2+kk" width="900" height="675" loading="eager">
+            <div class="listing-body">
+              <span class="demo-pill">Demo listing</span>
+              <h3>2+kk рядом с парком, Zizkov</h3>
+              <p>Аккуратный интерьер, хороший свет и удобный доступ к центру.</p>
+              <div class="listing-facts"><span>Praha 3</span><span>55 m²</span><span>2+kk</span><span>2. patro</span></div>
+              <div class="listing-meta"><strong>32 000 Kč / мес.</strong><span>Аренда</span></div>
+              <div class="card-actions"><button type="button" data-open-consult data-context="Просмотр: Zizkov 2+kk">Просмотр</button><button type="button" data-open-listing="Zizkov 2+kk" data-listing-price="32 000 Kč / мес." data-listing-facts="Praha 3 · 55 m² · 2+kk · 2. patro">Детали</button></div>
+            </div>
+          </article>
+          <article class="listing-card reveal">
+            <img src="assets/images/family-house.jpg" alt="Demo listing family house Prague west" width="900" height="675" loading="eager">
+            <div class="listing-body">
+              <span class="demo-pill">Demo listing</span>
+              <h3>Семейный дом, Praha-zapad</h3>
+              <p>Семейный дом с садом, гаражом и спокойной локацией у Праги.</p>
+              <div class="listing-facts"><span>Praha-zapad</span><span>148 m²</span><span>5+kk</span><span>garaz</span></div>
+              <div class="listing-meta"><strong>24 500 000 Kč</strong><span>Продажа</span></div>
+              <div class="card-actions"><button type="button" data-open-consult data-context="Просмотр: Praha-zapad house">Просмотр</button><button type="button" data-open-listing="Praha-zapad house" data-listing-price="24 500 000 Kč" data-listing-facts="Praha-zapad · 148 m² · 5+kk · garaz">Детали</button></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-light" id="advantages">
+      <div class="page-shell">
+        <div class="section-head">
+          <p class="eyebrow">Почему выбирают</p>
+          <h2>Доверие строится на ясности процесса.</h2>
+        </div>
+        <div class="advantage-grid">
+          <article><strong>Стратегия продажи</strong><span>Понимание цены, аудитории и способа презентации объекта.</span></article>
+          <article><strong>Сильная презентация</strong><span>Фото, описание и структура предложения работают на доверие.</span></article>
+          <article><strong>Коммуникация без стресса</strong><span>Клиент понимает, что происходит и какой следующий шаг.</span></article>
+          <article><strong>Локальный фокус</strong><span>Прага, районы, спрос и ожидания покупателей.</span></article>
+          <article><strong>Показы и переговоры</strong><span>Спокойная организация контакта между сторонами.</span></article>
+          <article><strong>Сопровождение</strong><span>Поддержка до результата, а не только до первого звонка.</span></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-dark process" id="process">
+      <div class="page-shell">
+        <div class="section-head">
+          <p class="eyebrow">Процесс</p>
+          <h2>Как проходит сотрудничество.</h2>
+        </div>
+        <div class="process-grid">
+          <article><span>01</span><strong>Первичный контакт</strong><p>Коротко обсуждаем задачу, объект, район, сроки и ожидания.</p></article>
+          <article><span>02</span><strong>Анализ</strong><p>Оцениваем ситуацию, рынок и подходящий сценарий работы.</p></article>
+          <article><span>03</span><strong>Подготовка</strong><p>Собираем материалы, фото, описание и план коммуникации.</p></article>
+          <article><span>04</span><strong>Показы / поиск</strong><p>Организуем просмотры, фильтруем варианты и ведём переговоры.</p></article>
+          <article><span>05</span><strong>Результат</strong><p>Фиксируем договорённости и сопровождаем финальные шаги.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-light about" id="about">
+      <div class="page-shell about-grid">
+        <div class="portrait-frame">
+          <img src="assets/images/agent-portrait.jpg" alt="Demo portrait of Prague realtor" width="900" height="1100" loading="lazy">
+          <span>Demo portrait</span>
+        </div>
+        <div>
+          <p class="eyebrow">О риелторе</p>
+          <h2>Ваш риелтор в Праге</h2>
+          <p>Этот блок демонстрирует персональную подачу специалиста: спокойный тон, локальная экспертиза и понятный процесс. В реальном проекте здесь будет настоящая биография, фото и подтверждения опыта клиента.</p>
+          <div class="about-notes">
+            <span>Персональный подход</span>
+            <span>Прага и окрестности</span>
+            <span>Сопровождение сделки</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-dark" id="reviews">
+      <div class="page-shell">
+        <div class="section-head">
+          <p class="eyebrow">Отзывы</p>
+          <h2>Как могут выглядеть отзывы клиентов.</h2>
+          <p>Все отзывы ниже являются demo-примерами и заменяются реальными отзывами клиента.</p>
+        </div>
+        <div class="review-grid">
+          <article class="review-card"><span>Пример отзыва</span><strong>★★★★★</strong><p>“Понятно объяснили процесс продажи и помогли подготовить квартиру к показам. Всё было спокойно и по шагам.”</p><em>Анна · Praha 2 · продажа</em></article>
+          <article class="review-card"><span>Пример отзыва</span><strong>★★★★★</strong><p>“Мы сэкономили время на просмотрах и быстро нашли вариант, который подходил по району и бюджету.”</p><em>Олег · Praha 5 · покупка</em></article>
+          <article class="review-card"><span>Пример отзыва</span><strong>★★★★★</strong><p>“Сдача квартиры прошла аккуратно: фото, объявление, показы и коммуникация с арендатором.”</p><em>Мария · Praha 3 · аренда</em></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-light faq" id="faq">
+      <div class="page-shell narrow-shell">
+        <div class="section-head">
+          <p class="eyebrow">FAQ</p>
+          <h2>Частые вопросы.</h2>
+        </div>
+        <div class="faq-list">
+          <article class="faq-item">
+            <button type="button" aria-expanded="false">Сколько стоит консультация?<span>+</span></button>
+            <p>Для demo указана примерная логика. В реальном проекте сюда ставятся условия конкретного риелтора.</p>
+          </article>
+          <article class="faq-item">
+            <button type="button" aria-expanded="false">Какие районы Праги покрываются?<span>+</span></button>
+            <p>Можно указать всю Прагу, отдельные районы или Прагу и окрестности в зависимости от специализации клиента.</p>
+          </article>
+          <article class="faq-item">
+            <button type="button" aria-expanded="false">Можно ли работать дистанционно?<span>+</span></button>
+            <p>Да, для части задач можно подготовить дистанционный сценарий: первичная консультация, документы, подбор и отчёты.</p>
+          </article>
+          <article class="faq-item">
+            <button type="button" aria-expanded="false">Подключается ли форма к email?<span>+</span></button>
+            <p>Да. Сейчас это demo-form, в README оставлена точка подключения Web3Forms, Formspree или другого endpoint.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-dark contact" id="lead">
+      <div class="page-shell contact-grid">
+        <div>
+          <p class="eyebrow">Заявка</p>
+          <h2>Получить бесплатную консультацию.</h2>
+          <p>Оставьте контакт и коротко опишите задачу. В рабочей версии заявка уходит владельцу на email или в CRM.</p>
+          <div class="contact-cards">
+            <a href="#lead" data-open-contact><span>Телефон</span><strong>[TELEFON KLIENTA]</strong></a>
+            <a href="#lead" data-open-contact><span>Email</span><strong>[EMAIL KLIENTA]</strong></a>
+            <a href="#lead"><span>Офис / район работы</span><strong>Praha 1 · по договорённости</strong></a>
+            <a href="#lead"><span>Режим работы</span><strong>Пн-Пт 9:00-18:00</strong></a>
+            <a href="#lead" data-open-contact><span>WhatsApp</span><strong>[WHATSAPP]</strong></a>
+            <a href="#lead" data-open-contact><span>Telegram</span><strong>[TELEGRAM]</strong></a>
+            <a href="#lead" data-open-contact><span>Instagram</span><strong>[INSTAGRAM]</strong></a>
+            <a href="#lead" data-open-contact><span>Facebook</span><strong>[FACEBOOK]</strong></a>
+          </div>
+        </div>
+        <form class="lead-form" id="leadForm" data-endpoint="" data-email="">
+          <label>Имя<input type="text" name="name" required placeholder="Ваше имя"></label>
+          <label>Номер телефона<input type="tel" name="contact" required placeholder="Ваш номер телефона"></label>
+          <label class="wide">Опишите вкратце, чем именно я могу вам помочь?<textarea name="message" required placeholder="Продать квартиру, купить объект, сдать в аренду..."></textarea></label>
+          <p class="form-note">Demo-form: без backend. Сейчас заявка готовится для отправки на email; для клиента подключается endpoint.</p>
+          <button class="btn btn-primary wide" type="submit">Получить консультацию бесплатно</button>
+          <div class="form-status" id="formStatus" role="status"></div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="contact">
+    <div class="page-shell footer-grid">
+      <div>
+        <strong>Real Estate Prague</strong>
+        <p>Premium demo website for Prague realtor. Replace demo content with real client data before launch.</p>
+      </div>
+      <nav aria-label="Footer">
+        <a href="#services">Услуги</a>
+        <a href="#listings">Объекты</a>
+        <a href="#faq">FAQ</a>
+        <a href="#lead">Заявка</a>
+      </nav>
+      <div>
+        <span>Demo legal placeholders</span>
+        <a href="#lead">Privacy / Cookies заменяются под клиента</a>
+      </div>
+    </div>
+  </footer>
+
+  <div class="sticky-cta" id="stickyCta">
+    <button type="button" data-open-consult data-context="Sticky consultation">Бесплатная консультация</button>
+    <button type="button" data-open-contact>Связь</button>
+    <button type="button" aria-label="Скрыть sticky CTA" data-close-sticky>×</button>
+  </div>
+
+  <div class="listing-modal" id="listingModal" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Детали объекта">
+    <div class="listing-modal-card">
+      <button class="listing-modal-close" type="button" aria-label="Закрыть детали объекта" data-close-listing>×</button>
+      <span class="demo-pill">Demo listing</span>
+      <h2 id="modalListingTitle">Объект</h2>
+      <p id="modalListingFacts">Praha · площадь · планировка</p>
+      <strong id="modalListingPrice">Цена</strong>
+      <p>Это образец отдельного красивого окна для карточки объекта. В реальном проекте сюда можно добавить галерею, планировку и карту.</p>
+      <div class="modal-actions">
+        <button class="btn btn-primary" type="button" data-open-consult data-modal-lead>Записаться на просмотр</button>
+        <button class="btn btn-secondary" type="button" data-open-contact>Быстрая связь</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="action-modal" id="consultModal" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Бесплатная консультация">
+    <div class="action-modal-card">
+      <button class="modal-close" type="button" aria-label="Закрыть консультацию" data-close-action>×</button>
+      <span class="demo-pill">Free consultation</span>
+      <h2>Бесплатная консультация</h2>
+      <p>Оставьте имя, телефон и коротко напишите, чем именно я могу помочь.</p>
+      <form class="modal-form" id="consultForm" data-endpoint="" data-email="">
+        <input type="hidden" name="context" value="Бесплатная консультация">
+        <label>Имя<input type="text" name="name" required placeholder="Ваше имя"></label>
+        <label>Номер телефона<input type="tel" name="contact" required placeholder="Ваш номер телефона"></label>
+        <label>Опишите вкратце, чем именно я могу вам помочь?<textarea name="message" required placeholder="Например: хочу продать квартиру в Праге 3..."></textarea></label>
+        <button class="btn btn-primary" type="submit">Получить консультацию бесплатно</button>
+        <div class="form-status" id="consultStatus" role="status"></div>
+      </form>
+      <div class="quick-socials">
+        <button class="social-facebook" type="button">Facebook</button>
+        <button class="social-telegram" type="button">Telegram</button>
+        <button class="social-whatsapp" type="button">WhatsApp</button>
+        <button class="social-email" type="button">Email</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="action-modal" id="contactModal" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Быстрая связь">
+    <div class="action-modal-card social-modal-card">
+      <button class="modal-close" type="button" aria-label="Закрыть быструю связь" data-close-action>×</button>
+      <span class="demo-pill">Quick contact</span>
+      <h2>Быстрая связь</h2>
+      <p>Выберите удобный канал. Для клиента ссылки заменяются на реальные профили.</p>
+      <div class="quick-socials large-socials">
+        <button class="social-facebook" type="button">Facebook</button>
+        <button class="social-telegram" type="button">Telegram</button>
+        <button class="social-whatsapp" type="button">WhatsApp</button>
+        <button class="social-instagram" type="button">Instagram</button>
+        <button class="social-email" type="button">Email</button>
+        <button class="social-phone" type="button">Позвонить</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="action-modal" id="infoModal" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Информация">
+    <div class="action-modal-card info-modal-card">
+      <button class="modal-close" type="button" aria-label="Закрыть информацию" data-close-action>×</button>
+      <span class="demo-pill" id="infoKicker">Premium section</span>
+      <h2 id="infoTitle">Раздел</h2>
+      <p id="infoText">Краткая информация по разделу.</p>
+      <div class="info-points" id="infoPoints"></div>
+      <div class="modal-actions">
+        <button class="btn btn-primary" type="button" data-open-consult>Бесплатная консультация</button>
+        <button class="btn btn-secondary" type="button" data-open-contact>Быстрая связь</button>
+      </div>
+    </div>
+  </div>
 </body>
 </html>

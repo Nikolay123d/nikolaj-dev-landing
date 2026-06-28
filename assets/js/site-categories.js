@@ -29,6 +29,27 @@ window.siteCategories = [
     demoUrl: "demos/mini-shop/index.html"
   },
   {
+    id: "real-estate",
+    filter: "b2b",
+    title: "Premium сайт для риелтора в Праге",
+    badge: "🔥 TOP · -60%",
+    status: "Новое premium demo",
+    description: "Дорогой лендинг для риелтора: видео, объекты, отдельные окна, консультация, быстрые контакты и заявка на email.",
+    price: "по акции 4 000 Kč / ≈160 €",
+    regularPrice: "10 000 Kč / ≈400 €",
+    specialSale: true,
+    specialSalePrice: "4 000 Kč / ≈160 €",
+    specialRegularPrice: "10 000 Kč / ≈400 €",
+    specialDiscountPercent: 60,
+    specialSaleLabel: "Скидка 60% на real estate demo",
+    specialPromoCode: "REALESTATE60_3H",
+    timeline: "3-7 дней",
+    image: "demos/real-estate/assets/images/apartment-premium.jpg",
+    features: ["Видео hero", "Объекты", "Консультация", "Мессенджеры"],
+    demoUrl: "demos/real-estate/index.html",
+    highlight: "hot-sale"
+  },
+  {
     id: "bakery-cafe",
     filter: "restaurants",
     title: "Сайт для пекарни / кафе",
@@ -171,19 +192,6 @@ window.siteCategories = [
     image: "assets/images/categories/cleaning.jpg",
     features: ["Пакеты", "Зоны", "Цены", "Заявка"],
     demoUrl: "demos/cleaning/index.html"
-  },
-  {
-    id: "real-estate",
-    filter: "b2b",
-    title: "Сайт для недвижимости / аренды",
-    badge: "Есть демо",
-    status: "Готовый demo",
-    description: "Объекты, фото, описание, заявки на просмотр и контакты.",
-    price: "PLUS 20 000 Kč / ≈800 €",
-    timeline: "4-10 дней",
-    image: "assets/images/categories/real-estate.jpg",
-    features: ["Объекты", "Фото", "Фильтры", "Заявка"],
-    demoUrl: "demos/real-estate/index.html"
   },
   {
     id: "product-catalog",

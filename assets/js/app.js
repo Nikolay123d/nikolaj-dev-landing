@@ -70,6 +70,36 @@ const projects = [
     includes: ["Адаптация под бренд", "До 20-30 стартовых товаров", "До 6-8 категорий", "Checkout-заявка на email", "Legal pages placeholders", "Инструкция README"]
   },
   {
+    id: "real-estate",
+    group: "template",
+    title: "Premium Real Estate Landing",
+    label: "🔥 TOP · -60%",
+    category: "Риелтор / недвижимость / Прага",
+    image: "demos/real-estate/assets/images/apartment-premium.jpg",
+    gallery: [
+      "demos/real-estate/assets/images/apartment-premium.jpg",
+      "demos/real-estate/assets/images/hero-prague.jpg",
+      "demos/real-estate/assets/images/viewing.jpg"
+    ],
+    demoUrl: "demos/real-estate/index.html",
+    highlight: "hot-sale",
+    price: "обычно 10 000 Kč / ≈400 €",
+    regularPrice: "10 000 Kč / ≈400 €",
+    specialSale: true,
+    specialSalePrice: "4 000 Kč / ≈160 €",
+    specialRegularPrice: "10 000 Kč / ≈400 €",
+    specialDiscountPercent: 60,
+    specialSaleLabel: "Скидка 60% на real estate demo",
+    specialPromoCode: "REALESTATE60_3H",
+    packagePrice: "4 000 Kč / ≈160 €",
+    selectedPackage: "Real Estate START",
+    timeline: "3-7 дней",
+    short: "Premium demo для риелтора в Праге: видео, объекты, отдельные окна, консультация, мессенджеры и заявка на email.",
+    forWhom: "Для риелтора, агентства недвижимости, аренды квартир, продажи объектов или персонального real estate бренда в Праге.",
+    features: ["Видео hero", "Объекты и детали", "Popup-меню", "Бесплатная консультация", "Быстрые контакты"],
+    includes: ["Адаптация имени/бренда", "Замена объектов и фото", "Форма консультации", "Кнопки связи", "Мобильная версия", "Подготовка к публикации"]
+  },
+  {
     id: "bakery-cafe",
     group: "template",
     title: "Bakery / Cafe Website Demo",
@@ -406,9 +436,9 @@ function applySaleMode(saleActive) {
   });
 
   const heroSaleText = document.querySelector(".showcase-top strong");
-  if (heroSaleText) heroSaleText.textContent = saleActive ? "по акции от 5 000 Kč / ≈200 €" : "от 10 000 Kč / ≈400 €";
+  if (heroSaleText) heroSaleText.textContent = saleActive ? "real estate TOP -60%" : "готовые demo-шаблоны";
 
-  const featuredMeta = document.querySelector(".featured-demo-card .project-meta span");
+  const featuredMeta = document.querySelector(".featured-demo-card:not(.featured-demo-card--hot) .project-meta span");
   if (featuredMeta) featuredMeta.textContent = saleActive ? "SALE START 5 000 Kč / ≈200 €" : "START 10 000 Kč / ≈400 €";
 
   const quickEyebrow = document.querySelector(".quick-pricing-section .eyebrow");
@@ -475,10 +505,21 @@ function saleMetadata(sourceCta = "sale_cta") {
 function withSalePayload(payload = {}, sourceCta = "sale_cta") {
   const data = typeof payload === "string" ? { title: payload } : { ...(payload || {}) };
   if (!isSaleActive() || data.fixedPrice || data.noSale) return data;
+  const meta = saleMetadata(sourceCta);
+  if (data.specialSale) {
+    return {
+      ...data,
+      sale: true,
+      ...meta,
+      promoCode: data.specialPromoCode || meta.promoCode,
+      promoLabel: data.specialSaleLabel || meta.promoLabel,
+      discountPercent: data.specialDiscountPercent || meta.discountPercent
+    };
+  }
   return {
     ...data,
     sale: true,
-    ...saleMetadata(sourceCta)
+    ...meta
   };
 }
 
@@ -668,10 +709,10 @@ function buildDetailsModal(project) {
         <h3>Ключевые фишки</h3>
         <ul>${featureList(project.features)}</ul>
         <div class="modal-meta stacked">
-          ${fixedProject ? `<span>${project.price}</span>` : (saleActive ? `<span>по акции от 5 000 Kč / ≈200 €</span><span>обычно от 10 000 Kč / ≈400 €</span>` : `<span>${project.price || "от 10 000 Kč / ≈400 €"}</span>`)}
+          ${project.specialSale && saleActive ? `<span>по акции ${project.specialSalePrice}</span><span>обычно ${itemRegularPrice(project, "10 000 Kč / ≈400 €")}</span>` : (fixedProject ? `<span>${project.price}</span>` : (saleActive ? `<span>по акции от 5 000 Kč / ≈200 €</span><span>обычно от 10 000 Kč / ≈400 €</span>` : `<span>${project.price || "от 10 000 Kč / ≈400 €"}</span>`))}
           <span>${project.timeline}</span>
         </div>
-        <button class="btn primary" type="button" data-lead-project="${project.id}" data-sale-source="project_detail_sale">${saleActive && !fixedProject ? "Хочу такой сайт по акции" : "Хочу такой сайт"}</button>
+        <button class="btn primary" type="button" data-lead-project="${project.id}" data-sale-source="project_detail_sale">${project.specialSale && saleActive ? "Хочу real estate за 4 000 Kč" : (saleActive && !fixedProject ? "Хочу такой сайт по акции" : "Хочу такой сайт")}</button>
       </div>
     </div>`;
 }
@@ -726,7 +767,7 @@ function buildLeadModal(projectOrPlan = "") {
   const messageSource = leadData.messageSource || "";
   const saleNote = isSale
     ? `<div class="sale-form-notice">
-        <strong>Вы выбрали заявку по акции 50%</strong>
+        <strong>Вы выбрали заявку по акции ${discountPercent || 50}%</strong>
         <span>Промокод: ${promoCode}</span>
         ${selected ? `<span>Шаблон: ${selected}</span>` : ""}
         ${selectedPackage ? `<span>Пакет: ${selectedPackage}</span>` : ""}
@@ -736,7 +777,7 @@ function buildLeadModal(projectOrPlan = "") {
       </div>`
     : "";
   const messageValue = leadData.messagePrefill || (isSale
-    ? `Хочу похожий сайт по акции 50%. Demo/шаблон: ${selected || "нужно подобрать"}. Пакет: ${selectedPackage || "нужно обсудить"}.`
+    ? `Хочу похожий сайт по акции ${discountPercent || 50}%. Demo/шаблон: ${selected || "нужно подобрать"}. Пакет: ${selectedPackage || "нужно обсудить"}.`
     : "");
   return `
     <div class="modal-header">
@@ -854,7 +895,7 @@ function buildCategoryModal(category) {
       <div>
         <div class="modal-meta stacked">
           <span>${categoryPriceLabel(category, saleActive)}</span>
-          ${saleActive && !category.fixedPrice ? `<span>обычно от 10 000 Kč / ≈400 €</span>` : ""}
+          ${category.specialSale ? `<span>обычно ${itemRegularPrice(category, "10 000 Kč / ≈400 €")}</span>` : (saleActive && !category.fixedPrice ? `<span>обычно от 10 000 Kč / ≈400 €</span>` : "")}
           <span>${category.timeline}</span>
           <span>${category.badge}</span>
         </div>
@@ -862,7 +903,7 @@ function buildCategoryModal(category) {
         <ul>${featureList(category.features)}</ul>
         <div class="modal-actions-row">
           ${category.demoUrl ? `<a class="btn dark" href="${category.demoUrl}">Посмотреть шаблон</a>` : ""}
-          <button class="btn primary" type="button" data-lead-category="${category.id}" data-sale-source="category_detail_sale">${saleActive && !category.fixedPrice ? "Заказать со скидкой -50%" : "Заказать похожий"}</button>
+          <button class="btn primary" type="button" data-lead-category="${category.id}" data-sale-source="category_detail_sale">${category.specialSale && saleActive ? "Заказать за 4 000 Kč" : (saleActive && !category.fixedPrice ? "Заказать со скидкой -50%" : "Заказать похожий")}</button>
         </div>
       </div>
     </div>`;
@@ -875,8 +916,8 @@ function bindModalActions() {
       openSaleLead({
         ...project,
         selectedPackage: project.fixedPrice ? "Mini e-shop START" : project.selectedPackage,
-        packagePrice: project.fixedPrice ? project.price : project.packagePrice,
-        regularPrice: project.fixedPrice ? project.price : project.regularPrice
+        packagePrice: project.specialSale && isSaleActive() ? project.specialSalePrice : (project.fixedPrice ? project.price : project.packagePrice),
+        regularPrice: project.specialSale ? itemRegularPrice(project, project.regularPrice) : (project.fixedPrice ? project.price : project.regularPrice)
       }, button.dataset.saleSource || "project_modal_sale");
     });
   });
@@ -897,8 +938,8 @@ function bindModalActions() {
       openSaleLead({
         ...category,
         selectedPackage: "Start",
-        packagePrice: category.fixedPrice ? category.price : planDisplayPrice(startPlan),
-        regularPrice: category.fixedPrice ? category.price : (isSaleActive() ? startPlan.price : "")
+        packagePrice: category.specialSale && isSaleActive() ? category.specialSalePrice : (category.fixedPrice ? category.price : planDisplayPrice(startPlan)),
+        regularPrice: category.specialSale ? itemRegularPrice(category, startPlan.price) : (category.fixedPrice ? category.price : (isSaleActive() ? startPlan.price : ""))
       }, button.dataset.saleSource || "category_modal_sale");
     });
   });
@@ -1027,15 +1068,23 @@ function packagePayloadFromButton(button) {
   }
   const plan = pricingPlans.find((item) => item.key === button.dataset.package);
   const isSale = !isFixedNoSale && saleActive && Boolean(button.dataset.saleSource || button.dataset.regularPrice);
+  const specialDiscountPercent = button.dataset.specialDiscountPercent || "";
+  const metadata = isSale ? saleMetadata(button.dataset.saleSource || "package_button_sale") : {};
   return {
     kind: "package",
     template: button.dataset.template || "",
     package: button.dataset.package,
-    price: plan ? planDisplayPrice(plan, saleActive) : button.dataset.packagePrice || "",
+    price: specialDiscountPercent ? (button.dataset.packagePrice || "") : (plan ? planDisplayPrice(plan, saleActive) : button.dataset.packagePrice || ""),
     regularPrice: isSale ? (button.dataset.regularPrice || plan?.price || "") : "",
+    sale: isSale,
     fixedPrice: isFixedNoSale,
     noSale: isFixedNoSale,
-    ...(isSale ? saleMetadata(button.dataset.saleSource || "package_button_sale") : {})
+    ...(isSale ? {
+      ...metadata,
+      promoCode: button.dataset.specialPromoCode || metadata.promoCode,
+      promoLabel: button.dataset.specialSaleLabel || metadata.promoLabel,
+      discountPercent: specialDiscountPercent || metadata.discountPercent
+    } : {})
   };
 }
 
@@ -1069,8 +1118,25 @@ function renderCategoryVisual(category, lazy = true) {
 }
 
 function categoryPriceLabel(category, saleActive = isSaleActive()) {
+  if (category.specialSale && saleActive) return `по акции ${category.specialSalePrice}`;
   if (category.fixedPrice) return category.price;
   return saleActive ? "по акции от 5 000 Kč / ≈200 €" : (category.price || "от 10 000 Kč / ≈400 €");
+}
+
+function specialSaleBadge(item, saleActive = isSaleActive()) {
+  if (!item?.specialSale || !saleActive) return "";
+  const percent = item.specialDiscountPercent || 60;
+  return `<span class="sale-card-badge sale-card-badge--hot">🔥 -${percent}% · <b data-sale-countdown>03:00:00</b></span>`;
+}
+
+function itemSalePrice(item, fallback = "") {
+  if (item?.specialSale && isSaleActive()) return item.specialSalePrice || item.packagePrice || fallback;
+  return fallback;
+}
+
+function itemRegularPrice(item, fallback = "") {
+  if (item?.specialSale) return item.specialRegularPrice || item.regularPrice || fallback;
+  return fallback;
 }
 
 function renderCategories(filter = "all") {
@@ -1085,7 +1151,7 @@ function renderCategories(filter = "all") {
         <div class="category-labels">
           <span>${category.badge}</span>
           <span>${category.status}</span>
-          ${saleActive && !category.fixedPrice ? `<span class="sale-card-badge">-50% сегодня</span>` : ""}
+          ${specialSaleBadge(category, saleActive) || (saleActive && !category.fixedPrice ? `<span class="sale-card-badge">-50% сегодня</span>` : "")}
         </div>
         <h3>${category.title}</h3>
         <p>${category.description}</p>
@@ -1096,7 +1162,7 @@ function renderCategories(filter = "all") {
         <ul>${featureList(category.features.slice(0, 4))}</ul>
         <div class="category-actions">
           ${category.demoUrl ? `<a class="btn dark" href="${category.demoUrl}">Посмотреть шаблон</a>` : ""}
-          <button class="btn primary" type="button" data-order-category="${category.id}">${saleActive && !category.fixedPrice ? "Заказать со скидкой -50%" : "Заказать похожий"}</button>
+          <button class="btn primary" type="button" data-order-category="${category.id}">${category.specialSale && saleActive ? "Заказать за 4 000 Kč" : (saleActive && !category.fixedPrice ? "Заказать со скидкой -50%" : "Заказать похожий")}</button>
           <button class="btn secondary" type="button" data-category-details="${category.id}">Подробнее</button>
         </div>
       </div>
@@ -1108,8 +1174,8 @@ function renderCategories(filter = "all") {
       openSaleLead({
         ...category,
         selectedPackage: "Start",
-        packagePrice: category.fixedPrice ? category.price : planDisplayPrice(startPlan, isSaleActive()),
-        regularPrice: category.fixedPrice ? category.price : (isSaleActive() ? startPlan.price : "")
+        packagePrice: category.specialSale && isSaleActive() ? category.specialSalePrice : (category.fixedPrice ? category.price : planDisplayPrice(startPlan, isSaleActive())),
+        regularPrice: category.specialSale ? itemRegularPrice(category, startPlan.price) : (category.fixedPrice ? category.price : (isSaleActive() ? startPlan.price : ""))
       }, "category_card_sale_button");
     });
   });
@@ -1153,11 +1219,11 @@ function renderProjects(filter = "all") {
       <img src="${project.image}" alt="${project.title} preview">
       <div class="project-body">
         <span class="project-label">${project.label}</span>
-        ${saleActive && !project.fixedPrice ? `<span class="sale-card-badge">-50% сегодня · от 5 000 Kč</span>` : ""}
+        ${specialSaleBadge(project, saleActive) || (saleActive && !project.fixedPrice ? `<span class="sale-card-badge">-50% сегодня · от 5 000 Kč</span>` : "")}
         <h3>${project.title}</h3>
         <p>${project.short}</p>
         <div class="project-meta">
-          <span>${project.fixedPrice ? project.price : (saleActive ? "по акции от 5 000 Kč / ≈200 €" : "от 10 000 Kč / ≈400 €")}</span>
+          <span>${project.specialSale && saleActive ? `по акции ${project.specialSalePrice}` : (project.fixedPrice ? project.price : (saleActive ? "по акции от 5 000 Kč / ≈200 €" : "от 10 000 Kč / ≈400 €"))}</span>
           <span>${project.timeline}</span>
         </div>
         <ul>${featureList(project.features.slice(0, 3))}</ul>
@@ -1166,7 +1232,7 @@ function renderProjects(filter = "all") {
             ? `<a href="${project.demoUrl}" data-demo-link="${project.id}">Посмотреть шаблон</a>`
             : `<button type="button" data-preview="${project.id}">Посмотреть проект</button>`}
           <button type="button" data-details="${project.id}">Подробнее</button>
-          <button type="button" data-order="${project.id}">${saleActive && !project.fixedPrice ? "Заказать со скидкой -50%" : "Заказать похожий"}</button>
+          <button type="button" data-order="${project.id}">${project.specialSale && saleActive ? "Заказать за 4 000 Kč" : (saleActive && !project.fixedPrice ? "Заказать со скидкой -50%" : "Заказать похожий")}</button>
         </div>
       </div>
     </article>
@@ -1184,8 +1250,8 @@ function renderProjects(filter = "all") {
       openSaleLead({
         ...project,
         selectedPackage: "Start",
-        packagePrice: project.fixedPrice ? project.price : planDisplayPrice(startPlan, isSaleActive()),
-        regularPrice: project.fixedPrice ? project.price : (isSaleActive() ? startPlan.price : "")
+        packagePrice: project.specialSale && isSaleActive() ? project.specialSalePrice : (project.fixedPrice ? project.price : planDisplayPrice(startPlan, isSaleActive())),
+        regularPrice: project.specialSale ? itemRegularPrice(project, startPlan.price) : (project.fixedPrice ? project.price : (isSaleActive() ? startPlan.price : ""))
       }, "project_card_sale_button");
     });
   });

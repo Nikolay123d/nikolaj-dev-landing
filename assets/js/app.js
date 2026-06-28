@@ -53,6 +53,23 @@ const siteCategories = window.siteCategories || [];
 
 const projects = [
   {
+    id: "mini-shop",
+    group: "template",
+    title: "Интернет-магазин / mini e-shop",
+    label: "Новый TOP-шаблон",
+    category: "Static catalog-shop",
+    image: "assets/img/mini-shop/preview.svg",
+    gallery: ["assets/img/mini-shop/preview.svg"],
+    demoUrl: "demos/mini-shop/index.html",
+    price: "20 000 Kč без акции",
+    fixedPrice: true,
+    timeline: "5-10 дней",
+    short: "Каталог товаров, категории, корзина, избранное, checkout-заявка на email, мобильная версия и простая admin-local/JSON editor.",
+    forWhom: "Для малого магазина, локального продавца, шоурума или бизнеса, которому нужен стартовый mini e-shop без backend, онлайн-оплаты и складского учёта.",
+    features: ["Каталог товаров", "Категории", "Корзина", "Wishlist", "Email-заявка", "Admin-local JSON editor"],
+    includes: ["Адаптация под бренд", "До 20-30 стартовых товаров", "До 6-8 категорий", "Checkout-заявка на email", "Legal pages placeholders", "Инструкция README"]
+  },
+  {
     id: "bakery-cafe",
     group: "template",
     title: "Bakery / Cafe Website Demo",
@@ -215,9 +232,9 @@ siteCategories.forEach((category) => {
     price: category.price,
     timeline: category.timeline,
     short: category.description,
-    forWhom: `Для направления: ${category.title}. Demo-шаблон можно адаптировать под реальный бизнес, заменить фото, услуги, цены, контакты и форму заявки.`,
+    forWhom: category.fixedPrice ? "Для малого магазина, локального продавца, шоурума или бизнеса, которому нужен стартовый catalog-shop без backend, оплат и складского учёта." : `Для направления: ${category.title}. Demo-шаблон можно адаптировать под реальный бизнес, заменить фото, услуги, цены, контакты и форму заявки.`,
     features: category.features,
-    includes: ["Адаптация под бренд", "Замена текстов/фото/контактов", "Форма заявки на почту", "Кнопки Telegram/Facebook", "Подготовка к публикации"]
+    includes: category.includes || ["Адаптация под бренд", "Замена текстов/фото/контактов", "Форма заявки на почту", "Кнопки Telegram/Facebook", "Подготовка к публикации"]
   });
   projectIds.add(category.id);
 });
@@ -457,7 +474,7 @@ function saleMetadata(sourceCta = "sale_cta") {
 
 function withSalePayload(payload = {}, sourceCta = "sale_cta") {
   const data = typeof payload === "string" ? { title: payload } : { ...(payload || {}) };
-  if (!isSaleActive()) return data;
+  if (!isSaleActive() || data.fixedPrice || data.noSale) return data;
   return {
     ...data,
     sale: true,
@@ -635,6 +652,7 @@ function buildDetailsModal(project) {
     .map((src) => `<img src="${src}" alt="${project.title} screenshot">`)
     .join("");
   const saleActive = isSaleActive();
+  const fixedProject = Boolean(project.fixedPrice);
 
   return `
     <div class="modal-header">
@@ -650,10 +668,10 @@ function buildDetailsModal(project) {
         <h3>Ключевые фишки</h3>
         <ul>${featureList(project.features)}</ul>
         <div class="modal-meta stacked">
-          ${saleActive ? `<span>по акции от 5 000 Kč / ≈200 €</span><span>обычно от 10 000 Kč / ≈400 €</span>` : `<span>от 10 000 Kč / ≈400 €</span>`}
+          ${fixedProject ? `<span>${project.price}</span>` : (saleActive ? `<span>по акции от 5 000 Kč / ≈200 €</span><span>обычно от 10 000 Kč / ≈400 €</span>` : `<span>${project.price || "от 10 000 Kč / ≈400 €"}</span>`)}
           <span>${project.timeline}</span>
         </div>
-        <button class="btn primary" type="button" data-lead-project="${project.id}" data-sale-source="project_detail_sale">${saleActive ? "Хочу такой сайт по акции" : "Хочу такой сайт"}</button>
+        <button class="btn primary" type="button" data-lead-project="${project.id}" data-sale-source="project_detail_sale">${saleActive && !fixedProject ? "Хочу такой сайт по акции" : "Хочу такой сайт"}</button>
       </div>
     </div>`;
 }
@@ -835,7 +853,8 @@ function buildCategoryModal(category) {
       ${renderCategoryVisual(category, false)}
       <div>
         <div class="modal-meta stacked">
-          ${saleActive ? `<span>по акции от 5 000 Kč / ≈200 €</span><span>обычно от 10 000 Kč / ≈400 €</span>` : `<span>от 10 000 Kč / ≈400 €</span>`}
+          <span>${categoryPriceLabel(category, saleActive)}</span>
+          ${saleActive && !category.fixedPrice ? `<span>обычно от 10 000 Kč / ≈400 €</span>` : ""}
           <span>${category.timeline}</span>
           <span>${category.badge}</span>
         </div>
@@ -843,7 +862,7 @@ function buildCategoryModal(category) {
         <ul>${featureList(category.features)}</ul>
         <div class="modal-actions-row">
           ${category.demoUrl ? `<a class="btn dark" href="${category.demoUrl}">Посмотреть шаблон</a>` : ""}
-          <button class="btn primary" type="button" data-lead-category="${category.id}" data-sale-source="category_detail_sale">${saleActive ? "Заказать со скидкой -50%" : "Заказать похожий"}</button>
+          <button class="btn primary" type="button" data-lead-category="${category.id}" data-sale-source="category_detail_sale">${saleActive && !category.fixedPrice ? "Заказать со скидкой -50%" : "Заказать похожий"}</button>
         </div>
       </div>
     </div>`;
@@ -851,7 +870,15 @@ function buildCategoryModal(category) {
 
 function bindModalActions() {
   modalContent.querySelectorAll("[data-lead-project]").forEach((button) => {
-    button.addEventListener("click", () => openSaleLead(projects.find((item) => item.id === button.dataset.leadProject), button.dataset.saleSource || "project_modal_sale"));
+    button.addEventListener("click", () => {
+      const project = projects.find((item) => item.id === button.dataset.leadProject) || {};
+      openSaleLead({
+        ...project,
+        selectedPackage: project.fixedPrice ? "Mini e-shop START" : project.selectedPackage,
+        packagePrice: project.fixedPrice ? project.price : project.packagePrice,
+        regularPrice: project.fixedPrice ? project.price : project.regularPrice
+      }, button.dataset.saleSource || "project_modal_sale");
+    });
   });
   modalContent.querySelectorAll("[data-lead-plan]").forEach((button) => {
     button.addEventListener("click", () => openSaleLead(button.dataset.leadPlan, button.dataset.saleSource || "plan_modal_sale"));
@@ -865,12 +892,15 @@ function bindModalActions() {
   });
   modalContent.querySelectorAll("[data-lead-category]").forEach((button) => {
     const startPlan = pricingPlans.find((item) => item.key === "Start");
-    button.addEventListener("click", () => openSaleLead({
-      ...(siteCategories.find((item) => item.id === button.dataset.leadCategory) || {}),
-      selectedPackage: "Start",
-      packagePrice: planDisplayPrice(startPlan),
-      regularPrice: isSaleActive() ? startPlan.price : ""
-    }, button.dataset.saleSource || "category_modal_sale"));
+    button.addEventListener("click", () => {
+      const category = siteCategories.find((item) => item.id === button.dataset.leadCategory) || {};
+      openSaleLead({
+        ...category,
+        selectedPackage: "Start",
+        packagePrice: category.fixedPrice ? category.price : planDisplayPrice(startPlan),
+        regularPrice: category.fixedPrice ? category.price : (isSaleActive() ? startPlan.price : "")
+      }, button.dataset.saleSource || "category_modal_sale");
+    });
   });
   modalContent.querySelectorAll("[data-open-lead]").forEach((button) => {
     button.addEventListener("click", () => openModal("lead", packagePayloadFromButton(button)));
@@ -987,21 +1017,24 @@ function bindModalActions() {
 function packagePayloadFromButton(button) {
   const saleActive = isSaleActive();
   const startPlan = pricingPlans.find((item) => item.key === "Start");
+  const isFixedNoSale = button?.dataset?.noSale === "true";
   if (!button?.dataset?.package) {
-    return button?.dataset?.saleSource ? withSalePayload({
+    return button?.dataset?.saleSource && !isFixedNoSale ? withSalePayload({
       selectedPackage: "Start",
       packagePrice: planDisplayPrice(startPlan, saleActive),
       regularPrice: saleActive ? startPlan.price : ""
     }, button.dataset.saleSource) : "";
   }
   const plan = pricingPlans.find((item) => item.key === button.dataset.package);
-  const isSale = saleActive && Boolean(button.dataset.saleSource || button.dataset.regularPrice);
+  const isSale = !isFixedNoSale && saleActive && Boolean(button.dataset.saleSource || button.dataset.regularPrice);
   return {
     kind: "package",
     template: button.dataset.template || "",
     package: button.dataset.package,
     price: plan ? planDisplayPrice(plan, saleActive) : button.dataset.packagePrice || "",
     regularPrice: isSale ? (button.dataset.regularPrice || plan?.price || "") : "",
+    fixedPrice: isFixedNoSale,
+    noSale: isFixedNoSale,
     ...(isSale ? saleMetadata(button.dataset.saleSource || "package_button_sale") : {})
   };
 }
@@ -1035,6 +1068,11 @@ function renderCategoryVisual(category, lazy = true) {
     </div>`;
 }
 
+function categoryPriceLabel(category, saleActive = isSaleActive()) {
+  if (category.fixedPrice) return category.price;
+  return saleActive ? "по акции от 5 000 Kč / ≈200 €" : (category.price || "от 10 000 Kč / ≈400 €");
+}
+
 function renderCategories(filter = "all") {
   if (!categoryGrid) return;
   const saleActive = isSaleActive();
@@ -1047,30 +1085,33 @@ function renderCategories(filter = "all") {
         <div class="category-labels">
           <span>${category.badge}</span>
           <span>${category.status}</span>
-          ${saleActive ? `<span class="sale-card-badge">-50% сегодня</span>` : ""}
+          ${saleActive && !category.fixedPrice ? `<span class="sale-card-badge">-50% сегодня</span>` : ""}
         </div>
         <h3>${category.title}</h3>
         <p>${category.description}</p>
         <div class="project-meta">
-          <span>${saleActive ? "по акции от 5 000 Kč / ≈200 €" : "от 10 000 Kč / ≈400 €"}</span>
+          <span>${categoryPriceLabel(category, saleActive)}</span>
           <span>${category.timeline}</span>
         </div>
         <ul>${featureList(category.features.slice(0, 4))}</ul>
         <div class="category-actions">
           ${category.demoUrl ? `<a class="btn dark" href="${category.demoUrl}">Посмотреть шаблон</a>` : ""}
-          <button class="btn primary" type="button" data-order-category="${category.id}">${saleActive ? "Заказать со скидкой -50%" : "Заказать похожий"}</button>
+          <button class="btn primary" type="button" data-order-category="${category.id}">${saleActive && !category.fixedPrice ? "Заказать со скидкой -50%" : "Заказать похожий"}</button>
           <button class="btn secondary" type="button" data-category-details="${category.id}">Подробнее</button>
         </div>
       </div>
     </article>
   `).join("");
   categoryGrid.querySelectorAll("[data-order-category]").forEach((button) => {
-    button.addEventListener("click", () => openSaleLead({
-      ...(siteCategories.find((item) => item.id === button.dataset.orderCategory) || {}),
-      selectedPackage: "Start",
-      packagePrice: planDisplayPrice(startPlan, isSaleActive()),
-      regularPrice: isSaleActive() ? startPlan.price : ""
-    }, "category_card_sale_button"));
+    button.addEventListener("click", () => {
+      const category = siteCategories.find((item) => item.id === button.dataset.orderCategory) || {};
+      openSaleLead({
+        ...category,
+        selectedPackage: "Start",
+        packagePrice: category.fixedPrice ? category.price : planDisplayPrice(startPlan, isSaleActive()),
+        regularPrice: category.fixedPrice ? category.price : (isSaleActive() ? startPlan.price : "")
+      }, "category_card_sale_button");
+    });
   });
   categoryGrid.querySelectorAll("[data-category-details]").forEach((button) => {
     button.addEventListener("click", () => openModal("category", siteCategories.find((item) => item.id === button.dataset.categoryDetails)));
@@ -1112,11 +1153,11 @@ function renderProjects(filter = "all") {
       <img src="${project.image}" alt="${project.title} preview">
       <div class="project-body">
         <span class="project-label">${project.label}</span>
-        ${saleActive ? `<span class="sale-card-badge">-50% сегодня · от 5 000 Kč</span>` : ""}
+        ${saleActive && !project.fixedPrice ? `<span class="sale-card-badge">-50% сегодня · от 5 000 Kč</span>` : ""}
         <h3>${project.title}</h3>
         <p>${project.short}</p>
         <div class="project-meta">
-          <span>${saleActive ? "по акции от 5 000 Kč / ≈200 €" : "от 10 000 Kč / ≈400 €"}</span>
+          <span>${project.fixedPrice ? project.price : (saleActive ? "по акции от 5 000 Kč / ≈200 €" : "от 10 000 Kč / ≈400 €")}</span>
           <span>${project.timeline}</span>
         </div>
         <ul>${featureList(project.features.slice(0, 3))}</ul>
@@ -1125,7 +1166,7 @@ function renderProjects(filter = "all") {
             ? `<a href="${project.demoUrl}" data-demo-link="${project.id}">Посмотреть шаблон</a>`
             : `<button type="button" data-preview="${project.id}">Посмотреть проект</button>`}
           <button type="button" data-details="${project.id}">Подробнее</button>
-          <button type="button" data-order="${project.id}">${saleActive ? "Заказать со скидкой -50%" : "Заказать похожий"}</button>
+          <button type="button" data-order="${project.id}">${saleActive && !project.fixedPrice ? "Заказать со скидкой -50%" : "Заказать похожий"}</button>
         </div>
       </div>
     </article>
@@ -1138,12 +1179,15 @@ function renderProjects(filter = "all") {
     button.addEventListener("click", () => openModal("details", projects.find((item) => item.id === button.dataset.details)));
   });
   projectGrid.querySelectorAll("[data-order]").forEach((button) => {
-    button.addEventListener("click", () => openSaleLead({
-      ...(projects.find((item) => item.id === button.dataset.order) || {}),
-      selectedPackage: "Start",
-      packagePrice: planDisplayPrice(startPlan, isSaleActive()),
-      regularPrice: isSaleActive() ? startPlan.price : ""
-    }, "project_card_sale_button"));
+    button.addEventListener("click", () => {
+      const project = projects.find((item) => item.id === button.dataset.order) || {};
+      openSaleLead({
+        ...project,
+        selectedPackage: "Start",
+        packagePrice: project.fixedPrice ? project.price : planDisplayPrice(startPlan, isSaleActive()),
+        regularPrice: project.fixedPrice ? project.price : (isSaleActive() ? startPlan.price : "")
+      }, "project_card_sale_button");
+    });
   });
   projectGrid.querySelectorAll("[data-card]").forEach((card) => {
     card.addEventListener("click", (event) => {

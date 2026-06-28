@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ZEVO Shop — admin доступ отключён в public demo</title>
+  <meta name="description" content="Public warning page: admin editor перенесён в admin-local и не является защищённой backend-админкой.">
+  <meta name="theme-color" content="#0f1218">
+  <link rel="icon" href="assets/img/ui/product-placeholder.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script defer src="assets/js/products.js"></script>
+  <script defer src="assets/js/cart.js"></script>
+  <style>
+    .admin-disabled .admin-layout{display:none}
+    .admin-disabled-page{min-height:100dvh;display:grid;place-items:center;padding:24px;background:radial-gradient(circle at top left,rgba(22,200,255,.2),transparent 34rem),#0f1218;color:#f6f8fb}
+    .admin-disabled-card{display:grid;gap:16px;width:min(760px,100%);padding:24px;border:1px solid rgba(255,255,255,.14);border-radius:8px;background:rgba(27,33,48,.9);box-shadow:0 18px 60px rgba(0,0,0,.36)}
+    .admin-disabled-card p{margin:0;color:#aab4c5;line-height:1.6}
+    .admin-disabled-card h1{margin:0;font-size:clamp(28px,5vw,44px)}
+    .admin-disabled-actions{display:flex;flex-wrap:wrap;gap:10px}
+  </style>
+</head>
+<body class="admin-body admin-disabled">
+  <main class="admin-disabled-page">
+    <section class="admin-disabled-card">
+      <a class="brand" href="index.html" aria-label="ZEVO Shop">
+        <span class="brand-mark">Z</span>
+        <span>ZEVO</span><span>Shop</span>
+      </a>
+      <p class="eyebrow">Demo admin / není veřejná administrace</p>
+      <h1>Public admin není součástí obchodu</h1>
+      <p>Tato stránka záměrně neobsahuje funkční veřejnou administraci. Static e-shop nemá bezpečný backend login; lokální editor je pouze demo nástroj pro vlastníka.</p>
+      <p>Pro úpravu produktů použijte <b>admin-local/</b>: změny se uloží v localStorage, poté exportujete products.json a ručně nahradíte soubor v projektu nebo na hostingu.</p>
+      <div class="admin-disabled-actions">
+        <a class="btn btn-primary" href="admin-local/">Otevřít admin-local</a>
+        <a class="btn btn-ghost" href="index.html">Zpět do obchodu</a>
+      </div>
+    </section>
+  </main>
+  <div class="admin-layout">
+    <aside class="admin-sidebar">
+      <a class="brand" href="index.html" aria-label="ZEVO Shop">
+        <span class="brand-mark">Z</span>
+        <span>ZEVO</span><span>Admin</span>
+      </a>
+      <p class="admin-note">Demo admin / JSON editor. Не є захищеною backend-адмінкою. Для реального клієнта потрібен окремий backend або CMS.</p>
+      <button class="admin-tab active" type="button" data-tab="dashboard">Dashboard</button>
+      <button class="admin-tab" type="button" data-tab="products">Products</button>
+      <button class="admin-tab" type="button" data-tab="categories">Categories</button>
+      <button class="admin-tab" type="button" data-tab="orders">Orders</button>
+      <button class="admin-tab" type="button" data-tab="import">Export / Import</button>
+      <a class="admin-link" href="index.html">← До магазину</a>
+    </aside>
+
+    <main class="admin-main">
+      <section class="admin-panel active" id="tab-dashboard">
+        <p class="eyebrow">Overview</p>
+        <h1>Dashboard</h1>
+        <p>Швидкий стан demo-магазину в поточному браузері.</p>
+        <div class="stat-grid">
+          <div class="stat-card"><span>Products</span><b id="statProducts">0</b></div>
+          <div class="stat-card"><span>Categories</span><b id="statCategories">0</b></div>
+          <div class="stat-card"><span>Demo orders</span><b id="statOrders">0</b></div>
+          <div class="stat-card"><span>Cart local</span><b id="statCart">0</b></div>
+          <div class="stat-card"><span>Wishlist local</span><b id="statWishlist">0</b></div>
+        </div>
+        <div class="admin-card">
+          <h2>Останні demo-заявки</h2>
+          <div id="dashboardOrders"></div>
+        </div>
+      </section>
+
+      <section class="admin-panel" id="tab-products">
+        <p class="eyebrow">Products</p>
+        <h1>Товари</h1>
+        <p>Додайте або змініть товар. Зміни зберігаються у localStorage цього браузера.</p>
+        <div class="admin-card">
+          <form class="admin-form" id="productForm">
+            <input id="pId" type="hidden">
+            <label>Назва товару <input id="pName" required placeholder="Наприклад: Power Bank 20000 mAh"></label>
+            <label>Категорія <select id="pCategory"></select></label>
+            <label>Image URL / local path <input id="pImage" required placeholder="assets/img/products/example.jpg"></label>
+            <label>Ціна <input id="pPrice" type="number" min="0" step="1" value="0"></label>
+            <label>Стара ціна <input id="pOldPrice" type="number" min="0" step="1"></label>
+            <label>Знижка % <input id="pDiscount" type="number" min="0" max="95" step="1"></label>
+            <label>Бейдж
+              <select id="pBadge">
+                <option value="">Без бейджа</option>
+                <option value="hit">Хіт</option>
+                <option value="sale">Акція</option>
+                <option value="new">Новинка</option>
+                <option value="top">Топ</option>
+                <option value="demo">Demo</option>
+              </select>
+            </label>
+            <label>Rating <input id="pRating" type="number" min="0" max="5" step="0.1" value="4.7"></label>
+            <label>Reviews <input id="pReviews" type="number" min="0" step="1" value="0"></label>
+            <label>Stock <input id="pStock" placeholder="Є в наявності"></label>
+            <label>Promo <input id="pPromo" placeholder="Короткий промо-рядок"></label>
+            <label class="wide">Description <textarea id="pDescription" placeholder="Короткий опис товару для product detail"></textarea></label>
+            <div class="wide">
+              <strong>Sections where product appears</strong>
+              <div class="section-checks">
+                <label><input class="section-check" type="checkbox" value="day"> Товар дня</label>
+                <label><input class="section-check" type="checkbox" value="best" checked> Найкращі</label>
+                <label><input class="section-check" type="checkbox" value="top"> Топ</label>
+                <label><input class="section-check" type="checkbox" value="now"> Зараз купують</label>
+                <label><input class="section-check" type="checkbox" value="new"> Новинки</label>
+                <label><input class="section-check" type="checkbox" value="home"> Для дому</label>
+                <label><input class="section-check" type="checkbox" value="phones"> Смартфони</label>
+                <label><input class="section-check" type="checkbox" value="gaming"> Gaming</label>
+                <label><input class="section-check" type="checkbox" value="sport"> Sport</label>
+                <label><input class="section-check" type="checkbox" value="pets"> Pets</label>
+              </div>
+            </div>
+            <div class="wide">
+              <strong>Image preview</strong>
+              <img class="image-preview" id="imagePreview" src="assets/img/ui/product-placeholder.svg" alt="Preview">
+            </div>
+            <div class="admin-form-actions wide">
+              <button class="btn btn-cart" id="productSubmit" type="submit">+ Додати товар</button>
+              <button class="btn btn-ghost" id="productReset" type="button">Скинути форму</button>
+            </div>
+          </form>
+          <p class="admin-status" id="adminStatus">Demo admin / JSON editor. Не є захищеною backend-адмінкою.</p>
+        </div>
+        <div class="admin-list" id="adminProductsList"></div>
+      </section>
+
+      <section class="admin-panel" id="tab-categories">
+        <p class="eyebrow">Categories</p>
+        <h1>Категорії</h1>
+        <p>У цьому MVP категорії можна ховати/показувати. Повне редагування JSON доступне у вкладці Export / Import.</p>
+        <div class="admin-list" id="adminCategoriesList"></div>
+      </section>
+
+      <section class="admin-panel" id="tab-orders">
+        <p class="eyebrow">Orders</p>
+        <h1>Demo orders</h1>
+        <p>Заявки зберігаються локально після checkout. Це показує flow клієнту, але не є CRM.</p>
+        <div class="admin-form-actions">
+          <button class="btn btn-ghost" id="clearDemoOrders" type="button">Очистити demo orders</button>
+        </div>
+        <div class="admin-list" id="adminOrdersList"></div>
+      </section>
+
+      <section class="admin-panel" id="tab-import">
+        <p class="eyebrow">Export / Import</p>
+        <h1>JSON editor</h1>
+        <p>Export створює локальний файл. Import замінює товари у localStorage. Файл `assets/data/products.json` не змінюється автоматично.</p>
+        <div class="admin-card admin-import">
+          <div class="admin-form-actions">
+            <button class="btn btn-cart" id="exportProducts" type="button">Export products JSON</button>
+            <button class="btn btn-ghost" id="resetProducts" type="button">Reset products from JSON</button>
+            <button class="btn btn-ghost" id="resetCategories" type="button">Reset categories from JSON</button>
+          </div>
+          <textarea id="importText" placeholder="Вставте JSON масив товарів сюди"></textarea>
+          <div class="admin-form-actions">
+            <button class="btn btn-primary" id="importProducts" type="button">Import products JSON</button>
+          </div>
+          <p class="admin-status" id="importStatus">Після імпорту перевірте магазин на мобільному.</p>
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>

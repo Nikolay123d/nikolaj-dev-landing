@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ZEVO Shop — товар demo</title>
+  <meta name="description" content="Demo product detail для статичного міні-магазину ZEVO Shop.">
+  <meta property="og:title" content="ZEVO Shop — товар demo">
+  <meta property="og:description" content="Картка товару, кошик, wishlist і заявка без backend.">
+  <meta property="og:image" content="assets/img/banners/banner-shop.jpg">
+  <meta name="theme-color" content="#0f1218">
+  <link rel="icon" href="assets/img/ui/product-placeholder.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script defer src="assets/js/products.js"></script>
+  <script defer src="assets/js/cart.js"></script>
+  <script defer src="assets/js/app.js"></script>
+</head>
+<body data-page="product">
+  <header class="site-header">
+    <a class="brand" id="brandLogo" href="index.html" aria-label="ZEVO Shop">
+      <span class="brand-mark">Z</span>
+      <span>ZEVO</span><span>Shop</span>
+    </a>
+    <label class="search" aria-label="Пошук товарів">
+      <span class="search-icon">⌕</span>
+      <input id="globalSearch" type="search" placeholder="Поверніться в каталог для пошуку...">
+      <span class="search-kbd">/</span>
+    </label>
+    <nav class="header-actions" aria-label="Швидкі дії">
+      <a class="header-icon" href="index.html#catalog" aria-label="Каталог">☰</a>
+      <button class="header-icon" type="button" data-action="open-cart" aria-label="Кошик">
+        🛒 <span class="badge-count cartCount" hidden>0</span>
+      </button>
+    </nav>
+  </header>
+
+  <main class="page" id="productDetail"></main>
+
+  <footer class="footer">
+    <div class="footer-grid">
+      <div>
+        <h3>ZEVO Shop</h3>
+        <p>Demo product detail. Дані товару, фото, ціни і юридичні умови потрібно замінити під реальний бізнес.</p>
+      </div>
+      <div>
+        <h4>Навігація</h4>
+        <a href="index.html#catalog">Каталог</a>
+        <a href="index.html#offers">Акції</a>
+      </div>
+      <div>
+        <h4>Для zákazníka</h4>
+        <a href="doprava-a-platba.html">Doprava a platba</a>
+        <a href="odstoupeni-od-smlouvy.html">Odstoupení od smlouvy</a>
+        <a href="reklamacni-rad.html">Reklamační řád</a>
+      </div>
+      <div>
+        <h4>Legal</h4>
+        <a href="tel:+380000000000">+380 00 000 00 00</a>
+        <a href="mailto:demo@zevo.shop">demo@zevo.shop</a>
+        <a href="obchodni-podminky.html">Obchodní podmínky</a>
+        <a href="ochrana-osobnich-udaju.html">Ochrana osobních údajů</a>
+      </div>
+    </div>
+  </footer>
+
+  <nav class="bottom-nav" aria-label="Mobile navigation">
+    <a href="index.html"><b>⌂</b>Головна</a>
+    <a href="index.html#catalog"><b>☰</b>Каталог</a>
+    <a href="index.html#offers"><b>%</b>Акції</a>
+    <button type="button" data-action="open-cart"><b>🛒</b>Кошик <span class="badge-count cartCount" hidden>0</span></button>
+  </nav>
+
+  <aside class="drawer" id="cartDrawer" aria-hidden="true">
+    <div class="drawer-panel">
+      <div class="drawer-head">
+        <h2>Кошик</h2>
+        <button type="button" data-action="close-cart" aria-label="Закрити кошик">×</button>
+      </div>
+      <div class="cart-content" id="cartContent"></div>
+      <div class="cart-footer" id="cartFooter">
+        <div class="cart-total"><span>Разом</span><strong id="cartTotal">0 ₴</strong></div>
+        <div class="cart-buttons">
+          <button class="btn btn-ghost" type="button" data-action="clear-cart">Очистити</button>
+          <button class="btn btn-cart" type="button" data-action="checkout">Pokračovat k objednávce</button>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <section class="modal" id="checkoutModal" aria-hidden="true">
+    <div class="modal-box">
+      <div class="modal-head">
+        <div>
+          <p class="eyebrow">Demo checkout</p>
+          <h2>Заявка на замовлення</h2>
+        </div>
+        <button type="button" data-action="close-checkout" aria-label="Закрити форму">×</button>
+      </div>
+      <div class="checkout-grid">
+        <form id="checkoutForm" class="form-grid" data-email-endpoint="" data-email-provider="placeholder">
+          <input type="hidden" name="subject" value="ZEVO Shop demo order">
+          <input type="hidden" name="order_summary" id="orderSummaryField">
+          <input type="hidden" name="order_items_json" id="orderItemsJsonField">
+          <input type="hidden" name="order_total" id="orderTotalField">
+          <label>Ім'я <input name="name" autocomplete="name" required></label>
+          <label>Телефон <input name="phone" autocomplete="tel" required></label>
+          <label>Email <input name="email" type="email" autocomplete="email"></label>
+          <label>Місто <input name="city" autocomplete="address-level2" required></label>
+          <label>Доставка
+            <select name="delivery">
+              <option>Самовивіз demo</option>
+              <option>Нова пошта demo</option>
+              <option>Кур'єр demo</option>
+            </select>
+          </label>
+          <label>Месенджер <input name="messenger" placeholder="Telegram / WhatsApp"></label>
+          <label class="wide">Коментар <textarea name="comment" placeholder="Питання, адреса, зручний час дзвінка"></textarea></label>
+          <p class="form-status wide" id="formStatus">Demo-safe режим: endpoint для email ще не вказано. Після вставки Web3Forms/Formspree/FormSubmit endpoint заявка буде надсилатися власнику магазину.</p>
+          <button class="btn btn-cart wide" type="submit">Objednávka zavazující k platbě</button>
+        </form>
+        <aside>
+          <h3>Обрані товари</h3>
+          <div class="checkout-summary" id="checkoutSummary"></div>
+          <div class="demo-note">Integration point готовий: вставте endpoint у data-email-endpoint форми. Без endpoint заявка зберігається тільки локально.</div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <div class="toast-root" id="toastRoot" aria-live="polite"></div>
+</body>
+</html>

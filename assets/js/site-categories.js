@@ -1,5 +1,34 @@
 window.siteCategories = [
   {
+    id: "mini-shop",
+    filter: "ecommerce",
+    title: "Интернет-магазин / mini e-shop",
+    badge: "Новый TOP-шаблон",
+    status: "Static catalog-shop",
+    description: "Каталог товаров, категории, корзина, избранное, заявка на email, мобильная версия и простая локальная admin-local/JSON editor для обновления товаров.",
+    price: "20 000 Kč без акции",
+    fixedPrice: true,
+    timeline: "5-10 дней",
+    image: "assets/img/mini-shop/preview.svg",
+    features: ["Каталог", "Корзина", "Wishlist", "Email-заявка"],
+    includes: [
+      "Адаптация под бренд",
+      "До 20-30 стартовых товаров",
+      "До 6-8 категорий",
+      "Checkout-заявка на email",
+      "Legal pages placeholders",
+      "Admin-local JSON editor"
+    ],
+    excludes: [
+      "Онлайн-оплата",
+      "Складской учет",
+      "Личный кабинет",
+      "Защищённая backend-админка",
+      "CRM и API доставок"
+    ],
+    demoUrl: "demos/mini-shop/index.html"
+  },
+  {
     id: "bakery-cafe",
     filter: "restaurants",
     title: "Сайт для пекарни / кафе",

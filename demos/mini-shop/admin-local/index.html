@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <base href="../">
+  <title>ZEVO Shop — admin-local / JSON editor</title>
+  <meta name="description" content="Admin-local demo tool для ZEVO Shop: локальне редагування товарів, export/import JSON і demo orders.">
+  <meta name="theme-color" content="#0f1218">
+  <link rel="icon" href="assets/img/ui/product-placeholder.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script defer src="assets/js/products.js"></script>
+  <script defer src="assets/js/cart.js"></script>
+  <script defer src="assets/js/admin.js"></script>
+</head>
+<body class="admin-body">
+  <div class="admin-layout">
+    <aside class="admin-sidebar">
+      <a class="brand" href="index.html" aria-label="ZEVO Shop">
+        <span class="brand-mark">Z</span>
+        <span>ZEVO</span><span>Admin Local</span>
+      </a>
+      <p class="admin-note">Demo admin / local JSON editor. Not a secure backend admin. Зміни зберігаються тільки у localStorage цього браузера; для публічного сайту експортуйте products.json і замініть файл на хостингу.</p>
+      <button class="admin-tab active" type="button" data-tab="dashboard">Dashboard</button>
+      <button class="admin-tab" type="button" data-tab="products">Products</button>
+      <button class="admin-tab" type="button" data-tab="categories">Categories</button>
+      <button class="admin-tab" type="button" data-tab="orders">Orders</button>
+      <button class="admin-tab" type="button" data-tab="import">Export / Import</button>
+      <a class="admin-link" href="index.html">← До магазину</a>
+    </aside>
+
+    <main class="admin-main">
+      <section class="admin-panel active" id="tab-dashboard">
+        <p class="eyebrow">Overview</p>
+        <h1>Dashboard</h1>
+        <p>Локальний інструмент власника магазину. Це не public admin і не production security.</p>
+        <div class="stat-grid">
+          <div class="stat-card"><span>Products</span><b id="statProducts">0</b></div>
+          <div class="stat-card"><span>Categories</span><b id="statCategories">0</b></div>
+          <div class="stat-card"><span>Demo orders</span><b id="statOrders">0</b></div>
+          <div class="stat-card"><span>Cart local</span><b id="statCart">0</b></div>
+          <div class="stat-card"><span>Wishlist local</span><b id="statWishlist">0</b></div>
+        </div>
+        <div class="admin-card">
+          <h2>Останні demo-заявки</h2>
+          <div id="dashboardOrders"></div>
+        </div>
+      </section>
+
+      <section class="admin-panel" id="tab-products">
+        <p class="eyebrow">Products</p>
+        <h1>Товари</h1>
+        <p>Додайте, видаліть або змініть товар. Зміни зберігаються у localStorage цього браузера, потім експортуються в products.json.</p>
+        <div class="admin-card">
+          <form class="admin-form" id="productForm">
+            <input id="pId" type="hidden">
+            <label>Назва товару <input id="pName" required placeholder="Наприклад: Power Bank 20000 mAh"></label>
+            <label>Категорія <select id="pCategory"></select></label>
+            <label>Image URL / local path <input id="pImage" required placeholder="assets/img/products/example.jpg"></label>
+            <label>Ціна <input id="pPrice" type="number" min="0" step="1" value="0"></label>
+            <label>Стара ціна <input id="pOldPrice" type="number" min="0" step="1"></label>
+            <label>Знижка % <input id="pDiscount" type="number" min="0" max="95" step="1"></label>
+            <label>Бейдж
+              <select id="pBadge">
+                <option value="">Без бейджа</option>
+                <option value="hit">Хіт</option>
+                <option value="sale">Акція</option>
+                <option value="new">Новинка</option>
+                <option value="top">Топ</option>
+                <option value="demo">Demo</option>
+              </select>
+            </label>
+            <label>Rating <input id="pRating" type="number" min="0" max="5" step="0.1" value="4.7"></label>
+            <label>Reviews <input id="pReviews" type="number" min="0" step="1" value="0"></label>
+            <label>Stock <input id="pStock" placeholder="Є в наявності"></label>
+            <label>Promo <input id="pPromo" placeholder="Короткий промо-рядок"></label>
+            <label class="wide">Description <textarea id="pDescription" placeholder="Короткий опис товару для product detail"></textarea></label>
+            <div class="wide">
+              <strong>Sections where product appears</strong>
+              <div class="section-checks">
+                <label><input class="section-check" type="checkbox" value="day"> Товар дня</label>
+                <label><input class="section-check" type="checkbox" value="best" checked> Найкращі</label>
+                <label><input class="section-check" type="checkbox" value="top"> Топ</label>
+                <label><input class="section-check" type="checkbox" value="now"> Зараз купують</label>
+                <label><input class="section-check" type="checkbox" value="new"> Новинки</label>
+                <label><input class="section-check" type="checkbox" value="home"> Для дому</label>
+                <label><input class="section-check" type="checkbox" value="phones"> Смартфони</label>
+                <label><input class="section-check" type="checkbox" value="gaming"> Gaming</label>
+                <label><input class="section-check" type="checkbox" value="sport"> Sport</label>
+                <label><input class="section-check" type="checkbox" value="pets"> Pets</label>
+              </div>
+            </div>
+            <div class="wide">
+              <strong>Image preview</strong>
+              <img class="image-preview" id="imagePreview" src="assets/img/ui/product-placeholder.svg" alt="Preview">
+            </div>
+            <div class="admin-form-actions wide">
+              <button class="btn btn-cart" id="productSubmit" type="submit">+ Додати товар</button>
+              <button class="btn btn-ghost" id="productReset" type="button">Скинути форму</button>
+            </div>
+          </form>
+          <p class="admin-status" id="adminStatus">Admin-local / JSON editor. Не є захищеною backend-адмінкою.</p>
+        </div>
+        <div class="admin-list" id="adminProductsList"></div>
+      </section>
+
+      <section class="admin-panel" id="tab-categories">
+        <p class="eyebrow">Categories</p>
+        <h1>Категорії</h1>
+        <p>У цьому MVP категорії можна ховати/показувати. Повне редагування JSON доступне у вкладці Export / Import.</p>
+        <div class="admin-list" id="adminCategoriesList"></div>
+      </section>
+
+      <section class="admin-panel" id="tab-orders">
+        <p class="eyebrow">Orders</p>
+        <h1>Demo orders</h1>
+        <p>Заявки зберігаються локально після checkout. Це показує flow клієнту, але не є CRM.</p>
+        <div class="admin-form-actions">
+          <button class="btn btn-ghost" id="clearDemoOrders" type="button">Очистити demo orders</button>
+        </div>
+        <div class="admin-list" id="adminOrdersList"></div>
+      </section>
+
+      <section class="admin-panel" id="tab-import">
+        <p class="eyebrow">Export / Import</p>
+        <h1>JSON editor</h1>
+        <p>Export створює локальний файл. Import замінює товари у localStorage. Файл `assets/data/products.json` не змінюється автоматично: його потрібно замінити вручну у проекті або на хостингу.</p>
+        <div class="admin-card admin-import">
+          <div class="admin-form-actions">
+            <button class="btn btn-cart" id="exportProducts" type="button">Export products JSON</button>
+            <button class="btn btn-ghost" id="resetProducts" type="button">Reset products from JSON</button>
+            <button class="btn btn-ghost" id="resetCategories" type="button">Reset categories from JSON</button>
+          </div>
+          <textarea id="importText" placeholder="Вставте JSON масив товарів сюди"></textarea>
+          <div class="admin-form-actions">
+            <button class="btn btn-primary" id="importProducts" type="button">Import products JSON</button>
+          </div>
+          <p class="admin-status" id="importStatus">Після імпорту перевірте магазин на мобільному.</p>
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>

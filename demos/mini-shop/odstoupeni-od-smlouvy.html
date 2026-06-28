@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Odstoupení od smlouvy — ZEVO Shop demo</title>
+  <meta name="description" content="Poučení a demo formulář pro odstoupení od smlouvy v českém e-shopu.">
+  <meta name="theme-color" content="#0f1218">
+  <link rel="icon" href="assets/img/ui/product-placeholder.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script defer src="assets/js/legal.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html"><span class="brand-mark">Z</span><span>ZEVO</span><span>Shop</span></a>
+    <nav class="header-actions"><a class="header-icon" href="index.html#catalog">☰</a><a class="header-icon" href="kontakt.html">☎</a></nav>
+  </header>
+  <main class="legal-shell">
+    <section class="legal-hero">
+      <p class="eyebrow">Legal placeholder</p>
+      <h1>Odstoupení od smlouvy</h1>
+      <p>Poučení, vzorový formulář a demo online funkce pro odstoupení. U ostrého e-shopu musí být formulář doručen provozovateli a zákazník musí obdržet potvrzení v textové podobě.</p>
+    </section>
+    <section class="legal-grid">
+      <div>
+        <article class="legal-card">
+          <h2>Poučení o právu na odstoupení</h2>
+          <p>Spotřebitel má u smluv uzavřených na dálku zpravidla právo odstoupit od smlouvy do 14 dnů bez udání důvodu. U zboží se lhůta obvykle počítá od převzetí zboží. Toto demo uvádí pouze základní šablonu a musí být upraveno podle konkrétního sortimentu.</p>
+        </article>
+        <article class="legal-card">
+          <h2>Adresa pro vrácení zboží</h2>
+          <p><span class="placeholder">[DOPLNIT ADRESU PRO VRÁCENÍ ZBOŽÍ]</span></p>
+          <p>Náklady na vrácení zboží: <span class="placeholder">[DOPLNIT, KDO HRADÍ ZPĚTNOU DOPRAVU]</span>.</p>
+          <p>Vrácení peněz: <span class="placeholder">[DOPLNIT LHŮTU A ZPŮSOB VRÁCENÍ PENĚZ]</span>.</p>
+        </article>
+        <article class="legal-card">
+          <h2>Možné výjimky</h2>
+          <p>Právo na odstoupení nemusí platit například pro zboží upravené podle přání zákazníka, zboží podléhající rychlé zkáze nebo zapečetěné hygienické zboží po porušení obalu. Konkrétní výjimky doplnit podle sortimentu: <span class="placeholder">[DOPLNIT VÝJIMKY]</span>.</p>
+        </article>
+        <article class="legal-card">
+          <h2>Vzorový formulář pro odstoupení od smlouvy</h2>
+          <p>Adresát: <span class="placeholder">[DOPLNIT PROVOZOVATELE A ADRESU]</span></p>
+          <p>Oznamuji, že tímto odstupuji od smlouvy o nákupu tohoto zboží: <span class="placeholder">[DOPLNIT ZBOŽÍ]</span>.</p>
+          <table>
+            <tr><th>Číslo objednávky</th><td>[DOPLNIT]</td></tr>
+            <tr><th>Datum objednání / převzetí</th><td>[DOPLNIT]</td></tr>
+            <tr><th>Jméno zákazníka</th><td>[DOPLNIT]</td></tr>
+            <tr><th>Adresa zákazníka</th><td>[DOPLNIT]</td></tr>
+            <tr><th>Bankovní účet pro vrácení peněz</th><td>[DOPLNIT, POKUD JE POTŘEBA]</td></tr>
+            <tr><th>Datum a podpis</th><td>[DOPLNIT]</td></tr>
+          </table>
+        </article>
+        <article class="legal-card" id="online-form">
+          <h2>Odstoupit od smlouvy</h2>
+          <p>Demo online funkce. V ostré verzi musí být napojena na e-mail / backend provozovatele a potvrdit přijetí zákazníkovi.</p>
+          <form class="legal-form" data-demo-form="withdrawal">
+            <label>Jméno a příjmení <input name="name" required></label>
+            <label>E-mail <input name="email" type="email" required></label>
+            <label>Telefon <input name="phone"></label>
+            <label>Číslo objednávky <input name="order" required></label>
+            <label class="wide">Zboží / zpráva <textarea name="message" required placeholder="Uveďte zboží, datum převzetí a případně číslo účtu pro vrácení peněz."></textarea></label>
+            <p class="form-status wide">Demo formulář zatím nic neodesílá mimo tento prohlížeč.</p>
+            <button class="btn btn-cart wide" type="submit">Odstoupit od smlouvy</button>
+          </form>
+        </article>
+        <article class="legal-card source-list">
+          <h2>Kontrolní zdroje</h2>
+          <ul>
+            <li><a href="https://coi.gov.cz/faq/4-odstoupeni-od-smlouvy-do-14-dnu-u-zbozi-4/" target="_blank" rel="noreferrer">ČOI — odstoupení do 14 dnů u zboží</a></li>
+            <li><a href="https://europa.eu/youreurope/citizens/consumers/shopping/returns/index_en.htm" target="_blank" rel="noreferrer">Your Europe — returns and right of withdrawal</a></li>
+          </ul>
+        </article>
+      </div>
+      <aside class="legal-nav">
+        <a href="#online-form">Odstoupit od smlouvy</a>
+        <a href="kontakt.html">Kontakt</a>
+        <a href="obchodni-podminky.html">Obchodní podmínky</a>
+        <a href="reklamacni-rad.html">Reklamační řád</a>
+        <a href="doprava-a-platba.html">Doprava a platba</a>
+      </aside>
+    </section>
+  </main>
+</body>
+</html>

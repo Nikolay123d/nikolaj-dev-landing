@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="560" viewBox="0 0 800 560" role="img" aria-label="ZEVO placeholder">
+  <rect width="800" height="560" fill="#f7f8fb"/>
+  <rect x="54" y="54" width="692" height="452" rx="18" fill="#dfe7f2"/>
+  <circle cx="224" cy="210" r="56" fill="#16c8ff"/>
+  <path d="M144 418l150-156 102 98 72-76 190 134H144z" fill="#22c55e"/>
+  <text x="400" y="474" text-anchor="middle" font-family="Arial, sans-serif" font-size="46" font-weight="800" fill="#111827">ZEVO</text>
+</svg>

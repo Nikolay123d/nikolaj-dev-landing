@@ -1,0 +1,82 @@
+[
+  {
+    "id": "phones",
+    "name": "Смартфони та гаджети",
+    "shortName": "Смартфони",
+    "icon": "📱",
+    "image": "assets/img/categories/smartphones.jpg",
+    "active": true
+  },
+  {
+    "id": "laptops",
+    "name": "Ноутбуки",
+    "shortName": "Ноутбуки",
+    "icon": "💻",
+    "image": "assets/img/categories/laptops.jpg",
+    "active": true
+  },
+  {
+    "id": "home",
+    "name": "Техніка для дому",
+    "shortName": "Для дому",
+    "icon": "🏠",
+    "image": "assets/img/categories/home-appliances.jpg",
+    "active": true
+  },
+  {
+    "id": "tv",
+    "name": "TV / Аудіо",
+    "shortName": "TV / Аудіо",
+    "icon": "🎧",
+    "image": "assets/img/categories/tv-audio.jpg",
+    "active": true
+  },
+  {
+    "id": "gaming",
+    "name": "Gaming",
+    "shortName": "Gaming",
+    "icon": "🎮",
+    "image": "assets/img/categories/gaming.jpg",
+    "active": true
+  },
+  {
+    "id": "beauty",
+    "name": "Краса та догляд",
+    "shortName": "Краса",
+    "icon": "✨",
+    "image": "assets/img/categories/beauty.jpg",
+    "active": true
+  },
+  {
+    "id": "kids",
+    "name": "Товари для дітей",
+    "shortName": "Дітям",
+    "icon": "🧸",
+    "image": "assets/img/categories/kids.jpg",
+    "active": true
+  },
+  {
+    "id": "sport",
+    "name": "Спорт і активність",
+    "shortName": "Спорт",
+    "icon": "🏃",
+    "image": "assets/img/categories/sport.jpg",
+    "active": true
+  },
+  {
+    "id": "auto",
+    "name": "Автотовари",
+    "shortName": "Авто",
+    "icon": "🚗",
+    "image": "assets/img/categories/auto.jpg",
+    "active": true
+  },
+  {
+    "id": "pets",
+    "name": "Товари для тварин",
+    "shortName": "Тварини",
+    "icon": "🐾",
+    "image": "assets/img/categories/pets.jpg",
+    "active": true
+  }
+]

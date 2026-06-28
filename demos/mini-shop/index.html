@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ZEVO Shop — міні інтернет-магазин demo</title>
+  <meta name="description" content="Демо міні-магазину: каталог товарів, кошик, списки бажань, заявки та мобільна версія без дорогого сервера.">
+  <meta property="og:title" content="ZEVO Shop — міні інтернет-магазин demo">
+  <meta property="og:description" content="Каталог товарів, кошик, wishlist, checkout-заявка та мобільна версія для малого бізнесу.">
+  <meta property="og:image" content="assets/img/banners/banner-shop.jpg">
+  <meta name="theme-color" content="#0f1218">
+  <link rel="icon" href="assets/img/ui/product-placeholder.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script defer src="assets/js/products.js"></script>
+  <script defer src="assets/js/cart.js"></script>
+  <script defer src="assets/js/app.js"></script>
+</head>
+<body data-page="home">
+  <header class="site-header">
+    <button class="brand" id="brandLogo" type="button" aria-label="ZEVO Shop">
+      <span class="brand-mark">Z</span>
+      <span>ZEVO</span><span>Shop</span>
+    </button>
+    <label class="search" aria-label="Пошук товарів">
+      <span class="search-icon">⌕</span>
+      <input id="globalSearch" type="search" placeholder="Знайти товар, бренд або категорію...">
+      <span class="search-kbd">/</span>
+    </label>
+    <nav class="header-actions" aria-label="Швидкі дії">
+      <button class="header-icon" type="button" data-action="scroll" data-target="catalog" aria-label="Каталог">☰</button>
+      <button class="header-icon" type="button" data-action="open-cart" aria-label="Кошик">
+        🛒 <span class="badge-count cartCount" hidden>0</span>
+      </button>
+    </nav>
+  </header>
+
+  <main class="page">
+    <section class="shop-start" id="top" aria-label="Головний екран ZEVO Shop">
+      <div class="shop-start-actions" aria-label="Швидкий вхід у магазин">
+        <button class="catalog-pill" type="button" data-action="scroll" data-target="catalog">
+          <span>☰</span>
+          <strong>Каталог товарів</strong>
+        </button>
+        <button class="quick-pill" type="button" data-action="scroll" data-target="offers">Акції</button>
+      </div>
+
+      <div class="promo-banners" aria-label="Промо магазину">
+        <a class="promo-banner promo-banner-main" href="#offers">
+          <img src="assets/img/banners/banner-sale.jpg" alt="Знижки тижня" loading="eager" decoding="async">
+          <span class="promo-banner-content">
+            <em>до -30%</em>
+            <strong>Знижки тижня</strong>
+            <span>Техніка, гаджети та товари для дому</span>
+          </span>
+        </a>
+        <a class="promo-banner" href="#phones-section">
+          <img src="assets/img/categories/smartphones.jpg" alt="Смартфони та гаджети" loading="eager" decoding="async">
+          <span class="promo-banner-content">
+            <em>підбірка</em>
+            <strong>Смартфони</strong>
+            <span>Популярні моделі й аксесуари</span>
+          </span>
+        </a>
+        <a class="promo-banner" href="#day">
+          <img src="assets/img/banners/banner-delivery.jpg" alt="Товар дня" loading="eager" decoding="async">
+          <span class="promo-banner-content">
+            <em>сьогодні</em>
+            <strong>Товар дня</strong>
+            <span>Окрема ціна до кінця доби</span>
+          </span>
+        </a>
+      </div>
+    </section>
+
+    <section class="section section-categories" id="categories">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Категорії</p>
+          <h2>Популярні категорії</h2>
+        </div>
+        <button class="btn btn-ghost" type="button" data-action="scroll" data-target="catalog">Всі товари</button>
+      </div>
+      <div class="category-grid" id="categoryGrid"></div>
+    </section>
+
+    <section class="section section-day" id="day">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Товар дня</p>
+          <h2>Акція до кінця дня</h2>
+        </div>
+      </div>
+      <div class="deal" id="dayDeal"></div>
+    </section>
+
+    <section class="section" id="offers">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Найкращі пропозиції</p>
+          <h2>Акції та хіти</h2>
+        </div>
+      </div>
+      <div class="product-row" id="bestRail"></div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Топ продажів</p>
+          <h2>Товари, які клієнт бачить першими</h2>
+        </div>
+      </div>
+      <div class="product-row" id="topRail"></div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Зараз купують</p>
+          <h2>Швидкі рішення для мобільної вітрини</h2>
+        </div>
+      </div>
+      <div class="product-row" id="nowRail"></div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Новинки</p>
+          <h2>Свіжі позиції каталогу</h2>
+        </div>
+      </div>
+      <div class="product-row" id="newRail"></div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Для дому</p>
+          <h2>Домашня техніка та lifestyle</h2>
+        </div>
+      </div>
+      <div class="product-row" id="homeRail"></div>
+    </section>
+
+    <section class="section" id="phones-section">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Смартфони та гаджети</p>
+          <h2>Аксесуари, телефони, smart watch</h2>
+        </div>
+      </div>
+      <div class="product-row" id="phonesRail"></div>
+    </section>
+
+    <section class="section template-info" id="template-info">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Для власника магазину</p>
+          <h2>Що входить у шаблон</h2>
+          <p>Технічна частина захована нижче, щоб перший екран виглядав як магазин, а не опис шаблону.</p>
+        </div>
+      </div>
+      <div class="strip strip-lower" aria-label="Що входить у demo">
+        <div class="strip-item"><b>Каталог</b>категорії, пошук, rails, product detail</div>
+        <div class="strip-item"><b>Продаж</b>кошик, wishlist, заявка замість оплати</div>
+        <div class="strip-item"><b>Підтримка</b>експорт/import JSON і локальні orders</div>
+      </div>
+    </section>
+
+    <section class="section" id="catalog">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Каталог</p>
+          <h2 id="catalogTitle">Каталог</h2>
+        </div>
+      </div>
+      <div class="catalog-filter" aria-label="Фільтр категорій">
+        <button type="button" data-action="filter-category" data-category="all">Всі</button>
+        <button type="button" data-action="filter-category" data-category="phones">Смартфони</button>
+        <button type="button" data-action="filter-category" data-category="laptops">Ноутбуки</button>
+        <button type="button" data-action="filter-category" data-category="home">Для дому</button>
+        <button type="button" data-action="filter-category" data-category="tv">TV / Аудіо</button>
+        <button type="button" data-action="filter-category" data-category="gaming">Gaming</button>
+        <button type="button" data-action="filter-category" data-category="beauty">Краса</button>
+        <button type="button" data-action="filter-category" data-category="kids">Дітям</button>
+        <button type="button" data-action="filter-category" data-category="sport">Спорт</button>
+        <button type="button" data-action="filter-category" data-category="auto">Авто</button>
+        <button type="button" data-action="filter-category" data-category="pets">Тварини</button>
+      </div>
+      <div class="catalog-grid" id="catalogGrid"></div>
+    </section>
+
+    <section class="section" id="why">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Для продажу клієнту</p>
+          <h2>Що реально входить у цей шаблон</h2>
+          <p>Без fake backend і без обіцянок enterprise-рівня. Це легкий static shop, який можна дешево хостити і швидко переробити під нішу.</p>
+        </div>
+      </div>
+      <div class="trust-grid">
+        <article class="trust-card"><strong>Швидкий каталог</strong><p>Товари живуть у JSON і можуть бути оновлені власником після експорту нового файлу.</p></article>
+        <article class="trust-card"><strong>Кошик і wishlist</strong><p>Працюють у localStorage. Для малого demo цього достатньо.</p></article>
+        <article class="trust-card"><strong>Заявка замість оплати</strong><p>Клієнт відправляє контакти і список товарів. Payment gateway можна додати окремо.</p></article>
+        <article class="trust-card"><strong>Almost-free hosting</strong><p>Підходить для GitHub Pages, Netlify, Cloudflare Pages або простого статичного хостингу.</p></article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" id="demo-legal">
+    <div class="footer-grid">
+      <div>
+        <h3>ZEVO Shop</h3>
+        <p>Demo-шаблон міні-магазину. Назва, товари, фото, контакти і юридичні тексти мають бути замінені під реальний бізнес.</p>
+        <div class="operator-box">
+          <h4>Provozovatel</h4>
+          <div class="operator-grid">
+            <span><b>Název:</b> [DOPLNIT NÁZEV FIRMY]</span>
+            <span><b>IČO:</b> [DOPLNIT IČO]</span>
+            <span><b>DIČ:</b> [DOPLNIT DIČ / není plátce DPH]</span>
+            <span><b>Sídlo:</b> [DOPLNIT ADRESU]</span>
+            <span><b>E-mail:</b> [DOPLNIT EMAIL]</span>
+            <span><b>Telefon:</b> [DOPLNIT TELEFON]</span>
+            <span><b>Reklamace:</b> [DOPLNIT ADRESU PRO VRÁCENÍ]</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <h4>Контакти</h4>
+        <a href="tel:+380000000000">+380 00 000 00 00</a>
+        <a href="mailto:demo@zevo.shop">demo@zevo.shop</a>
+        <a href="kontakt.html">Kontakt / Provozovatel</a>
+      </div>
+      <div>
+        <h4>Для zákazníka</h4>
+        <a href="doprava-a-platba.html">Doprava a platba</a>
+        <a href="odstoupeni-od-smlouvy.html">Odstoupení od smlouvy</a>
+        <a href="reklamacni-rad.html">Reklamační řád</a>
+        <a href="odstoupeni-od-smlouvy.html#online-form">Odstoupit od smlouvy</a>
+      </div>
+      <div>
+        <h4>Legal placeholders</h4>
+        <a href="obchodni-podminky.html">Obchodní podmínky</a>
+        <a href="ochrana-osobnich-udaju.html">Ochrana osobních údajů</a>
+        <a href="cookies.html">Cookies / localStorage</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="year">2026</span> ZEVO Shop demo</span>
+      <span>Demo-only: без реальної оплати, складу, CRM і backend.</span>
+    </div>
+  </footer>
+
+  <nav class="bottom-nav" aria-label="Mobile navigation">
+    <button type="button" data-action="scroll" data-target="top"><b>⌂</b>Головна</button>
+    <button type="button" data-action="scroll" data-target="catalog"><b>☰</b>Каталог</button>
+    <button type="button" data-action="scroll" data-target="offers"><b>%</b>Акції</button>
+    <button type="button" data-action="open-cart"><b>🛒</b>Кошик <span class="badge-count cartCount" hidden>0</span></button>
+  </nav>
+
+  <aside class="drawer" id="cartDrawer" aria-hidden="true">
+    <div class="drawer-panel">
+      <div class="drawer-head">
+        <h2>Кошик</h2>
+        <button type="button" data-action="close-cart" aria-label="Закрити кошик">×</button>
+      </div>
+      <div class="cart-content" id="cartContent"></div>
+      <div class="cart-footer" id="cartFooter">
+        <div class="cart-total"><span>Разом</span><strong id="cartTotal">0 ₴</strong></div>
+        <div class="cart-buttons">
+          <button class="btn btn-ghost" type="button" data-action="clear-cart">Очистити</button>
+          <button class="btn btn-cart" type="button" data-action="checkout">Pokračovat k objednávce</button>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <section class="modal" id="checkoutModal" aria-hidden="true">
+    <div class="modal-box">
+      <div class="modal-head">
+        <div>
+          <p class="eyebrow">Demo checkout</p>
+          <h2>Заявка на замовлення</h2>
+        </div>
+        <button type="button" data-action="close-checkout" aria-label="Закрити форму">×</button>
+      </div>
+      <div class="checkout-grid">
+        <form id="checkoutForm" class="form-grid" data-email-endpoint="" data-email-provider="placeholder">
+          <input type="hidden" name="subject" value="ZEVO Shop demo order">
+          <input type="hidden" name="order_summary" id="orderSummaryField">
+          <input type="hidden" name="order_items_json" id="orderItemsJsonField">
+          <input type="hidden" name="order_total" id="orderTotalField">
+          <label>Ім'я <input name="name" autocomplete="name" required></label>
+          <label>Телефон <input name="phone" autocomplete="tel" required></label>
+          <label>Email <input name="email" type="email" autocomplete="email"></label>
+          <label>Місто <input name="city" autocomplete="address-level2" required></label>
+          <label>Доставка
+            <select name="delivery">
+              <option>Самовивіз demo</option>
+              <option>Нова пошта demo</option>
+              <option>Кур'єр demo</option>
+            </select>
+          </label>
+          <label>Месенджер <input name="messenger" placeholder="Telegram / WhatsApp"></label>
+          <label class="wide">Коментар <textarea name="comment" placeholder="Питання, адреса, зручний час дзвінка"></textarea></label>
+          <p class="form-status wide" id="formStatus">Demo-safe режим: endpoint для email ще не вказано. Після вставки Web3Forms/Formspree/FormSubmit endpoint заявка буде надсилатися власнику магазину.</p>
+          <button class="btn btn-cart wide" type="submit">Objednávka zavazující k platbě</button>
+        </form>
+        <aside>
+          <h3>Обрані товари</h3>
+          <div class="checkout-summary" id="checkoutSummary"></div>
+          <div class="demo-note">Integration point готовий: вставте endpoint у data-email-endpoint форми. Без endpoint заявка зберігається тільки локально.</div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <div class="toast-root" id="toastRoot" aria-live="polite"></div>
+</body>
+</html>
